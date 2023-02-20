@@ -107,6 +107,8 @@ function _({ ...props }) {
   // Load font
   const font = useFont({ stop: hovered } as FontProps);
 
+  const vec = new THREE.Vector3();
+
   useCursor(hovered);
 
   useFrame((_, dt) => {
@@ -151,6 +153,9 @@ function _({ ...props }) {
         0.1,
         dt
       );
+
+      // starter animation
+      ref.current.position.lerp(vec.set(0, 0, 0), 0.1);
     }
 
     if (ref.current)
@@ -162,8 +167,13 @@ function _({ ...props }) {
     <group
       ref={ref}
       {...props}
+      position={[0, 30, 0]}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
+      onClick={() => hover(!hovered)}
+      onPointerDown={() => {
+        if (!hovered) hover(true);
+      }}
     >
       <Off {...props} />
       <Dash {...props} />

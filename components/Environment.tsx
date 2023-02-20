@@ -10,8 +10,6 @@ import {
 import { useMedia, mobileBreakpoint } from "../modules/useMedia";
 
 function _() {
-  const mobile = useMedia(mobileBreakpoint);
-
   return (
     <EffectComposer disableNormalPass>
       <Bloom
