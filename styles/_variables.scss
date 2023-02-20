@@ -1,0 +1,107 @@
+/* COLORS */
+$color-000: #030303;
+$color-100: #1e1a1b;
+$color-200: #2c2627;
+$color-300: #3f3d3e;
+$color-400: #726e70;
+$color-500: #c4c9d4;
+$color-600: #f0e0d1;
+$color-700: #f5ebe0;
+$color-800: #faf5f0;
+
+$color-accent: #385ee5;
+$color-accent-secondary: #4a6ce8;
+$color-bad: #ed5145;
+
+/* SHADOW */
+$shadow-standard: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+/* FONTS */
+$font-primary: "--untitledSerif-283d86", "--untitledSerif-Fallback-283d86";
+$font-secondary: "--untitledSans-284bd9", "--untitledSans-Fallback-284bd9";
+
+/* FONT SIZE */
+$font-size-050: clamp(14px, 0.7vw, 16px);
+$font-size-100: clamp(16px, 1vw, 18px);
+$font-size-200: clamp(18px, 2vw, 20px);
+$font-size-300: clamp(36px, 5vw, 44px);
+$font-size-400: clamp(48px, 5vw, 100px);
+$font-size-500: clamp(56px, 7vw, 100px);
+$font-size-600: clamp(72px, 14vw, 140px);
+
+/* FONT WEIGHT */
+$font-weight-100: 300;
+$font-weight-200: 400;
+$font-weight-300: 500;
+$font-weight-400: 600;
+
+/* SPACING */
+$spacing-50: 0.5rem;
+$spacing-100: 1rem;
+$spacing-200: 2rem;
+$spacing-300: 6rem;
+$spacing-400: 8rem;
+$spacing-500: 10rem;
+
+/* PADDING */
+$padding-50: 5px;
+$padding-100: 10px;
+$padding-200: 20px;
+$padding-300: 30px;
+$padding-400: 50px;
+$padding-500: 100px;
+
+/* BORDERS */
+$border-radius-100: 7px;
+$border-radius-200: 10px;
+$border-radius-300: 20px;
+$border-radius-400: 30px;
+$border-radius-500: 50px;
+
+$border-standard: 1px solid $color-600;
+$border-dark: 1px solid $color-200;
+
+/* ANIMATIONS */
+$animation-duration: 0.5s;
+$animation-duration-long: 1.5s;
+$animation-delay: 0.25s;
+$animation-delay-long: 1.25s;
+$animation-timing: cubic-bezier(0.33, 1, 0.68, 1);
+
+/* FOR REACT */
+:export {
+  /* COLORS */
+  color000: $color-000;
+  color100: $color-100;
+  color200: $color-200;
+  color300: $color-300;
+  color400: $color-400;
+  color500: $color-500;
+  color600: $color-600;
+  color700: $color-700;
+  color800: $color-800;
+
+  colorAccent: $color-accent;
+  colorAccentSecondary: $color-accent-secondary;
+
+  /* SPACING */
+  spacing100: $spacing-100;
+  spacing200: $spacing-200;
+  spacing300: $spacing-300;
+  spacing400: $spacing-400;
+  spacing500: $spacing-500;
+
+  /* PADDING */
+  padding100: $padding-100;
+  padding200: $padding-200;
+  padding300: $padding-300;
+  padding400: $padding-400;
+  padding500: $padding-500;
+
+  /* ANIMATION */
+  animationDuration: $animation-duration;
+  animationDurationLong: $animation-duration-long;
+  animationDelay: $animation-delay;
+  animationDelayLong: $animation-delay-long;
+  animationTiming: $animation-timing;
+}

@@ -1,0 +1,129 @@
+@import "./_variables";
+
+.main {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  color: $color-100;
+  background: $color-800;
+
+  cursor: all-scroll;
+
+  section {
+    color: $color-100;
+    background: $color-800;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  h1 {
+    font-family: $font-primary;
+    font-size: $font-size-600;
+    font-weight: $font-weight-300;
+    text-align: center;
+
+    color: $color-100;
+    text-shadow: $color-700 0px 4px 6px, $color-800 0px -3px 5px;
+  }
+
+  h2 {
+    font-family: $font-primary;
+    font-size: $font-size-500;
+    font-weight: $font-weight-300;
+
+    color: $color-100;
+    text-shadow: $color-700 0px 4px 6px, $color-800 0px -3px 5px;
+  }
+
+  h3 {
+    font-family: $font-primary;
+    font-size: $font-size-400;
+    font-weight: $font-weight-300;
+
+    color: $color-100;
+    text-shadow: $color-700 0px 4px 6px, $color-800 0px -3px 5px;
+  }
+
+  h4 {
+    font-family: $font-primary;
+    font-size: $font-size-300;
+    font-weight: $font-weight-200;
+
+    color: $color-200;
+    text-shadow: $color-700 0px 4px 6px, $color-800 0px -3px 5px;
+  }
+
+  h5 {
+    font-family: $font-secondary;
+    font-size: $font-size-200;
+    font-weight: $font-weight-200;
+
+    color: $color-300;
+  }
+
+  p {
+    font-family: $font-secondary;
+    font-size: $font-size-100;
+    font-weight: $font-weight-100;
+
+    color: $color-400;
+  }
+
+  em {
+    font-family: $font-secondary;
+    font-size: $font-size-050;
+    font-weight: $font-weight-100;
+    font-style: normal;
+
+    color: $color-400;
+  }
+
+  strong {
+    padding: $padding-100/2 $padding-100;
+
+    font-size: 14px !important;
+    font-family: $font-secondary;
+    font-weight: $font-weight-100;
+
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    color: $color-400 !important;
+    border: $border-standard;
+    border-radius: $padding-400;
+  }
+
+  input {
+    font-family: $font-secondary;
+    font-size: $font-size-100;
+    font-weight: $font-weight-100;
+
+    color: $color-300;
+  }
+
+  strong {
+    font-family: $font-primary;
+    font-size: $font-size-100;
+    font-weight: $font-weight-100;
+
+    color: $color-300;
+  }
+}
+
+:export {
+  color000: $color-000;
+  color800: $color-800;
+}

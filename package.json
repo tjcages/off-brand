@@ -10,12 +10,20 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@react-three/drei": "^9.56.25",
+    "@react-three/fiber": "^8.11.2",
+    "@react-three/postprocessing": "^2.7.0",
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "glslify": "^7.1.1",
+    "maath": "^0.5.2",
     "next": "13.1.6",
+    "postprocessing": "^6.29.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.58.3",
+    "three": "^0.148.0",
     "typescript": "4.9.5"
   }
 }
