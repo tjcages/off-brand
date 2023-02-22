@@ -7,6 +7,7 @@ import Rig from "./Rig";
 import OffBrand from "./OffBrand";
 import Ground from "./Ground";
 import Environment from "./Environment";
+import Cursor from "./Cursor";
 
 export default function _() {
   return (
@@ -26,6 +27,8 @@ export default function _() {
       </Suspense>
       <Environment />
       <BakeShadows />
+
+      <Cursor />
     </Canvas>
   );
 }

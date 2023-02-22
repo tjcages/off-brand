@@ -15,7 +15,7 @@ type Props = {
 const offPosition = { x: -1.6, y: 2, z: 0 };
 const dashPosition = { x: -0.45, y: 1.95, z: 0 };
 const brandPosition = { x: 1.3, y: 2, z: 0 };
-const tmPosition = { x: 2.8, y: 1.69, z: 0 };
+const tmPosition = { x: 3, y: 2.4, z: 0 };
 
 // Animation values
 const moveFactor = 1.55;
@@ -139,7 +139,7 @@ function _({ ...props }) {
       easing.damp3(
         tm.position,
         [
-          tmPosition.x * (hovered ? moveFactor * 0.85 : 1),
+          tmPosition.x * (hovered ? moveFactor * 0.8 : 1),
           tmPosition.y,
           tmPosition.z,
         ],
