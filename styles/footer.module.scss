@@ -1,0 +1,35 @@
+@import "./_variables";
+
+.main {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 40vh;
+
+  .cta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 1rem 2rem;
+
+    cursor: pointer;
+
+    transition: gap $animation-duration $animation-easing;
+
+    &:hover {
+      gap: 1rem;
+    }
+
+    img {
+      transform: scale(-1);
+    }
+  }
+}

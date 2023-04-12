@@ -1,0 +1,13 @@
+.main {
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+
+  max-width: 1200px;
+}

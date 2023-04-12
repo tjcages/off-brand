@@ -1,0 +1,91 @@
+@import "./_variables";
+
+.main {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  color: $color_800;
+  background: $color_100;
+
+  h1 {
+    font-size: $font-size-600;
+    font-weight: $font_weight_300;
+    text-align: center;
+
+    color: $color_800;
+  }
+
+  h2 {
+    font-size: $font-size-500;
+    font-weight: $font_weight_300;
+
+    color: $color_800;
+  }
+
+  h3 {
+    font-size: $font-size-300;
+    font-weight: $font_weight_300;
+
+    color: $color_800;
+  }
+
+  h4 {
+    font-size: $font-size-200;
+    font-weight: $font_weight_200;
+
+    color: $color_700;
+  }
+
+  h5 {
+    font-size: $font-size-100;
+    font-weight: $font_weight_200;
+    line-height: 1.2em;
+
+    color: $color_600;
+
+    overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        font-size: $font-size-200;
+      }
+    }
+  }
+
+  p {
+    font-size: $font-size-100;
+    font-weight: $font_weight_100;
+
+    color: $color_400;
+  }
+
+  strong {
+    font-family: $font-secondary;
+    font-size: $font-size-50;
+    font-weight: $font_weight_400;
+    text-transform: uppercase;
+
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+    color: $color_400;
+  }
+
+  input {
+    font-size: $font-size-100;
+    font-weight: $font_weight_100;
+
+    color: $color_300;
+  }
+
+  hr {
+    width: 100%;
+    height: 2px;
+    margin: $padding-100/2 0;
+
+    background-color: $color-500;
+    border: none;
+  }
+}
