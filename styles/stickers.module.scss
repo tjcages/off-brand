@@ -1,0 +1,93 @@
+@import "./_variables";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 34vh;
+
+    transform: translateX(-50%);
+    width: 100%;
+
+    z-index: 1;
+    overflow: hidden;
+    user-select: none;
+
+    .sticker {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      filter: drop-shadow(0px 7px 16px rgba(50, 50, 93, 0.25));
+      opacity: 0;
+      user-select: none;
+      cursor: grab;
+
+      transition: transform $animation-duration $animation-easing,
+        opacity $animation-duration-short $animation-easing;
+
+      img {
+        height: auto;
+      }
+    }
+  }
+
+  .light {
+    height: 60vh;
+    pointer-events: none;
+    user-select: none;
+    background-image: conic-gradient(
+        from 90deg at 70% 50%,
+        $color-100,
+        $color-accent-secondary
+      ),
+      conic-gradient(
+        from 270deg at 30% 50%,
+        $color-accent-secondary,
+        $color-100
+      );
+    mask-image: radial-gradient(100% 50% at center center, black, transparent);
+    background-position-x: 0%, 100%;
+    background-position-y: 0%, 0%;
+    background-size: 50% 100%, 50% 100%;
+    transform-origin: center center;
+    background-repeat: no-repeat;
+
+    transform: rotate(0deg) translate3d(0, -4vh, 0);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background-color: $color-100;
+      background-image: radial-gradient(
+          circle at center center,
+          $color-accent-secondary,
+          $color-200
+        ),
+        repeating-radial-gradient(
+          circle at center center,
+          $color-accent-secondary,
+          $color-accent-secondary,
+          5px,
+          transparent 6px,
+          transparent 5px
+        );
+      background-blend-mode: multiply;
+      mix-blend-mode: overlay;
+
+      opacity: 0.1;
+    }
+  }
+}

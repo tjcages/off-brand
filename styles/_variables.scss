@@ -4,14 +4,13 @@ $color-100: #f3f4f6;
 $color-200: #dcdfe5;
 $color-300: #c4c9d4;
 $color-400: #726e70;
-$color-500: #3f3d3e;
+$color-500: #3D4255;
 $color-600: #2c2627;
 $color-700: #1e1e1e;
 $color-800: #000000;
 
-$color-accent: #0080e8;
-$color-accent-secondary: #4a6ce8;
-$color-bad: #ed5145;
+$color-accent: #635bff;
+$color-accent-secondary: #8d95ec;
 
 $color-700-80: rgba(30, 26, 27, 0.8);
 
@@ -75,6 +74,7 @@ $animation-duration-long: 1.5s;
 $animation-delay: 0.25s;
 $animation-delay-long: 1.25s;
 $animation-easing: cubic-bezier(0.33, 1, 0.68, 1);
+$animation-easing-spring: cubic-bezier(0.64, 0.57, 0.67, 1.53);
 
 /* FOR REACT */
 :export {

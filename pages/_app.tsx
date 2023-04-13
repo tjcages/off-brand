@@ -1,4 +1,6 @@
 import "@/styles/_globals.css";
+import "@/styles/__tooltip.css";
+
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import { Inter } from "next/font/google";
