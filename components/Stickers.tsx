@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -7,18 +6,6 @@ import {
   useAnimationControls,
 } from "framer-motion";
 import styles from "@/styles/stickers.module.scss";
-
-const translate = [
-  "translate(-50%, -15%) rotate(10deg)",
-  "translate(-35%, -5%) rotate(-30deg)",
-  "translate(-80%, 5%) rotate(40deg)",
-];
-
-const translateHover = [
-  "translate(-50%, -50%) rotate(0deg)",
-  "translate(-25%, -25%) rotate(-25deg)",
-  "translate(-95%, -25%) rotate(35deg)",
-];
 
 const _ = () => {
   const [width, setWidth] = useState(0);
@@ -37,7 +24,6 @@ const _ = () => {
   const onRoute = useCallback(
     () => async () => {
       if (hover === null) {
-        controls.set("hidden");
         await controls.start("enter");
         return;
       } else if (hover) {
@@ -56,8 +42,38 @@ const _ = () => {
     onRoute()();
   }, [onRoute]);
 
-  var size = width ? width * 0.2 : 300;
-  if (size > 350) size = 350;
+  const getSize = (factor: number, max: number) => {
+    var size = width ? width * factor : max;
+    if (size > max) return max;
+    return size;
+  };
+
+  const images = [
+    {
+      src: "/stickers/calculation.png",
+      size: getSize(0.2, 350),
+      translate: "translate(-50%, 5%) rotate(10deg)",
+      translateHover: "translate(-50%, -50%) rotate(-10deg)",
+    },
+    {
+      src: "/stickers/buy-circle.png",
+      size: getSize(0.2, 300),
+      translate: "translate(-50%, 105%) rotate(40deg)",
+      translateHover: "translate(-70%, 15%) rotate(30deg)",
+    },
+    {
+      src: "/stickers/stripe.png",
+      size: getSize(0.2, 250),
+      translate: "translate(-25%, 45%) rotate(-20deg)",
+      translateHover: "translate(5%, 15%) rotate(-25deg)",
+    },
+    {
+      src: "/stickers/copypayste.png",
+      size: getSize(0.3, 400),
+      translate: "translate(-70%, 105%) rotate(40deg)",
+      translateHover: "translate(-95%, 15%) rotate(30deg)",
+    },
+  ];
 
   return (
     <div className={styles.main}>
@@ -67,7 +83,7 @@ const _ = () => {
         onMouseEnter={() => hovering(true)}
         onMouseLeave={() => hovering(false)}
       >
-        {[0, 1, 2].map((i) => {
+        {images.map((image) => {
           const x = useMotionValue(0);
           const y = useMotionValue(0);
           const rotate = useTransform(x, [-150, 150], [-40, 40]);
@@ -78,10 +94,10 @@ const _ = () => {
               variants={{
                 hidden: {
                   opacity: 0,
-                  transform: "translate(-50%, 50%) rotate(90deg)",
+                  transform: "translate(-50%, 250%) rotate(90deg)",
                 },
-                enter: { opacity: 1, transform: translate[i] },
-                hover: { opacity: 1, transform: translateHover[i] },
+                enter: { opacity: 1, transform: image.translate },
+                hover: { opacity: 1, transform: image.translateHover },
               }}
               transition={{
                 type: "spring",
@@ -93,11 +109,10 @@ const _ = () => {
               }}
             >
               <motion.img
-                // src={`/stickers/${i}.png`}
-                src="/stickers/1.png"
+                src={image.src}
                 alt="Sticker"
-                width={size}
-                height={size}
+                width={image.size}
+                height={image.size}
                 style={{ x, y, rotate }}
                 drag={true}
                 dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
