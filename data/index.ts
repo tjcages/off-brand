@@ -7,6 +7,7 @@ import VHS from "@/buttons/VHS";
 import Wavey from "@/buttons/Wavey";
 import Aqua from "@/buttons/Aqua";
 import BubbleGum from "@/buttons/BubbleGum";
+import MusicPlayer from "@/buttons/MusicPlayer";
 import BananaSplit from "@/buttons/BananaSplit";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
@@ -18,6 +19,7 @@ import VHSStyles from "@/buttons/VHS/style.module.scss";
 import WaveyStyles from "@/buttons/Wavey/style.module.scss";
 import AquaStyles from "@/buttons/Aqua/style.module.scss";
 import BubbleGumStyles from "@/buttons/BubbleGum/style.module.scss";
+import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
 import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
 
 interface Props {
@@ -112,6 +114,15 @@ const _ = [
     color: "white",
     background: "#CA75E6",
     style: BubbleGumStyles,
+  },
+  {
+    id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
+    name: "Music Player",
+    cta: "Buy for $0.99",
+    Scene: MusicPlayer,
+    color: "black",
+    background: "#ffcdfa",
+    style: MusicPlayerStyles,
   },
   {
     id: "fasdfa",

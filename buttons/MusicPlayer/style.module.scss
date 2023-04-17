@@ -1,0 +1,44 @@
+@import "@/styles/_variables";
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #008081;
+}
+
+.button {
+  position: relative;
+
+  width: calc(100% - 3rem - 20px);
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  margin: 0 0 0 4px;
+  padding: 0 3px 0 0;
+  font-size: 16px;
+  background: #ffcdfa;
+  border: none;
+  border-radius: 0;
+  box-shadow: -3px 0px #fff, 0px -3px #fff, 3px 0px #353535, 0px 3px #353535,
+    inset -4px -4px #ff98f5;
+}
+
+.info {
+  h5 {
+    color: white;
+  }
+}

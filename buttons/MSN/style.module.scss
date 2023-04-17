@@ -80,12 +80,10 @@
 }
 
 .info {
-  background-color: #18349a;
-
   &:after {
     content: "";
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
 
@@ -104,5 +102,9 @@
 
   strong {
     color: #d6e5fa !important;
+  }
+
+  img {
+    filter: invert(100%);
   }
 }

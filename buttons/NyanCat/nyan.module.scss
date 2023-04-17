@@ -1,916 +1,1389 @@
-/* nyan head*/
-.ear-bar {
-  height: 7px;
-  width: 9px;
-  background: #000;
-  position: absolute;
-  top: -20px;
-}
-.ears {
-  background: #999;
-  width: 30px;
-  height: 7px;
-  top: -7px;
-  position: relative;
-  border-left: 7px solid #000;
-}
-.ears-1 {
-  background: #999;
-  width: 30px;
-  height: 7px;
-  top: -7px;
-  position: relative;
-  border-left: 7px solid #000;
-  left: -7px;
-  border-right: 7px solid #000;
-}
-.ears-1-5 {
-  content: "";
-  height: 7px;
-  width: 23px;
-  border-right: 7px solid #000;
-  border-left: 7px solid #000;
-  position: absolute;
-  top: -7px;
-  left: -7px;
-  background: #999;
-}
-.ears-r {
-  background: #999;
-  width: 30px;
-  height: 7px;
-  top: -14px;
-  position: relative;
-  border-right: 7px solid #000;
-  left: 48px !important;
-}
-.ears-r::before {
-  background: #000;
-  content: "";
-  height: 7px;
-  width: 18px;
-  position: absolute;
-  left: -18px;
-}
+// @import '~compass-mixins/lib/compass/css3';
 
-.head {
-  background: #999;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  width: 90px;
-  height: 7px;
-  left: 5px !important;
-  position: relative;
-}
-.head1 {
-  background: #999;
-  width: 100px;
-  height: 25px;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  position: relative;
-}
-.head2 {
-  position: relative;
-  background: #999;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  width: 90px;
-  height: 8px;
-  left: 5px;
-}
-.head3 {
-  position: relative;
-  background: #999;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  width: 80px;
-  height: 8px;
-  left: 10px;
-}
-.head4 {
-  background: #000;
-  width: 70px;
-  left: 15px;
-  height: 6px;
-  position: relative;
-}
-.eye {
-  width: 13px;
-  height: 13px;
-  background: #000;
-  left: 18px;
-  top: 0px;
-  position: relative;
-  display: inline-block;
-}
-.eye::before {
-  height: 7px;
-  width: 7px;
-  background: #fff;
-  content: "";
+.container {
+  $blue: #013366;
+  $beige: #f9d28f;
+  $pink: #fe91fe;
+  $deeppink: #f90297;
+  $gray: #9d9d9d;
+  $salmon: #ff9593;
+  $red: #fe0000;
+  $orange: #ffa500;
+  $yellow: #ffff00;
+  $green: #00fb00;
+  $royalblue: #009eff;
+  $purple: #6531ff;
+
   position: absolute;
+  top: 0;
   left: 0;
-}
-.nose {
-  height: 5px;
-  width: 6px;
-  background: #000;
-  left: 42px;
-  position: relative;
-  z-index: 1;
-  top: -10px;
-}
-.blush {
-  width: 12px;
-  height: 10px;
-  background: #f99;
-  position: absolute;
-  z-index: 1;
-  left: 5px;
-  bottom: 0px;
-}
-.mouth {
-  width: 20px;
-  height: 10px;
-  position: absolute;
-  background: #999;
-  border-left: 6px solid #000;
-  border-right: 6px solid #000;
-  border-bottom: 5px solid #000;
-  z-index: 1;
-  left: 23px;
-  display: inline-block;
-}
+  right: 0;
+  bottom: 0;
 
-/*nyan body*/
-.nyan-body {
-  position: relative;
-  z-index: -1;
-  top: -85px;
-  left: -65px;
-}
-.body {
-  background: #fecb98;
-  height: 85px;
-  width: 125px;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-}
-.body::before {
-  height: 7px;
-  width: 112px;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  content: "";
-  position: absolute;
-  background: #fecb98;
-  top: -7px;
-}
-.body::after {
-  height: 7px;
-  width: 112px;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-  content: "";
-  position: absolute;
-  background: #fecb98;
-  bottom: -7px;
-}
-.bodybar {
-  width: 98px;
-  height: 7px;
-  background: #000;
-  position: relative;
-  top: -14px;
-  left: 7px;
-}
-.pinkBody {
-  background: #ff99ff;
-  height: 50px;
-  position: absolute;
-  z-index: 2;
-  width: 95px;
-  left: 15px;
-  top: 16px;
-}
-.pinkBody::before {
-  background: #ff99ff;
-  height: 7px;
-  width: 82px;
-  content: "";
-  position: absolute;
-  top: -7px;
-  left: 7px;
-}
+  overflow: hidden;
+  margin: 0;
 
-.pinkBody::after {
-  background: #ff99ff;
-  height: 7px;
-  width: 82px;
-  content: "";
-  position: absolute;
-  bottom: -7px;
-  left: 7px;
-}
-.pinkbar {
-  position: absolute;
-  width: 68px;
-  height: 7px;
-  background: #ff99ff;
-  top: -14px;
-  left: 14px;
-}
-.bodySpots {
-  height: 7px;
-  width: 7px;
-  position: absolute;
-  background: #f39;
-  left: 20px;
-  z-index: 1;
-}
-.theNyan {
-  position: absolute;
-  left: 150px;
-  margin-top: 10%;
-  /* right: 0; */
-  /* margin: auto; */
-  /* width: 30%; */
-  /* top: 14vh; */
-  top: 14vh;
-  left: 570px;
-
-  -moz-animation: theNyan 0.3s infinite;
-  -webkit-animation: theNyan 0.3s infinite;
-  animation: theNyan 0.3s infinite;
-}
-/**OtherBodyParts**/
-
-.OtherBodyParts {
-  position: absolute;
-  top: 0;
-  z-index: -2;
-}
-.tail {
-  background: #999;
-  width: 20px;
-  height: 28px;
-  border-top: 7px solid #000;
-  border-bottom: 7px solid #000;
-  position: absolute;
-  top: 0;
-  z-index: -2;
-  left: -75px;
-}
-.tail2 {
-  background: #999;
-  width: 22px;
-  height: 20px;
-  border-top: 7px solid #000;
-  border-bottom: 7px solid #000;
-  position: absolute;
-  top: 0;
-  z-index: -3;
-  left: -85px;
-}
-.tail3 {
-  background: #999;
-  width: 24px;
-  height: 14px;
-  position: absolute;
-  left: -99px;
-  top: -7px;
-  border-left: 7px solid #000;
-  border-right: 7px solid #000;
-}
-.tail3::before {
-  content: "";
-  background: #000;
-  height: 7px;
-  width: 10px;
-  position: absolute;
-  top: -7px;
-}
-
-.tail3::after {
-  content: "";
-  background: #000;
-  height: 7px;
-  width: 7px;
-  position: absolute;
-  bottom: -7px;
-}
-
-.legs-container {
-  position: absolute;
-  bottom: -84px;
-  width: 160px;
-  left: -60px;
-}
-
-.leg1 {
-  width: 20px;
-  height: 33px;
-  background: #999;
-  border-top: 7px solid #000;
-  border-bottom: 7px solid #000;
-  position: relative;
-  left: -11px;
-  top: -10px;
-}
-.leg1::before {
-  width: 7px;
-  height: 7px;
-  background: #000;
-  content: "";
-  position: absolute;
-  left: -7px;
-}
-
-.leg2 {
-  background: #999;
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  border-left: 7px solid #000;
-  top: 4px;
-  left: -25px;
-  border-bottom: 7px solid #000;
-}
-.leg3 {
-  background: #999;
-  height: 20px;
-  width: 20px;
-  border-left: 7px solid #000;
-  border-bottom: 7px solid #000;
-  position: absolute;
-  top: 10px;
-  left: 15px;
-}
-
-.leg3::after {
-  content: "";
-  background: #000;
-  position: absolute;
-  right: -7px;
-  height: 13px;
-  width: 7px;
-}
-.leg4 {
-  background: #999;
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 0;
-  right: 80px;
-  top: 10px;
-  border-left: 7px solid #000;
-  border-bottom: 7px solid #000;
-}
-.leg4::after {
-  background: #000;
-  height: 13px;
-  content: "";
-  position: absolute;
-  right: -7px;
-  width: 7px;
-}
-.leg5 {
-  background: #999;
-  height: 40px;
-  width: 20px;
-  position: absolute;
-  top: 0;
-  right: 40px;
-  top: -10px;
-  border-right: 7px solid #000;
-  border-bottom: 7px solid #000;
-}
-.leg5::before {
-  background: #000;
-  height: 33px;
-  content: "";
-  position: absolute;
-  left: -7px;
-  width: 7px;
-}
-
-/** rainbow **/
-.rainbow-container {
-  display: inline-block;
-  position: absolute;
-}
-
-.rainbow-container:nth-child(1) {
-  left: 0;
-}
-.rainbow-container:nth-child(2) {
-  left: 128px;
-}
-.rainbow-container:nth-child(3) {
-  left: 256px;
-}
-.rainbow-container:nth-child(4) {
-  left: 385px;
-}
-.rainbow1-container {
-  position: relative;
-  z-index: -5;
-  display: inline-block;
-}
-.redBow,
-.orangeBow,
-.yellowBow,
-.greenBow,
-.blueBow,
-.purpleBow {
-  background: #f00;
-  height: 17px;
-  width: 65px;
-}
-.orangeBow {
-  background: #f90;
-}
-.yellowBow {
-  background: #ff0;
-}
-.greenBow {
-  background: #3f0;
-}
-.blueBow {
-  background: #09f;
-}
-.purpleBow {
-  background: #63f;
-}
-
-.rainbow1-container:nth-child(even) {
-  top: 0px;
-  left: 0px;
-  animation: renbow1 0.3s infinite;
-  -webkit-animation: renbow1 0.3s infinite;
-  -moz-animation: renbow1 0.3s infinite;
-}
-.rainbow1-container:nth-child(odd) {
-  top: 5px;
-  left: 5px;
-  animation: renbow2 0.3s infinite;
-  -webkit-animation: renbow2 0.3s infinite;
-  -moz-animation: renbow2 0.3s infinite;
-}
-
-/*sparkles*/
-.sparkles-container {
-  position: absolute;
-
-  z-index: 9;
-}
-.oneDot {
-  width: 7px;
-  height: 7px;
-  background: #fff;
-  position: relative;
-  left: 80px;
-  opacity: 1;
-  animation: twinkle 0.3s infinite;
-  -webkit-animation: twinkle 0.3s infinite;
-  -moz-animation: twinkle 0.3s infinite;
-}
-.oneDot:nth-child(2) {
-  top: 150px;
-  left: 130px;
-  animation-delay: 0.5s;
-  -webkit-animation-delay: 0.5s;
-  -moz-animation-delay: 0.5s;
-}
-.sparkle1 {
-  position: absolute;
-  left: 0;
-  top: -30px;
-}
-.s-1 {
-  position: relative;
-  width: 7px;
-  height: 7px;
-  background: #fff;
-  top: 0;
-  animation: sparkle1 0.3s infinite;
-}
-.s-1:nth-child(2) {
-  left: -10px;
-  top: 2px;
-  animation: sparkle2 0.3s infinite;
-}
-.s-1:nth-child(3) {
-  left: 10px;
-  top: -5px;
-  animation: sparkle3 0.3s infinite;
-}
-.s-1:nth-child(4) {
-  top: -3px;
-  animation: sparkle4 0.3s infinite;
-}
-.bs-1 {
-  width: 7px;
-  height: 7px;
-  background: #fff;
-  position: absolute;
-}
-.bs-1:nth-child(1) {
-  top: -18px;
-  animation: bs-sparkle 0.3s infinite;
-}
-.bs-1:nth-child(2) {
-  left: -18px;
-  top: 0;
-  animation: bs-sparkle2 0.3s infinite;
-}
-.bs-1:nth-child(3) {
-  left: 18px;
-  top: 0;
-  animation: bs-sparkle3 0.3s infinite;
-}
-.bs-1:nth-child(4) {
-  top: 18px;
-  animation: bs-sparkle4 0.3s infinite;
-}
-.bs-1:nth-child(5) {
-  width: 6px;
-  height: 6px;
-  left: -12px;
-  top: -12px;
-  animation: bs-sparkle5 0.3s infinite;
-}
-.bs-1:nth-child(6) {
-  width: 6px;
-  height: 6px;
-  left: 12px;
-  top: 12px;
-  animation: bs-sparkle6 0.3s infinite;
-}
-.bs-1:nth-child(7) {
-  width: 6px;
-  height: 6px;
-  left: 12px;
-  top: -12px;
-  animation: bs-sparkle7 0.3s infinite;
-}
-
-.bs-1:nth-child(8) {
-  width: 6px;
-  height: 6px;
-  left: 12px;
-  top: 12px;
-  animation: bs-sparkle8 0.3s infinite;
-}
-
-/** the animation **/
-
-@keyframes theNyan {
-  0%,
-  10%,
-  20%,
-  30% {
-    top: 70px;
+  @function grid($start, $end, $increment) {
+    $str: 0;
+    @while $start <= $end {
+      @if $start < $end {
+        $str: $str + 0 #{$start}#{"px,"};
+      }
+      @if $start == $end {
+        $str: $str + 0 #{$start}#{"px"};
+      }
+      $start: $start + $increment;
+    }
+    @return $str;
   }
-  40%,
-  50%,
-  60%,
-  70% {
-    top: 80px;
-  }
-  80%,
-  90%,
-  100% {
-    top: 70px;
-  }
-}
 
-@keyframes renbow1 {
-  0%,
-  10%,
-  20%,
-  30% {
-    top: 0px;
+  html {
+    height: 100%;
+    background-image: radial-gradient(
+      center,
+      ellipse farthest-corner,
+      darken($blue, 5%) 0%,
+      darken($blue, 20%) 100%
+    );
   }
-  40%,
-  50%,
-  60%,
-  70% {
-    top: 5px;
+  body {
+    height: 100%;
+    overflow: hidden;
   }
-  80%,
-  90%,
-  100% {
-    top: 0px;
-  }
-}
 
-@keyframes renbow2 {
-  0%,
-  10%,
-  20%,
-  30% {
-    top: 5px;
+  .sprite {
+    position: absolute;
+    background: {
+      position: grid(0, 125, 5);
+      size: 100% 5px;
+      repeat: no-repeat;
+    }
   }
-  40%,
-  50%,
-  60%,
-  70% {
-    top: 0px;
-  }
-  80%,
-  90%,
-  100% {
-    top: 5px;
-  }
-}
 
-@keyframes sparkle1 {
-  0%,
-  10%,
-  30%,
-  30.3333% {
-    top: 0px;
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 300px;
+    margin-top: -150px;
+    margin-left: -200px;
+    border-width: 1px;
+    overflow: hidden;
+    border-style: solid;
+    border-color: lighten($blue, 15%);
+    background: $blue;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, 0.3);
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    top: -10px;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    top: 0px;
-  }
-}
 
-@keyframes sparkle2 {
-  0%,
-  10%,
-  30%,
-  30.3333% {
-    left: -10px;
+  .nyanCat {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 165px;
+    height: 100px;
+    margin: {
+      top: -50px;
+      left: -82px;
+    }
+    animation: nyan 400ms step-start infinite;
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: -20px;
+
+  .body {
+    @extend .sprite;
+    left: 35px;
+    top: 0;
+    width: 105px;
+    height: 90px;
   }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: -10px;
+
+  .head {
+    @extend .sprite;
+    left: 85px;
+    top: 25px;
+    width: 80px;
+    height: 65px;
+    animation: head 400ms linear infinite;
   }
-}
-@keyframes sparkle3 {
-  0%,
-  10%,
-  30%,
-  30.3333% {
+
+  .rainbow {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -35px;
+    width: 50%;
+    height: 65px;
+    overflow: hidden;
+
+    span {
+      @extend .sprite;
+      display: block;
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 130px;
+      background: {
+        size: 80px 5px;
+        repeat: repeat-x;
+      }
+      animation: rainbow 400ms step-start infinite;
+    }
+  }
+
+  .feet {
+    @extend .sprite;
+    left: 20px;
+    top: 75px;
+    width: 120px;
+    height: 25px;
+    animation: feet 400ms infinite;
+  }
+
+  .tail {
+    position: relative;
+    width: 25px;
+    height: 30px;
+    overflow: hidden;
+    top: 30px;
     left: 10px;
+
+    span {
+      @extend .sprite;
+      width: 25px;
+      height: 120px;
+      animation: tail 200ms step-start infinite alternate;
+    }
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
+
+  .stars {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: moveleft 1000ms linear infinite;
+
+    .star {
+      @extend .sprite;
+      width: 28px;
+      height: 28px;
+      overflow: hidden;
+
+      span {
+        position: absolute;
+        left: 0;
+        width: 112px;
+        height: 28px;
+        background: {
+          position: grid(0, 28, 2);
+          size: 112px 2px;
+          repeat: no-repeat;
+        }
+        animation: star 300ms step-start infinite alternate;
+      }
+    }
+  }
+  .star:nth-child(1) {
+    top: -10px;
+    left: 70px;
+  }
+  .star:nth-child(2) {
+    top: 30px;
+    left: 250px;
+  }
+  .star:nth-child(3) {
+    top: 70px;
+    left: 350px;
+  }
+  .star:nth-child(4) {
+    top: 100px;
     left: 20px;
   }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: 10px;
+  .star:nth-child(5) {
+    top: 200px;
+    left: 300px;
   }
-}
-@keyframes sparkle4 {
-  0%,
-  10%,
-  30%,
-  30.3333% {
-    top: -3px;
+  .star:nth-child(6) {
+    top: 250px;
+    left: 100px;
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    top: 7px;
+  .star:nth-child(7) {
+    top: -10px;
+    left: 470px;
   }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    top: -3px;
-  }
-}
-
-@keyframes twinkle {
-  0%,
-  10%,
-  30%,
-  30.3333% {
-    opacity: 1;
-  }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    opacity: 0;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes bs-sparkle {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    top: -18px;
-  }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    top: -30px;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    top: -18px;
-  }
-}
-
-@keyframes bs-sparkle2 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: -18px;
-    top: 0;
-  }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: -30px;
-    top: 0;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: -18px;
-    top: 0;
-  }
-}
-
-@keyframes bs-sparkle3 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: 18px;
-    top: 0;
-  }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: 30px;
-    top: 0;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: 18px;
-    top: 0;
-  }
-}
-
-@keyframes bs-sparkle4 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    top: 18px;
-  }
-  50%,
-  60%,
-  70%,
-  70.3333% {
+  .star:nth-child(8) {
     top: 30px;
+    left: 650px;
   }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    top: 18px;
+  .star:nth-child(9) {
+    top: 70px;
+    left: 750px;
   }
-}
+  .star:nth-child(10) {
+    top: 100px;
+    left: 420px;
+  }
+  .star:nth-child(11) {
+    top: 200px;
+    left: 700px;
+  }
+  .star:nth-child(12) {
+    top: 250px;
+    left: 500px;
+  }
 
-@keyframes bs-sparkle5 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: -12px;
-    top: -12px;
+  .body {
+    background-image: linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 95px,
+        transparent 95px,
+        transparent 105px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $beige 10px,
+        $beige 95px,
+        black 95px,
+        black 100px,
+        transparent 100px,
+        transparent 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 20px,
+        $pink 20px,
+        $pink 85px,
+        $beige 85px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 15px,
+        $pink 15px,
+        $pink 45px,
+        $deeppink 45px,
+        $deeppink 50px,
+        $pink 50px,
+        $pink 60px,
+        $deeppink 60px,
+        $deeppink 65px,
+        $pink 65px,
+        $pink 90px,
+        $beige 90px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 20px,
+        $deeppink 20px,
+        $deeppink 25px,
+        $pink 25px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 80px,
+        $deeppink 80px,
+        $deeppink 85px,
+        $pink 85px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 40px,
+        $deeppink 40px,
+        $deeppink 45px,
+        $pink 45px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 25px,
+        $deeppink 25px,
+        $deeppink 30px,
+        $pink 30px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 45px,
+        $deeppink 45px,
+        $deeppink 50px,
+        $pink 50px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 15px,
+        $deeppink 15px,
+        $deeppink 20px,
+        $pink 20px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 10px,
+        $pink 10px,
+        $pink 35px,
+        $deeppink 35px,
+        $deeppink 40px,
+        $pink 40px,
+        $pink 95px,
+        $beige 95px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 15px,
+        $pink 15px,
+        $pink 20px,
+        $deeppink 20px,
+        $deeppink 25px,
+        $pink 25px,
+        $pink 90px,
+        $beige 90px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $beige 5px,
+        $beige 20px,
+        $pink 20px,
+        $pink 85px,
+        $beige 85px,
+        $beige 100px,
+        black 100px,
+        black 105px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $beige 10px,
+        $beige 95px,
+        black 95px,
+        black 100px,
+        transparent 100px,
+        transparent 105px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 95px,
+        transparent 95px,
+        transparent 105px
+      );
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: -25px;
-    top: -25px;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: -12px;
-    top: -12px;
-  }
-}
 
-@keyframes bs-sparkle7 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: 12px;
-    top: -12px;
+  .head {
+    background-image: linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 20px,
+        transparent 20px,
+        transparent 60px,
+        black 60px,
+        black 70px,
+        transparent 70px,
+        transparent 105px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 20px,
+        black 20px,
+        black 25px,
+        transparent 25px,
+        transparent 55px,
+        black 55px,
+        black 60px,
+        $gray 60px,
+        $gray 70px,
+        black 70px,
+        black 75px,
+        transparent 75px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 25px,
+        black 25px,
+        black 30px,
+        transparent 30px,
+        transparent 50px,
+        black 50px,
+        black 55px,
+        $gray 55px,
+        $gray 70px,
+        black 70px,
+        black 75px,
+        transparent 75px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 30px,
+        black 30px,
+        black 35px,
+        black 35px,
+        black 50px,
+        $gray 50px,
+        $gray 70px,
+        black 70px,
+        black 75px,
+        transparent 75px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 70px,
+        black 70px,
+        black 75px,
+        transparent 75px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 75px,
+        black 75px,
+        black 80px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 20px,
+        white 20px,
+        white 25px,
+        black 25px,
+        black 30px,
+        $gray 30px,
+        $gray 55px,
+        white 55px,
+        white 60px,
+        black 60px,
+        black 65px,
+        $gray 65px,
+        $gray 75px,
+        black 75px,
+        black 80px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 20px,
+        black 20px,
+        black 30px,
+        $gray 30px,
+        $gray 45px,
+        black 45px,
+        black 50px,
+        $gray 50px,
+        $gray 55px,
+        black 55px,
+        black 65px,
+        $gray 65px,
+        $gray 75px,
+        black 75px,
+        black 80px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 10px,
+        $salmon 10px,
+        $salmon 20px,
+        $gray 20px,
+        $gray 65px,
+        $salmon 65px,
+        $salmon 75px,
+        black 75px,
+        black 80px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 10px,
+        $salmon 10px,
+        $salmon 20px,
+        $gray 20px,
+        $gray 25px,
+        black 25px,
+        black 30px,
+        $gray 30px,
+        $gray 40px,
+        black 40px,
+        black 45px,
+        $gray 45px,
+        $gray 55px,
+        black 55px,
+        black 60px,
+        $gray 60px,
+        $gray 65px,
+        $salmon 65px,
+        $salmon 75px,
+        black 75px,
+        black 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 25px,
+        black 25px,
+        black 60px,
+        $gray 60px,
+        $gray 70px,
+        black 70px,
+        black 75px,
+        transparent 75px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 15px,
+        $gray 15px,
+        $gray 65px,
+        black 65px,
+        black 70px,
+        transparent 70px,
+        transparent 80px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 15px,
+        black 15px,
+        black 65px,
+        transparent 65px,
+        transparent 80px
+      );
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: 25px;
-    top: -25px;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: 12px;
-    top: -12px;
-  }
-}
 
-@keyframes bs-sparkle8 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: 12px;
-    top: 12px;
+  .rainbow > span {
+    background-image: linear-gradient(
+        left,
+        $red 0,
+        $red 50%,
+        transparent 50%,
+        transparent 100%
+      ),
+      linear-gradient(left, $red 0, $red 100%),
+      linear-gradient(left, $orange 0, $orange 50%, $red 50%, $red 100%),
+      linear-gradient(left, $orange 0, $orange 100%),
+      linear-gradient(left, $yellow 0, $yellow 50%, $orange 50%, $orange 100%),
+      linear-gradient(left, $yellow 0, $yellow 100%),
+      linear-gradient(left, $green 0, $green 50%, $yellow 50%, $yellow 100%),
+      linear-gradient(left, $green 0, $green 100%),
+      linear-gradient(
+        left,
+        $royalblue 0,
+        $royalblue 50%,
+        $green 50%,
+        $green 100%
+      ),
+      linear-gradient(left, $royalblue 0, $royalblue 100%),
+      linear-gradient(
+        left,
+        $purple 0,
+        $purple 50%,
+        $royalblue 50%,
+        $royalblue 100%
+      ),
+      linear-gradient(left, $purple 0, $purple 100%),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 50%,
+        $purple 50%,
+        $purple 100%
+      ),
+      linear-gradient(left, transparent 0, transparent 50%, $red 50%, $red 100%),
+      linear-gradient(left, $red 0, $red 100%),
+      linear-gradient(left, $red 0, $red 50%, $orange 50%, $orange 100%),
+      linear-gradient(left, $orange 0, $orange 100%),
+      linear-gradient(left, $orange 0, $orange 50%, $yellow 50%, $yellow 100%),
+      linear-gradient(left, $yellow 0, $yellow 100%),
+      linear-gradient(left, $yellow 0, $yellow 50%, $green 50%, $green 100%),
+      linear-gradient(left, $green 0, $green 100%),
+      linear-gradient(
+        left,
+        $green 0,
+        $green 50%,
+        $royalblue 50%,
+        $royalblue 100%
+      ),
+      linear-gradient(left, $royalblue 0, $royalblue 100%),
+      linear-gradient(
+        left,
+        $royalblue 0,
+        $royalblue 50%,
+        $purple 50%,
+        $purple 100%
+      ),
+      linear-gradient(left, $purple 0, $purple 100%),
+      linear-gradient(
+        left,
+        $purple 0,
+        $purple 50%,
+        transparent 50%,
+        transparent 100%
+      );
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: 25px;
-    top: 25px;
-  }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: 12px;
-    top: 12px;
-  }
-}
 
-@keyframes bs-sparkle6 {
-  0%,
-  10%,
-  30%,
-  30.3333333% {
-    left: -12px;
-    top: 12px;
+  .feet {
+    background-image: linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 25px,
+        transparent 25px,
+        transparent 120px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 110px,
+        transparent 110px,
+        transparent 120px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 20px,
+        black 20px,
+        black 35px,
+        $gray 35px,
+        $gray 40px,
+        black 40px,
+        black 80px,
+        $gray 80px,
+        $gray 110px,
+        black 110px,
+        black 115px,
+        transparent 115px,
+        transparent 120px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 15px,
+        black 15px,
+        black 20px,
+        transparent 20px,
+        transparent 25px,
+        black 25px,
+        black 30px,
+        $gray 30px,
+        $gray 40px,
+        black 40px,
+        black 45px,
+        transparent 45px,
+        transparent 75px,
+        black 75px,
+        black 80px,
+        $gray 80px,
+        $gray 90px,
+        black 90px,
+        black 95px,
+        transparent 95px,
+        transparent 100px,
+        black 100px,
+        black 105px,
+        $gray 105px,
+        $gray 115px,
+        black 115px,
+        black 120px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 15px,
+        transparent 15px,
+        transparent 30px,
+        black 30px,
+        black 45px,
+        transparent 45px,
+        transparent 80px,
+        black 80px,
+        black 95px,
+        transparent 95px,
+        transparent 105px,
+        black 105px,
+        black 120px
+      );
   }
-  50%,
-  60%,
-  70%,
-  70.3333% {
-    left: -25px;
-    top: 25px;
+
+  .tail > span {
+    background-image: linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 15px,
+        transparent 15px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 15px,
+        black 15px,
+        black 20px,
+        transparent 20px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 15px,
+        black 15px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 20px,
+        $gray 20px
+      ),
+      linear-gradient(left, transparent 0, transparent 15px, black 15px),
+      linear-gradient(left, transparent 0, transparent 100%),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 20px,
+        transparent 20px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 15px,
+        black 15px
+      ),
+      linear-gradient(left, black 0, black 10px, $gray 10px, $gray 25px),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 20px,
+        $gray 20px
+      ),
+      linear-gradient(left, transparent 0, transparent 20px, black 20px),
+      linear-gradient(left, transparent 0, transparent 100%),
+      linear-gradient(left, transparent 0, transparent 20px, black 20px),
+      linear-gradient(left, transparent 0, transparent 10px, black 10px),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 20px,
+        black 20px
+      ),
+      linear-gradient(left, transparent 0, transparent 5px, black 5px),
+      linear-gradient(left, transparent 0, transparent 20px, black 20px),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 15px,
+        black 15px,
+        black 20px,
+        $gray 20px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 10px,
+        black 10px,
+        black 15px,
+        $gray 15px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 10px,
+        $gray 10px,
+        $gray 20px,
+        black 20px
+      ),
+      linear-gradient(
+        left,
+        black 0,
+        black 5px,
+        $gray 5px,
+        $gray 15px,
+        black 15px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 5px,
+        black 5px,
+        black 15px,
+        transparent 15px
+      );
   }
-  80%,
-  80.3333%,
-  90%,
-  100% {
-    left: -12px;
-    top: 12px;
+
+  .star > span {
+    background-image: linear-gradient(
+        left,
+        transparent 0,
+        transparent 12px,
+        white 12px,
+        white 16px,
+        transparent 16px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 12px,
+        white 12px,
+        white 16px,
+        transparent 16px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 4px,
+        white 4px,
+        white 8px,
+        transparent 8px,
+        transparent 20px,
+        white 20px,
+        white 24px,
+        transparent 24px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 4px,
+        white 4px,
+        white 8px,
+        transparent 8px,
+        transparent 20px,
+        white 20px,
+        white 24px,
+        transparent 24px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        white 0,
+        white 4px,
+        transparent 4px,
+        transparent 24px,
+        white 24px,
+        white 28px,
+        transparent 28px,
+        transparent 32px,
+        white 32px,
+        white 36px,
+        transparent 36px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 48px,
+        white 48px,
+        white 52px,
+        transparent 52px,
+        transparent 60px,
+        white 60px,
+        white 68px,
+        transparent 68px,
+        transparent 72px,
+        white 72px,
+        white 80px,
+        transparent 80px,
+        transparent 96px,
+        white 96px,
+        white 100px,
+        transparent 100px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        white 0,
+        white 4px,
+        transparent 4px,
+        transparent 24px,
+        white 24px,
+        white 28px,
+        transparent 28px,
+        transparent 32px,
+        white 32px,
+        white 36px,
+        transparent 36px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 48px,
+        white 48px,
+        white 52px,
+        transparent 52px,
+        transparent 60px,
+        white 60px,
+        white 68px,
+        transparent 68px,
+        transparent 72px,
+        white 72px,
+        white 80px,
+        transparent 80px,
+        transparent 96px,
+        white 96px,
+        white 100px,
+        transparent 100px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 4px,
+        white 4px,
+        white 8px,
+        transparent 8px,
+        transparent 20px,
+        white 20px,
+        white 24px,
+        transparent 24px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 4px,
+        white 4px,
+        white 8px,
+        transparent 8px,
+        transparent 20px,
+        white 20px,
+        white 24px,
+        transparent 24px,
+        transparent 40px,
+        white 40px,
+        white 44px,
+        transparent 44px,
+        transparent 68px,
+        white 68px,
+        white 72px,
+        transparent 72px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 12px,
+        white 12px,
+        white 16px,
+        transparent 16px,
+        transparent 112px
+      ),
+      linear-gradient(
+        left,
+        transparent 0,
+        transparent 12px,
+        white 12px,
+        white 16px,
+        transparent 16px,
+        transparent 112px
+      );
+  }
+
+  @keyframes rainbow {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: 0;
+    }
+    100% {
+      top: -65px;
+    }
+  }
+
+  @keyframes moveleft {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -400px;
+    }
+  }
+
+  @keyframes star {
+    0% {
+      left: 0;
+    }
+    25% {
+      left: 0;
+    }
+    49.99% {
+      left: 0;
+    }
+    50% {
+      left: -28px;
+    }
+    74.99% {
+      left: -28px;
+    }
+    75% {
+      left: -56px;
+    }
+    99.99% {
+      left: -56px;
+    }
+    100% {
+      left: -84px;
+    }
+  }
+
+  @keyframes nyan {
+    0% {
+      margin-top: -50px;
+    }
+    10% {
+      margin-top: -50px;
+    }
+    80% {
+      margin-top: -53px;
+    }
+    100% {
+      margin-top: -50px;
+    }
+  }
+
+  @keyframes feet {
+    0% {
+      left: 20px;
+    }
+    100% {
+      left: 30px;
+    }
+  }
+
+  @keyframes head {
+    0% {
+      top: 25px;
+      left: 85px;
+    }
+    24.99% {
+      top: 25px;
+      left: 85px;
+    }
+    25% {
+      top: 22px;
+      left: 88px;
+    }
+    49.99% {
+      top: 22px;
+      left: 88px;
+    }
+    50% {
+      top: 22px;
+      left: 85px;
+    }
+    74.99% {
+      top: 22px;
+      left: 85px;
+    }
+    75% {
+      top: 22px;
+      left: 82px;
+    }
+    99.99% {
+      top: 22px;
+      left: 82px;
+    }
+    100% {
+      top: 25px;
+      left: 85px;
+    }
+  }
+
+  @keyframes tail {
+    0% {
+      top: 0;
+    }
+    25% {
+      top: 0;
+    }
+    49.99% {
+      top: 0;
+    }
+    50% {
+      top: -30px;
+    }
+    74.99% {
+      top: -30px;
+    }
+    75% {
+      top: -60px;
+    }
+    99.99% {
+      top: -60px;
+    }
+    100% {
+      top: -90px;
+    }
   }
 }

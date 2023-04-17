@@ -40,6 +40,13 @@
     border-left: 4px solid #000000;
     border-bottom: 4px solid #ffffff;
     border-right: 4px solid #ffffff;
+
+    &:before {
+      border-top: 4px solid #87888f;
+      border-left: 4px solid #87888f;
+      border-bottom: 4px solid #ffffff;
+      border-right: 4px solid #ffffff;
+    }
   }
 }
 
