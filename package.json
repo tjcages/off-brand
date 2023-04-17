@@ -17,6 +17,7 @@
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
+    "compass-mixins": "^0.12.12",
     "framer-motion": "^10.11.6",
     "gsap": "^3.11.5",
     "next": "13.3.0",

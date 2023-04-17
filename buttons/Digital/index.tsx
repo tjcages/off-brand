@@ -18,14 +18,14 @@ const _ = ({ children }: Props) => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="128"
+          width="228"
           height="48"
           className={styles.border}
         >
           <rect
             x="2"
             y="2"
-            width="124"
+            width="224"
             height="44"
             rx="24"
             ry="24"
