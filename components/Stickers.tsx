@@ -50,9 +50,9 @@ const _ = () => {
 
   const images = [
     {
-      src: "/stickers/calculation.png",
-      size: getSize(0.2, 350),
-      translate: "translate(-50%, 5%) rotate(10deg)",
+      src: "/stickers/stripe.png",
+      size: getSize(0.2, 250),
+      translate: "translate(-50%, 20%) rotate(10deg)",
       translateHover: "translate(-50%, -50%) rotate(-10deg)",
     },
     {
@@ -62,15 +62,15 @@ const _ = () => {
       translateHover: "translate(-70%, 15%) rotate(30deg)",
     },
     {
-      src: "/stickers/stripe.png",
-      size: getSize(0.2, 250),
-      translate: "translate(-25%, 45%) rotate(-20deg)",
-      translateHover: "translate(5%, 15%) rotate(-25deg)",
+      src: "/stickers/buybuybuy.png",
+      size: getSize(0.3, 400),
+      translate: "translate(-35%, 95%) rotate(-20deg)",
+      translateHover: "translate(5%, 15%) rotate(-10deg)",
     },
     {
       src: "/stickers/copypayste.png",
       size: getSize(0.3, 400),
-      translate: "translate(-70%, 105%) rotate(40deg)",
+      translate: "translate(-70%, 125%) rotate(40deg)",
       translateHover: "translate(-95%, 15%) rotate(30deg)",
     },
   ];

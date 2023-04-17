@@ -1,4 +1,5 @@
 import styles from "@/styles/main.module.scss";
+import data from "@/data";
 
 import Guides from "@/components/Guides";
 import Nav from "@/components/Nav";
@@ -19,15 +20,9 @@ export default function Home() {
       <div className={styles.container}>
         <Intro />
         <Container>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {data.map((item, index) => (
+            <Item key={index} {...item} />
+          ))}
         </Container>
         <Footer />
       </div>

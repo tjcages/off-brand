@@ -1,16 +1,31 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styles from "@/styles/item.module.scss";
+import { Props } from "@/data";
 
 import BuyButton from "@/components/BuyButton";
 
-function _() {
+function _({ id, name, cta, Scene, background, color, style }: Props) {
+  useEffect(() => {
+    const root = document.getElementById(id);
+    if (root) root.style.setProperty("--customBackground", background);
+    if (root) root.style.setProperty("--customColor", color);
+  });
   return (
-    <div className={styles.main}>
-      <BuyButton />
+    <div id={id} className={styles.main}>
+      <Scene />
+
+      <div
+        className={style ? style.button : undefined}
+        style={{ position: "relative", ...style }}
+      >
+        <BuyButton id={id} cta={cta} background={background} />
+      </div>
+
       <div className={styles.info}>
         <div className={styles.titles}>
-          <h5>Button Name</h5>
+          <h5>{name}</h5>
           <strong>Item Description</strong>
         </div>
 
