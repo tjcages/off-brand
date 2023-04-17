@@ -6,7 +6,16 @@ import { Props } from "@/data";
 
 import BuyButton from "@/components/BuyButton";
 
-function _({ id, name, cta, Scene, background, color, style }: Props) {
+function _({
+  live = false,
+  id,
+  name,
+  cta,
+  Scene,
+  background,
+  color,
+  style,
+}: Props) {
   useEffect(() => {
     const root = document.getElementById(id);
     if (root) root.style.setProperty("--customBackground", background);
@@ -14,16 +23,17 @@ function _({ id, name, cta, Scene, background, color, style }: Props) {
   });
   return (
     <div id={id} className={styles.main}>
-      <Scene />
+      <Scene>
+        <BuyButton
+          live={live}
+          id={id}
+          cta={cta}
+          color={color}
+          background={background}
+        />
+      </Scene>
 
-      <div
-        className={style ? style.button : undefined}
-        style={{ position: "relative", ...style }}
-      >
-        <BuyButton id={id} cta={cta} background={background} />
-      </div>
-
-      <div className={styles.info}>
+      <div className={`${styles.info} ${style ? style.info : ""}`}>
         <div className={styles.titles}>
           <h5>{name}</h5>
           <strong>Item Description</strong>

@@ -1,3 +1,5 @@
+@import "@/styles/_variables";
+
 .main {
   position: absolute;
   top: 0;
@@ -9,10 +11,5 @@
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(45deg, #D798EC, #DEA9EF);
-}
-
-.animation {
-  height: 100%;
-  width: 100%;
+  background-color: #eceff2;
 }

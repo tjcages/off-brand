@@ -1,0 +1,108 @@
+@import "@/styles/_variables";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-image: radial-gradient(
+      circle at center,
+      hsl(220, 84%, 78%),
+      hsl(224, 67%, 61%) 12em
+    );
+    color: hsl(0, 0%, 100%);
+  }
+}
+
+.button {
+  border-radius: 0.5em;
+  box-shadow: 0 0 0 2px hsl(0, 0%, 100%);
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+
+    background-color: hsla(0, 0%, 100%, 0);
+    background-image: radial-gradient(
+        100% 100% at 0 0,
+        hsla(0, 0%, 100%, 0.5),
+        hsla(0, 0%, 100%, 0) 40%
+      ),
+      radial-gradient(
+        100% 100% at 90% 90%,
+        hsla(0, 0%, 100%, 0.15),
+        hsla(0, 0%, 100%, 0) 50%
+      );
+    border-radius: 0.25em;
+    box-shadow: 0.5em 0.5em 0.5em hsla(0, 0%, 100%, 0.15) inset;
+    inset: 4px;
+    
+    pointer-events: none;
+    transition: background-color 0.5s;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    border-radius: 0.5em;
+    box-shadow: 0 0 0 2px hsl(0, 0%, 100%) inset,
+      -0.25em -0.25em 0.25em hsla(0, 0%, 0%, 0.5) inset;
+    pointer-events: none;
+  }
+
+  &:focus-visible:before,
+  &:hover:before {
+    background-color: hsla(0, 0%, 100%, 0.2);
+  }
+  &:active:before {
+    background-color: hsla(0, 0%, 0%, 0.2);
+  }
+}
+
+.info {
+  background-color: #18349a;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 0.2rem;
+    background-image: linear-gradient(
+      90deg,
+      hsl(220, 50%, 47%),
+      hsl(215, 77%, 91%),
+      hsl(220, 50%, 47%)
+    );
+  }
+
+  h5 {
+    color: white;
+  }
+
+  strong {
+    color: #d6e5fa !important;
+  }
+}

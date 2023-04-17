@@ -8,8 +8,8 @@
   justify-content: center;
   align-items: center;
 
-  width: clamp(300px, 30vw, 500px);
-  height: clamp(300px, 30vw, 500px);
+  width: clamp(300px, 25vw, 500px);
+  height: clamp(300px, 25vw, 500px);
 
   overflow: hidden;
   white-space: nowrap;
@@ -56,16 +56,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-
-    background-image: radial-gradient(rgba(0, 0, 0, 0) 1px, var(--customBackground) 1px);
-    background-size: 4px 4px;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    -moz-backdrop-filter: blur(3px);
-    font-size: 14px;
-    line-height: 14px;
-
     padding: 1.25rem 0.75rem 1.25rem 1.5rem;
 
     .titles {
@@ -75,10 +65,6 @@
       justify-content: flex-start;
       align-items: flex-start;
       gap: 0.5rem;
-
-      h5 {
-        color: var(--customColor);
-      }
 
       strong {
         color: var(--customBackground);

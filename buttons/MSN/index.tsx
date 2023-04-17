@@ -1,5 +1,4 @@
 import styles from "./style.module.scss";
-import Bananas from "./Bananas";
 
 interface Props {
   children: React.ReactNode;
@@ -8,9 +7,7 @@ interface Props {
 const _ = ({ children }: Props) => {
   return (
     <>
-      <div className={styles.main}>
-        <Bananas />
-      </div>
+      <div className={styles.main} />
       <div
         className={styles.button}
         style={{ position: "relative", marginBottom: 70 }}
