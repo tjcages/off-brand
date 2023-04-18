@@ -9,6 +9,7 @@ import Aqua from "@/buttons/Aqua";
 import BubbleGum from "@/buttons/BubbleGum";
 import MusicPlayer from "@/buttons/MusicPlayer";
 import BananaSplit from "@/buttons/BananaSplit";
+import Retrowave from "@/buttons/Retrowave";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
 import DigitalStyles from "@/buttons/Digital/style.module.scss";
@@ -21,6 +22,7 @@ import AquaStyles from "@/buttons/Aqua/style.module.scss";
 import BubbleGumStyles from "@/buttons/BubbleGum/style.module.scss";
 import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
 import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
+import RetrowaveStyles from "@/buttons/Retrowave/style.module.scss";
 
 interface Props {
   live?: boolean;
@@ -100,7 +102,7 @@ const _ = [
   {
     id: "buy_bftn_1Mu0fsda8FJ65Wq6yQASu6arx3assQz",
     name: "Nyan Cat Button",
-    cta: "Weeeeeee",
+    cta: "Buy Buy Buy",
     Scene: NyanCat,
     color: "black",
     background: "#ffcc99",
@@ -132,6 +134,15 @@ const _ = [
     color: "black",
     background: "#ffbf40",
     style: BananaSplitStyles,
+  },
+  {
+    id: "fadsfsdafdsafasd",
+    name: "Retrowave",
+    cta: "Kick it in gear",
+    Scene: Retrowave,
+    color: "white",
+    background: "#85CAEA",
+    style: RetrowaveStyles,
   },
 ] as Props[];
 

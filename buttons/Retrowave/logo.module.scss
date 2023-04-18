@@ -1,0 +1,213 @@
+.container {
+  --labs-sys-color-background: #111;
+  --labs-sys-color-on-background: white;
+  --base-speed: 4s;
+  --labs-sys-color-grid: #fac4ff;
+  --labs-sys-color-grid-glow: #df7373;
+  --labs-sys-color-sun-1: #fdb428;
+  --labs-sys-color-sun-2: #f672ca;
+  --labs-sys-color-sun-glow: #b9f;
+  --labs-sys-color-star: #f6c0c0;
+  --color-palm-trunk: #333;
+  --color-palm-leaf: #333;
+  --color-palm-leaf-2: #b9f;
+  --labs-sys-color-triangle: #6eccee;
+  --labs-sys-color-volume: var(--labs-sys-color-triangle);
+
+  // background-color: var(--labs-sys-color-background);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--labs-sys-color-on-background);
+  overflow: hidden;
+  color: var(--labs-sys-color-triangle);
+
+  @property --angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+
+  .kode-text {
+    --angle: 45deg;
+    background: linear-gradient(
+      var(--angle),
+      var(--labs-sys-color-sun-2),
+      var(--labs-sys-color-triangle)
+    );
+    width: 40%;
+    aspect-ratio: 3/2;
+    -webkit-mask: url(https://assets.codepen.io/907471/backtothekode.svg) center
+      center no-repeat;
+    mask: url(https://assets.codepen.io/907471/backtothekode.svg) center center
+      no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    position: absolute;
+    bottom: 0;
+    -webkit-animation: kode-text 4s linear infinite;
+    animation: kode-text 4s linear infinite;
+    perspective: 40px;
+  }
+  .kode-text:after {
+    content: "";
+    position: absolute;
+    top: 8vmin;
+    left: 1vmin;
+    width: 48vmin;
+    height: 14vmin;
+    background: repeating-radial-gradient(black, transparent 10vmin);
+    mix-blend-mode: overlay;
+    opacity: 0.2;
+    transform: rotate(347deg);
+  }
+
+  @-webkit-keyframes kode-text {
+    from {
+      --angle: 45deg;
+      transform: translateY(0vh);
+    }
+    49.5% {
+      --angle: 360deg;
+      transform: translateY(-1vh);
+      filter: brightness(100%);
+    }
+    50% {
+      --angle: 360deg;
+      transform: translateY(-1vh) scaleY(0.1) skewX(253deg);
+      filter: brightness(190%);
+    }
+    51% {
+      --angle: 360deg;
+      transform: translateY(-1vh) scaleY(0.5) skewY(37deg);
+      filter: brightness(190%);
+    }
+    52% {
+      --angle: 360deg;
+      filter: brightness(190%);
+      transform: translateY(0vh);
+    }
+    to {
+      --angle: 45deg;
+      transform: translateY(0vh);
+    }
+  }
+
+  @keyframes kode-text {
+    from {
+      --angle: 45deg;
+      transform: translateY(0vh);
+    }
+    49.5% {
+      --angle: 360deg;
+      transform: translateY(-1vh);
+      filter: brightness(100%);
+    }
+    50% {
+      --angle: 360deg;
+      transform: translateY(-1vh) scaleY(0.1) skewX(253deg);
+      filter: brightness(190%);
+    }
+    51% {
+      --angle: 360deg;
+      transform: translateY(-1vh) scaleY(0.5) skewY(37deg);
+      filter: brightness(190%);
+    }
+    52% {
+      --angle: 360deg;
+      filter: brightness(190%);
+      transform: translateY(0vh);
+    }
+    to {
+      --angle: 45deg;
+      transform: translateY(0vh);
+    }
+  }
+  .triangle {
+    position: absolute;
+    width: 220px;
+    aspect-ratio: 4/3;
+    transform: rotate(1deg);
+    filter: drop-shadow(0 0 15px var(--labs-sys-color-triangle));
+    perspective: 1000px;
+    -webkit-animation: triangle 10s linear infinite;
+    animation: triangle 10s linear infinite;
+  }
+  .triangle:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, white, var(--labs-sys-color-triangle));
+    -webkit-clip-path: polygon(
+      6% 22%,
+      29% 94%,
+      29% 94%,
+      6% 22%,
+      94% 3%,
+      29% 94%,
+      7% 22%,
+      4% 19%,
+      29% 94%,
+      100% 0%
+    );
+    clip-path: polygon(
+      6% 22%,
+      29% 94%,
+      29% 94%,
+      6% 22%,
+      94% 3%,
+      29% 94%,
+      7% 22%,
+      4% 19%,
+      29% 94%,
+      100% 0%
+    );
+    transform: translateY(-100px);
+  }
+
+  @-webkit-keyframes triangle {
+    from {
+      transform: translate(3vmin, 11.8vmin) rotate(1deg);
+    }
+    50% {
+      transform: translate(3vmin, 12vmin) rotateX(-15deg) rotateY(-20deg);
+    }
+    to {
+      transform: translate(3vmin, 11.8vmin) rotate(1deg);
+    }
+  }
+
+  @keyframes triangle {
+    from {
+      transform: translate(3vmin, 11.8vmin) rotate(1deg);
+    }
+    50% {
+      transform: translate(3vmin, 12vmin) rotateX(-15deg) rotateY(-20deg);
+    }
+    to {
+      transform: translate(3vmin, 11.8vmin) rotate(1deg);
+    }
+  }
+  .brand {
+    position: absolute;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  .demo-retro-wave-logo {
+    // transform: translateY(20vh);
+    height: 100px;
+    width: 100px;
+    display: grid;
+    place-items: center;
+  }
+}

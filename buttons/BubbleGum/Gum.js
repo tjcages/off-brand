@@ -19,8 +19,8 @@ export default class Animation {
 
   circles = [];
   screen = {
-    width: 400,
-    height: 400,
+    width: 500,
+    height: 500,
   };
   mouse = {
     x: 400 / 2,
@@ -40,6 +40,11 @@ export default class Animation {
       this.rows + 2 * this.svgMargin + (this.rows - 1) * this.spacingVertical;
 
     this.svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
+
+    this.screen = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }
 
     this.addEventListeners();
     // Draw all the circles

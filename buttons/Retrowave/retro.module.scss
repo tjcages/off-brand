@@ -1,0 +1,451 @@
+// CSS Future tip ✨: https://caniuse.com/mdn-css_at-rules_property
+@property --shift {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.scene {
+  --labs-sys-color-background: #111;
+  --labs-sys-color-on-background: white;
+  --base-speed: 4s;
+
+  --labs-sys-color-grid: #fac4ff;
+  --labs-sys-color-grid-glow: #df7373;
+  --labs-sys-color-sun-1: #fdb428;
+  --labs-sys-color-sun-2: #f672ca;
+  --labs-sys-color-sun-glow: #b9f;
+
+  --labs-sys-color-star: #f6c0c0;
+
+  --color-palm-trunk: #333;
+  --color-palm-leaf: #333;
+  --color-palm-leaf-2: #b9f;
+  --labs-sys-color-triangle: #6eccee;
+
+  --labs-sys-color-volume: var(--labs-sys-color-triangle);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  background-color: var(--labs-sys-color-background);
+  color: var(--labs-sys-color-on-background);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--labs-sys-color-triangle);
+
+  user-select: none;
+  box-sizing: border-box;
+  outline-color: var(--labs-sys-color-sun-2);
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    opacity: 0.7;
+    mix-blend-mode: overlay;
+    filter: invert(1);
+    z-index: 20000;
+  }
+
+  @mixin sun-lines {
+    $lines: "";
+    $end: 0;
+    $lineCount: 8;
+    @for $i from 1 to $lineCount {
+      $start: $i + $end;
+      $end: $start + $lineCount - $i;
+      $lines: $lines +
+        " #000 calc(#{$start}% + (3.5% * var(--shift))), 0%, #0000 calc(#{$end}%  + (2.8% * var(--shift))), 0%,";
+    }
+    $lines: $lines + "#000 calc(56% + (2.5% * var(--shift)))";
+    --shift: 1;
+    mask: linear-gradient(to top, #{$lines});
+    mask-size: 100% 120%;
+    animation: sun calc(var(--base-speed) / 4) linear infinite;
+  }
+
+  .sun {
+    position: relative;
+    width: min(40vmin, 40%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    // sun 🌅
+    &:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      @include sun-lines;
+      border-radius: inherit;
+      background-image: linear-gradient(
+        to bottom,
+        var(--labs-sys-color-sun-1),
+        var(--labs-sys-color-sun-2) 60%
+      );
+    }
+    // reflection
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        to top,
+        var(--labs-sys-color-sun-1),
+        var(--labs-sys-color-sun-2) 55%,
+        var(--labs-sys-color-triangle) 65%,
+        var(--labs-sys-color-sun-2) 69%
+      );
+      border-radius: inherit;
+      transform: translateY(100%) rotateX(40deg) scaleY(1.2);
+      perspective: 6.25rem;
+      filter: blur(20px);
+    }
+
+    filter: drop-shadow(0 0 4rem var(--labs-sys-color-sun-glow));
+  }
+
+  @keyframes sun {
+    from {
+      --shift: 1;
+    }
+
+    to {
+      --shift: 3.8;
+    }
+  }
+
+  .top-lines {
+    background: linear-gradient(
+      to bottom,
+      var(--labs-sys-color-sun-2) 0.2vmin,
+      transparent 0.2vmin
+    );
+    background-size: 125rem 0.4vmin;
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: overlay;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .top {
+    padding-top: 4rem;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+
+    // 🏔️
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -0.5vmin;
+      left: 0;
+      right: 0;
+      background: #222;
+      height: 5vmin;
+      clip-path: polygon(
+        0% 38%,
+        2.6% 40%,
+        5.4% 24%,
+        8.7% 59%,
+        13.6% 72%,
+        18.5% 22%,
+        21.7% 35%,
+        27.2% 8%,
+        34% 53%,
+        39.4% 81%,
+        49.1% 85%,
+        54.5% 64%,
+        60% 53%,
+        71.4% 80%,
+        73.4% 15%,
+        79.8% 29%,
+        86.5% 15%,
+        94.1% 36%,
+        100% 27%,
+        100% 100%,
+        0% 100%
+      );
+    }
+    // 🏔️
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: -1vmin;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.2);
+      mix-blend-mode: soft-light;
+      height: 15vmin;
+      backdrop-filter: blur(20px);
+      // ⚙️ gen: https://unused-css.com/tools/clip-path-generator?p=22AwLgzAHANATAdANhAFmFArHZIbKhOAdhHQE4oBGMREQmSg9HemCo8dWQuGEaMbOjBQwpLHwpRkYin07pkcJgjwJQQqITa9CaQghq58bbGgjdZVKKUW8YhSsFBh6FJyDdpQngNx+AxE5BwEA
+      clip-path: polygon(
+        0% 38%,
+        2.6% 40%,
+        5.4% 24%,
+        8.7% 59%,
+        13.6% 72%,
+        18.5% 22%,
+        21.7% 35%,
+        27.2% 8%,
+        34% 53%,
+        39.4% 81%,
+        49.1% 85%,
+        54.5% 64%,
+        60% 53%,
+        71.2% 70%,
+        76.6% 24%,
+        81.4% 0%,
+        87.1% 13%,
+        94.2% 27%,
+        100% 32%,
+        100% 100%,
+        0% 100%
+      );
+    }
+  }
+
+  .bottom-overlay {
+    perspective: 14.5rem;
+    flex: 0 0 12.5rem;
+    position: absolute;
+    z-index: 10000;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 12.5rem;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(30, 30, 30, 0.9) 70%
+    );
+  }
+
+  // 🏁
+  .bottom {
+    background: inherit;
+    perspective: 14.5rem;
+    flex: 0 0 12.5rem;
+    position: relative;
+
+    // grid
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      --line-width: 0.0635rem;
+      background: linear-gradient(
+          to right,
+          var(--labs-sys-color-grid) var(--line-width),
+          transparent var(--line-width)
+        ),
+        linear-gradient(
+          to bottom,
+          var(--labs-sys-color-grid) var(--line-width),
+          transparent var(--line-width)
+        );
+      background-size: 2rem 125rem, 125rem 2rem;
+      transform: rotateX(53deg) scale(1.8) translateZ(43px);
+      animation: grid calc(var(--base-speed) * 1) linear infinite;
+      border-top: 1px solid var(--labs-sys-color-grid);
+      filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
+    }
+  }
+
+  @keyframes grid {
+    from {
+      background-position-y: -30rem;
+    }
+
+    to {
+      background-position-y: 0%;
+    }
+  }
+
+  // ✨
+  #stars {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 20rem;
+    overflow: hidden;
+    left: 0;
+    z-index: -1;
+
+    .star {
+      position: absolute;
+      background: var(--labs-sys-color-star);
+      width: 0.15rem;
+      height: 0.15rem;
+      border-radius: 50%;
+      transform: translate(var(--x), var(--y));
+      box-shadow: 0 0 0.25rem var(--labs-sys-color-sun-glow);
+    }
+
+    animation: stars 20s linear;
+  }
+
+  @keyframes stars {
+    from {
+      transform: translateX(0);
+    }
+    60% {
+      transform: translateX(3vmax) rotate(1deg);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  // 🌴
+  .palm {
+    &:not(.small) {
+      animation: palm-shaking 5s linear infinite;
+    }
+    &.small {
+      animation: small-palm-shaking 4s linear inifinte;
+    }
+  }
+
+  @keyframes palm-shaking {
+    from {
+      transform: translate(10vmin, 0vmin) rotate(6deg);
+    }
+
+    50% {
+      transform: translate(10.5vmin, 0vmin) rotate(9deg);
+    }
+
+    to {
+      transform: translate(10vmin, 0vmin) rotate(6deg);
+    }
+  }
+
+  @keyframes small-palm-shaking {
+    from {
+      transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+    }
+
+    50% {
+      transform: translate(9vmin, 9vmin) scale(0.4) rotate(356deg) skewX(5deg);
+    }
+
+    to {
+      transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+    }
+  }
+
+  .startails {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    mix-blend-mode: lighten;
+  }
+
+  .startail-r {
+    position: absolute;
+    left: 75vw;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      var(--labs-sys-color-sun-glow) 10%,
+      var(--labs-sys-color-triangle) 50%,
+      transparent 80%
+    );
+    height: 0.2vmin;
+    width: 15vmin;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 15px white);
+    transform: translateY(-32vmin) rotate(-20deg);
+  }
+
+  .startail-l {
+    position: absolute;
+    left: 16vw;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      var(--labs-sys-color-sun-glow) 10%,
+      var(--labs-sys-color-triangle) 30%,
+      transparent 60%
+    );
+    height: 0.2vmin;
+    width: 17vmin;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 15px white);
+    transform: translateY(-7vmin) rotate(-20deg);
+  }
+
+  .startail-m {
+    position: absolute;
+    left: 18vw;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      var(--labs-sys-color-sun-glow) 10%,
+      var(--labs-sys-color-triangle) 50%,
+      transparent 80%
+    );
+    height: 0.2vmin;
+    width: 14vmin;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 15px white);
+    transform: translateY(-18vmin) rotate(-20deg);
+    opacity: 0.5;
+  }
+
+  #volume {
+    position: fixed;
+    left: 2.5vmin;
+    bottom: 2.5vmin;
+    width: 4rem;
+    height: 4rem;
+    display: grid;
+    place-items: center;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    z-index: 42000;
+    @media (hover) {
+      &:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &.playing {
+      .play {
+        display: block;
+      }
+      .muted {
+        display: none;
+      }
+    }
+    &:not(.playing) {
+      .play {
+        display: none;
+      }
+      .muted {
+        display: block;
+      }
+    }
+  }
+
+  a.labs-follow-me {
+    right: unset;
+    left: -0.5rem;
+  }
+}
+
+// Embedded pens to avoid performance issues 😅
+// You can find the 🌴 CSS in this pen: https://codepen.io/konstantindenerz/pen/YzOrWjz
+// Logo: https://codepen.io/konstantindenerz/pen/mdGpxKg
+// DeLorean: https://codepen.io/konstantindenerz/pen/xxaXjZv

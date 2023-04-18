@@ -13,7 +13,23 @@
 }
 
 .button {
-  border: 1px solid black;
+  border: 2px solid black;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    user-select: none;
+    pointer-events: none;
+
+    background-image: radial-gradient(#F5A300 0.5px, transparent 0.5px),
+      radial-gradient(#F5A300 0.5px, transparent 0.5px);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+  }
 }
 
 .info {
