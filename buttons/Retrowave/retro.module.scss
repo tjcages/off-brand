@@ -1,10 +1,3 @@
-// CSS Future tip ✨: https://caniuse.com/mdn-css_at-rules_property
-@property --shift {
-  syntax: "<number>";
-  inherits: false;
-  initial-value: 0;
-}
-
 .scene {
   --labs-sys-color-background: #111;
   --labs-sys-color-on-background: white;
@@ -16,14 +9,7 @@
   --labs-sys-color-sun-2: #f672ca;
   --labs-sys-color-sun-glow: #b9f;
 
-  --labs-sys-color-star: #f6c0c0;
-
-  --color-palm-trunk: #333;
-  --color-palm-leaf: #333;
-  --color-palm-leaf-2: #b9f;
   --labs-sys-color-triangle: #6eccee;
-
-  --labs-sys-color-volume: var(--labs-sys-color-triangle);
 
   display: flex;
   flex-direction: column;
@@ -120,20 +106,6 @@
     }
   }
 
-  .top-lines {
-    background: linear-gradient(
-      to bottom,
-      var(--labs-sys-color-sun-2) 0.2vmin,
-      transparent 0.2vmin
-    );
-    background-size: 125rem 0.4vmin;
-    position: absolute;
-    inset: 0;
-    mix-blend-mode: overlay;
-    opacity: 0.06;
-    pointer-events: none;
-  }
-
   .top {
     padding-top: 4rem;
     display: flex;
@@ -186,7 +158,6 @@
       mix-blend-mode: soft-light;
       height: 15vmin;
       backdrop-filter: blur(20px);
-      // ⚙️ gen: https://unused-css.com/tools/clip-path-generator?p=22AwLgzAHANATAdANhAFmFArHZIbKhOAdhHQE4oBGMREQmSg9HemCo8dWQuGEaMbOjBQwpLHwpRkYin07pkcJgjwJQQqITa9CaQghq58bbGgjdZVKKUW8YhSsFBh6FJyDdpQngNx+AxE5BwEA
       clip-path: polygon(
         0% 38%,
         2.6% 40%,
@@ -213,7 +184,7 @@
     }
   }
 
-  .bottom-overlay {
+  .bottomOverlay {
     perspective: 14.5rem;
     flex: 0 0 12.5rem;
     position: absolute;
@@ -269,183 +240,4 @@
       background-position-y: 0%;
     }
   }
-
-  // ✨
-  #stars {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 20rem;
-    overflow: hidden;
-    left: 0;
-    z-index: -1;
-
-    .star {
-      position: absolute;
-      background: var(--labs-sys-color-star);
-      width: 0.15rem;
-      height: 0.15rem;
-      border-radius: 50%;
-      transform: translate(var(--x), var(--y));
-      box-shadow: 0 0 0.25rem var(--labs-sys-color-sun-glow);
-    }
-
-    animation: stars 20s linear;
-  }
-
-  @keyframes stars {
-    from {
-      transform: translateX(0);
-    }
-    60% {
-      transform: translateX(3vmax) rotate(1deg);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  // 🌴
-  .palm {
-    &:not(.small) {
-      animation: palm-shaking 5s linear infinite;
-    }
-    &.small {
-      animation: small-palm-shaking 4s linear inifinte;
-    }
-  }
-
-  @keyframes palm-shaking {
-    from {
-      transform: translate(10vmin, 0vmin) rotate(6deg);
-    }
-
-    50% {
-      transform: translate(10.5vmin, 0vmin) rotate(9deg);
-    }
-
-    to {
-      transform: translate(10vmin, 0vmin) rotate(6deg);
-    }
-  }
-
-  @keyframes small-palm-shaking {
-    from {
-      transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
-    }
-
-    50% {
-      transform: translate(9vmin, 9vmin) scale(0.4) rotate(356deg) skewX(5deg);
-    }
-
-    to {
-      transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
-    }
-  }
-
-  .startails {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    mix-blend-mode: lighten;
-  }
-
-  .startail-r {
-    position: absolute;
-    left: 75vw;
-    bottom: 0;
-    background: linear-gradient(
-      to right,
-      var(--labs-sys-color-sun-glow) 10%,
-      var(--labs-sys-color-triangle) 50%,
-      transparent 80%
-    );
-    height: 0.2vmin;
-    width: 15vmin;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 15px white);
-    transform: translateY(-32vmin) rotate(-20deg);
-  }
-
-  .startail-l {
-    position: absolute;
-    left: 16vw;
-    bottom: 0;
-    background: linear-gradient(
-      to right,
-      var(--labs-sys-color-sun-glow) 10%,
-      var(--labs-sys-color-triangle) 30%,
-      transparent 60%
-    );
-    height: 0.2vmin;
-    width: 17vmin;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 15px white);
-    transform: translateY(-7vmin) rotate(-20deg);
-  }
-
-  .startail-m {
-    position: absolute;
-    left: 18vw;
-    bottom: 0;
-    background: linear-gradient(
-      to right,
-      var(--labs-sys-color-sun-glow) 10%,
-      var(--labs-sys-color-triangle) 50%,
-      transparent 80%
-    );
-    height: 0.2vmin;
-    width: 14vmin;
-    border-radius: 50%;
-    filter: drop-shadow(0 0 15px white);
-    transform: translateY(-18vmin) rotate(-20deg);
-    opacity: 0.5;
-  }
-
-  #volume {
-    position: fixed;
-    left: 2.5vmin;
-    bottom: 2.5vmin;
-    width: 4rem;
-    height: 4rem;
-    display: grid;
-    place-items: center;
-    transition: background 0.3s ease;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    z-index: 42000;
-    @media (hover) {
-      &:hover {
-        background: rgba(0, 0, 0, 0.5);
-      }
-    }
-
-    &.playing {
-      .play {
-        display: block;
-      }
-      .muted {
-        display: none;
-      }
-    }
-    &:not(.playing) {
-      .play {
-        display: none;
-      }
-      .muted {
-        display: block;
-      }
-    }
-  }
-
-  a.labs-follow-me {
-    right: unset;
-    left: -0.5rem;
-  }
 }
-
-// Embedded pens to avoid performance issues 😅
-// You can find the 🌴 CSS in this pen: https://codepen.io/konstantindenerz/pen/YzOrWjz
-// Logo: https://codepen.io/konstantindenerz/pen/mdGpxKg
-// DeLorean: https://codepen.io/konstantindenerz/pen/xxaXjZv
