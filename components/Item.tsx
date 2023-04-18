@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import styles from "@/styles/item.module.scss";
@@ -16,11 +16,14 @@ function _({
   color,
   style,
 }: Props) {
+  const [showCode, setShow] = useState(false)
+
   useEffect(() => {
     const root = document.getElementById(id);
     if (root) root.style.setProperty("--customBackground", background);
     if (root) root.style.setProperty("--customColor", color);
   });
+  
   return (
     <div id={id} className={styles.main}>
       <Scene>
@@ -43,14 +46,14 @@ function _({
           <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
               <Tooltip.Trigger asChild>
-                <div className={styles.icon}>
+                <button className={styles.icon}>
                   <Image
                     src={"/icons/code.svg"}
                     alt="codce icon"
                     width={16}
                     height={16}
                   />
-                </div>
+                </button>
               </Tooltip.Trigger>
               <Tooltip.Portal>
                 <Tooltip.Content className="TooltipContent" data-side="bottom">
