@@ -93,4 +93,147 @@
       }
     }
   }
+
+  .codeSnippet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 69px;
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sheet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background-size: 4px 4px;
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      line-height: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background-image: radial-gradient(
+          rgba(0, 0, 0, 0) 1px,
+          var(--customBackground) 1px
+        );
+        background-size: 4px 4px;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        -moz-backdrop-filter: blur(3px);
+        font-size: 14px;
+        line-height: 14px;
+        opacity: 0.1;
+      }
+    }
+
+    .codeBlock {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      background-color: rgba(28, 38, 79, 0.75);
+      border: 1px solid #ededed;
+
+      overflow-y: scroll;
+
+      .title {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 0 1rem 1.25rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: #1c264f;
+
+        strong {
+          color: #acccfa;
+          mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
+        }
+
+        .pages {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          gap: 6px;
+
+          .page {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.25rem;
+
+            padding: 2px 6px;
+            border-radius: 1rem;
+            cursor: pointer;
+
+            strong {
+              color: rgba(255, 255, 255, 0.7);
+              text-transform: lowercase;
+            }
+            img {
+              filter: invert(100%);
+            }
+
+            &.selected {
+              background-color: #a4cdfe;
+
+              strong {
+                color: #1a2652;
+              }
+              img {
+                filter: invert(0%);
+              }
+            }
+          }
+        }
+      }
+
+      .code {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        font-family: "Fira Code", monospace;
+        font-size: 14px;
+        white-space: pre;
+
+        pre code {
+          background: none;
+          border: none;
+          padding: 0;
+
+          padding-bottom: 2rem;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import "@/styles/_globals.css";
 import "@/styles/__tooltip.css";
+import '@/styles/__highlight.css';
 
 import type { AppProps } from "next/app";
 import Script from "next/script";
