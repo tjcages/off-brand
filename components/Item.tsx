@@ -20,8 +20,10 @@ function _({
 }: Props) {
   const [showCode, setShow] = useState(false);
   const [index, setIndex] = useState(true);
+  const [copied, setCopy] = useState(false);
 
-  const defaultCode = `import React from "react"
+  const defaultCode = index
+    ? `import React from "react"
   
 <script async
   src="https://js.stripe.com/v3/buy-button.js">
@@ -31,13 +33,29 @@ function _({
   buy-button-id="buy_btn_1Mxu3xJWmqHDfKfmbBnARbSX"
   publishable-key="pk_live_5LIeQrBieZ0peepk98EKkdWp007ZEzqjCO"
 >
-</stripe-buy-button>`;
+</stripe-buy-button>`
+    : `.main {
+  background-color: red;
+}`;
 
   useEffect(() => {
     const root = document.getElementById(id);
     if (root) root.style.setProperty("--customBackground", background);
     if (root) root.style.setProperty("--customColor", color);
   }, [id, background, color]);
+
+  useEffect(() => {
+    if (!showCode) {
+      setIndex(true);
+      setCopy(false);
+    }
+  }, [showCode]);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(defaultCode);
+    setCopy(true);
+    setTimeout(() => setCopy(false), 1500);
+  };
 
   return (
     <div id={id} className={styles.main}>
@@ -87,14 +105,17 @@ function _({
           <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
               <Tooltip.Trigger asChild>
-                <div className={styles.icon}>
+                <button
+                  className={styles.icon}
+                  onClick={() => copyToClipboard()}
+                >
                   <Image
                     src={"/icons/copy.svg"}
                     alt="copy icon"
                     width={12}
                     height={12}
                   />
-                </div>
+                </button>
               </Tooltip.Trigger>
               <Tooltip.Portal>
                 <Tooltip.Content className="TooltipContent" data-side="bottom">
@@ -145,7 +166,7 @@ function _({
           </div>
           <div className={styles.code}>
             <SyntaxHighlighter
-              language="javascript"
+              language={index ? "javascript" : "css"}
               useInlineStyles={false}
               showLineNumbers
             >
@@ -153,6 +174,20 @@ function _({
             </SyntaxHighlighter>
           </div>
         </div>
+        <button
+          className={`${styles.copy} ${copied ? styles.copied : ""}`}
+          onClick={() => copyToClipboard()}
+        >
+          {copied && (
+            <Image
+              src={"/icons/check.svg"}
+              alt="check icon"
+              width={12}
+              height={12}
+            />
+          )}
+          <h5>{copied ? "Copied" : "Copy"}</h5>
+        </button>
       </div>
     </div>
   );

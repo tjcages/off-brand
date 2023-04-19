@@ -8,8 +8,8 @@
   justify-content: center;
   align-items: center;
 
-  width: clamp(300px, 25vw, 500px);
-  height: clamp(300px, 25vw, 500px);
+  width: clamp(350px, 25vw, 500px);
+  height: clamp(350px, 25vw, 500px);
 
   overflow: hidden;
   white-space: nowrap;
@@ -80,15 +80,19 @@
 
       .icon {
         padding: 0.5rem;
-
         opacity: 0.5;
-
         cursor: pointer;
 
         transition: opacity $animation-duration $animation-easing;
 
         &:hover {
           opacity: 1;
+        }
+
+        &:active {
+          opacity: 0.5;
+          border-radius: $padding-400;
+          animation: pulse $animation-duration 1 $animation-easing;
         }
       }
     }
@@ -101,13 +105,36 @@
     right: 0;
     bottom: 69px;
     z-index: 10;
+    overflow: hidden;
 
     opacity: 0;
     visibility: hidden;
+    transform: scaleY(0%);
+    transform-origin: bottom;
+
+    transition: opacity $animation-duration $animation-easing,
+      transform $animation-duration $animation-easing;
 
     &.visible {
       opacity: 1;
       visibility: visible;
+      transform: scaleY(100%);
+
+      .sheet {
+        opacity: 1;
+      }
+      .codeBlock {
+        .code {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:hover {
+      .copy {
+        transform: scale(1) translate(-50%, 0);
+        opacity: 1;
+      }
     }
 
     .sheet {
@@ -122,6 +149,9 @@
       font-size: 14px;
       line-height: 14px;
       background-color: rgba(0, 0, 0, 0.5);
+
+      opacity: 0;
+      transition: opacity $animation-duration $animation-easing;
 
       &:after {
         content: "";
@@ -203,6 +233,7 @@
             }
             img {
               filter: invert(100%);
+              opacity: 0.5;
             }
 
             &.selected {
@@ -213,6 +244,7 @@
               }
               img {
                 filter: invert(0%);
+                opacity: 1;
               }
             }
           }
@@ -221,10 +253,13 @@
 
       .code {
         width: 100%;
-        padding: 1rem 1.25rem;
-        font-family: "Fira Code", monospace;
-        font-size: 14px;
+        padding: 1rem 1rem;
+        font-size: $font-size-100;
         white-space: pre;
+
+        opacity: 0;
+        transition: opacity $animation-duration-short $animation-easing
+          $animation-duration;
 
         pre code {
           background: none;
@@ -235,5 +270,47 @@
         }
       }
     }
+
+    .copy {
+      position: absolute;
+      left: 50%;
+      bottom: 0.5rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      padding: 0.5rem 1rem;
+      background-color: #a4cdfe;
+      border-radius: 1rem;
+
+      transform-origin: center;
+      transform: scale(0.6) translate(-70%, 2rem);
+      opacity: 0;
+
+      transition: transform $animation-duration-short $animation-easing,
+        opacity $animation-duration-short $animation-easing;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(164, 205, 254, 0);
+  }
+  10% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 #a4cdfe;
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(164, 205, 254, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(164, 205, 254, 0);
   }
 }

@@ -40,7 +40,7 @@
 
   h5 {
     font-size: $font-size-150;
-    font-weight: $font_weight_200;
+    font-weight: $font_weight_300;
     line-height: 1.2em;
 
     color: $color_600;
@@ -87,5 +87,9 @@
 
     background-color: $color-500;
     border: none;
+  }
+
+  button {
+    cursor: pointer;
   }
 }

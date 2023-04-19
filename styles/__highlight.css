@@ -25,12 +25,16 @@ pre .html .tag .title {
   color: rgb(127, 211, 237);
 }
 
+.hljs-selector-class {
+  color: rgb(127, 211, 237);
+}
+
 .hljs-property {
   font-weight: 400;
   color: rgb(133, 217, 150);
 }
 
-.hljs-attr {
+.hljs-attr, .hljs-attribute {
   font-weight: 400;
   color: rgb(127, 211, 237);
 }
