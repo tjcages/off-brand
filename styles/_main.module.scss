@@ -36,6 +36,8 @@
     font-weight: $font_weight_200;
 
     color: $color_700;
+
+    max-width: 640px;
   }
 
   h5 {
@@ -45,6 +47,7 @@
 
     color: $color_600;
 
+    max-width: 500px;
     overflow: hidden;
 
     @media only screen and (max-width: 768px) {

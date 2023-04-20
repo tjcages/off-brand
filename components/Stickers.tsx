@@ -51,16 +51,16 @@ const _ = () => {
   const images = [
     {
       src: "/stickers/stripe.png",
-      size: getSize(0.2, 250),
+      size: getSize(0.3, 250),
       translate: "translate(-50%, 20%) rotate(10deg)",
       translateHover: "translate(-50%, -50%) rotate(-10deg)",
     },
-    {
-      src: "/stickers/buy-circle.png",
-      size: getSize(0.2, 300),
-      translate: "translate(-50%, 105%) rotate(40deg)",
-      translateHover: "translate(-70%, 15%) rotate(30deg)",
-    },
+    // {
+    //   src: "/stickers/buy-circle.png",
+    //   size: getSize(0.2, 300),
+    //   translate: "translate(-50%, 105%) rotate(40deg)",
+    //   translateHover: "translate(-70%, 15%) rotate(30deg)",
+    // },
     {
       src: "/stickers/buybuybuy.png",
       size: getSize(0.3, 400),
