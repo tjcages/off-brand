@@ -43,7 +43,7 @@ const _ = [
   {
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qzs",
     name: "The Buy Button",
-    cta: "BUY",
+    cta: "Buy",
     Scene: TheButton,
     color: "white",
     background: "#635BFF",
@@ -61,7 +61,7 @@ const _ = [
   {
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "Marching Ants Button",
-    cta: "BUY",
+    cta: "Buy",
     Scene: Digital,
     color: "black",
     background: "#eceff2",
@@ -70,7 +70,7 @@ const _ = [
   {
     id: "buy_btn_1Mua08FJ65Wq6yQASu6arx3assQz",
     name: "Windows 95 Button",
-    cta: "Buy Now!",
+    cta: "Buy",
     Scene: Windows98,
     color: "black",
     background: "#c0c7c8",
@@ -79,7 +79,7 @@ const _ = [
   {
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "MSN Button",
-    cta: "Buy Buy Buy",
+    cta: "Buy",
     Scene: MSN,
     color: "white",
     background: "#329631",
@@ -97,7 +97,7 @@ const _ = [
   {
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "Wavy Button",
-    cta: "Buy The Wave",
+    cta: "Buy",
     Scene: Wavey,
     color: "black",
     background: "#e7e7e7",
@@ -115,7 +115,7 @@ const _ = [
   {
     id: "buy_bftn_1Mu0fsda8FJ65Wq6yQASu6arx3assQz",
     name: "Nyan Cat Button",
-    cta: "Buy Buy Buy",
+    cta: "Buy",
     Scene: NyanCat,
     color: "black",
     background: "#ffcc99",
@@ -134,7 +134,7 @@ const _ = [
     live: false,
     id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
     name: "Never Gonna Give You Up - Rick Astley Button",
-    cta: "Buy for $0.99",
+    cta: "Buy",
     href: "https://www.youtube.com/watch?v=p7YXXieghto",
     Scene: MusicPlayer,
     color: "black",
@@ -153,7 +153,7 @@ const _ = [
   {
     id: "fadsfsdafdsafasd",
     name: "Retrowave Button",
-    cta: "Kick it in gear",
+    cta: "Buy",
     Scene: Retrowave,
     color: "white",
     background: "#85CAEA",
