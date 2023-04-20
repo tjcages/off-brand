@@ -32,8 +32,8 @@ function _({
 </script>
 
 <stripe-buy-button
-  buy-button-id="buy_btn_1Mxu3xJWmqHDfKfmbBnARbSX"
-  publishable-key="pk_live_5LIeQrBieZ0peepk98EKkdWp007ZEzqjCO"
+  buy-button-id="your_buy_button_id_here"
+  publishable-key="your_publishable_key_here"
 >
 </stripe-buy-button>`
     : `.main {
