@@ -9,7 +9,7 @@ const _ = () => {
       href="https://stripe.com/docs/payment-links/share#embed-button"
       target="_blank"
     >
-      <h5>Documentation</h5>
+      <h5>Read the docs</h5>
       <Image src="/icons/arrow.svg" alt="arrow" width={10} height={10} />
     </Link>
   );

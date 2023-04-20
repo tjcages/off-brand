@@ -45,7 +45,6 @@
     transparent calc(100% - var(--gradgap))
   );
   background-repeat: no-repeat;
-  background-position: center var(--gradoffset);
   background-size: 100% 200%;
   padding: 1.1em 1.5em;
   border-radius: 2em;
@@ -54,6 +53,7 @@
   box-shadow: 0 -0.5em 0.5em transparent, 0 0.5em 0.5em transparent,
     0 0.25em 0.3em -0.2em hsla(var(--hue), var(--sat), 50%, 0.46),
     0 0.25em 0.75em hsla(var(--hue), calc(var(--sat) - 10%), 40%, 0.3);
+  background-position: center calc(var(--gradoffset) - 0.75em);
 
   position: relative;
   transition: all 0.5s ease;
@@ -117,12 +117,13 @@
   &:active,
   &:focus {
     outline: none;
+
     box-shadow: 0 -0.2em 1em hsla(var(--hue2), 70%, 80%, 0.3),
       0 0.5em 1.5em hsla(var(--hue), 70%, 80%, 0.5),
       0 0.25em 0.3em -0.2em hsl(var(--hue) 90% 70%),
       0 0.25em 0.5em hsla(var(--hue), 20%, 30%, 0.2),
       inset 0 -2px 2px rgba(255, 255, 255, 0.2);
-    background-position: center calc(var(--gradoffset) - 0.75em);
+    background-position: center var(--gradoffset);
     transform: translateY(-4px);
   }
 }

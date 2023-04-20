@@ -6,7 +6,7 @@ const _ = () => {
   return (
     <div className={styles.main}>
       <strong>Live Now</strong>
-      <h2>Try A Buy Button</h2>
+      <h2>Try a buy button</h2>
       <h4>
         You can now turn any{" "}
         <Link href="https://stripe.com/payments/payment-links" target="_blank">
