@@ -12,6 +12,7 @@ function _({
   live = false,
   id,
   name,
+  description,
   cta,
   Scene,
   background,
@@ -74,7 +75,7 @@ function _({
       <div className={`${styles.info} ${style ? style.info : ""}`}>
         <div className={styles.titles}>
           <h5>{name}</h5>
-          <strong>Item Description</strong>
+          {description && <strong>Item Description</strong>}
         </div>
 
         <div className={styles.actions}>

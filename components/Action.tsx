@@ -1,14 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "@/styles/nav.module.scss";
 
 const _ = () => {
   return (
     <Link
       className={styles.action}
-      href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
+      href="https://stripe.com/docs/payment-links/share#embed-button"
       target="_blank"
     >
-      <strong>Try it</strong>
+      <h5>Documentation</h5>
+      <Image src="/icons/arrow.svg" alt="arrow" width={10} height={10} />
     </Link>
   );
 };

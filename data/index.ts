@@ -28,6 +28,7 @@ interface Props {
   live?: boolean;
   id: string;
   name: string;
+  description?: string;
   cta: string;
   Scene: React.FC<any>;
   background: string;

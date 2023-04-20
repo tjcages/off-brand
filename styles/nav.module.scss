@@ -1,44 +1,59 @@
+@import "./variables";
+
 .main {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  z-index: 10;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  z-index: 10;
   min-height: fit-content;
-  padding: 24px;
-  margin-bottom: auto;
+  padding: 2rem;
 
   transform: translateX(25px);
 }
 
 .action {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 2rem;
   z-index: 10;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: 0.5rem;
 
   min-height: fit-content;
-  padding: 1rem 2rem;
-  margin-bottom: auto;
+  padding: 2rem;
 
-  font-family: monospace;
-  font-size: 16px;
+  h5 {
+    color: $color-accent;
+    transform: translateX(0.5rem);
 
-  border-radius: 4rem;
-  border: 1px solid rgba(66, 71, 112, 0.2);
-  background-color: rgb(243 244 246);
+    transition: color $animation-duration-short $animation-easing,
+      transform $animation-duration-short $animation-easing;
+  }
 
-  cursor: pointer;
+  img {
+    opacity: 0;
+    transform: rotate(180deg) scaleX(0%);
 
-  transform: translateX(-25px);
-
-  transition: background-color 0.2s ease-in-out;
+    transition: opacity $animation-duration-short $animation-easing,
+      transform $animation-duration-short $animation-easing;
+  }
 
   &:hover {
-    background-color: rgb(236 239 242);
+    h5 {
+      color: $color-700;
+      transform: translateX(0rem);
+    }
+    img {
+      opacity: 1;
+      transform: rotate(180deg) scaleX(100%);
+    }
   }
 }
