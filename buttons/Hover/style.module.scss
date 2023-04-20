@@ -1,0 +1,31 @@
+@import "@/styles/_variables";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #e2b8ef;
+}
+
+.button {
+  overflow: hidden;
+
+  box-shadow: rgba(202, 117, 230, 0.4) 0px 10px 20px,
+    rgba(202, 117, 230, 0.3) 0px 6px 6px;
+
+  transition: transform $animation-duration $animation-easing,
+    box-shadow $animation-duration $animation-easing;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: rgba(202, 117, 230, 0.6) 0px 19px 38px,
+      rgba(202, 117, 230, 0.5) 0px 15px 12px;
+  }
+}

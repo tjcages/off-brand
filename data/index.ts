@@ -1,5 +1,5 @@
 import TheButton from "@/buttons/TheButton";
-import Rounded from "@/buttons/Rounded";
+import Hover from "@/buttons/Hover";
 import Digital from "@/buttons/Digital";
 import Windows98 from "@/buttons/Windows98";
 import MSN from "@/buttons/MSN";
@@ -13,7 +13,7 @@ import MusicPlayer from "@/buttons/MusicPlayer";
 import Retrowave from "@/buttons/Retrowave";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
-import RoundedStyles from "@/buttons/Rounded/style.module.scss";
+import HoverStyles from "@/buttons/Hover/style.module.scss";
 import DigitalStyles from "@/buttons/Digital/style.module.scss";
 import Windows98Styles from "@/buttons/Windows98/style.module.scss";
 import MSNStyles from "@/buttons/MSN/style.module.scss";
@@ -50,13 +50,13 @@ const _ = [
     style: TheButtonStyles,
   },
   {
-    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qzs",
-    name: "The Rounded Button",
+    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3lsQzs",
+    name: "The Hover Button",
     cta: "Buy",
-    Scene: Rounded,
+    Scene: Hover,
     color: "white",
-    background: "#635BFF",
-    style: RoundedStyles,
+    background: "#CA75E6",
+    style: HoverStyles,
   },
   {
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",
@@ -133,7 +133,7 @@ const _ = [
   {
     live: false,
     id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
-    name: "Never Gonna Give You Up - Rick Astley Button",
+    name: "Rick Astley Button",
     cta: "Buy",
     href: "https://www.youtube.com/watch?v=p7YXXieghto",
     Scene: MusicPlayer,
