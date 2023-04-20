@@ -14,6 +14,7 @@ function _({
   name,
   description,
   cta,
+  href,
   Scene,
   background,
   color,
@@ -66,6 +67,7 @@ function _({
             live={live}
             id={id}
             cta={cta}
+            href={href}
             color={color}
             background={background}
           />

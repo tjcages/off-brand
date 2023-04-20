@@ -6,9 +6,9 @@ import NyanCat from "@/buttons/NyanCat";
 import VHS from "@/buttons/VHS";
 import Wavey from "@/buttons/Wavey";
 import Aqua from "@/buttons/Aqua";
-import BubbleGum from "@/buttons/BubbleGum";
+// import BubbleGum from "@/buttons/BubbleGum";
 import MusicPlayer from "@/buttons/MusicPlayer";
-import BananaSplit from "@/buttons/BananaSplit";
+// import BananaSplit from "@/buttons/BananaSplit";
 import Retrowave from "@/buttons/Retrowave";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
@@ -19,9 +19,9 @@ import NyanCatStyles from "@/buttons/NyanCat/style.module.scss";
 import VHSStyles from "@/buttons/VHS/style.module.scss";
 import WaveyStyles from "@/buttons/Wavey/style.module.scss";
 import AquaStyles from "@/buttons/Aqua/style.module.scss";
-import BubbleGumStyles from "@/buttons/BubbleGum/style.module.scss";
+// import BubbleGumStyles from "@/buttons/BubbleGum/style.module.scss";
 import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
-import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
+// import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
 import RetrowaveStyles from "@/buttons/Retrowave/style.module.scss";
 
 interface Props {
@@ -30,6 +30,7 @@ interface Props {
   name: string;
   description?: string;
   cta: string;
+  href?: string;
   Scene: React.FC<any>;
   background: string;
   color: string;
@@ -48,7 +49,7 @@ const _ = [
   },
   {
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",
-    name: "The Pixels Button",
+    name: "Marching Ants Button",
     cta: "BUY",
     Scene: Digital,
     color: "black",
@@ -57,7 +58,7 @@ const _ = [
   },
   {
     id: "buy_btn_1Mua08FJ65Wq6yQASu6arx3assQz",
-    name: "Windows '98",
+    name: "Windows 95 Button",
     cta: "Buy Now!",
     Scene: Windows98,
     color: "black",
@@ -84,7 +85,7 @@ const _ = [
   },
   {
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6arx3assQz",
-    name: "Wavey Button",
+    name: "Wavy Button",
     cta: "Buy The Wave",
     Scene: Wavey,
     color: "black",
@@ -109,36 +110,38 @@ const _ = [
     background: "#ffcc99",
     style: NyanCatStyles,
   },
+  // {
+  //   id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qz",
+  //   name: "BubbleGum Button",
+  //   cta: "Buy Now",
+  //   Scene: BubbleGum,
+  //   color: "white",
+  //   background: "#CA75E6",
+  //   style: BubbleGumStyles,
+  // },
   {
-    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qz",
-    name: "BubbleGum",
-    cta: "Buy Now",
-    Scene: BubbleGum,
-    color: "white",
-    background: "#CA75E6",
-    style: BubbleGumStyles,
-  },
-  {
+    live: false,
     id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
-    name: "Music Player",
+    name: "Never Gonna Give You Up - Rick Astley Button",
     cta: "Buy for $0.99",
+    href: "https://www.youtube.com/watch?v=p7YXXieghto",
     Scene: MusicPlayer,
     color: "black",
     background: "#ffcdfa",
     style: MusicPlayerStyles,
   },
-  {
-    id: "fasdfa",
-    name: "Banana Split",
-    cta: "Go Bananas",
-    Scene: BananaSplit,
-    color: "black",
-    background: "#ffbf40",
-    style: BananaSplitStyles,
-  },
+  // {
+  //   id: "fasdfa",
+  //   name: "Banana Split",
+  //   cta: "Go Bananas",
+  //   Scene: BananaSplit,
+  //   color: "black",
+  //   background: "#ffbf40",
+  //   style: BananaSplitStyles,
+  // },
   {
     id: "fadsfsdafdsafasd",
-    name: "Retrowave",
+    name: "Retrowave Button",
     cta: "Kick it in gear",
     Scene: Retrowave,
     color: "white",

@@ -10,18 +10,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-image: url("/textures/aqua.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .button {
-  --hue: 190deg;
-  --sat: 50%;
+  --color: hsl(224, 68%, 60%);
+  --hue: 224deg;
+  --sat: 68%;
   --blur: 0px;
-  --hue2: calc(var(--hue) + 60deg);
-  --sat2: calc(var(--sat) + 10%);
-  --clr: hsl(var(--hue) var(--sat) 90%);
+  --hue2: calc(var(--hue) + 10deg);
+  --sat2: calc(var(--sat) + 80%);
+  --clr: hsl(var(--hue) var(--sat) 60%);
   --clr2: hsl(var(--hue2) var(--sat2) 85%);
   --text: hsla(var(--hue), 70%, 10%, 0.9);
-  --gradoffset: 45%;
+  --gradoffset: 25%;
   --gradgap: 30%;
 
   position: relative;
@@ -118,12 +123,15 @@
       0 0.25em 0.5em hsla(var(--hue), 20%, 30%, 0.2),
       inset 0 -2px 2px rgba(255, 255, 255, 0.2);
     background-position: center calc(var(--gradoffset) - 0.75em);
+    transform: translateY(-4px);
   }
 }
 
 .info {
-  strong {
-    color: black !important;
-    opacity: 0.4;
+  h5 {
+    color: white;
+  }
+  img {
+    filter: invert(100%);
   }
 }
