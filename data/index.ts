@@ -1,4 +1,5 @@
 import TheButton from "@/buttons/TheButton";
+import Rounded from "@/buttons/Rounded";
 import Digital from "@/buttons/Digital";
 import Windows98 from "@/buttons/Windows98";
 import MSN from "@/buttons/MSN";
@@ -12,6 +13,7 @@ import MusicPlayer from "@/buttons/MusicPlayer";
 import Retrowave from "@/buttons/Retrowave";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
+import RoundedStyles from "@/buttons/Rounded/style.module.scss";
 import DigitalStyles from "@/buttons/Digital/style.module.scss";
 import Windows98Styles from "@/buttons/Windows98/style.module.scss";
 import MSNStyles from "@/buttons/MSN/style.module.scss";
@@ -46,6 +48,15 @@ const _ = [
     color: "white",
     background: "#635BFF",
     style: TheButtonStyles,
+  },
+  {
+    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qzs",
+    name: "The Rounded Button",
+    cta: "Buy",
+    Scene: Rounded,
+    color: "white",
+    background: "#635BFF",
+    style: RoundedStyles,
   },
   {
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",

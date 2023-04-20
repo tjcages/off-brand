@@ -5,20 +5,11 @@ import styles from "@/styles/intro.module.scss";
 const _ = () => {
   return (
     <div className={styles.main}>
-      <strong>Live Now</strong>
+      {/* <strong>Live Now</strong> */}
       <h2>Try a buy button</h2>
       <h4>
-        You can now turn any{" "}
-        <Link href="https://stripe.com/payments/payment-links" target="_blank">
-          payment link
-          <Image
-            src="/icons/arrow-blurple.svg"
-            alt="arrow"
-            width={12}
-            height={12}
-          />
-        </Link>{" "}
-        into an embeddable{" "}
+        The fastest way to add Stripe to your site. Easily turn any payment link
+        into an embeddable {" "}
         <Link
           href="https://stripe.com/docs/payment-links/share#embed-button"
           target="_blank"
@@ -31,7 +22,7 @@ const _ = () => {
             height={12}
           />
         </Link>
-        . Easily sell a product or subscription—right from your website.
+        . Try one today and we’ll send you a surprise!
       </h4>
     </div>
   );

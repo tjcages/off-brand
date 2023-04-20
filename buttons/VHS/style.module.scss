@@ -1,5 +1,11 @@
 @import "@/styles/_variables";
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+@font-face {
+  font-family: "VCR";
+  src: url("../../public/fonts/VCR.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .main {
   position: absolute;
@@ -127,9 +133,9 @@
     right: 0;
     bottom: 0;
 
-    font-family: "Press Start 2P", cursive;
+    font-family: "VCR" !important;
+    font-size: 1.5rem;
     color: $white;
-    font-size: 1rem;
     background: #2b52ff;
 
     .noise {

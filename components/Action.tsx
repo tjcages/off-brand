@@ -6,7 +6,7 @@ const _ = () => {
   return (
     <Link
       className={styles.action}
-      href="https://stripe.com/docs/payment-links/share#embed-button"
+      href="https://stripe.com/docs/payment-links/buy-button"
       target="_blank"
     >
       <h5>Read the docs</h5>
