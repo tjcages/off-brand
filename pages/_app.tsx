@@ -1,9 +1,10 @@
 import "@/styles/_globals.css";
 import "@/styles/__tooltip.css";
-import '@/styles/__highlight.css';
+import "@/styles/__highlight.css";
 
 import type { AppProps } from "next/app";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import styles from "@/styles/_main.module.scss";
 const inter = Inter({ subsets: ["latin"] });
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <main className={`${inter.className} ${styles.main}`}>
         <Component {...pageProps} />
       </main>
+      <Analytics />
     </>
   );
 }
