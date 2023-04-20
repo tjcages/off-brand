@@ -4,6 +4,7 @@ import Digital from "@/buttons/Digital";
 import Windows98 from "@/buttons/Windows98";
 import MSN from "@/buttons/MSN";
 import NyanCat from "@/buttons/NyanCat";
+import Notes from "@/buttons/Notes";
 import VHS from "@/buttons/VHS";
 import Wavey from "@/buttons/Wavey";
 import Aqua from "@/buttons/Aqua";
@@ -18,6 +19,7 @@ import DigitalStyles from "@/buttons/Digital/style.module.scss";
 import Windows98Styles from "@/buttons/Windows98/style.module.scss";
 import MSNStyles from "@/buttons/MSN/style.module.scss";
 import NyanCatStyles from "@/buttons/NyanCat/style.module.scss";
+import NotesStyles from "@/buttons/Notes/style.module.scss";
 import VHSStyles from "@/buttons/VHS/style.module.scss";
 import WaveyStyles from "@/buttons/Wavey/style.module.scss";
 import AquaStyles from "@/buttons/Aqua/style.module.scss";
@@ -102,6 +104,15 @@ const _ = [
     color: "black",
     background: "#e7e7e7",
     style: WaveyStyles,
+  },
+  {
+    id: "buy_bftn_1Mfddu08FJ65Wq6yQASu6arx3assQz",
+    name: "Apple Notes Button",
+    cta: "Buy",
+    Scene: Notes,
+    color: "black",
+    background: "#f8f79a",
+    style: NotesStyles,
   },
   {
     id: "buy_bftn_1Mud0fsda8FJ65Wq6yQASu6arx3assQz",

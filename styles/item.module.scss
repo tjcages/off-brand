@@ -11,39 +11,13 @@
   width: clamp(350px, 25vw, 500px);
   height: clamp(350px, 25vw, 500px);
 
+  background-color: black;
   overflow: hidden;
   white-space: nowrap;
 
   @media only screen and (max-width: 768px) {
     & {
       width: 100%;
-    }
-  }
-
-  // Define initial and final background color values
-  $r: 236;
-  $g: 239;
-  $b: 242;
-
-  $r2: 136;
-  $g2: 152;
-  $b2: 170;
-
-  // Calculate the color step by dividing the difference between the final and initial colors by the total number of div children
-  $totalChildren: 20;
-  $rStep: ($r2 - $r) / $totalChildren;
-  $gStep: ($g2 - $g) / $totalChildren;
-  $bStep: ($b2 - $b) / $totalChildren;
-
-  // Loop through the div children and generate the background color for each
-  @for $i from 1 through $totalChildren {
-    // Calculate the background color for the current div child
-    $rCurrent: $r + $rStep * $i;
-    $gCurrent: $g + $gStep * $i;
-    $bCurrent: $b + $bStep * $i;
-
-    &:nth-child(#{$i}) {
-      background-color: rgb($rCurrent, $gCurrent, $bCurrent);
     }
   }
 

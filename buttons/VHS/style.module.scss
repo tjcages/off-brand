@@ -19,7 +19,9 @@
   justify-content: center;
 
   background: #270245;
+  border-radius: 50% / 5%;
   overflow: hidden;
+  filter: blur(1px);
 
   $dark: #270245;
   $light: #fd5d8d;
@@ -33,18 +35,12 @@
 
   &:before {
     content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    );
-    mix-blend-mode: overlay;
-    pointer-events: none;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: black;
+    border-radius: 5% / 50%;
   }
 
   &:after {
