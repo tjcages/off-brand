@@ -26,11 +26,12 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 10;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.75rem 1rem 1.25rem;
+    padding: 0.5rem 0.75rem 1rem 1.25rem;
 
     .titles {
       position: relative;
@@ -77,7 +78,7 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 69px;
+    bottom: 56px;
     z-index: 10;
     overflow: hidden;
 

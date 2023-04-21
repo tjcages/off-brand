@@ -56,6 +56,9 @@
     padding: 1rem;
     background: linear-gradient(180deg, #8c6256, #4d322b, #3f2c26);
 
+    pointer-events: none;
+    user-select: none;
+
     &:after {
       content: "";
       position: absolute;
@@ -130,10 +133,6 @@
 
   .torn {
     position: relative;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // right: 0;
     width: 100%;
     height: 6px;
 
@@ -162,6 +161,26 @@
   border: 2px solid black;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+
+    border: 2px dashed black;
+    border-radius: 0.4rem;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .info {

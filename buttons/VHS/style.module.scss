@@ -1,12 +1,5 @@
 @import "@/styles/_variables";
 
-@font-face {
-  font-family: "VCR";
-  src: url("../../public/fonts/VCR.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .main {
   position: absolute;
   top: 0;
@@ -359,6 +352,27 @@
   align-items: center;
 
   animation: rgbSquare 1s steps(9) 0s infinite alternate;
+
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity $animation-duration-short $animation-easing;
+  }
 }
 
 .info {

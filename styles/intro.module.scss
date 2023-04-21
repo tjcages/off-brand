@@ -66,20 +66,37 @@
       font-weight: 500;
 
       display: inline-flex;
-      gap: 0.15rem;
+      gap: 0;
       padding-right: 0.1rem;
 
+      transition: color $animation-duration-short $animation-easing,
+        padding-right $animation-duration-short $animation-easing;
+
       &:hover {
+        color: $color-700;
+        padding-right: 1.25rem;
+
         img {
-          transform: translate(1px, -2px) rotate(135deg);
+          display: inline;
+          opacity: 1;
+          transform: rotate(180deg) scaleX(100%) translateX(4px);
+        }
+
+        &:after {
+          background-color: $color-700;
         }
       }
 
       img {
-        color: $color-accent;
-        transform: rotate(135deg);
+        position: absolute;
+        top: 8px;
+        right: 0;
+        
+        opacity: 0;
+        transform: rotate(180deg) scaleX(0%) translateX(4px);
 
-        transition: transform $animation-duration-short $animation-easing;
+        transition: opacity $animation-duration-short $animation-easing,
+          transform $animation-duration-short $animation-easing;
       }
 
       &:after {
@@ -90,6 +107,8 @@
         bottom: 4px;
         height: 1.5px;
         background-color: $color-accent;
+
+        transition: background-color $animation-duration-short $animation-easing;
       }
     }
   }

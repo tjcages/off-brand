@@ -1,0 +1,236 @@
+@import "@/styles/_variables";
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.25rem;
+
+  border: 1px solid #dfdfdf;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+
+    background-color: #bfbfbf;
+    border: 1px solid white;
+  }
+
+  .header {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+
+    background-color: black;
+
+    h5 {
+      color: white;
+      font-weight: 600;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 0 0 0 6px;
+        padding: 0 3px 0 0;
+        font-size: 20px;
+        font-weight: 600;
+
+        width: 1rem;
+        height: 1rem;
+
+        background: #bfbfbf;
+        box-shadow: -2px 0px #fff, 0px -2px #fff, 2px 0px #353535,
+          0px 2px #353535, inset -2px -2px #7f7f7f;
+
+        svg {
+          width: 70%;
+          height: 70%;
+        }
+      }
+    }
+  }
+
+  .content {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 0.2rem;
+
+    border: 1px solid #7f7f7f;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+
+      border: 1px solid #7f7f7f;
+      background-image: url("data:image/svg+xml,%3Csvg%20width='4'%20height='4'%20viewBox='0%200%204%204'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Crect%20width='2'%20height='2'%20fill='white'/%3E%3Crect%20x='2'%20y='2'%20width='2'%20height='2'%20fill='white'/%3E%3C/svg%3E%0A");
+      background-size: 4px 4px;
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      backdrop-filter: brightness(70%);
+    }
+
+    .options {
+      position: relative;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5rem;
+
+      width: 100%;
+      padding: 0.25rem 0.5rem;
+
+      background-color: white;
+      border-bottom: 2px solid black;
+    }
+
+    .window {
+      position: relative;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      width: calc(100% - 2rem);
+      height: calc(100% - 7rem);
+      margin: 0 auto 4rem;
+
+      border: 2px solid black;
+      background-color: white;
+
+      .toolbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1.5rem;
+
+        display: grid;
+        grid-template-columns: 0.75rem auto 0.6fr auto 1fr;
+        gap: 0.25rem;
+        padding: 0.25rem;
+
+        border-bottom: 2px solid black;
+
+        .lines {
+          width: 100%;
+          height: 100%;
+          background: repeating-linear-gradient(
+            transparent,
+            black 2px 2px,
+            transparent 2px 4px,
+            black 2px 2px
+          );
+        }
+
+        .square {
+          width: 1rem;
+          height: 1rem;
+
+          border: 2px solid black;
+        }
+      }
+    }
+  }
+}
+
+.button {
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  // overflow: hidden;
+
+  &:hover {
+    .wrapper {
+      background-color: rgba(80, 126, 226, 0.4);
+    }
+  }
+
+  .wrapper {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+
+    background-color: rgba(80, 126, 226, 0.2);
+    border: 1px solid #507ee2;
+
+    pointer-events: none;
+    user-select: none;
+
+    .square {
+      position: absolute;
+
+      width: 6px;
+      height: 6px;
+      border: 1px solid #507ee2;
+
+      &:nth-child(1) {
+        top: -4px;
+        left: -4px;
+      }
+      &:nth-child(2) {
+        top: -4px;
+        right: -4px;
+      }
+      &:nth-child(3) {
+        bottom: -4px;
+        left: -4px;
+      }
+      &:nth-child(4) {
+        bottom: -4px;
+        right: -4px;
+      }
+    }
+  }
+}
+
+.info {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+
+    background-color: white;
+    border-top: 2px solid black;
+  }
+}

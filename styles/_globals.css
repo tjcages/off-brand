@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "VCR";
+  src: url("../public/fonts/VCR.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @property --shift {
   syntax: "<number>";
   inherits: false;

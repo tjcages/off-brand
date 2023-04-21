@@ -5,9 +5,11 @@ import {
   useTransform,
   useAnimationControls,
 } from "framer-motion";
+import { useMedia, mobileBreakpoint } from "@/modules/useMedia"
 import styles from "@/styles/stickers.module.scss";
 
 const _ = () => {
+  const mobile = useMedia(mobileBreakpoint)
   const [width, setWidth] = useState(0);
   const [hover, hovering] = useState<boolean | null>(null);
 
@@ -51,9 +53,9 @@ const _ = () => {
   const images = [
     {
       src: "/stickers/stripe.png",
-      size: getSize(0.3, 250),
+      size: getSize(mobile ? 0.5 : 0.3, 250),
       translate: "translate(-50%, 20%) rotate(10deg)",
-      translateHover: "translate(-50%, -50%) rotate(-10deg)",
+      translateHover: `translate(-50%, ${mobile ? "-20%" : "-50%"}) rotate(-10deg)`,
     },
     // {
     //   src: "/stickers/buy-circle.png",
@@ -63,13 +65,13 @@ const _ = () => {
     // },
     {
       src: "/stickers/buybuybuy.png",
-      size: getSize(0.3, 400),
-      translate: "translate(-35%, 95%) rotate(-20deg)",
-      translateHover: "translate(5%, 15%) rotate(-10deg)",
+      size: getSize(mobile ? 0.7 : 0.3, mobile ? 600 : 400),
+      translate: `translate(-35%, 95%) rotate(${mobile ? "-40deg" : "-20deg"})`,
+      translateHover: `translate(5%, ${mobile ? "75%" : "15%"}) rotate(-10deg)`,
     },
     {
       src: "/stickers/copypayste.png",
-      size: getSize(0.3, 400),
+      size: getSize(mobile ? 0.5 : 0.3, 400),
       translate: "translate(-70%, 125%) rotate(40deg)",
       translateHover: "translate(-95%, 15%) rotate(30deg)",
     },

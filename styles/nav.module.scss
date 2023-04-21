@@ -3,7 +3,7 @@
 .main {
   position: absolute;
   top: 0;
-  left: 2rem;
+  left: 0;
   z-index: 10;
 
   display: flex;
@@ -11,15 +11,19 @@
   align-items: center;
 
   min-height: fit-content;
-  padding: 2rem;
+  padding: 2rem 4rem;
 
-  transform: translateX(25px);
+  @media only screen and (max-width: 768px) {
+    & {
+      padding: 2rem;
+    }
+  }
 }
 
 .action {
   position: absolute;
   top: 0;
-  right: 2rem;
+  right: 0;
   z-index: 10;
 
   display: flex;
@@ -28,7 +32,13 @@
   gap: 0.5rem;
 
   min-height: fit-content;
-  padding: 2rem;
+  padding: 2rem 4rem;
+
+  @media only screen and (max-width: 768px) {
+    & {
+      padding: 2rem;
+    }
+  }
 
   h5 {
     color: $color-accent;
