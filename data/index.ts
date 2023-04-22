@@ -45,7 +45,8 @@ interface Props {
 
 const _ = [
   {
-    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qzs",
+    live: true,
+    id: "buy_btn_1Mu04wJ65Wq6yQASkdrjHUXX",
     name: "The Buy Button",
     cta: "Buy",
     Scene: TheButton,
@@ -54,6 +55,7 @@ const _ = [
     style: TheButtonStyles,
   },
   {
+    live: false,
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3lsQzs",
     name: "The Hover Button",
     cta: "Buy",
@@ -63,6 +65,7 @@ const _ = [
     style: HoverStyles,
   },
   {
+    live: false,
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "Marching Ants Button",
     cta: "Buy",
@@ -72,6 +75,7 @@ const _ = [
     style: DigitalStyles,
   },
   {
+    live: false,
     id: "buy_btn_1Mua08FJ65Wq6yQASu6arx3assQz",
     name: "Windows 95 Button",
     cta: "Buy",
@@ -81,6 +85,7 @@ const _ = [
     style: Windows98Styles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "MSN Button",
     cta: "Buy",
@@ -90,6 +95,7 @@ const _ = [
     style: MSNStyles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6fasdarx3assQz",
     name: "Aqua Button",
     cta: "Buy",
@@ -99,6 +105,7 @@ const _ = [
     style: AquaStyles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "Wavy Button",
     cta: "Buy",
@@ -108,6 +115,7 @@ const _ = [
     style: WaveyStyles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mfddu08FJ65Wq6yQASu6arx3assQz",
     name: "Notes Button",
     cta: "Buy",
@@ -117,6 +125,7 @@ const _ = [
     style: NotesStyles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mud0fsda8FJ65Wq6yQASu6arx3assQz",
     name: "VHS Button",
     cta: "Buy",
@@ -126,6 +135,7 @@ const _ = [
     style: VHSStyles,
   },
   {
+    live: false,
     id: "buy_bftn_1Mu0fsda8FJ65Wq6yQASu6arx3assQz",
     name: "Nyan Cat Button",
     cta: "Buy",
@@ -164,6 +174,7 @@ const _ = [
   //   style: BananaSplitStyles,
   // },
   {
+    live: false,
     id: "fadsfsdafdsafasd",
     name: "Retrowave Button",
     cta: "Buy",
@@ -173,6 +184,7 @@ const _ = [
     style: RetrowaveStyles,
   },
   {
+    live: false,
     id: "fadsfsd;;kldafdsafasd",
     name: "Paint Button",
     cta: "Buy",
