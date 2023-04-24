@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
@@ -7,6 +8,20 @@ import styles from "@/styles/item.module.scss";
 import { Props } from "@/data";
 
 import BuyButton from "@/components/BuyButton";
+
+const cardVariants: Variants = {
+  offscreen: {
+    opacity: 1,
+  },
+  onscreen: {
+    opacity: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
 
 function _({
   live = false,
@@ -60,7 +75,13 @@ function _({
   };
 
   return (
-    <div id={id} className={styles.main}>
+    <motion.div
+      id={id}
+      className={styles.main}
+      initial="offscreen"
+      whileInView="onscreen"
+    >
+      <motion.div className={styles.overlay} variants={cardVariants} />
       <div>
         <Scene>
           <BuyButton
@@ -80,62 +101,35 @@ function _({
           {description && <strong>Item Description</strong>}
         </div>
 
-        <div className={styles.actions}>
-          {/* Code button */}
-          <Tooltip.Provider>
-            <Tooltip.Root delayDuration={0}>
-              <Tooltip.Trigger asChild>
-                <button
-                  className={styles.icon}
-                  onClick={() => setShow(!showCode)}
-                >
-                  <Image
-                    src={"/icons/code.svg"}
-                    alt="codce icon"
-                    width={16}
-                    height={16}
-                  />
-                </button>
-              </Tooltip.Trigger>
-              <Tooltip.Portal>
-                <Tooltip.Content className="TooltipContent" data-side="bottom">
-                  Show code
-                  <Tooltip.Arrow className="TooltipArrow" />
-                </Tooltip.Content>
-              </Tooltip.Portal>
-            </Tooltip.Root>
-          </Tooltip.Provider>
-
-          {/* <Tooltip.Provider>
-            <Tooltip.Root delayDuration={0}>
-              <Tooltip.Trigger asChild>
-                <button
-                  className={styles.icon}
-                  onClick={() => copyToClipboard()}
-                >
-                  <Image
-                    src={"/icons/copy.svg"}
-                    alt="copy icon"
-                    width={12}
-                    height={12}
-                  />
-                </button>
-              </Tooltip.Trigger>
-              <Tooltip.Portal>
-                <Tooltip.Content className="TooltipContent" data-side="bottom">
-                  Copy code
-                  <Tooltip.Arrow className="TooltipArrow" />
-                </Tooltip.Content>
-              </Tooltip.Portal>
-            </Tooltip.Root>
-          </Tooltip.Provider> */}
-        </div>
+        {/* Code button */}
+        <Tooltip.Provider>
+          <Tooltip.Root delayDuration={0}>
+            <Tooltip.Trigger asChild>
+              <button
+                className={styles.icon}
+                onClick={() => setShow(!showCode)}
+              >
+                <Image
+                  src={"/icons/code.svg"}
+                  alt="codce icon"
+                  width={16}
+                  height={16}
+                />
+              </button>
+            </Tooltip.Trigger>
+            <Tooltip.Portal>
+              <Tooltip.Content className="TooltipContent" data-side="bottom">
+                Show code
+                <Tooltip.Arrow className="TooltipArrow" />
+              </Tooltip.Content>
+            </Tooltip.Portal>
+          </Tooltip.Root>
+        </Tooltip.Provider>
       </div>
 
       <div
         className={`${styles.codeSnippet} ${showCode ? styles.visible : ""}`}
       >
-        <div className={styles.overlay} />
         <div className={styles.sheet} />
         <div className={styles.codeBlock}>
           <div className={styles.title}>
@@ -193,7 +187,7 @@ function _({
           <h5>{copied ? "Copied" : "Copy"}</h5>
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

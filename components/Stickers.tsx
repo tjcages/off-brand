@@ -10,6 +10,7 @@ import styles from "@/styles/stickers.module.scss";
 
 const _ = () => {
   const mobile = useMedia(mobileBreakpoint);
+  const [loaded, setLoaded] = useState(false);
   const [width, setWidth] = useState(0);
   const [hover, hovering] = useState<boolean | null>(null);
 
@@ -43,6 +44,12 @@ const _ = () => {
     controls.set("hidden");
     onRoute()();
   }, [onRoute]);
+
+  useEffect(() => {
+    if (loaded) {
+      controls.start("enter");
+    }
+  }, [loaded, onRoute]);
 
   const getSize = (factor: number, max: number) => {
     var size = width ? width * factor : max;
@@ -103,7 +110,7 @@ const _ = () => {
               variants={{
                 hidden: {
                   opacity: 0,
-                  transform: "translate(-50%, 250%) rotate(90deg)",
+                  transform: "translate(-50%, 450%) rotate(90deg)",
                 },
                 enter: { opacity: 1, transform: image.translate },
                 hover: { opacity: 1, transform: image.translateHover },
@@ -113,8 +120,8 @@ const _ = () => {
                 damping: 10,
                 stiffness: 200,
                 restDelta: 0.001,
-                delay: hover ? 0 : 1,
-                opacity: { duration: 0.1, delay: 1 },
+                delay: hover ? 0 : 0.2,
+                opacity: { duration: 0, delay: 0 },
               }}
             >
               <motion.img
@@ -127,6 +134,7 @@ const _ = () => {
                 dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                 dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
                 whileTap={{ cursor: "grabbing" }}
+                onLoad={() => setLoaded(true)}
               />
             </motion.div>
           );

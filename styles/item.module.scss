@@ -21,6 +21,19 @@
     }
   }
 
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    background-color: #eceff2;
+    user-select: none;
+    pointer-events: none;
+  }
+
   .info {
     position: absolute;
     left: 0;
@@ -47,28 +60,21 @@
       }
     }
 
-    .actions {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
+    .icon {
+      padding: 0.5rem;
+      opacity: 0.5;
+      cursor: pointer;
 
-      .icon {
-        padding: 0.5rem;
+      transition: opacity $animation-duration $animation-easing;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
         opacity: 0.5;
-        cursor: pointer;
-
-        transition: opacity $animation-duration $animation-easing;
-
-        &:hover {
-          opacity: 1;
-        }
-
-        &:active {
-          opacity: 0.5;
-          border-radius: $padding-400;
-          animation: pulse $animation-duration 1 $animation-easing;
-        }
+        border-radius: $padding-400;
+        animation: pulse $animation-duration 1 $animation-easing;
       }
     }
   }

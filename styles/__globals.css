@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Sohne";
+  src: url("../public/fonts/Sohne/Sohne-Buch.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @property --shift {
   syntax: "<number>";
   inherits: false;
