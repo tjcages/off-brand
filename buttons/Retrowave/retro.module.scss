@@ -203,12 +203,13 @@
   // 🏁
   .bottom {
     background: inherit;
-    
+
     perspective: 14.5rem;
+    --webkit-perspective: 14.5rem;
     perspective-origin: center;
     transform: translateZ(0);
     transform-origin: center;
-    transform-style: preserve-3d;
+    // transform-style: preserve-3d;
 
     flex: 0 0 12.5rem;
     position: relative;
