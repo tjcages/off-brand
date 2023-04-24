@@ -38,6 +38,12 @@
     color: $color_700;
 
     max-width: 640px;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        font-size: $font-size-150;
+      }
+    }
   }
 
   h5 {
