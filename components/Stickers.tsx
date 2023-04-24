@@ -96,8 +96,9 @@ const _ = () => {
         className={styles.container}
         onMouseEnter={() => hovering(true)}
         onMouseLeave={() => hovering(false)}
-        onTouchStart={() => hovering(true)}
-        onTouchEnd={() => hovering(false)}
+        onClick={() => {
+          if (mobile) hovering(!hover);
+        }}
       >
         {images.map((image) => {
           const x = useMotionValue(0);
