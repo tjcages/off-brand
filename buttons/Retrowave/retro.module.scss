@@ -240,8 +240,8 @@
       transform-origin: center;
       -webkit-transform-origin: center;
 
-      animation: grid calc(var(--base-speed) * 1) linear infinite;
-      -webkit-animation: grid calc(var(--base-speed) * 1) linear infinite;
+      // animation: grid calc(var(--base-speed) * 1) linear infinite;
+      // -webkit-animation: grid calc(var(--base-speed) * 1) linear infinite;
       border-top: 1px solid var(--labs-sys-color-grid);
       filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
     }
