@@ -202,6 +202,7 @@
 
   // 🏁
   .bottom {
+    display: block;
     background: inherit;
 
     perspective: 14.5rem;
@@ -220,6 +221,7 @@
     &:before {
       content: "";
       position: absolute;
+      display: block;
       inset: 0;
       --line-width: 0.0635rem;
       background-image: linear-gradient(
@@ -239,6 +241,7 @@
       -webkit-transform-origin: center;
 
       animation: grid calc(var(--base-speed) * 1) linear infinite;
+      -webkit-animation: grid calc(var(--base-speed) * 1) linear infinite;
       border-top: 1px solid var(--labs-sys-color-grid);
       filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
     }
