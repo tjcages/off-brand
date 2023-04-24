@@ -13,6 +13,7 @@ import MusicPlayer from "@/buttons/MusicPlayer";
 // import BananaSplit from "@/buttons/BananaSplit";
 import Retrowave from "@/buttons/Retrowave";
 import Paint from "@/buttons/Paint";
+import DVD from "@/buttons/DVD";
 
 import TheButtonStyles from "@/buttons/TheButton/style.module.scss";
 import HoverStyles from "@/buttons/Hover/style.module.scss";
@@ -29,6 +30,7 @@ import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
 // import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
 import RetrowaveStyles from "@/buttons/Retrowave/style.module.scss";
 import PaintStyles from "@/buttons/Paint/style.module.scss";
+import DVDStyles from "@/buttons/DVD/style.module.scss";
 
 interface Props {
   live?: boolean;
@@ -192,6 +194,16 @@ const _ = [
     color: "black",
     background: "white",
     style: PaintStyles,
+  },
+  {
+    live: true,
+    id: "buy_btn_1Mu04wJ65Wq6yQASkdrjHUXX",
+    name: "DVD Button",
+    cta: "Buy",
+    Scene: DVD,
+    color: "black",
+    background: "white",
+    style: DVDStyles,
   },
 ] as Props[];
 

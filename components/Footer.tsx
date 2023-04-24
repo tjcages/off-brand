@@ -5,7 +5,7 @@ import styles from "@/styles/footer.module.scss";
 const _ = () => {
   return (
     <div className={styles.main}>
-      <strong>Live Now</strong>
+      {/* <strong>Live Now</strong>
       <Link
         className={styles.cta}
         href={"https://stripe.com/docs/payment-links/share#embed-button"}
@@ -43,7 +43,7 @@ const _ = () => {
           />
         </Link>{" "}
         to your site with two lines of code.
-      </h4>
+      </h4> */}
     </div>
   );
 };

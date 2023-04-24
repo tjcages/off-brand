@@ -24,7 +24,7 @@ export default function Home() {
             <Item key={index} {...item} />
           ))}
         </Container>
-        {/* <Footer /> */}
+        <Footer />
       </div>
       <Action />
     </main>
