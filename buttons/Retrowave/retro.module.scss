@@ -205,6 +205,8 @@
     background: inherit;
     perspective: 14.5rem;
     perspective-origin: center;
+    // enable perspective for safari
+    transform: translateZ(0);
     flex: 0 0 12.5rem;
     position: relative;
 
@@ -227,6 +229,9 @@
       background-size: 2rem 125rem, 125rem 2rem;
       transform: rotateX(53deg) scale(1.8) translateZ(43px);
       transform-origin: center;
+      // enable perspective for safari
+      transform-style: preserve-3d;
+      
       animation: grid calc(var(--base-speed) * 1) linear infinite;
       border-top: 1px solid var(--labs-sys-color-grid);
       filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
