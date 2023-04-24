@@ -210,8 +210,8 @@
     perspective-origin: center;
     -webkit-perspective-origin: center;
     transform: translateZ(0);
-    transform-origin: center;
     -webkit-transform: translateZ(0);
+    transform-origin: center;
     -webkit-transform-origin: center;
 
     flex: 0 0 12.5rem;
@@ -235,12 +235,15 @@
           transparent var(--line-width)
         );
       background-size: 2rem 125rem, 125rem 2rem;
-      transform: rotateX(53deg) scale(1.8) translateZ(43px);
-      -webkit-transform: rotateX(53deg) scale(1.8) translateZ(43px);
+      -webkit-background-size: 2rem 125rem, 125rem 2rem;
+      transform: rotate3d(1, 0, 0, 53deg) scale(1.8) translateZ(43px);
+      -webkit-transform: rotate3d(1, 0, 0, 53deg) scale(1.8) translateZ(43px);
       transform-style: preserve-3d;
       -webkit-transform-style: preserve-3d;
       transform-origin: center;
       -webkit-transform-origin: center;
+      background-position-y: 0%;
+      -webkit-background-position-y: 0%;
 
       animation: grid calc(var(--base-speed) * 1) linear infinite;
       -webkit-animation: grid calc(var(--base-speed) * 1) linear infinite;
