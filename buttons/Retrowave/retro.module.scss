@@ -209,6 +209,8 @@
     perspective-origin: center;
     transform: translateZ(0);
     transform-origin: center;
+    --webkit-transform: translateZ(0);
+    --webkit-transform-origin: center;
     // transform-style: preserve-3d;
 
     flex: 0 0 12.5rem;
@@ -232,7 +234,9 @@
         );
       background-size: 2rem 125rem, 125rem 2rem;
       transform: rotateX(53deg) scale(1.8) translateZ(43px);
+      --webkit-transform: rotateX(53deg) scale(1.8) translateZ(43px);
       transform-origin: center;
+      --webkit-transform-origin: center;
       transform-style: preserve-3d;
 
       animation: grid calc(var(--base-speed) * 1) linear infinite;
