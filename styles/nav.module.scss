@@ -42,6 +42,7 @@
 
   h5 {
     color: $color-accent;
+    font-weight: $font-weight-400;
     transform: translateX(0.5rem);
 
     transition: color $animation-duration-short $animation-easing,

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^13.3.1",
     "@radix-ui/react-tooltip": "^1.0.5",
     "@react-three/drei": "^9.65.3",
     "@react-three/fiber": "^8.12.1",

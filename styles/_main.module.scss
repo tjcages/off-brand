@@ -19,14 +19,14 @@
 
   h2 {
     font-size: $font-size-500;
-    font-weight: $font_weight_300;
+    font-weight: $font_weight_400;
 
     color: $color_800;
   }
 
   h3 {
     font-size: $font-size-300;
-    font-weight: $font_weight_300;
+    font-weight: $font_weight_200;
 
     color: $color_800;
   }
@@ -42,7 +42,7 @@
 
   h5 {
     font-size: $font-size-150;
-    font-weight: $font_weight_300;
+    font-weight: $font_weight_200;
     line-height: 1.2em;
 
     color: $color_600;
@@ -94,5 +94,9 @@
 
   button {
     cursor: pointer;
+  }
+
+  a {
+    font-weight: $font-weight-400;
   }
 }

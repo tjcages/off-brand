@@ -5,15 +5,14 @@ import "@/styles/__highlight.css";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter } from "next/font/google";
+import Sohne from "@/public/fonts/Sohne";
 import styles from "@/styles/_main.module.scss";
-const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Script src="https://js.stripe.com/v3/buy-button.js" />
-      <main className={`${inter.className} ${styles.main}`}>
+      <main className={`${Sohne.className} ${styles.main}`}>
         <Component {...pageProps} />
       </main>
       <Analytics />

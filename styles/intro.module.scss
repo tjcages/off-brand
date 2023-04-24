@@ -79,7 +79,7 @@
         img {
           display: inline;
           opacity: 1;
-          transform: rotate(180deg) scaleX(100%) translateX(4px);
+          transform: rotate(180deg) scaleX(100%) translate(4px, -2px);
         }
 
         &:after {
@@ -93,7 +93,7 @@
         right: 0;
         
         opacity: 0;
-        transform: rotate(180deg) scaleX(0%) translateX(4px);
+        transform: rotate(180deg) scaleX(0%) translate(4px, -2px);
 
         transition: opacity $animation-duration-short $animation-easing,
           transform $animation-duration-short $animation-easing;
