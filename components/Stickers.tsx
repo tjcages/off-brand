@@ -60,7 +60,7 @@ const _ = () => {
   const images = [
     {
       src: "/stickers/stripe.png",
-      size: getSize(mobile ? 0.4 : 0.3, 250),
+      size: getSize(mobile ? 0.35 : 0.3, 250),
       translate: `translate(-50%, ${mobile ? "50%" : "20%"}) rotate(${
         mobile ? "20deg" : "10deg"
       })`,
@@ -70,7 +70,7 @@ const _ = () => {
     },
     {
       src: "/stickers/buybuybuy.png",
-      size: getSize(mobile ? 0.7 : 0.3, mobile ? 600 : 400),
+      size: getSize(mobile ? 0.5 : 0.3, mobile ? 500 : 400),
       translate: `translate(-35%, ${mobile ? "145%" : "95%"}) rotate(${
         mobile ? "-40deg" : "-20deg"
       })`,
@@ -80,7 +80,7 @@ const _ = () => {
     },
     {
       src: "/stickers/copypayste.png",
-      size: getSize(mobile ? 0.7 : 0.3, mobile ? 600 : 400),
+      size: getSize(mobile ? 0.5 : 0.3, mobile ? 500 : 400),
       translate: `translate(${mobile ? "-80%" : "-70%"}, ${
         mobile ? "155%" : "125%"
       }) rotate(40deg)`,
