@@ -81,6 +81,7 @@ function _({
         </div>
 
         <div className={styles.actions}>
+          {/* Code button */}
           <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
               <Tooltip.Trigger asChild>
@@ -105,7 +106,7 @@ function _({
             </Tooltip.Root>
           </Tooltip.Provider>
 
-          <Tooltip.Provider>
+          {/* <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
               <Tooltip.Trigger asChild>
                 <button
@@ -127,7 +128,7 @@ function _({
                 </Tooltip.Content>
               </Tooltip.Portal>
             </Tooltip.Root>
-          </Tooltip.Provider>
+          </Tooltip.Provider> */}
         </div>
       </div>
 

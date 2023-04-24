@@ -8,9 +8,7 @@ import Notes from "@/buttons/Notes";
 import VHS from "@/buttons/VHS";
 import Wavey from "@/buttons/Wavey";
 import Aqua from "@/buttons/Aqua";
-// import BubbleGum from "@/buttons/BubbleGum";
 import MusicPlayer from "@/buttons/MusicPlayer";
-// import BananaSplit from "@/buttons/BananaSplit";
 import Retrowave from "@/buttons/Retrowave";
 import Paint from "@/buttons/Paint";
 import DVD from "@/buttons/DVD";
@@ -25,9 +23,7 @@ import NotesStyles from "@/buttons/Notes/style.module.scss";
 import VHSStyles from "@/buttons/VHS/style.module.scss";
 import WaveyStyles from "@/buttons/Wavey/style.module.scss";
 import AquaStyles from "@/buttons/Aqua/style.module.scss";
-// import BubbleGumStyles from "@/buttons/BubbleGum/style.module.scss";
 import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
-// import BananaSplitStyles from "@/buttons/BananaSplit/style.module.scss";
 import RetrowaveStyles from "@/buttons/Retrowave/style.module.scss";
 import PaintStyles from "@/buttons/Paint/style.module.scss";
 import DVDStyles from "@/buttons/DVD/style.module.scss";
@@ -146,15 +142,6 @@ const _ = [
     background: "#ffcc99",
     style: NyanCatStyles,
   },
-  // {
-  //   id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3Qz",
-  //   name: "BubbleGum Button",
-  //   cta: "Buy Now",
-  //   Scene: BubbleGum,
-  //   color: "white",
-  //   background: "#CA75E6",
-  //   style: BubbleGumStyles,
-  // },
   {
     live: false,
     id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
@@ -166,15 +153,6 @@ const _ = [
     background: "#ffcdfa",
     style: MusicPlayerStyles,
   },
-  // {
-  //   id: "fasdfa",
-  //   name: "Banana Split",
-  //   cta: "Go Bananas",
-  //   Scene: BananaSplit,
-  //   color: "black",
-  //   background: "#ffbf40",
-  //   style: BananaSplitStyles,
-  // },
   {
     live: false,
     id: "fadsfsdafdsafasd",

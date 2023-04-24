@@ -15,12 +15,19 @@
 }
 
 .button {
+  $change: false;
+
+  position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 0.5rem;
   overflow: hidden;
 
   animation: 40s linear bounce infinite running;
+
+  @if $change {
+    opacity: 0;
+  }
 }
 
 .info {
@@ -44,7 +51,6 @@
     color: 0,
   );
   $count: 56;
-  $shouldUpdateColor: false;
   @for $i from 0 through $count {
     $percent: 0% + $i / $count * 100;
     #{$percent} {
@@ -52,6 +58,11 @@
         calc(#{map-get($b, x)} * (100% - 288px)),
         calc(#{map-get($b, y)} * (90% - 44px))
       );
+      // filter: hue-rotate(#{map-get($b, color)}deg)
+      //   saturate(200%)
+      //   brightness(125%);
+    }
+    0% {
       filter: hue-rotate(#{map-get($b, color)}deg)
         saturate(200%)
         brightness(125%);
@@ -63,33 +74,20 @@
         y: max(0, min(1, map-get($b, y) + map-get($b, vy))),
       )
     );
-    $changed: false;
     @if map-get($b, x) >= 1 or map-get($b, x) <= 0 {
       $b: map-merge(
         $b,
         (
           vx: map-get($b, vx) * -1,
+          color: map-get($b, color) + 137.5,
         )
       );
-      $changed: true;
     }
     @if map-get($b, y) >= 1 or map-get($b, y) <= 0 {
       $b: map-merge(
         $b,
         (
           vy: map-get($b, vy) * -1,
-        )
-      );
-      $changed: true;
-    }
-    @if $changed {
-      $shouldUpdateColor: true;
-    }
-    @elseif $shouldUpdateColor {
-      $shouldUpdateColor: false;
-      $b: map-merge(
-        $b,
-        (
           color: map-get($b, color) + 137.5,
         )
       );

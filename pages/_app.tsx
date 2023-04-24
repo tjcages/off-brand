@@ -1,4 +1,4 @@
-import "@/styles/_globals.css";
+import "@/styles/__globals.css";
 import "@/styles/__tooltip.css";
 import "@/styles/__highlight.css";
 

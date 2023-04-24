@@ -17,7 +17,7 @@ const _ = () => {
           buy button{" "}
           <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
         </Link>
-        . Try one and we’ll send you a surprise!
+        . Try one today and we’ll send you a surprise!
       </h4>
     </div>
   );

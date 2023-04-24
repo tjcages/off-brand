@@ -97,6 +97,7 @@ const _ = () => {
           const rotate = useTransform(x, [-150, 150], [-40, 40]);
           return (
             <motion.div
+              key={image.src}
               className={styles.sticker}
               animate={controls}
               variants={{

@@ -1,13 +1,19 @@
+import { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 
 const Pixels = () => {
+  const [ready, set] = useState(false);
   const pixels = Array.from(Array(130).keys());
 
   const randomNumber = (min = 0, max = 1) => {
     return Math.random() * (max - min) + min;
   };
 
-  return (
+  useEffect(() => {
+    set(true);
+  }, []);
+
+  return ready ? (
     <svg
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +54,7 @@ const Pixels = () => {
       </pattern>
       <rect x="0" y="0" width="100%" height="100%" fill="url(#dot-grid)"></rect>
     </svg>
-  );
+  ) : null;
 };
 
 export default Pixels;
