@@ -209,7 +209,6 @@
     perspective-origin: center;
     transform: translateZ(0);
     transform-origin: center;
-    transform-style: preserve-3d;
 
     flex: 0 0 12.5rem;
     position: relative;
@@ -232,7 +231,7 @@
           transparent var(--line-width)
         );
       background-size: 2rem 125rem, 125rem 2rem;
-      transform: rotate3d(1, 0, 0, 53deg) scale(1.8) translateZ(43px);
+      transform: perspective(14.5rem) rotateX(53deg) scale(1.8) translateZ(43px);
       background-position-y: 0%;
 
       animation: grid calc(var(--base-speed) * 1) linear infinite;
