@@ -97,6 +97,8 @@ const _ = () => {
         style={{ maxWidth: width }}
         onMouseEnter={() => hovering(true)}
         onMouseLeave={() => hovering(false)}
+        onTouchStart={() => hovering(true)}
+        onTouchEnd={() => hovering(false)}
       >
         {images.map((image) => {
           const x = useMotionValue(0);
