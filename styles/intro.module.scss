@@ -14,26 +14,6 @@
 
   padding-top: 20vh;
 
-  strong {
-    color: $color-accent;
-
-    text-align: center;
-
-    background: linear-gradient(
-      to right,
-      $color-accent 20%,
-      $color-accent-secondary 40%,
-      $color-accent-secondary 60%,
-      $color-accent 80%
-    );
-    background-size: 200% auto;
-
-    color: transparent;
-    background-clip: text;
-
-    animation: shine 5s linear infinite;
-  }
-
   h2 {
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, black);
     filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
@@ -50,7 +30,7 @@
     color: transparent;
     background-clip: text;
 
-    animation: shine 5s linear infinite;
+    animation: shine 4s linear infinite;
   }
 
   h4 {

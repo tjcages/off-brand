@@ -1,7 +1,9 @@
 import { useRef, useEffect } from "react";
+import { useMedia, mobileBreakpoint } from "@/modules/useMedia";
 import styles from "./style.module.scss";
 
 const _: React.FC = () => {
+  const mobile = useMedia(mobileBreakpoint);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const copiesRef = useRef<NodeListOf<HTMLDivElement> | null>(null);
   const mouse = useRef({ x: 0, y: 0 });
@@ -31,12 +33,14 @@ const _: React.FC = () => {
   };
 
   const fakeMousePosition = (t: number) => {
-    distanceFromCenter.current.x = Math.sin(t / 500) * window.innerWidth * 0.5;
-    distanceFromCenter.current.y = Math.cos(t / 500) * window.innerWidth * 0.2;
+    distanceFromCenter.current.x =
+      Math.sin(t / 500) * window.innerWidth * (mobile ? 2.0 : 0.5);
+    distanceFromCenter.current.y =
+      Math.cos(t / 500) * window.innerWidth * (mobile ? 2.0 : 0.2);
   };
 
   const updateTextPosition = (t: number) => {
-    if (simulateMouseMovement.current) fakeMousePosition(t);
+    if (simulateMouseMovement.current || mobile) fakeMousePosition(t);
 
     lerpV2(distanceLerped.current, distanceFromCenter.current);
 
@@ -85,9 +89,9 @@ const _: React.FC = () => {
       document.removeEventListener("mousemove", trackMousePosition);
       window.removeEventListener("resize", updateCenter);
     };
-  }, []);
+  }, [mobile]);
 
-  const copies = ["Hello", "Hello", "Hello", "Hello"];
+  const copies = ["", "", "", ""];
 
   return (
     <div

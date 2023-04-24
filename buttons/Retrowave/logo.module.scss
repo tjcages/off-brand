@@ -20,8 +20,15 @@
     transform: rotate(1deg);
     filter: drop-shadow(0 0 15px var(--labs-sys-color-triangle));
     perspective: 1000px;
+    perspective-origin: center;
 
     animation: triangle 10s linear infinite;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        top: 50%;
+      }
+    }
   }
   .triangle:after {
     content: "";
