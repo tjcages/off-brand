@@ -202,7 +202,7 @@
 
   // 🏁
   .bottom {
-    display: block;
+    display: inline-block;
     background: inherit;
 
     perspective: 14.5rem;
@@ -221,7 +221,7 @@
     &:before {
       content: "";
       position: absolute;
-      display: block;
+      display: inline-block;
       inset: 0;
       --line-width: 0.0635rem;
       background-image: linear-gradient(
