@@ -94,7 +94,6 @@ const _ = () => {
     <div className={styles.main}>
       <div
         className={styles.container}
-        style={{ maxWidth: width }}
         onMouseEnter={() => hovering(true)}
         onMouseLeave={() => hovering(false)}
         onTouchStart={() => hovering(true)}

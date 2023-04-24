@@ -13,6 +13,8 @@
   min-height: fit-content;
   padding: 2rem 4rem;
 
+  user-select: none;
+
   @media only screen and (max-width: 768px) {
     & {
       padding: 2rem;
@@ -33,6 +35,8 @@
 
   min-height: fit-content;
   padding: 2rem 4rem;
+
+  user-select: none;
 
   @media only screen and (max-width: 768px) {
     & {
