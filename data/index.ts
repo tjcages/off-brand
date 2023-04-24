@@ -160,7 +160,7 @@ const _ = [
     id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
     name: "Rick Astley Button",
     cta: "Buy",
-    href: "https://www.youtube.com/watch?v=p7YXXieghto",
+    href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     Scene: MusicPlayer,
     color: "black",
     background: "#ffcdfa",

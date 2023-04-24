@@ -43,16 +43,19 @@
     height: 60vh;
     pointer-events: none;
     user-select: none;
-    background-image: conic-gradient(
-        from 90deg at 70% 50%,
-        $color-100,
-        #635BFF
-      ),
-      conic-gradient(
-        from 270deg at 30% 50%,
-        #635BFF,
-        $color-100
-      );
+    background-image: conic-gradient(from 90deg at 70% 50%, $color-100, #635bff),
+      conic-gradient(from 270deg at 30% 50%, #635bff, $color-100);
+
+    @media only screen and (max-width: 768px) {
+      & {
+        background-image: conic-gradient(
+            from 90deg at 40% 50%,
+            $color-100,
+            #635bff
+          ),
+          conic-gradient(from 270deg at 60% 50%, #635bff, $color-100);
+      }
+    }
     mask-image: radial-gradient(100% 50% at center center, black, transparent);
     background-position-x: 0%, 100%;
     background-position-y: 0%, 0%;
@@ -89,11 +92,5 @@
 
       opacity: 0.1;
     }
-
-    // @media only screen and (max-width: 768px) {
-    //   & {
-    //     transform: scaleX(150%);
-    //   }
-    // }
   }
 }

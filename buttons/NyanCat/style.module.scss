@@ -17,6 +17,9 @@
     object-fit: cover;
 
     margin-bottom: 75px;
+
+    user-select: none;
+    pointer-events: none;
   }
 
   background-color: #003366;

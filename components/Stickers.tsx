@@ -5,11 +5,11 @@ import {
   useTransform,
   useAnimationControls,
 } from "framer-motion";
-import { useMedia, mobileBreakpoint } from "@/modules/useMedia"
+import { useMedia, mobileBreakpoint } from "@/modules/useMedia";
 import styles from "@/styles/stickers.module.scss";
 
 const _ = () => {
-  const mobile = useMedia(mobileBreakpoint)
+  const mobile = useMedia(mobileBreakpoint);
   const [width, setWidth] = useState(0);
   const [hover, hovering] = useState<boolean | null>(null);
 
@@ -53,9 +53,13 @@ const _ = () => {
   const images = [
     {
       src: "/stickers/stripe.png",
-      size: getSize(mobile ? 0.5 : 0.3, 250),
-      translate: "translate(-50%, 20%) rotate(10deg)",
-      translateHover: `translate(-50%, ${mobile ? "-20%" : "-50%"}) rotate(-10deg)`,
+      size: getSize(mobile ? 0.4 : 0.3, 250),
+      translate: `translate(-50%, ${mobile ? "50%" : "20%"}) rotate(${
+        mobile ? "20deg" : "10deg"
+      })`,
+      translateHover: `translate(-50%, ${
+        mobile ? "-20%" : "-50%"
+      }) rotate(-10deg)`,
     },
     // {
     //   src: "/stickers/buy-circle.png",
@@ -66,14 +70,22 @@ const _ = () => {
     {
       src: "/stickers/buybuybuy.png",
       size: getSize(mobile ? 0.7 : 0.3, mobile ? 600 : 400),
-      translate: `translate(-35%, 95%) rotate(${mobile ? "-40deg" : "-20deg"})`,
-      translateHover: `translate(5%, ${mobile ? "75%" : "15%"}) rotate(-10deg)`,
+      translate: `translate(-35%, ${mobile ? "145%" : "95%"}) rotate(${
+        mobile ? "-40deg" : "-20deg"
+      })`,
+      translateHover: `translate(${mobile ? "-15%" : "5%"}, ${
+        mobile ? "75%" : "15%"
+      }) rotate(${mobile ? "-20deg" : "-10deg"})`,
     },
     {
       src: "/stickers/copypayste.png",
-      size: getSize(mobile ? 0.5 : 0.3, 400),
-      translate: "translate(-70%, 125%) rotate(40deg)",
-      translateHover: "translate(-95%, 15%) rotate(30deg)",
+      size: getSize(mobile ? 0.7 : 0.3, mobile ? 600 : 400),
+      translate: `translate(${mobile ? "-80%" : "-70%"}, ${
+        mobile ? "155%" : "125%"
+      }) rotate(40deg)`,
+      translateHover: `translate(${mobile ? "-85%" : "-95%"}, ${
+        mobile ? "95%" : "15%"
+      }) rotate(${mobile ? "20deg" : "30deg"})`,
     },
   ];
 
