@@ -247,10 +247,12 @@
   @keyframes grid {
     from {
       background-position-y: -30rem;
+      -webkit-background-position-y: -30rem;
     }
 
     to {
       background-position-y: 0%;
+      -webkit-background-position-y: 0%;
     }
   }
 }
