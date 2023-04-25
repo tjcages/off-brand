@@ -20,6 +20,12 @@
     overflow: hidden;
     user-select: none;
 
+    @media only screen and (max-width: 768px) {
+      & {
+        bottom: 36vh;
+      }
+    }
+
     .sticker {
       position: absolute;
       left: 50%;
@@ -63,6 +69,14 @@
     user-select: none;
     background-image: conic-gradient(from 90deg at 70% 50%, $color-100, #635bff),
       conic-gradient(from 270deg at 30% 50%, #635bff, $color-100);
+    mask-image: radial-gradient(100% 50% at center center, black, transparent);
+    background-position-x: 0%, 100%;
+    background-position-y: 0%, 0%;
+    background-size: 50% 100%, 50% 100%;
+    transform-origin: center center;
+    background-repeat: no-repeat;
+
+    transform: rotate(0deg) translate3d(0, -4vh, 0);
 
     @media only screen and (max-width: 768px) {
       & {
@@ -72,16 +86,9 @@
             #635bff
           ),
           conic-gradient(from 270deg at 60% 50%, #635bff, $color-100);
+        transform: rotate(0deg) translate3d(0, -6vh, 0);
       }
     }
-    mask-image: radial-gradient(100% 50% at center center, black, transparent);
-    background-position-x: 0%, 100%;
-    background-position-y: 0%, 0%;
-    background-size: 50% 100%, 50% 100%;
-    transform-origin: center center;
-    background-repeat: no-repeat;
-
-    transform: rotate(0deg) translate3d(0, -4vh, 0);
 
     &:before {
       content: "";

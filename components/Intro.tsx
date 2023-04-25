@@ -53,7 +53,13 @@ const _ = () => {
             buy button
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>
-          , customize it to match your brand, and go live.{mobile && <br />}{" "}
+          , customize it to match your brand, and go live.
+          {mobile && (
+            <>
+              <br />
+              <br />
+            </>
+          )}{" "}
           Here are a few ideas to get you started—try them out (and we might
           send you a <span>surprise</span>).
         </motion.h4>
