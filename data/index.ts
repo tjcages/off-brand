@@ -108,8 +108,8 @@ const _ = [
 `,
   },
   {
-    live: false,
-    id: "buy_btn_1Mua08FJ65Wq6yQASu6arx3assQz",
+    live: true,
+    id: "buy_btn_1N0ta2JWmqHDfKfmu7Aw4Sub",
     name: "Windows 95 Button",
     cta: "Buy",
     Scene: Windows98,
@@ -139,7 +139,7 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1Mu04wJ65Wq6yQASkdrjHUXX",
+    id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
     name: "DVD Button",
     cta: "Buy",
     Scene: DVD,
@@ -148,8 +148,8 @@ const _ = [
     style: DVDStyles,
   },
   {
-    live: false,
-    id: "buy_btn_1Mu080FJ65Wq6yQASu6arx3Qz",
+    live: true,
+    id: "buy_btn_1N0qT8JWmqHDfKfmh3bo3ZxR",
     name: "Music Player Button",
     cta: "Buy",
     href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -159,8 +159,8 @@ const _ = [
     style: MusicPlayerStyles,
   },
   {
-    live: false,
-    id: "buy_bftn_1Mud0fsda8FJ65Wq6yQASu6arx3assQz",
+    live: true,
+    id: "buy_btn_1N0tVkJWmqHDfKfmKiy180cH",
     name: "VHS Button",
     cta: "Buy",
     Scene: VHS,
@@ -179,8 +179,8 @@ const _ = [
     style: NyanCatStyles,
   },
   {
-    live: false,
-    id: "fadsfsdafdsafasd",
+    live: true,
+    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
     name: "Retrowave Button",
     cta: "Buy",
     Scene: Retrowave,

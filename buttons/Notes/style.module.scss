@@ -162,12 +162,6 @@
   border-radius: 0.5rem;
   overflow: hidden;
 
-  &:hover {
-    &:after {
-      opacity: 1;
-    }
-  }
-
   &:after {
     content: "";
     position: absolute;
@@ -178,7 +172,6 @@
 
     border: 2px dashed black;
     border-radius: 0.4rem;
-    opacity: 0;
     pointer-events: none;
   }
 }

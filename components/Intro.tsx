@@ -44,7 +44,8 @@ const _ = () => {
             delay: 0.2,
           }}
         >
-          The fastest way to add Stripe to your site. Turn a payment link into a{" "}
+          The fastest way to add Stripe to your site. {mobile && <br />}Turn a
+          payment link into a{" "}
           <Link
             href="https://stripe.com/docs/payment-links/share#embed-button"
             target="_blank"

@@ -174,13 +174,6 @@
 .button {
   border: 2px solid black;
   border-radius: 0.5rem;
-  // overflow: hidden;
-
-  &:hover {
-    .wrapper {
-      background-color: rgba(80, 126, 226, 0.4);
-    }
-  }
 
   .wrapper {
     position: absolute;

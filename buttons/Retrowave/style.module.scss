@@ -34,28 +34,16 @@
   cursor: pointer;
   pointer-events: all;
 
-  transition: transform $animation-duration-short $animation-easing;
-
-  &:hover {
-    transform: translate(-2px, -2px);
-
-    &:after {
-      transform: translate(4px, 4px);
-    }
-  }
-
   &:after {
     content: "";
     position: absolute;
     top: 0.25rem;
     left: 0.25rem;
     right: -0.25rem;
-    bottom: -0.25rem;
+    bottom: 0rem;
 
     border: 1px solid white;
     pointer-events: none;
-
-    transition: transform $animation-duration-short $animation-easing;
   }
 }
 

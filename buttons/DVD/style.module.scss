@@ -66,11 +66,6 @@
         calc(#{map-get($b, x)} * (100% - 288px)),
         calc(#{map-get($b, y)} * (90% - 44px))
       );
-      // filter: hue-rotate(#{map-get($b, color)}deg)
-      //   saturate(200%)
-      //   brightness(125%);
-    }
-    0% {
       filter: hue-rotate(#{map-get($b, color)}deg)
         saturate(200%)
         brightness(125%);
