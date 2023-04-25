@@ -22,56 +22,87 @@
   }
 
   &:hover {
-    .action {
-      h5 {
-        color: $color-700;
-        transform: translateX(0rem);
-      }
-      img {
-        opacity: 1;
-        transform: rotate(180deg) scaleX(100%);
+    .canvas {
+      opacity: 1;
+    }
+    .container {
+      border-color: rgba(56, 56, 56, 0.25);
+      .action {
+        h5 {
+          color: $color-700;
+          transform: translateX(0rem);
+        }
+        img {
+          opacity: 1;
+          transform: rotate(180deg) scaleX(100%);
+        }
       }
     }
   }
 
-  h3 {
-    line-height: 2em; // prevent clipping shadow
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
-    filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
+  .canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    opacity: 0.3;
+
+    transition: opacity $animation-duration $animation-easing;
   }
 
-  .action {
+  .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 0.25rem;
 
-    min-height: fit-content;
-    padding: 1rem 4rem;
+    padding: 1rem 0;
+    backdrop-filter: blur(5px);
+    border: 1px dashed rgba(56, 56, 56, 0.1);
 
-    user-select: none;
+    transition: border-color $animation-duration $animation-easing;
 
-    @media only screen and (max-width: 768px) {
-      & {
-        padding: 2rem 1.5rem 2rem 2rem;
+    h3 {
+      line-height: 2em; // prevent clipping shadow
+      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
+      filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
+    }
+
+    .action {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.25rem;
+
+      min-height: fit-content;
+      padding: 1rem 4rem;
+
+      user-select: none;
+
+      @media only screen and (max-width: 768px) {
+        & {
+          padding: 2rem 1.5rem 2rem 2rem;
+        }
       }
-    }
 
-    h5 {
-      color: $color-accent;
-      font-weight: $font-weight-400;
-      transform: translateX(0.5rem);
+      h5 {
+        color: $color-accent;
+        font-weight: $font-weight-400;
+        transform: translateX(0.5rem);
 
-      transition: color $animation-duration-short $animation-easing,
-        transform $animation-duration-short $animation-easing;
-    }
+        transition: color $animation-duration-short $animation-easing,
+          transform $animation-duration-short $animation-easing;
+      }
 
-    img {
-      opacity: 0;
-      transform: rotate(180deg) scaleX(0%);
+      img {
+        opacity: 0;
+        transform: rotate(180deg) scaleX(0%);
 
-      transition: opacity $animation-duration-short $animation-easing,
-        transform $animation-duration-short $animation-easing;
+        transition: opacity $animation-duration-short $animation-easing,
+          transform $animation-duration-short $animation-easing;
+      }
     }
   }
 }
