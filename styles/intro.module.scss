@@ -38,12 +38,13 @@
     filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.25));
 
     span {
-      background: linear-gradient(
-        to right,
-        $color-accent 20%,
-        $color-accent-secondary 40%,
-        $color-accent-secondary 60%,
-        $color-accent 80%
+      background: radial-gradient(
+        circle at 50% 0,
+        $color-accent-secondary 0%,
+        $color-accent 30%,
+        $color-accent 50%,
+        $color-accent 70%,
+        $color-accent-secondary 100%
       );
       background-size: 200% auto;
 
