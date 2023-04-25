@@ -1,3 +1,5 @@
+@import "./_variables";
+
 .main {
   position: relative;
 
@@ -16,6 +18,60 @@
   @media only screen and (max-width: 768px) {
     & {
       width: 100%;
+    }
+  }
+
+  &:hover {
+    .action {
+      h5 {
+        color: $color-700;
+        transform: translateX(0rem);
+      }
+      img {
+        opacity: 1;
+        transform: rotate(180deg) scaleX(100%);
+      }
+    }
+  }
+
+  h3 {
+    line-height: 2em; // prevent clipping shadow
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
+    filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
+  }
+
+  .action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+
+    min-height: fit-content;
+    padding: 1rem 4rem;
+
+    user-select: none;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        padding: 2rem 1.5rem 2rem 2rem;
+      }
+    }
+
+    h5 {
+      color: $color-accent;
+      font-weight: $font-weight-400;
+      transform: translateX(0.5rem);
+
+      transition: color $animation-duration-short $animation-easing,
+        transform $animation-duration-short $animation-easing;
+    }
+
+    img {
+      opacity: 0;
+      transform: rotate(180deg) scaleX(0%);
+
+      transition: opacity $animation-duration-short $animation-easing,
+        transform $animation-duration-short $animation-easing;
     }
   }
 }

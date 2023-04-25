@@ -31,6 +31,14 @@
 }
 
 .info {
+  background-image: radial-gradient(rgba(17, 17, 17, 0) 1px, #111111 1px);
+  background-size: 4px 4px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+  font-size: 14px;
+  line-height: 14px;
+
   h5 {
     color: white;
   }

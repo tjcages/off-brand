@@ -63,49 +63,12 @@ const _ = [
   },
   {
     live: false,
-    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3lsQzs",
-    name: "The Hover Button",
-    cta: "Buy",
-    Scene: Hover,
-    color: "white",
-    background: "#CA75E6",
-    style: HoverStyles,
-    indexCode: `
-<!-- Insert in head -->
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<!-- Insert on page -->
-<div class="button-wrapper">
-  <stripe-buy-button
-    buy-button-id="your_buy_button_id_here"
-    publishable-key="your_publishable_key_here"
-  >
-  </stripe-buy-button>
-</div>
-`,
-    styleCode: `
-.buttonWrapper {
-  overflow: hidden;
-  box-shadow: rgba(202, 117, 230, 0.4) 0px 10px 20px, rgba(202, 117, 230, 0.3) 0px 6px 6px;
-  transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.35s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.buttonWrapper:hover {
-  transform: translateY(-4px);
-  box-shadow: rgba(202, 117, 230, 0.6) 0px 19px 38px, rgba(202, 117, 230, 0.5) 0px 15px 12px;
-}
-`,
-  },
-  {
-    live: false,
     id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3assQz",
     name: "Marching Ants Button",
     cta: "Buy",
     Scene: Digital,
-    color: "black",
-    background: "#eceff2",
+    color: "#eceff2",
+    background: "#111111",
     style: DigitalStyles,
     indexCode: `
 <!-- Insert in head -->
@@ -170,6 +133,43 @@ const _ = [
   }
 }
     `,
+  },
+  {
+    live: false,
+    id: "buy_btn_1Mu08FJ65Wq6yQASu6arx3lsQzs",
+    name: "The Hover Button",
+    cta: "Buy",
+    Scene: Hover,
+    color: "white",
+    background: "#CA75E6",
+    style: HoverStyles,
+    indexCode: `
+<!-- Insert in head -->
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<!-- Insert on page -->
+<div class="button-wrapper">
+  <stripe-buy-button
+    buy-button-id="your_buy_button_id_here"
+    publishable-key="your_publishable_key_here"
+  >
+  </stripe-buy-button>
+</div>
+`,
+    styleCode: `
+.buttonWrapper {
+  overflow: hidden;
+  box-shadow: rgba(202, 117, 230, 0.4) 0px 10px 20px, rgba(202, 117, 230, 0.3) 0px 6px 6px;
+  transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.buttonWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: rgba(202, 117, 230, 0.6) 0px 19px 38px, rgba(202, 117, 230, 0.5) 0px 15px 12px;
+}
+`,
   },
   {
     live: false,
