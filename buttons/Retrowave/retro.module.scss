@@ -231,12 +231,19 @@
           transparent var(--line-width)
         );
       background-size: 2rem 125rem, 125rem 2rem;
-      transform: perspective(14.5rem) rotateX(53deg) scale(1.8) translateZ(43px);
+      transform: rotateX(53deg) scale(1.8) translateZ(43px);
       background-position-y: 0%;
 
       animation: grid calc(var(--base-speed) * 1) linear infinite;
       border-top: 1px solid var(--labs-sys-color-grid);
       filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
+
+      @media only screen and (max-width: 768px) {
+        & {
+          transform: perspective(14.5rem) rotateX(53deg) scale(1.8)
+            translateZ(43px);
+        }
+      }
     }
   }
 

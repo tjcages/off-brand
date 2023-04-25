@@ -10,9 +10,16 @@
   gap: 0.5rem;
 
   width: 100%;
-  min-height: 50vh;
+  min-height: max(55vh, 464px);
 
   padding-top: 20vh;
+
+  @media only screen and (max-width: 768px) {
+    & {
+      min-height: max(45vh, 424px);
+      padding-top: 22.5vh;
+    }
+  }
 
   .container {
     overflow: hidden;

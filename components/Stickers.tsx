@@ -96,7 +96,9 @@ const _ = ({ live }: Props) => {
       src: "/stickers/sold-out.png",
       size: getSize(mobile ? 0.7 : 0.4, mobile ? 800 : 500),
       translate: `translate(-50%, ${mobile ? "90%" : "20%"}) rotate(3deg)`,
-      translateHover: `translate(-50%, ${mobile ? "80%" : "20%"}) rotate(-3deg)`,
+      translateHover: `translate(-50%, ${
+        mobile ? "80%" : "20%"
+      }) rotate(-3deg)`,
     },
   ];
 
