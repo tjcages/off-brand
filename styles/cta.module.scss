@@ -26,30 +26,25 @@
       opacity: 1;
     }
     .container {
-      border-color: rgba(56, 56, 56, 0.25);
-      .action {
-        h5 {
+      border-color: rgba(56, 56, 56, 0.4);
+
+      h4 {
+        .docs {
           color: $color-700;
-          transform: translateX(0rem);
-        }
-        img {
-          opacity: 1;
-          transform: rotate(180deg) scaleX(100%);
+          padding-right: 1.25rem;
+
+          img {
+            display: inline;
+            opacity: 1;
+            transform: rotate(180deg) scaleX(100%) translate(4px, -2px);
+          }
+
+          &:after {
+            background-color: $color-700;
+          }
         }
       }
     }
-  }
-
-  .canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    opacity: 0.3;
-
-    transition: opacity $animation-duration $animation-easing;
   }
 
   .container {
@@ -58,9 +53,11 @@
     justify-content: center;
     align-items: center;
 
+    width: 80%;
+    height: 80%;
     padding: 1rem;
     backdrop-filter: blur(5px);
-    border: 1px dashed rgba(56, 56, 56, 0.1);
+    border: 1px dashed rgba(56, 56, 56, 0.2);
 
     transition: border-color $animation-duration $animation-easing;
 
@@ -82,21 +79,6 @@
 
         transition: color $animation-duration-short $animation-easing,
           padding-right $animation-duration-short $animation-easing;
-
-        &:hover {
-          color: $color-700;
-          padding-right: 1.25rem;
-
-          img {
-            display: inline;
-            opacity: 1;
-            transform: rotate(180deg) scaleX(100%) translate(4px, -2px);
-          }
-
-          &:after {
-            background-color: $color-700;
-          }
-        }
 
         img {
           position: absolute;

@@ -53,8 +53,8 @@ const _ = () => {
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>
           , customize it to match your brand, and go live.{mobile && <br />}{" "}
-          Here are a few ideas to get you started—try them out{" "}
-          <span>(and we might send you a surprise)</span>.
+          Here are a few ideas to get you started—try them out (and we might
+          send you a <span>surprise</span>).
         </motion.h4>
       </div>
     </div>
