@@ -16,6 +16,7 @@ export default function Home() {
   return (
     <>
       <SEO />
+      
       <main className={styles.main}>
         <Guides />
         <Stickers live={live} />

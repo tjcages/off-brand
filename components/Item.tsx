@@ -115,6 +115,7 @@ function _({
         </Tooltip.Provider>
       </div>
 
+      {/* Code snippet */}
       <div
         className={`${styles.codeSnippet} ${showCode ? styles.visible : ""}`}
       >
@@ -155,13 +156,15 @@ function _({
             </div>
           </div>
           <div className={styles.code}>
-            <SyntaxHighlighter
-              language={index ? "html" : "css"}
-              useInlineStyles={false}
-              showLineNumbers
-            >
-              {defaultCode}
-            </SyntaxHighlighter>
+            {showCode && (
+              <SyntaxHighlighter
+                language={index ? "html" : "css"}
+                useInlineStyles={false}
+                showLineNumbers
+              >
+                {defaultCode}
+              </SyntaxHighlighter>
+            )}
           </div>
         </div>
 

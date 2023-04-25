@@ -47,18 +47,18 @@ const _ = [
     color: "white",
     background: "#635BFF",
     style: TheButtonStyles,
-    indexCode: `
-<!-- Insert in head -->
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<!-- Insert on page -->
-<stripe-buy-button
-  buy-button-id="your_buy_button_id_here"
-  publishable-key="your_publishable_key_here"
->
-</stripe-buy-button>
+    indexCode: `<body>
+  <!-- Paste your embed code script here. -->
+  <script
+    async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+  <stripe-buy-button
+    buy-button-id="{{BUY_BUTTON_ID}}"
+    publishable-key="pk_live_your_publishable_key"
+  >
+  </stripe-buy-button>
+</body>  
 `,
   },
   {
@@ -70,18 +70,18 @@ const _ = [
     color: "#eceff2",
     background: "transparent",
     style: DigitalStyles,
-    indexCode: `
-<!-- Insert in head -->
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<!-- Insert on page -->
-<stripe-buy-button
-  buy-button-id="your_buy_button_id_here"
-  publishable-key="your_publishable_key_here"
->
-</stripe-buy-button>
+    indexCode: `<body>
+  <!-- Paste your embed code script here. -->
+  <script
+    async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+  <stripe-buy-button
+    buy-button-id="{{BUY_BUTTON_ID}}"
+    publishable-key="pk_live_your_publishable_key"
+  >
+  </stripe-buy-button>
+</body>  
     `,
   },
   {
@@ -93,18 +93,18 @@ const _ = [
     color: "white",
     background: "#CA75E6",
     style: HoverStyles,
-    indexCode: `
-<!-- Insert in head -->
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<!-- Insert on page -->
-<stripe-buy-button
-  buy-button-id="your_buy_button_id_here"
-  publishable-key="your_publishable_key_here"
->
-</stripe-buy-button>
+    indexCode: `<body>
+  <!-- Paste your embed code script here. -->
+  <script
+    async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+  <stripe-buy-button
+    buy-button-id="{{BUY_BUTTON_ID}}"
+    publishable-key="pk_live_your_publishable_key"
+  >
+  </stripe-buy-button>
+</body>  
 `,
   },
   {
