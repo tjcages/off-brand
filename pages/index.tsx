@@ -10,11 +10,13 @@ import Container from "@/components/Container";
 import Item from "@/components/Item";
 import Footer from "@/components/Footer";
 
+const live = true;
+
 export default function Home() {
   return (
     <main className={styles.main}>
       <Guides />
-      <Stickers />
+      <Stickers live={live} />
 
       <Nav />
       <div className={styles.container}>

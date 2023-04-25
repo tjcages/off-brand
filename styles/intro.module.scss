@@ -19,22 +19,8 @@
   }
 
   h2 {
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, black);
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
     filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
-
-    background: linear-gradient(
-      to right,
-      $color-700 20%,
-      $color-500 40%,
-      $color-500 60%,
-      $color-700 80%
-    );
-    background-size: 200% auto;
-
-    color: transparent;
-    background-clip: text;
-
-    animation: shine 4s linear infinite;
   }
 
   h4 {
@@ -75,7 +61,7 @@
         position: absolute;
         top: 8px;
         right: 0;
-        
+
         opacity: 0;
         transform: rotate(180deg) scaleX(0%) translate(4px, -2px);
 

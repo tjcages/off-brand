@@ -8,7 +8,11 @@ import {
 import { useMedia, mobileBreakpoint } from "@/modules/useMedia";
 import styles from "@/styles/stickers.module.scss";
 
-const _ = () => {
+interface Props {
+  live?: boolean;
+}
+
+const _ = ({ live }: Props) => {
   const mobile = useMedia(mobileBreakpoint);
   const [loaded, setLoaded] = useState(false);
   const [width, setWidth] = useState(0);
@@ -88,6 +92,12 @@ const _ = () => {
         mobile ? "95%" : "15%"
       }) rotate(${mobile ? "20deg" : "30deg"})`,
     },
+    {
+      src: "/stickers/sold-out.png",
+      size: getSize(mobile ? 0.7 : 0.4, mobile ? 800 : 500),
+      translate: `translate(-50%, ${mobile ? "90%" : "20%"}) rotate(3deg)`,
+      translateHover: `translate(-50%, ${mobile ? "80%" : "20%"}) rotate(-3deg)`,
+    },
   ];
 
   return (
@@ -107,7 +117,7 @@ const _ = () => {
           return (
             <motion.div
               key={image.src}
-              className={styles.sticker}
+              className={`${styles.sticker} ${live ? styles.live : ""}`}
               animate={controls}
               variants={{
                 hidden: {
@@ -122,7 +132,7 @@ const _ = () => {
                 damping: 10,
                 stiffness: 200,
                 restDelta: 0.001,
-                delay: hover ? 0 : 0.2,
+                delay: hover ? 0 : 0.8,
                 opacity: { duration: 0, delay: 0 },
               }}
             >

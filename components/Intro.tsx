@@ -12,7 +12,7 @@ const _ = () => {
         <motion.h2
           initial={{
             opacity: 0,
-            y: 20,
+            y: -100,
           }}
           animate={{
             opacity: 1,
@@ -31,7 +31,7 @@ const _ = () => {
         <motion.h4
           initial={{
             opacity: 0,
-            y: 20,
+            y: -100,
           }}
           animate={{
             opacity: 1,
@@ -41,6 +41,7 @@ const _ = () => {
             type: "spring",
             bounce: 0.4,
             duration: 0.8,
+            delay: 0.2,
           }}
         >
           The fastest way to add Stripe to your site. Easily turn any payment
