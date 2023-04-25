@@ -27,13 +27,6 @@
 .button {
   position: relative;
 
-  width: 228px;
-  height: 48px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   cursor: pointer;
   pointer-events: all;
   overflow: hidden;
@@ -52,12 +45,9 @@
     right: 0;
     bottom: 0;
 
-    animation-iteration-count: infinite;
-  }
+    pointer-events: none;
 
-  .cta {
-    font-size: 12px;
-    text-transform: uppercase;
+    animation-iteration-count: infinite;
   }
 }
 

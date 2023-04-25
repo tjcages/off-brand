@@ -34,26 +34,14 @@ function _({
   background,
   color,
   style,
+  indexCode,
+  styleCode,
 }: Props) {
   const [showCode, setShow] = useState(false);
   const [index, setIndex] = useState(true);
   const [copied, setCopy] = useState(false);
 
-  const defaultCode = index
-    ? `import React from "react"
-  
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="your_buy_button_id_here"
-  publishable-key="your_publishable_key_here"
->
-</stripe-buy-button>`
-    : `.main {
-  background-color: red;
-}`;
+  const defaultCode = index ? indexCode || "" : styleCode || "";
 
   useEffect(() => {
     const root = document.getElementById(id);
@@ -135,36 +123,40 @@ function _({
           <div className={styles.title}>
             <strong>Code Snippet</strong>
             <div className={styles.pages}>
-              <button
-                className={`${styles.page} ${index ? styles.selected : ""}`}
-                onClick={() => setIndex(true)}
-              >
-                <Image
-                  src={"/icons/copy.svg"}
-                  alt="copy icon"
-                  width={12}
-                  height={12}
-                />
-                <strong>index.js</strong>
-              </button>
-              <button
-                className={`${styles.page} ${!index ? styles.selected : ""}`}
-                onClick={() => setIndex(false)}
-              >
-                <Image
-                  src={"/icons/copy.svg"}
-                  alt="copy icon"
-                  width={12}
-                  height={12}
-                />
-                <strong>style.css</strong>
-              </button>
+              {indexCode && (
+                <button
+                  className={`${styles.page} ${index ? styles.selected : ""}`}
+                  onClick={() => setIndex(true)}
+                >
+                  <Image
+                    src={"/icons/copy.svg"}
+                    alt="copy icon"
+                    width={12}
+                    height={12}
+                  />
+                  <strong>index.html</strong>
+                </button>
+              )}
+              {styleCode && (
+                <button
+                  className={`${styles.page} ${!index ? styles.selected : ""}`}
+                  onClick={() => setIndex(false)}
+                >
+                  <Image
+                    src={"/icons/copy.svg"}
+                    alt="copy icon"
+                    width={12}
+                    height={12}
+                  />
+                  <strong>style.css</strong>
+                </button>
+              )}
               <div className={styles.page} />
             </div>
           </div>
           <div className={styles.code}>
             <SyntaxHighlighter
-              language={index ? "javascript" : "css"}
+              language={index ? "html" : "css"}
               useInlineStyles={false}
               showLineNumbers
             >
@@ -172,6 +164,8 @@ function _({
             </SyntaxHighlighter>
           </div>
         </div>
+
+        {/* Copy button */}
         <button
           className={`${styles.copy} ${copied ? styles.copied : ""}`}
           onClick={() => copyToClipboard()}
