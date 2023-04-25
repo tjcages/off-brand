@@ -4,7 +4,8 @@ import Digital from "@/buttons/Digital";
 import Windows98 from "@/buttons/Windows98";
 import NyanCat from "@/buttons/NyanCat";
 import Notes from "@/buttons/Notes";
-import VHS from "@/buttons/VHS";
+// import VHS from "@/buttons/VHS";
+import WordArt from "@/buttons/WordArt";
 import MusicPlayer from "@/buttons/MusicPlayer";
 import Retrowave from "@/buttons/Retrowave";
 import Paint from "@/buttons/Paint";
@@ -16,7 +17,8 @@ import DigitalStyles from "@/buttons/Digital/style.module.scss";
 import Windows98Styles from "@/buttons/Windows98/style.module.scss";
 import NyanCatStyles from "@/buttons/NyanCat/style.module.scss";
 import NotesStyles from "@/buttons/Notes/style.module.scss";
-import VHSStyles from "@/buttons/VHS/style.module.scss";
+// import VHSStyles from "@/buttons/VHS/style.module.scss";
+import WordArtStyles from "@/buttons/WordArt/style.module.scss";
 import MusicPlayerStyles from "@/buttons/MusicPlayer/style.module.scss";
 import RetrowaveStyles from "@/buttons/Retrowave/style.module.scss";
 import PaintStyles from "@/buttons/Paint/style.module.scss";
@@ -184,15 +186,38 @@ const _ = [
   </body>  
   `,
   },
+  // {
+  //   live: true,
+  //   id: "buy_btn_1N0tVkJWmqHDfKfmKiy180cH",
+  //   name: "VHS Button",
+  //   cta: "Buy",
+  //   Scene: VHS,
+  //   color: "black",
+  //   background: "white",
+  //   style: VHSStyles,
+  //   indexCode: `<body>
+  //   <!-- Paste your embed code script here. -->
+  //   <script
+  //     async
+  //     src="https://js.stripe.com/v3/buy-button.js">
+  //   </script>
+  //   <stripe-buy-button
+  //     buy-button-id="{{BUY_BUTTON_ID}}"
+  //     publishable-key="pk_live_your_publishable_key"
+  //   >
+  //   </stripe-buy-button>
+  // </body>
+  // `,
+  // },
   {
     live: true,
-    id: "buy_btn_1N0tVkJWmqHDfKfmKiy180cH",
-    name: "VHS Button",
+    id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
+    name: "Word Art Button",
     cta: "Buy",
-    Scene: VHS,
+    Scene: WordArt,
     color: "black",
     background: "white",
-    style: VHSStyles,
+    style: WordArtStyles,
     indexCode: `<body>
     <!-- Paste your embed code script here. -->
     <script
