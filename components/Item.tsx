@@ -95,6 +95,7 @@ function _({
             <Tooltip.Trigger asChild>
               <button
                 className={styles.icon}
+                style={{ visibility: indexCode ? "visible" : "hidden" }}
                 onClick={() => setShow(!showCode)}
               >
                 <Image
