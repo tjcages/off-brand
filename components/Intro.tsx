@@ -54,6 +54,9 @@ const _ = () => {
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>
           .{mobile && <br />} Try one today and we’ll send you a surprise!
+          <br />
+          <br />
+          Pull straight from the dashboard or go crazy with it!
         </motion.h4>
       </div>
     </div>
