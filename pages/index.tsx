@@ -1,6 +1,7 @@
 import styles from "@/styles/home.module.scss";
 import data from "@/data";
 
+import SEO from "@/seo";
 import Guides from "@/components/Guides";
 import Header from "@/components/Header";
 import Stickers from "@/components/Stickers";
@@ -13,20 +14,23 @@ const live = true;
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Guides />
-      <Stickers live={live} />
+    <>
+      <SEO />
+      <main className={styles.main}>
+        <Guides />
+        <Stickers live={live} />
 
-      <Header />
-      <div className={styles.container}>
-        <Intro />
-        <Container>
-          {data.map((item, index) => (
-            <Item key={index} {...item} />
-          ))}
-          <CTA />
-        </Container>
-      </div>
-    </main>
+        <Header />
+        <div className={styles.container}>
+          <Intro />
+          <Container>
+            {data.map((item, index) => (
+              <Item key={index} {...item} />
+            ))}
+            <CTA />
+          </Container>
+        </div>
+      </main>
+    </>
   );
 }

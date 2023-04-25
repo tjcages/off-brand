@@ -9,7 +9,7 @@ interface Props {
 }
 
 const _ = ({
-  title = "Try a buy button",
+  title = "Stripe | Try a buy button",
   description = "The fastest way to add Stripe to your site. Easily turn any payment link into an embeddable buy button.",
   image = "https://tryabuybutton.com/preview.jpg",
   url = "https://tryabuybutton.com",
