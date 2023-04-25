@@ -44,19 +44,17 @@ const _ = () => {
             delay: 0.2,
           }}
         >
-          The fastest way to add Stripe to your site. Easily turn any payment
-          link into an embeddable{" "}
+          The fastest way to add Stripe to your site. Turn a payment link into a{" "}
           <Link
             href="https://stripe.com/docs/payment-links/share#embed-button"
             target="_blank"
           >
-            buy button{" "}
+            buy button
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>
-          .{mobile && <br />} Try one today and we’ll send you a surprise!
-          <br />
-          <br />
-          Pull straight from the dashboard or go crazy with it!
+          , customize it to match your brand, and go live.{mobile && <br />}{" "}
+          Here are a few ideas to get you started—try them out{" "}
+          <span>(and we might send you a surprise)</span>.
         </motion.h4>
       </div>
     </div>

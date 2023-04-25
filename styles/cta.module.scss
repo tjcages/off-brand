@@ -58,50 +58,70 @@
     justify-content: center;
     align-items: center;
 
-    padding: 1rem 0;
+    padding: 1rem;
     backdrop-filter: blur(5px);
     border: 1px dashed rgba(56, 56, 56, 0.1);
 
     transition: border-color $animation-duration $animation-easing;
 
-    h3 {
-      line-height: 2em; // prevent clipping shadow
-      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, black);
-      filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.35));
-    }
+    h4 {
+      text-align: center;
+      line-height: 1.7em;
+      opacity: 0.8;
+      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, black);
+      filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.25));
 
-    .action {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.25rem;
-
-      min-height: fit-content;
-      padding: 1rem 4rem;
-
-      user-select: none;
-
-      @media only screen and (max-width: 768px) {
-        & {
-          padding: 2rem 1.5rem 2rem 2rem;
-        }
-      }
-
-      h5 {
+      .docs {
+        position: relative;
         color: $color-accent;
-        font-weight: $font-weight-400;
-        transform: translateX(0.5rem);
+        font-weight: 500;
+
+        display: inline-flex;
+        gap: 0;
+        padding-right: 0.1rem;
 
         transition: color $animation-duration-short $animation-easing,
-          transform $animation-duration-short $animation-easing;
-      }
+          padding-right $animation-duration-short $animation-easing;
 
-      img {
-        opacity: 0;
-        transform: rotate(180deg) scaleX(0%);
+        &:hover {
+          color: $color-700;
+          padding-right: 1.25rem;
 
-        transition: opacity $animation-duration-short $animation-easing,
-          transform $animation-duration-short $animation-easing;
+          img {
+            display: inline;
+            opacity: 1;
+            transform: rotate(180deg) scaleX(100%) translate(4px, -2px);
+          }
+
+          &:after {
+            background-color: $color-700;
+          }
+        }
+
+        img {
+          position: absolute;
+          top: 8px;
+          right: 0;
+
+          opacity: 0;
+          transform: rotate(180deg) scaleX(0%) translate(4px, -2px);
+
+          transition: opacity $animation-duration-short $animation-easing,
+            transform $animation-duration-short $animation-easing;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 4px;
+          height: 1.5px;
+          background-color: $color-accent;
+
+          transition: background-color $animation-duration-short
+            $animation-easing;
+        }
       }
     }
   }

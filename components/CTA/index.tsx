@@ -20,18 +20,15 @@ const _ = () => {
     >
       {ready && <Vectors />}
       <div className={styles.container}>
-        <h3>Feeling creative?</h3>
-
-        {/* Docs link */}
-        <div className={styles.action}>
-          <h5>Read the docs</h5>
-          <Image
-            src="/icons/arrow.svg"
-            alt="arrow icon"
-            width={10}
-            height={10}
-          />
-        </div>
+        <h4>
+          Feeling inspired?
+          <br /> Read the{" "}
+          <div className={styles.docs}>
+            docs
+            <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
+          </div>{" "}
+          to get started.
+        </h4>
       </div>
     </Link>
   );

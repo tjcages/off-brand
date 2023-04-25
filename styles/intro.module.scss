@@ -37,6 +37,22 @@
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, black);
     filter: drop-shadow(0 0.3rem 0.25rem rgba(141, 149, 236, 0.25));
 
+    span {
+      background: linear-gradient(
+        to right,
+        $color-accent 20%,
+        $color-accent-secondary 40%,
+        $color-accent-secondary 60%,
+        $color-accent 80%
+      );
+      background-size: 200% auto;
+
+      color: transparent;
+      background-clip: text;
+
+      animation: shine 5s infinite;
+    }
+
     a {
       position: relative;
       color: $color-accent;

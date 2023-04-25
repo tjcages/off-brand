@@ -64,7 +64,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
-    name: "Marching Ants Button",
+    name: "Dark Mode Button",
     cta: "Buy",
     Scene: Digital,
     color: "#eceff2",
@@ -87,7 +87,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0sDMJWmqHDfKfmW7KvBgHC",
-    name: "The Hover Button",
+    name: "Colorful Button",
     cta: "Buy",
     Scene: Hover,
     color: "white",
@@ -118,8 +118,8 @@ const _ = [
     style: Windows98Styles,
   },
   {
-    live: false,
-    id: "fadsfsd;;kldafdsafasd",
+    live: true,
+    id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
     name: "Paint Button",
     cta: "Buy",
     Scene: Paint,
@@ -169,13 +169,13 @@ const _ = [
     style: VHSStyles,
   },
   {
-    live: false,
-    id: "buy_bftn_1Mu0fsda8FJ65Wq6yQASu6arx3assQz",
+    live: true,
+    id: "buy_btn_1N0qUMJWmqHDfKfm7zWFR71h",
     name: "Nyan Cat Button",
     cta: "Buy",
     Scene: NyanCat,
     color: "black",
-    background: "#ffcc99",
+    background: "#fd99fc",
     style: NyanCatStyles,
   },
   {
