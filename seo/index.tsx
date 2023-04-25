@@ -10,8 +10,8 @@ interface Props {
 
 const _ = ({
   title = "Try a buy button",
-  description = "he fastest way to add Stripe to your site. Easily turn any payment link into an embeddable buy button.",
-  image = "/preview.jpg",
+  description = "The fastest way to add Stripe to your site. Easily turn any payment link into an embeddable buy button.",
+  image = "https://tryabuybutton.com/preview.jpg",
   url = "https://tryabuybutton.com",
 }: Props) => {
   const [faviconHref, setFaviconHref] = useState("/favicon.ico");

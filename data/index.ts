@@ -128,8 +128,8 @@ const _ = [
     style: PaintStyles,
   },
   {
-    live: false,
-    id: "buy_bftn_1Mfddu08FJ65Wq6yQASu6arx3assQz",
+    live: true,
+    id: "buy_btn_1N0qPFJWmqHDfKfmKilTPDaH",
     name: "Notes Button",
     cta: "Buy",
     Scene: Notes,
