@@ -137,7 +137,7 @@
   }
 
   .radial {
-    top: 8.5rem;
+    top: 8rem;
     left: 50%;
     transform: translateX(-50%);
 
@@ -158,18 +158,12 @@
         color-stop(50%, transparent),
         to(rgba(255, 255, 255, 0.5))
       );
-  }
 
-  .arch {
-    position: absolute;
-    z-index: 100;
-    background-color: red;
-    width: 200px;
-    height: 200px;
-    font-family: Arial, sans-serif;
-    font-weight: 800;
-    font-size: 90px;
-    text-align: center;
+      @media only screen and (max-width: 768px) {
+        & {
+          top: 7.5rem;
+        }
+      }
   }
 
   .over {
@@ -179,6 +173,12 @@
 
     height: auto;
     transform: rotate(10deg) skew(-15deg);
+
+    @media only screen and (max-width: 768px) {
+      & {
+        top: 9.5rem;
+      }
+    }
   }
 
   .tiltWrapper {
@@ -197,6 +197,12 @@
       translate3d(-19%, -14%, -0.4em);
     -ms-transform: scaleY(2) perspective(1em) rotateX(15deg)
       translate3d(-19%, -14%, -0.4em);
+
+      @media only screen and (max-width: 768px) {
+        & {
+          top: 8rem;
+        }
+      }
 
     .tilt {
       font-family: Arial, sans-serif;
@@ -237,7 +243,7 @@
   }
 
   .horizon {
-    top: 17.5rem;
+    top: 18rem;
 
     font-family: Arial, sans-serif;
     font-weight: bold;
@@ -256,6 +262,12 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        top: 16rem;
+      }
+    }
   }
 }
 

@@ -26,9 +26,7 @@ const _ = ({ children }: Props) => {
         <div className={styles.tiltWrapper}>
           <div className={styles.tilt}>the</div>
         </div>
-        <div className={styles.horizon}>
-          button
-        </div>
+        <div className={styles.horizon}>button</div>
       </div>
 
       <div
