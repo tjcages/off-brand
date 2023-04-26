@@ -29,7 +29,7 @@ const _ = () => {
         className={styles.main}
         initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true, amount: 1 }}
+        viewport={{ once: true }}
       >
         {/* Stripe logo */}
         <Link className={styles.logo} href="https://stripe.com" target="_blank">
