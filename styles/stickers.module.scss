@@ -6,6 +6,12 @@
   left: 0;
   right: 0;
 
+  @media only screen and (max-width: 768px) {
+    & {
+      max-height: calc(max(50vh, 464px) + 20.5vh);
+    }
+  }
+
   .container {
     position: absolute;
     top: 0;
@@ -18,7 +24,7 @@
     width: 100%;
 
     z-index: 1;
-    overflow: hidden;
+    overflow: hidden !important;
     user-select: none;
 
     @media only screen and (max-width: 768px) {
