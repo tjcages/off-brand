@@ -33,7 +33,7 @@ class MineSweeper extends React.Component {
         <button className="victory" type="reset" tabIndex={-1}>
           Click to restart
         </button>
-        <div className="infos">
+        {/* <div className="infos">
           <div className="counter" />
           <div className="timer">
             {Array.from({ length: 3 }).map((_, i) => (
@@ -44,7 +44,7 @@ class MineSweeper extends React.Component {
               <div key={i} className="digit" />
             ))}
           </div>
-        </div>
+        </div> */}
       </form>
     );
   }

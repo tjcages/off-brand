@@ -32,12 +32,12 @@ $pos: ();
   z-index: 100;
 
   // strange margin behaviour thing cancelling
-  padding: 0 2rem;
+  padding: 0.5rem 2rem;
   // box-sizing: border-box;
   background: rgba(0, 128, 128, 1);
   border: 1px solid black;
 
-  zoom: 0.8;
+  zoom: 0.85;
   counter-reset: mines $mines;
 
   display: flex;
