@@ -12,7 +12,7 @@ const _ = ({ children }: Props) => {
       </div>
       <div
         className={styles.button}
-        style={{ position: "relative", marginBottom: -4 }}
+        style={{ position: "relative", marginBottom: 52 }}
       >
         {children}
       </div>
