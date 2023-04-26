@@ -31,7 +31,7 @@ const _ = ({ children }: Props) => {
 
       <div
         className={styles.button}
-        style={{ position: "relative", transform: "translateY(3.5rem)" }}
+        style={{ position: "relative" }}
       >
         {children}
       </div>

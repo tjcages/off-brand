@@ -159,11 +159,11 @@
         to(rgba(255, 255, 255, 0.5))
       );
 
-      @media only screen and (max-width: 768px) {
-        & {
-          top: 7.5rem;
-        }
+    @media only screen and (max-width: 768px) {
+      & {
+        top: 7.5rem;
       }
+    }
   }
 
   .over {
@@ -198,11 +198,11 @@
     -ms-transform: scaleY(2) perspective(1em) rotateX(15deg)
       translate3d(-19%, -14%, -0.4em);
 
-      @media only screen and (max-width: 768px) {
-        & {
-          top: 8rem;
-        }
+    @media only screen and (max-width: 768px) {
+      & {
+        top: 8rem;
       }
+    }
 
     .tilt {
       font-family: Arial, sans-serif;
@@ -265,13 +265,20 @@
 
     @media only screen and (max-width: 768px) {
       & {
+        top: 17rem;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      & {
         top: 16rem;
       }
     }
   }
 }
 
-// .button {
-//   border-radius: 0.5rem;
-//   overflow: hidden;
-// }
+.button {
+  // border-radius: 0.5rem;
+  // overflow: hidden;
+
+  transform: translateY(3.5rem);
+}
