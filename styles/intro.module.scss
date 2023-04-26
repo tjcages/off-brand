@@ -40,20 +40,20 @@
     span {
       background: radial-gradient(
         circle at 50% 0,
-        #c5e5c3 0%,
-        #f9c2c0 30%,
+        $color-accent-secondary 0%,
+        #c5e5c3 30%,
         #e7c2d2 50%,
         #e7c2d2 70%,
         $color-accent-secondary 100%
       );
       background-size: 200% auto;
-      filter: contrast(90%);
+      filter: contrast(100%) saturate(3);
 
       color: transparent;
       background-clip: text;
       font-weight: 600;
 
-      animation: shine 3s infinite reverse;
+      animation: shine 5s infinite reverse;
     }
 
     a {
