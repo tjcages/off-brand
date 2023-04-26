@@ -12,43 +12,81 @@
   justify-content: center;
 
   background-color: #008080;
-}
 
-.button {
-  background-color: #c0c7c8;
-  border-top: 4px solid #c0c7c8;
-  border-left: 4px solid #c0c7c8;
-  border-bottom: 4px solid #000000;
-  border-right: 4px solid #000000;
-
-  &:before {
-    content: "";
+  .desktopItem {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    pointer-events: none;
-    border-top: 4px solid #ffffff;
-    border-left: 4px solid #ffffff;
-    border-bottom: 4px solid #87888f;
-    border-right: 4px solid #87888f;
-  }
 
-  &:active {
-    border-top: 4px solid #000000;
-    border-left: 4px solid #000000;
-    border-bottom: 4px solid #ffffff;
-    border-right: 4px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    &:before {
-      border-top: 4px solid #87888f;
-      border-left: 4px solid #87888f;
-      border-bottom: 4px solid #ffffff;
-      border-right: 4px solid #ffffff;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2em;
+
+    &:nth-child(1) {
+      top: 1rem;
+      left: 1rem;
+    }
+
+    &:nth-child(2) {
+      top: 1rem;
+      left: 6rem;
+    }
+
+    &:nth-child(3) {
+      top: 1rem;
+      left: 12rem;
+    }
+
+    &:nth-child(4) {
+      bottom: 5rem;
+      left: 1rem;
+    }
+
+    img {
+      width: 2.5rem;
     }
   }
 }
+
+// .button {
+//   background-color: #c0c7c8;
+//   border-top: 4px solid #c0c7c8;
+//   border-left: 4px solid #c0c7c8;
+//   border-bottom: 4px solid #000000;
+//   border-right: 4px solid #000000;
+
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     pointer-events: none;
+//     border-top: 4px solid #ffffff;
+//     border-left: 4px solid #ffffff;
+//     border-bottom: 4px solid #87888f;
+//     border-right: 4px solid #87888f;
+//   }
+
+//   &:active {
+//     border-top: 4px solid #000000;
+//     border-left: 4px solid #000000;
+//     border-bottom: 4px solid #ffffff;
+//     border-right: 4px solid #ffffff;
+
+//     &:before {
+//       border-top: 4px solid #87888f;
+//       border-left: 4px solid #87888f;
+//       border-bottom: 4px solid #ffffff;
+//       border-right: 4px solid #ffffff;
+//     }
+//   }
+// }
 
 .info {
   background-color: #c0c7c8;

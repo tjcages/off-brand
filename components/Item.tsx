@@ -11,6 +11,20 @@ import BuyButton from "@/components/BuyButton";
 
 const cardVariants: Variants = {
   offscreen: {
+    visibility: "hidden",
+  },
+  onscreen: {
+    visibility: "visible",
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+
+const coverVariants: Variants = {
+  offscreen: {
     opacity: 1,
   },
   onscreen: {
@@ -69,8 +83,8 @@ function _({
       initial="offscreen"
       whileInView="onscreen"
     >
-      <motion.div className={styles.overlay} variants={cardVariants} />
-      <div>
+      <motion.div className={styles.overlay} variants={coverVariants} />
+      <motion.div variants={cardVariants}>
         <Scene>
           <BuyButton
             live={live}
@@ -81,7 +95,7 @@ function _({
             background={background}
           />
         </Scene>
-      </div>
+      </motion.div>
 
       <div className={`${styles.info} ${style ? style.info : ""}`}>
         <div className={styles.titles}>

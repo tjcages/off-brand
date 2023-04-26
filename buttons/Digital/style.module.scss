@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: #dce1e6;
+  background-color: #1a1f36;
 }
 
 .dotGrid {
@@ -29,4 +29,13 @@
 
   cursor: pointer;
   pointer-events: all;
+}
+
+.info {
+  h5 {
+    color: white;
+  }
+  img {
+    filter: invert(100%);
+  }
 }

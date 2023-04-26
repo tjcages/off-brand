@@ -39,7 +39,7 @@ const Pixels = () => {
               y={y}
               width="2"
               height="2"
-              fill="#B9B9B6"
+              fill="#4f566b"
               opacity="0.25"
             >
               <animate

@@ -12,7 +12,7 @@ const _ = () => {
         <motion.h2
           initial={{
             opacity: 0,
-            y: -100,
+            y: 100,
           }}
           animate={{
             opacity: 1,
@@ -31,7 +31,7 @@ const _ = () => {
         <motion.h4
           initial={{
             opacity: 0,
-            y: -100,
+            y: 100,
           }}
           animate={{
             opacity: 1,
@@ -53,7 +53,7 @@ const _ = () => {
             buy button
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>
-          , customize it to match your brand, and go live.
+          , customize it to match your brand, and accept payments in seconds.
           {mobile && (
             <>
               <br />

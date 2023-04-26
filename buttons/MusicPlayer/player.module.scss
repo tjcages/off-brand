@@ -7,7 +7,7 @@
   
   margin: 0 0 0 4px;
   padding: 0 3px 0 0;
-  font-size: 16px;
+  font-size: 18px;
   width: 30px;
   height: 30px;
   background: #ffcdfa;
@@ -92,6 +92,7 @@
   padding: 12px 4px;
 
   .item {
+    font-size: 20px;
     display: inline-block;
     margin-right: 5px;
 
@@ -129,6 +130,7 @@
     line-height: 19px;
     display: block;
     width: max-content;
+    font-size: 20px;
     color: #fff;
     white-space: nowrap;
     animation: scrolling 20s linear infinite;

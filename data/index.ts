@@ -43,7 +43,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
-    name: "The Buy Button",
+    name: "The buy button",
     cta: "Buy",
     Scene: TheButton,
     color: "white",
@@ -52,8 +52,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
-    name: "Dark Mode Button",
+    id: "buy_btn_1N0sCTJWmqHDfKfmIMQI0Ahx",
+    name: "Dark mode button",
     cta: "Buy",
     Scene: Digital,
     color: "#eceff2",
@@ -63,7 +63,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0sDMJWmqHDfKfmW7KvBgHC",
-    name: "Colorful Button",
+    name: "Colorful button",
     cta: "Buy",
     Scene: Hover,
     color: "white",
@@ -73,7 +73,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0ta2JWmqHDfKfmu7Aw4Sub",
-    name: "Windows 95 Button",
+    name: "Windows 95 button",
     cta: "Buy",
     Scene: Windows98,
     color: "black",
@@ -96,7 +96,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
-    name: "Paint Button",
+    name: "Paint button",
     cta: "Buy",
     Scene: Paint,
     color: "black",
@@ -119,7 +119,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0qPFJWmqHDfKfmKilTPDaH",
-    name: "Notes Button",
+    name: "Notes button",
     cta: "Buy",
     Scene: Notes,
     color: "black",
@@ -141,13 +141,13 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
-    name: "DVD Button",
+    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
+    name: "Retrowave button",
     cta: "Buy",
-    Scene: DVD,
-    color: "black",
-    background: "white",
-    style: DVDStyles,
+    Scene: Retrowave,
+    color: "white",
+    background: "#85CAEA",
+    style: RetrowaveStyles,
     indexCode: `<body>
     <!-- Paste your embed code script here. -->
     <script
@@ -165,7 +165,7 @@ const _ = [
   {
     live: false,
     id: "buy_btn_1N0qT8JWmqHDfKfmh3bo3ZxR",
-    name: "Music Player Button",
+    name: "Music player button",
     cta: "Buy",
     href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     Scene: MusicPlayer,
@@ -189,7 +189,7 @@ const _ = [
   // {
   //   live: true,
   //   id: "buy_btn_1N0tVkJWmqHDfKfmKiy180cH",
-  //   name: "VHS Button",
+  //   name: "VHS button",
   //   cta: "Buy",
   //   Scene: VHS,
   //   color: "black",
@@ -212,7 +212,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
-    name: "Word Art Button",
+    name: "Word art button",
     cta: "Buy",
     Scene: WordArt,
     color: "black",
@@ -235,7 +235,7 @@ const _ = [
   {
     live: true,
     id: "buy_btn_1N0qUMJWmqHDfKfm7zWFR71h",
-    name: "Nyan Cat Button",
+    name: "Nyan cat button",
     cta: "Buy",
     Scene: NyanCat,
     color: "black",
@@ -257,13 +257,13 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
-    name: "Retrowave Button",
+    id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
+    name: "DVD button",
     cta: "Buy",
-    Scene: Retrowave,
-    color: "white",
-    background: "#85CAEA",
-    style: RetrowaveStyles,
+    Scene: DVD,
+    color: "black",
+    background: "white",
+    style: DVDStyles,
     indexCode: `<body>
     <!-- Paste your embed code script here. -->
     <script
