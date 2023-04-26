@@ -27,9 +27,9 @@ const _ = () => {
       {/* Nav */}
       <motion.div
         className={styles.main}
-        initial="onscreen"
+        initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true }}
+        // viewport={{ once: true }}
       >
         {/* Stripe logo */}
         <Link className={styles.logo} href="https://stripe.com" target="_blank">
