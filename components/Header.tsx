@@ -27,7 +27,7 @@ const _ = () => {
       {/* Nav */}
       <motion.div
         className={styles.main}
-        initial="offscreen"
+        initial="onscreen"
         whileInView="onscreen"
         viewport={{ once: true }}
       >
