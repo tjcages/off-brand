@@ -18,7 +18,7 @@ class MineSweeper extends React.Component {
         <input type="radio" name="mode" id="modeFlag" />
         <div className="actionSelector">
           <label htmlFor="modeMine">⛏</label>
-          <label htmlFor="modeFlag">🚩</label>
+          {/* <label htmlFor="modeFlag">🚩</label> */}
         </div>
         <div className="grid">
           {Array.from({ length: count }, (v, i) => i + 1).map((i) => (
