@@ -7,7 +7,7 @@ class MineSweeper extends React.Component {
     const count = rows * cols;
 
     return (
-      <form>
+      <form className="minesweeperMain" onClick={(e) => {e.stopPropagation()}}>
         {Array.from({ length: count }, (v, i) => i + 1).map((i) => (
           <React.Fragment key={i}>
             <input type="checkbox" id={`c${i}`} />
@@ -30,14 +30,7 @@ class MineSweeper extends React.Component {
             <label key={i} htmlFor={`f${i}`} />
           ))}
         </div>
-        <button className="error" type="reset" tabIndex={-1}>
-          Ooohhh 🙁
-          <br />
-          Click to try again
-        </button>
         <button className="victory" type="reset" tabIndex={-1}>
-          👌👀✔💯💯💯
-          <br />
           Click to restart
         </button>
         <div className="infos">

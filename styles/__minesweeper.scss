@@ -23,31 +23,36 @@ $pos: ();
   $pos: append($pos, $mine);
 }
 
-minesweeperMain {
-  position: fixed;
-  top: 100px;
-  left: 100px;
-  
+.minesweeperMain {
+  position: absolute;
+  top: 0.5rem;
+  // left: 1rem;
+  // right: 1rem;
+  bottom: 5.5rem;
+  z-index: 100;
+
   // strange margin behaviour thing cancelling
-  padding: 1px;
-  box-sizing: border-box;
-  background: teal url(https://assets.codepen.io/15664/bliss.jpg) center / cover
-    no-repeat;
+  padding: 0 2rem;
+  // box-sizing: border-box;
+  background: rgba(0, 128, 128, 1);
+  border: 1px solid black;
+
+  zoom: 0.8;
   counter-reset: mines $mines;
 
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-}
 
-input {
-  visibility: hidden;
-  position: absolute;
-  top: -99px;
-  left: -99px;
-}
-input[id^="f"]:checked {
-  counter-increment: mines -1;
+  input {
+    visibility: hidden;
+    position: absolute;
+    top: -99px;
+    left: -99px;
+  }
+  input[id^="f"]:checked {
+    counter-increment: mines -1;
+  }
 }
 
 .infos {
@@ -287,7 +292,9 @@ input[id^="c"]:checked ~ .infos .timer .digit {
     transition: opacity 0.3s, visibility 0.3s;
   }
   .victory {
+    color: white !important;
     background: rgba(0, 10, 0, 0.75);
+    margin-bottom: 10px;
   }
 }
 

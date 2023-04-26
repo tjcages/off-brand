@@ -39,6 +39,8 @@
     &:nth-child(3) {
       top: 1rem;
       left: 12rem;
+
+      cursor: pointer;
     }
 
     &:nth-child(4) {
@@ -89,6 +91,7 @@
 // }
 
 .info {
+  position: relative;
   background-color: #c0c7c8;
   box-shadow: 0 -2px #cce9eb, 0 -3px black;
   border-top: 2px solid #fffdfc;
