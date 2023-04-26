@@ -47,7 +47,7 @@ const _ = () => {
           The fastest way to add Stripe to your site. {mobile && <br />}Turn a
           payment link into a{" "}
           <Link
-            href="https://stripe.com/docs/payment-links/share#embed-button"
+            href="https://stripe.com/docs/payment-links/buy-button"
             target="_blank"
           >
             buy button
