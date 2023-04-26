@@ -32,7 +32,7 @@ const _ = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@NateyG" />
 
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/x-icon" href="https://tryabuybutton.com/favicon.ico" />
     </Head>
   );
 };
