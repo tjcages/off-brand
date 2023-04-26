@@ -141,13 +141,13 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
-    name: "Retrowave button",
+    id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
+    name: "Word art button",
     cta: "Buy",
-    Scene: Retrowave,
-    color: "white",
-    background: "#85CAEA",
-    style: RetrowaveStyles,
+    Scene: WordArt,
+    color: "black",
+    background: "white",
+    style: WordArtStyles,
     indexCode: `<body>
     <!-- Paste your embed code script here. -->
     <script
@@ -166,8 +166,8 @@ const _ = [
     live: false,
     id: "buy_btn_1N0qT8JWmqHDfKfmh3bo3ZxR",
     name: "Music player button",
-    cta: "Buy",
-    href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    cta: "Play",
+    href: "https://shattereddisk.github.io/rickroll/rickroll.mp4",
     Scene: MusicPlayer,
     color: "black",
     background: "#ffcdfa",
@@ -211,13 +211,13 @@ const _ = [
   // },
   {
     live: true,
-    id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
-    name: "Word art button",
+    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
+    name: "Retrowave button",
     cta: "Buy",
-    Scene: WordArt,
-    color: "black",
-    background: "white",
-    style: WordArtStyles,
+    Scene: Retrowave,
+    color: "white",
+    background: "#85CAEA",
+    style: RetrowaveStyles,
     indexCode: `<body>
     <!-- Paste your embed code script here. -->
     <script
