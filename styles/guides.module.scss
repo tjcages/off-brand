@@ -31,16 +31,22 @@
       background-size: 1px 8px;
       mask-image: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.25) 0%,
-        black 50%,
-        rgba(0, 0, 0, 0.25) 100%
+        rgba(0, 0, 0, 0.5) 0%,
+        black 60%,
+        rgba(0, 0, 0, 0.15) 100%
       );
+
+      &:first-of-type {
+        background: rgba(66, 71, 112, 0.2);
+      }
 
       &:last-of-type {
         position: absolute;
         top: 0;
         right: 0;
         height: 100%;
+
+        background: rgba(66, 71, 112, 0.2);
       }
     }
   }
