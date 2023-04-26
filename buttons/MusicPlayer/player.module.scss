@@ -37,6 +37,12 @@
   background-color: #ffcdfa;
   box-shadow: 3px 0px #353535, 0px 3px #353535, -3px 0px #fff, 0px -3px #fff;
 
+  @media only screen and (max-width: 768px) {
+    & {
+      height: calc(100% - 100px - 2rem);
+    }
+  }
+
   &::before {
     position: absolute;
     content: "";
