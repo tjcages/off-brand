@@ -171,13 +171,17 @@
     top: 11rem;
     left: 1rem;
 
-    height: auto;
     transform: rotate(10deg) skew(-15deg);
 
     @media only screen and (max-width: 768px) {
       & {
         top: 9.5rem;
       }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 

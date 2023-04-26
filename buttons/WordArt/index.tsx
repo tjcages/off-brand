@@ -20,8 +20,8 @@ const _ = ({ children }: Props) => {
           src="/icons/over.png"
           alt="over"
           className={styles.over}
-          width={120}
-          height={120}
+          width={100}
+          height={40}
         />
         <div className={styles.tiltWrapper}>
           <div className={styles.tilt}>the</div>
@@ -29,10 +29,7 @@ const _ = ({ children }: Props) => {
         <div className={styles.horizon}>button</div>
       </div>
 
-      <div
-        className={styles.button}
-        style={{ position: "relative" }}
-      >
+      <div className={styles.button} style={{ position: "relative" }}>
         {children}
       </div>
     </>
