@@ -44,6 +44,7 @@ const _ = ({ children }: Props) => {
         >
           {children}
         </div>
+        {mineSweeper && <div className={styles.overlay} />}
         {mineSweeper && <Minesweeper />}
       </div>
     </>
