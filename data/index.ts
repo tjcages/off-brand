@@ -167,7 +167,7 @@ const _ = [
     id: "buy_btn_1N0qT8JWmqHDfKfmh3bo3ZxR",
     name: "Music player button",
     cta: "Play",
-    href: "https://shattereddisk.github.io/rickroll/rickroll.mp4",
+    href: "https://www.youtube.com/watch?v=xvFZjo5PgG0",
     Scene: MusicPlayer,
     color: "black",
     background: "#ffcdfa",

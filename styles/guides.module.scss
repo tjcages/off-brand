@@ -37,7 +37,7 @@
       );
 
       &:first-of-type {
-        background: rgba(66, 71, 112, 0.2);
+        opacity: 0;
       }
 
       &:last-of-type {
@@ -46,7 +46,7 @@
         right: 0;
         height: 100%;
 
-        background: rgba(66, 71, 112, 0.2);
+        opacity: 0;
       }
     }
   }
