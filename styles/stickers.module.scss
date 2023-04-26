@@ -6,19 +6,12 @@
   left: 0;
   right: 0;
 
-  @media only screen and (max-width: 768px) {
-    & {
-      max-height: calc(max(50vh, 464px) + 20.5vh);
-    }
-  }
-
   .container {
     position: absolute;
     top: 0;
     left: 50%;
     right: 0;
     bottom: 34vh;
-    z-index: -1;
 
     transform: translateX(-50%);
     width: 100%;
