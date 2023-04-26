@@ -113,6 +113,12 @@
   padding: 1.5rem;
   margin: 3px;
   box-shadow: 3px 0px #fff, 0px 3px #fff, -3px 0px #353535, 0px -3px #353535;
+
+  @media only screen and (max-width: 768px) {
+    & {
+      padding: 1rem;
+    }
+  }
 }
 
 .display {
