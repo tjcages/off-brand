@@ -9,6 +9,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Sohne from "@/public/fonts/Sohne";
 import styles from "@/styles/_main.module.scss";
 
+console.log("Made with ❤️ by @sammcallister & @tjcages");
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
