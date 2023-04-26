@@ -4,6 +4,7 @@ import internet from "./_internet";
 import documents from "./_documents";
 import minesweeper from "./_minesweeper";
 import recycle from "./_recycle";
+import Minesweeper from "./Minesweeper";
 
 interface Props {
   children: React.ReactNode;
@@ -36,6 +37,7 @@ const _ = ({ children }: Props) => {
       >
         {children}
       </div>
+      {/* <Minesweeper /> */}
     </>
   );
 };

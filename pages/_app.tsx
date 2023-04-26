@@ -1,6 +1,7 @@
 import "@/styles/__globals.css";
 import "@/styles/__tooltip.css";
 import "@/styles/__highlight.css";
+import "@/styles/__minesweeper.scss";
 
 import type { AppProps } from "next/app";
 import Script from "next/script";

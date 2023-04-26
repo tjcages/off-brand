@@ -49,6 +49,19 @@ const _ = [
     color: "white",
     background: "#635BFF",
     style: TheButtonStyles,
+    indexCode: `<body>
+    <!-- Paste your embed code script here. -->
+    <script
+      async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <stripe-buy-button
+      buy-button-id="{{BUY_BUTTON_ID}}"
+      publishable-key="pk_live_your_publishable_key"
+    >
+    </stripe-buy-button>
+  </body>  
+  `,
   },
   {
     live: true,
@@ -59,6 +72,19 @@ const _ = [
     color: "#eceff2",
     background: "transparent",
     style: DigitalStyles,
+    indexCode: `<body>
+    <!-- Paste your embed code script here. -->
+    <script
+      async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <stripe-buy-button
+      buy-button-id="{{BUY_BUTTON_ID}}"
+      publishable-key="pk_live_your_publishable_key"
+    >
+    </stripe-buy-button>
+  </body>  
+  `,
   },
   {
     live: true,
@@ -69,6 +95,19 @@ const _ = [
     color: "white",
     background: "#CA75E6",
     style: HoverStyles,
+    indexCode: `<body>
+    <!-- Paste your embed code script here. -->
+    <script
+      async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <stripe-buy-button
+      buy-button-id="{{BUY_BUTTON_ID}}"
+      publishable-key="pk_live_your_publishable_key"
+    >
+    </stripe-buy-button>
+  </body>  
+  `,
   },
   {
     live: true,
