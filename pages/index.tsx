@@ -10,7 +10,7 @@ import Container from "@/components/Container";
 import Item from "@/components/Item";
 import CTA from "@/components/CTA";
 
-const live = true;
+const live = false;
 
 export default function Home() {
   return (

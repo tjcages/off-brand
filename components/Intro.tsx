@@ -60,8 +60,7 @@ const _ = () => {
               <br />
             </>
           )}{" "}
-          Here are a few ideas to get you started—try them out (and we might
-          send you a <span>surprise</span>).
+          Here are a few ideas to get you started—try them out with a test card like <span>4242 4242 4242 4242</span>.
         </motion.h4>
       </div>
     </div>

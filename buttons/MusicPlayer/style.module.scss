@@ -42,6 +42,20 @@
       margin-top: 90px;
     }
   }
+
+  &:after {
+    content: "Test mode";
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #bb5504;
+    background-color: #ffde92;
+    padding: 0px 4px 2px 4px;
+  }
 }
 
 .info {
