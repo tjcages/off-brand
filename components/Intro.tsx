@@ -60,7 +60,12 @@ const _ = () => {
               <br />
             </>
           )}{" "}
-          Here are a few ideas to get you started—try them out with a test card like <span>4242 4242 4242 4242</span>.
+          Here are a few ideas to get you started—try them out with a{" "}
+          <Link href="https://stripe.com/docs/testing#cards" target="_blank">
+            test card
+            <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
+          </Link>{" "}
+          like <span>4242 4242 4242 4242</span>.
         </motion.h4>
       </div>
     </div>

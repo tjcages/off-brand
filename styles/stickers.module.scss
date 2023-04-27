@@ -45,7 +45,7 @@
 
       &:not(.live) {
         img {
-          filter: grayscale(20%) brightness(25%);
+          filter: grayscale(0%) brightness(50%);
         }
 
         &:last-child {
