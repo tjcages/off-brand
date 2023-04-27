@@ -36,7 +36,7 @@
     opacity: 0.8;
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, black);
 
-    span {
+    .shimmer {
       background: radial-gradient(
         circle at 50% 0,
         $color-accent-secondary 0%,
@@ -51,6 +51,7 @@
       color: transparent;
       background-clip: text;
       font-weight: 600;
+      text-decoration: none;
 
       animation: shine 5s infinite reverse;
     }

@@ -60,12 +60,12 @@ const _ = () => {
               <br />
             </>
           )}{" "}
-          Here are a few ideas to get you started—try them out with a{" "}
+          Here are a few ideas to get you started—try out a{" "}
           <Link href="https://stripe.com/docs/testing#cards" target="_blank">
             test card
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
           </Link>{" "}
-          like <span>4242 4242 4242 4242</span>.
+          like <span className={styles.shimmer}>4242 4242 4242 4242</span>.
         </motion.h4>
       </div>
     </div>
