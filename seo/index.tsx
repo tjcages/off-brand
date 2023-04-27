@@ -17,6 +17,8 @@ const _ = ({
   return (
     <Head>
       <title>{title}</title>
+      {/* disable auto phone number detection */}
+      <meta name="format-detection" content="telephone=no" />
       <meta name="title" content={title} key="title" />
       <meta name="og:title" content={title} key="og:title" />
       <meta property="og:site_name" content={title} />
