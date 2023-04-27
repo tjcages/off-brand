@@ -42,7 +42,8 @@ interface Props {
 const _ = [
   {
     live: true,
-    id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
+    // id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
+    id: "buy_btn_1N1CPQJWmqHDfKfmNIuc5YC8",
     name: "The buy button",
     cta: "Buy",
     Scene: TheButton,
@@ -65,7 +66,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0sCTJWmqHDfKfmIMQI0Ahx",
+    // id: "buy_btn_1N0sCTJWmqHDfKfmIMQI0Ahx",
+    id: "buy_btn_1N1EvtJWmqHDfKfmneP60Tlp",
     name: "Dark mode button",
     cta: "Buy",
     Scene: Digital,
@@ -88,7 +90,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0sDMJWmqHDfKfmW7KvBgHC",
+    // id: "buy_btn_1N0sDMJWmqHDfKfmW7KvBgHC",
+    id: "buy_btn_1N1ExwJWmqHDfKfmmCY3dCJq",
     name: "Colorful button",
     cta: "Buy",
     Scene: Hover,
@@ -111,7 +114,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0ta2JWmqHDfKfmu7Aw4Sub",
+    // id: "buy_btn_1N0ta2JWmqHDfKfmu7Aw4Sub",
+    id: "buy_btn_1N1EyzJWmqHDfKfmkNKcryCy",
     name: "Windows 95 button",
     cta: "Buy",
     Scene: Windows98,
@@ -134,7 +138,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
+    // id: "buy_btn_1N0qEIJWmqHDfKfmrqYKPijF",
+    id: "buy_btn_1N1Er4JWmqHDfKfmAdXjN5lM",
     name: "Paint button",
     cta: "Buy",
     Scene: Paint,
@@ -157,7 +162,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qPFJWmqHDfKfmKilTPDaH",
+    // id: "buy_btn_1N0qPFJWmqHDfKfmKilTPDaH",
+    id: "buy_btn_1N1EsLJWmqHDfKfmKn8EB4Ye",
     name: "Notes button",
     cta: "Buy",
     Scene: Notes,
@@ -180,7 +186,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
+    // id: "buy_btn_1N0uIpJWmqHDfKfm7ZYRTRtk",
+    id: "buy_btn_1N1EzjJWmqHDfKfmgP5C87u2",
     name: "Word art button",
     cta: "Buy",
     Scene: WordArt,
@@ -250,7 +257,8 @@ const _ = [
   // },
   {
     live: true,
-    id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
+    // id: "buy_btn_1N0qY5JWmqHDfKfm9W7Qh28I",
+    id: "buy_btn_1N1Ev4JWmqHDfKfmgctFP0c5",
     name: "Retrowave button",
     cta: "Buy",
     Scene: Retrowave,
@@ -273,7 +281,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0qUMJWmqHDfKfm7zWFR71h",
+    // id: "buy_btn_1N0qUMJWmqHDfKfm7zWFR71h",
+    id: "buy_btn_1N1EtUJWmqHDfKfmr7YdAerA",
     name: "Nyan cat button",
     cta: "Buy",
     Scene: NyanCat,
