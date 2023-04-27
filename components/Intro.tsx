@@ -60,7 +60,7 @@ const _ = () => {
               <br />
             </>
           )}{" "}
-          Here are a few ideas to get you started—try out a{" "}
+          Here are a few ideas to get you started—try using a{" "}
           <Link href="https://stripe.com/docs/testing#cards" target="_blank">
             test card
             <Image src="/icons/arrow.svg" alt="arrow" width={12} height={12} />
