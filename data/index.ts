@@ -296,7 +296,8 @@ const _ = [
   },
   {
     live: true,
-    id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
+    // id: "buy_btn_1N0oN4JWmqHDfKfmp7X3jeRp",
+    id: "buy_btn_1N1CPQJWmqHDfKfmNIuc5YC8",
     name: "DVD button",
     cta: "Buy",
     Scene: DVD,
