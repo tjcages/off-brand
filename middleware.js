@@ -10,7 +10,8 @@ const securityMiddleware = [
     // your CSP base configuration with IntelliSense
     // single quotes for values like 'self' are automatic
     directives: {
-      "frame-src": ["self", "https://js.stripe.com"],
+      "img-src": ["self", "data:"],
+      "frame-src": ["self", "data:", "https://js.stripe.com"],
       "script-src": ["self", "https://js.stripe.com"],
     },
   }),
