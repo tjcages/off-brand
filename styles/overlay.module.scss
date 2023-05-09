@@ -1,0 +1,63 @@
+@import "./variables";
+
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    opacity: 0.2;
+    background-image: radial-gradient(#fff 0.5px, transparent 0.5px);
+    background-size: 10px 10px;
+  }
+
+  .container {
+    position: relative;
+
+    width: 99vw;
+    height: 50vh;
+
+    .dots {
+      position: absolute;
+
+      width: $padding-100;
+      height: $padding-100;
+
+      background-color: $color-100;
+      border-radius: $border-radius-100;
+
+      &:nth-child(1) {
+        top: $padding-400;
+        left: $padding-400;
+      }
+
+      &:nth-child(2) {
+        top: $padding-400;
+        right: $padding-400;
+      }
+
+      &:nth-child(3) {
+        bottom: $padding-400;
+        left: $padding-400;
+      }
+
+      &:nth-child(4) {
+        bottom: $padding-400;
+        right: $padding-400;
+      }
+    }
+  }
+}

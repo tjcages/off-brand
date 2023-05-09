@@ -4,18 +4,13 @@ $color-100: #f3f4f6;
 $color-200: #dcdfe5;
 $color-300: #c4c9d4;
 $color-400: #726e70;
-$color-500: #3D4255;
+$color-500: #3d4255;
 $color-600: #2c2627;
 $color-700: #1e1e1e;
 $color-800: #000000;
 
 $color-accent: #635bff;
 $color-accent-secondary: #8d95ec;
-
-$color-700-80: rgba(30, 26, 27, 0.8);
-
-/* SHADOW */
-$shadow-standard: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 /* FONTS */
 $font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -40,39 +35,29 @@ $font-weight-200: 400;
 $font-weight-300: 500;
 $font-weight-400: 600;
 
-/* SPACING */
-$spacing-50: 0.5rem;
-$spacing-100: 1rem;
-$spacing-200: 2rem;
-$spacing-300: 6rem;
-$spacing-400: 8rem;
-$spacing-500: 10rem;
-
 /* PADDING */
-$padding-50: 5px;
-$padding-100: 10px;
-$padding-150: 15px;
-$padding-200: 20px;
-$padding-300: 30px;
-$padding-400: 50px;
-$padding-500: 100px;
+$padding-50: 4px;
+$padding-100: 8px;
+$padding-150: 16px;
+$padding-200: 24px;
+$padding-300: 32px;
+$padding-400: 56px;
+$padding-500: 108px;
 
 /* BORDERS */
-$border-radius-100: 7px;
-$border-radius-200: 10px;
-$border-radius-300: 20px;
-$border-radius-400: 30px;
-$border-radius-500: 50px;
+$border-radius-100: 2px;
+$border-radius-200: 5px;
+$border-radius-300: 10px;
+$border-radius-400: 20px;
+$border-radius-500: 30px;
 
 $border-standard: 1px solid rgba(56, 56, 56, 0.7);
 $border-secondary: 1px solid rgba(56, 56, 56, 0.1);
-$border-dark: 1px solid $color-200;
 
 /* ANIMATIONS */
-$animation-duration-short: 0.15s;
 $animation-duration: 0.35s;
+$animation-duration-short: 0.15s;
 $animation-duration-long: 1.5s;
 $animation-delay: 0.25s;
 $animation-delay-long: 1.25s;
 $animation-easing: cubic-bezier(0.33, 1, 0.68, 1);
-$animation-easing-spring: cubic-bezier(0.64, 0.57, 0.67, 1.53);

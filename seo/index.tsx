@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
 
 interface Props {
@@ -9,10 +8,10 @@ interface Props {
 }
 
 const _ = ({
-  title = "Stripe | Try a buy button",
-  description = "The fastest way to add Stripe to your site. Easily turn any payment link into an embeddable buy button.",
-  image = "https://tryabuybutton.com/preview.jpg",
-  url = "https://tryabuybutton.com",
+  title = "tjcages | nextjs starter",
+  description = "the fastest way to standup a starter site",
+  image = "/preview.jpg",
+  url = "https://github.com/tjcages",
 }: Props) => {
   return (
     <Head>
@@ -32,9 +31,9 @@ const _ = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:creator" content="@NateyG" />
+      <meta name="twitter:creator" content="@tjcages" />
 
-      <link rel="icon" type="image/x-icon" href="https://tryabuybutton.com/favicon.ico" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </Head>
   );
 };
