@@ -8,56 +8,44 @@
   bottom: 0;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: $padding-200;
 
-  &:after {
+  user-select: none;
+  pointer-events: none;
+
+  &:before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
     bottom: 0;
+    width: 5vw;
+    z-index: -1;
 
-    opacity: 0.2;
-    background-image: radial-gradient(#fff 0.5px, transparent 0.5px);
-    background-size: 10px 10px;
+    background: linear-gradient(to right, $color_100 0%, rgba(0, 0, 0, 0) 100%);
   }
 
-  .container {
-    position: relative;
+  button {
+    padding: $padding-200;
+    background: none;
+    border: none;
+    outline: none;
+    pointer-events: all;
+  }
 
-    width: 99vw;
-    height: 50vh;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: $padding-50 / 2;
 
-    .dots {
-      position: absolute;
+    width: $padding-150;
+    height: $padding-150;
 
-      width: $padding-100;
-      height: $padding-100;
-
-      background-color: $color-100;
-      border-radius: $border-radius-100;
-
-      &:nth-child(1) {
-        top: $padding-400;
-        left: $padding-400;
-      }
-
-      &:nth-child(2) {
-        top: $padding-400;
-        right: $padding-400;
-      }
-
-      &:nth-child(3) {
-        bottom: $padding-400;
-        left: $padding-400;
-      }
-
-      &:nth-child(4) {
-        bottom: $padding-400;
-        right: $padding-400;
-      }
+    .square {
+      background-color: $color-800;
     }
   }
 }

@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "buttons/BubbleGum/index.tsx", "buttons/BananaSplit/Bananas.jsx", "buttons/BananaSplit/Bananas.jsx", "components/CTA/_Effects.jsx", "components/CTA/_Shader.jsx", "components/CTA/_Vectors.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "buttons/BubbleGum/index.tsx", "buttons/BananaSplit/Bananas.jsx", "buttons/BananaSplit/Bananas.jsx", "components/CTA/_Effects.jsx", "components/CTA/_Shader.jsx", "components/CTA/_Vectors.jsx", "components/elements/_Plane.tsx", "components/effects/_Effects.tsx"],
   "exclude": ["node_modules"]
 }
