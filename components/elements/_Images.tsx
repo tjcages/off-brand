@@ -2,7 +2,7 @@ import { useEffect, useRef, createRef } from "react";
 import * as THREE from "three";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useTexture, useScroll } from "@react-three/drei";
-import gsap from "gsap";
+import gsap, { Expo } from "gsap";
 // @ts-ignore
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
@@ -171,6 +171,8 @@ const _ = () => {
       var width = height * gl.viewport.aspect; // visible width
 
       gsap.to(state.items[index], {
+        ease: Expo.easeOut,
+        duration: snap.view == "grid" ? 2 : 1.5,
         x:
           snap.view == "grid"
             ? state.itemsCopy[index].x

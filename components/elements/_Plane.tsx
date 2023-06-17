@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { useFrame, extend } from "@react-three/fiber";
-// import { Plane } from "@react-three/drei";
 import { Distortion } from "@/components/effects";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
@@ -21,7 +20,6 @@ function ShaderPlane(props: any) {
 
   const meshRef = useRef() as any;
   const matRef = useRef() as any;
-  // const clickOutPlaneRef = useRef() as any;
 
   useFrame((_, delta) => {
     if (!matRef.current) return;
@@ -40,9 +38,6 @@ function ShaderPlane(props: any) {
         ref={matRef}
         tex={props.texture}
       />
-      {/* <Plane ref={clickOutPlaneRef} position-z={-0.001} args={[1, 1]}>
-        <meshNormalMaterial transparent={true} opacity={0} attach="material" />
-      </Plane> */}
     </mesh>
   );
 }

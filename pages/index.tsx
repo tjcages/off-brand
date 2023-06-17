@@ -5,7 +5,7 @@ import SEO from "@/seo";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
 import { Orbit, Images, Map } from "@/components/elements";
-import { Overlay } from "@/components/views";
+import { Underlay, Overlay } from "@/components/views";
 import { Effects } from "@/components/effects";
 import { state } from "@/store";
 
@@ -17,6 +17,8 @@ const _ = () => {
       <SEO />
 
       <main>
+        <Underlay />
+        
         <Canvas
           dpr={[1, 1.5]}
           camera={{ position: [0, 0, 1.2], fov: 140, far: 20 }}

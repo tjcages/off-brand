@@ -1,0 +1,138 @@
+@import "./variables";
+
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: $padding-200;
+
+  user-select: none;
+  pointer-events: none;
+
+  animation: fade-in $animation-duration-long $animation-easing 0.1s forwards;
+
+  &.visible {
+    img,
+    h5 {
+      opacity: 1;
+      transform: scale(1);
+
+      transition: opacity $animation-duration $animation-easing,
+        transform $animation-duration-long $animation-easing;
+      transition-delay: $animation-duration;
+    }
+  }
+
+  img {
+    width: clamp(35.375rem, 30%, 48rem);
+    height: auto;
+    object-fit: contain;
+  }
+
+  h5 {
+    color: $color-400;
+    font-size: $font-size-300;
+  }
+
+  img,
+  h5 {
+    opacity: 0;
+    transform: scale(0.6);
+
+    transition: opacity $animation-duration-short $animation-easing,
+      transform $animation-duration $animation-easing;
+  }
+
+  button {
+
+    padding: 2.5rem;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+
+    outline: none;
+    border: 1px solid $color-400;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    background-image: url(/imgs/textures/noise.png);
+    background-size: 100px;
+
+    opacity: 0.27;
+    will-change: auto;
+    animation: noise 1.2s steps(3) both infinite;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes noise {
+  0% {
+    transform: translate3d(1%, -1%, 0);
+  }
+
+  10% {
+    transform: translate3d(-5%, -2%, 0);
+  }
+
+  20% {
+    transform: translate3d(10%, 5%, 0);
+  }
+
+  30% {
+    transform: translate3d(5%, -11%, 0);
+  }
+
+  40% {
+    transform: translate3d(-12%, -5%, 0);
+  }
+
+  50% {
+    transform: translate3d(10%, 9%, 0);
+  }
+
+  60% {
+    transform: translate3d(15%, 0, 0);
+  }
+
+  70% {
+    transform: translate3d(-10%, 8%, 0);
+  }
+
+  80% {
+    transform: translate3d(10%, 2%, 0);
+  }
+
+  90% {
+    transform: translate3d(1%, 5%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 8%, 0);
+  }
+}
