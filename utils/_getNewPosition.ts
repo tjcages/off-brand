@@ -7,7 +7,7 @@ const getNewPosition = (item: any, minRadius: number) => {
     .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
     .normalize()
     .multiplyScalar(minRadius);
-  return { x: vec3.x, y: vec3.y };
+  return { x: vec3.x, y: vec3.y, z: -Math.abs(vec3.z) };
 };
 
 export default getNewPosition;

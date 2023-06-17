@@ -8,24 +8,24 @@
   bottom: 0;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   padding: $padding-200;
 
   user-select: none;
   pointer-events: none;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 5vw;
-    z-index: -1;
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   width: 5vw;
+  //   z-index: -1;
 
-    background: linear-gradient(to right, $color_100 0%, rgba(0, 0, 0, 0) 100%);
-  }
+  //   background: linear-gradient(to right, $color_100 0%, rgba(0, 0, 0, 0) 100%);
+  // }
 
   button {
     padding: $padding-200;
@@ -33,6 +33,15 @@
     border: none;
     outline: none;
     pointer-events: all;
+
+    filter: blur(1px);
+
+    transition: filter $animation-duration-long $animation-easing;
+
+    &:hover {
+      filter: blur(0);
+      transition-duration: $animation-duration;
+    }
   }
 
   .grid {
@@ -46,6 +55,8 @@
 
     .square {
       background-color: $color-800;
+
+      mix-blend-mode: difference;
     }
   }
 }

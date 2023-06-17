@@ -1,7 +1,7 @@
 import { useEffect, useRef, createRef } from "react";
 import * as THREE from "three";
 import { useThree, useFrame } from "@react-three/fiber";
-import { useTexture } from "@react-three/drei";
+import { useTexture, useScroll } from "@react-three/drei";
 import gsap from "gsap";
 // @ts-ignore
 import lerp from "@14islands/lerp";
@@ -15,6 +15,8 @@ const _ = () => {
   const snap = useSnapshot(state);
   const camera = useThree((state) => state.camera);
   const covers = useTexture(data.map((item: any) => item.coverImg));
+  // get viewport
+  const { width, height } = useThree((state) => state.viewport);
 
   let projectIsOpened = createRef() as any;
 
@@ -99,7 +101,7 @@ const _ = () => {
       let numberOfTests = 0;
       let minRadius = 2;
 
-      let tempPos = { x: 0, y: 0 };
+      let tempPos = { x: 0, y: 0, z: 0 };
 
       while (!positionIsValid) {
         tempPos = getNewPosition(item, minRadius);
@@ -122,12 +124,16 @@ const _ = () => {
       items.push({ ...item, ...tempPos });
     });
 
-    state.panLimits.min.set(
+    state.panLimitsGrid.min.set(
       minX - state.panMargin,
       minY - state.panMargin,
       -10
     );
-    state.panLimits.max.set(maxX + state.panMargin, maxY + state.panMargin, 10);
+    state.panLimitsGrid.max.set(
+      maxX + state.panMargin,
+      maxY + state.panMargin,
+      10
+    );
 
     const camBox = visibleBox(camera, 0);
     const canvasBox = {
@@ -145,14 +151,44 @@ const _ = () => {
   }, [covers]);
 
   useEffect(() => {
-    snap.items.forEach((_, index: number) => {
+    snap.items.forEach((_, index) => {
       gsap.to(state.items[index], {
-        x: snap.view == "grid" ? state.itemsCopy[index].x : 0,
-        y:
-          snap.view == "grid"
-            ? state.itemsCopy[index].y
-            : state.itemsCopy[index].height * 10,
+        z: 0,
+        duration: 1,
+        ease: "power2.out",
       });
+    });
+  }, [state.items]);
+
+  useEffect(() => {
+    const items = state.itemsCopy.map((item: any) => ({ ...item }));
+    snap.items.forEach((_, index: number) => {
+      // stack all items vertically if in list view
+      const last = items[index - 1] || { y: 0, height: 0 };
+      const item = items[index];
+      item.y = last.y - item.height - 0.35;
+
+      gsap.to(state.items[index], {
+        x:
+          snap.view == "grid"
+            ? state.itemsCopy[index].x
+            : camera.view?.width || 0 - item.width - 2,
+        y: snap.view == "grid" ? state.itemsCopy[index].y : item.y + height,
+        z: snap.view == "grid" ? 0 : -state.zoom.linear,
+      });
+    });
+  }, [snap.view]);
+
+  const scroll = useScroll();
+
+  // scroll to top when view changes
+  useEffect(() => {
+    // scroll to top
+    console.log(scroll);
+    gsap.to(scroll, {
+      current: 0,
+      duration: 0.5,
+      ease: "power2.out",
     });
   }, [snap.view]);
 

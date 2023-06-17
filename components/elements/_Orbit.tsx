@@ -1,10 +1,13 @@
-import { useRef, useLayoutEffect } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import gsap from "gsap";
 import { OrbitControls } from "@react-three/drei";
-import { state } from "@/store";
+import { useSnapshot } from "valtio";
+import { state, derived } from "@/store";
 
 const _ = () => {
+  const snap = useSnapshot(state);
   const camera = useThree((state) => state.camera);
   const _v = new THREE.Vector3();
 
@@ -15,8 +18,8 @@ const _ = () => {
     const handlePan = () => {
       _v.copy(controlsRef.current.target);
       controlsRef.current.target.clamp(
-        state.panLimits.min,
-        state.panLimits.max
+        derived.panLimits.min,
+        derived.panLimits.max
       );
       _v.sub(controlsRef.current.target);
       camera.position.sub(_v);
@@ -26,6 +29,16 @@ const _ = () => {
     return () => controlsRef.current.removeEventListener("change", handlePan);
   }, []);
 
+  useEffect(() => {
+    _v.copy(controlsRef.current.target);
+    controlsRef.current.target.clamp(
+      derived.panLimits.min,
+      derived.panLimits.max
+    );
+    _v.sub(controlsRef.current.target);
+    camera.position.sub(_v);
+  }, [snap.view]);
+
   return (
     <OrbitControls
       ref={controlsRef}
@@ -33,10 +46,10 @@ const _ = () => {
       mouseButtons={{ LEFT: THREE.MOUSE.PAN }}
       touches={{ ONE: THREE.TOUCH.PAN }}
       enableRotate={false}
-      enableZoom={true}
-      screenSpacePanning={true}
-      minDistance={1}
-      maxDistance={1.6}
+      enableZoom={false}
+      screenSpacePanning={snap.view == "grid"}
+      minDistance={state.zoom.gridMin}
+      maxDistance={state.zoom.grid}
     />
   );
 };

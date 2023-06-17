@@ -4,11 +4,20 @@ import { proxy } from "valtio";
 import { derive } from "valtio/utils";
 
 interface State {
-  panLimits: {
+  panLimitsGrid: {
+    min: THREE.Vector3;
+    max: THREE.Vector3;
+  };
+  panLimitsLinear: {
     min: THREE.Vector3;
     max: THREE.Vector3;
   };
   panMargin: number;
+  zoom: {
+    grid: number;
+    gridMin: number;
+    linear: number;
+  };
 
   // Refs
   camBox: {
@@ -37,11 +46,21 @@ interface State {
 }
 
 const state = proxy({
-  panLimits: {
+  // Camera
+  panLimitsGrid: {
     min: new THREE.Vector3(-10, -10, -10),
     max: new THREE.Vector3(10, 10, 10),
   },
+  panLimitsLinear: {
+    min: new THREE.Vector3(0, 0, 0),
+    max: new THREE.Vector3(0, 0, 0),
+  },
   panMargin: -2,
+  zoom: {
+    grid: 1.6,
+    gridMin: 1,
+    linear: 1,
+  },
   // Refs
   camBox: {
     width: 0,
@@ -71,6 +90,11 @@ const state = proxy({
 const derived = derive({
   welcome: (get) => {
     return "Hello world";
+  },
+  panLimits: (get) => {
+    return get(state).view == "grid"
+      ? state.panLimitsGrid
+      : state.panLimitsLinear;
   },
 });
 

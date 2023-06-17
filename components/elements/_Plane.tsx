@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useFrame, extend } from "@react-three/fiber";
-import { Plane } from "@react-three/drei";
+// import { Plane } from "@react-three/drei";
 import { Distortion } from "@/components/effects";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
@@ -17,11 +17,11 @@ declare global {
 
 function ShaderPlane(props: any) {
   const snap = useSnapshot(state);
-  const { width, height, x, y } = props.itemData;
+  const { width, height, x, y, z } = props.itemData;
 
   const meshRef = useRef() as any;
   const matRef = useRef() as any;
-  const clickOutPlaneRef = useRef() as any;
+  // const clickOutPlaneRef = useRef() as any;
 
   useFrame((_, delta) => {
     if (!matRef.current) return;
@@ -30,7 +30,7 @@ function ShaderPlane(props: any) {
   });
 
   return (
-    <mesh {...props} ref={meshRef} position={[x, y, 0]}>
+    <mesh {...props} ref={meshRef} position={[x, y, z]}>
       <planeGeometry args={[width, height, 32, 32]} />
       <distortion
         frameAspect={width / height}
