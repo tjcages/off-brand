@@ -43,6 +43,10 @@ interface State {
   items: any[];
   itemsCopy: any[];
   mapItems: any[];
+
+  // Derived
+  selected: string;
+  pages: number;
 }
 
 const state = proxy({
@@ -85,6 +89,10 @@ const state = proxy({
   items: [],
   itemsCopy: [],
   mapItems: [],
+
+  // Derived
+  selected: "/imgs/archives/elijah.jpg",
+  pages: 0,
 } as State);
 
 const derived = derive({
@@ -95,6 +103,11 @@ const derived = derive({
     return get(state).view == "grid"
       ? state.panLimitsGrid
       : state.panLimitsLinear;
+  },
+  scrollHeight: (get) => {
+    return get(state)
+      .items.map((i) => i.height)
+      .reduce((a, b) => a + b, 0);
   },
 });
 

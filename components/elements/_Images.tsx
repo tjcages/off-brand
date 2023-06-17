@@ -8,7 +8,7 @@ import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 import { getNewPosition, isColliding, visibleBox } from "@/utils";
 import data from "@/data";
-import { state } from "@/store";
+import { state, derived } from "@/store";
 import Plane from "./_Plane";
 
 const _ = () => {
@@ -16,7 +16,8 @@ const _ = () => {
   const camera = useThree((state) => state.camera);
   const covers = useTexture(data.map((item: any) => item.coverImg));
   // get viewport
-  const { width, height } = useThree((state) => state.viewport);
+  const gl = useThree();
+  const scroll = useScroll();
 
   let projectIsOpened = createRef() as any;
 
@@ -162,21 +163,17 @@ const _ = () => {
 
   useEffect(() => {
     camera.position.set(0, 0, 1.2);
-    const items = state.itemsCopy.map((item: any) => ({ ...item }));
     snap.items.forEach((_, index: number) => {
-      // stack all items vertically if in list view
-      const last = items[index - 1] || { y: 0, height: 0 };
-      const item = items[index];
-      item.y = last.y - item.height - 0.35;
-
-      console.log(camera.position);
+      // jank fucking way of getting viewport width (cause useThree resizes)
+      var vFOV = THREE.MathUtils.degToRad(140); // convert vertical fov to radians
+      var height = 2 * Math.tan(vFOV / 2) * 1.2; // visible height
+      var width = height * gl.viewport.aspect; // visible width
 
       gsap.to(state.items[index], {
-        x: snap.view == "grid" ? state.itemsCopy[index].x : 0 - item.width - 2,
-        // y:
-        //   snap.view == "grid"
-        //     ? state.itemsCopy[index].y
-        //     : item.y + height + camera.position.y,
+        x:
+          snap.view == "grid"
+            ? state.itemsCopy[index].x
+            : camera.position.x + width / 2,
         y: snap.view == "grid" ? state.itemsCopy[index].y : 0 - index * 2,
         z: snap.view == "grid" ? 0 : -state.zoom.linear,
       });
@@ -185,11 +182,20 @@ const _ = () => {
     scroll.el.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "instant",
     });
   }, [snap.view]);
 
-  const scroll = useScroll();
+  // detect top most image in view on scroll changes
+  useEffect(() => {
+    const split = 1 / snap.items.length;
+    const index = Math.floor(scroll.offset / split);
+
+    state.selected =
+      index < data.length
+        ? data[index].coverImg
+        : data[data.length - 1].coverImg;
+  }, [scroll.offset]);
 
   // scroll to top when view changes
   useEffect(() => {
@@ -199,7 +205,54 @@ const _ = () => {
       duration: 0.5,
       ease: "power2.out",
     });
+
+    state.pages =
+      Math.ceil((derived.scrollHeight * 1.25) / gl.viewport.height) + 1; // extra 1.25 for margin
   }, [snap.view]);
+
+  // add drag listeners to scroll element
+  useEffect(() => {
+    const ele = scroll.el;
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+    const mouseDownHandler = function (e: any) {
+      ele.style.cursor = "grabbing";
+      ele.style.userSelect = "none";
+
+      pos = {
+        // The current scroll
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+      };
+
+      ele.addEventListener("mousemove", mouseMoveHandler);
+      ele.addEventListener("mouseup", mouseUpHandler);
+      ele.addEventListener("mouseleave", mouseUpHandler);
+    };
+
+    const mouseMoveHandler = function (e: any) {
+      const dy = e.clientY - pos.y;
+      ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
+    };
+
+    const mouseUpHandler = function () {
+      ele.removeEventListener("mousemove", mouseMoveHandler);
+      ele.removeEventListener("mouseup", mouseUpHandler);
+      ele.removeEventListener("mouseleave", mouseUpHandler);
+
+      ele.style.cursor = "grab";
+      ele.style.removeProperty("user-select");
+    };
+
+    if (snap.view == "linear")
+      ele.addEventListener("mousedown", mouseDownHandler);
+    else {
+      ele.removeEventListener("mousedown", mouseDownHandler);
+    }
+  }, [scroll.el, snap.view]);
 
   return (
     <group>

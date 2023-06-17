@@ -9,6 +9,8 @@
   height: auto;
   opacity: 0.7;
 
+  transition: opacity $animation-duration $animation-easing;
+
   @media (max-width: 900px) {
     left: auto;
   }

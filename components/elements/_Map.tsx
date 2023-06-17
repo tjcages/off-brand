@@ -4,7 +4,6 @@ import { state } from "@/store";
 import data from "@/data";
 import styles from "@/styles/map.module.scss";
 import { useSnapshot } from "valtio";
-import { isCollidingOne } from "@/utils";
 
 const _ = () => {
   const snap = useSnapshot(state);
@@ -26,6 +25,7 @@ const _ = () => {
       style={{
         width: snap.map.width * 10 + "px",
         height: snap.map.height * 10 + "px",
+        opacity: snap.view == "grid" ? 0.7 : 0,
       }}
     >
       <div className={styles.container}>

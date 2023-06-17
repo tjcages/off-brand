@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "@/styles/overlay.module.scss";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
@@ -17,6 +18,17 @@ const _ = () => {
           <div className={styles.square} />
         </div>
       </button>
+
+      <Image
+        className={styles.selected}
+        src={snap.selected}
+        alt=""
+        width={1000}
+        height={2000}
+        style={{
+          opacity: snap.view == "grid" ? 0 : 1,
+        }}
+      />
     </div>
   );
 };

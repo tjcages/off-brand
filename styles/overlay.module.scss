@@ -47,4 +47,18 @@
       mix-blend-mode: difference;
     }
   }
+
+  .selected {
+    position: absolute;
+    left: $padding-300;
+    bottom: $padding-300;
+
+    width: clamp(400px, 60vw, 1000px);
+    max-width: 50vw;
+    height: auto;
+    max-height: 75vh;
+
+    opacity: 1;
+    transition: opacity $animation-duration $animation-easing;
+  }
 }
