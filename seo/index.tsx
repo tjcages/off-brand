@@ -8,8 +8,8 @@ interface Props {
 }
 
 const _ = ({
-  title = "tjcages | nextjs starter",
-  description = "the fastest way to standup a starter site",
+  title = "COSMOS",
+  description = "",
   image = "/preview.jpg",
   url = "https://github.com/tjcages",
 }: Props) => {

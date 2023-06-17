@@ -4,6 +4,21 @@ body {
   margin: 0;
 
   font-size: 16px;
+
+  background-color: #000;
+}
+
+main {
+  opacity: 0;
+  animation: fade-in 1s ease 0.1s forwards;
+}
+
+/*   Default   */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  user-select: none;
 }
 
 h1,
@@ -18,12 +33,6 @@ strong,
 input {
   margin: 0;
   padding: 0;
-}
-
-/*   Default   */
-* {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -43,5 +52,14 @@ li {
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.6px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

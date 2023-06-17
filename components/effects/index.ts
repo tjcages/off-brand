@@ -1,5 +1,5 @@
-import Effects from "./_Effects"
+import Effects, { myLensDistortionPass } from "./_Effects";
 import Distortion from "./_Distortion";
 import { noiseFunction } from "./_Noise";
 
-export { Effects, Distortion, noiseFunction };
+export { Effects, Distortion, noiseFunction, myLensDistortionPass };

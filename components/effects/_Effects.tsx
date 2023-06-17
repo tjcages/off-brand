@@ -1,16 +1,13 @@
-import { useMemo, useEffect } from "react";
 import * as THREE from "three";
-import {
-  EffectComposer,
-  Pass,
-  FullScreenQuad,
-} from "three/examples/jsm/postprocessing/EffectComposer";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { Pass, FullScreenQuad } from "three/examples/jsm/postprocessing/Pass";
 // @ts-ignore
 import { LensDistortionPassGen } from "three-lens-distortion";
+import { useMemo, useEffect } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 import { RenderPass } from "postprocessing";
 
-let myLensDistortionPass;
+let myLensDistortionPass: any;
 
 export default function Effects() {
   const { gl, scene, camera, size } = useThree();

@@ -10,6 +10,7 @@ import { getNewPosition, isColliding, visibleBox } from "@/utils";
 import data from "@/data";
 import { state, derived } from "@/store";
 import Plane from "./_Plane";
+import { myLensDistortionPass } from "@/components/effects";
 
 const _ = () => {
   const snap = useSnapshot(state);
@@ -42,21 +43,21 @@ const _ = () => {
 
     let distortionValue =
       isHolding.current && !projectIsOpened.current.isOpened ? 0.2 : 0;
-    distortionValue += snap.speed * 3;
+    distortionValue += snap.speed * 2;
     distortionStrength.current = lerp(
       distortionStrength.current,
       distortionValue,
       0.2,
       delta
     );
-    // myLensDistortionPass.distortion.set(
-    //   distortionStrength.current,
-    //   distortionStrength.current
-    // );
-    // myLensDistortionPass.focalLength.set(
-    //   1 - focalStrength.current,
-    //   1 - focalStrength.current
-    // );
+    myLensDistortionPass.distortion.set(
+      distortionStrength.current,
+      distortionStrength.current
+    );
+    myLensDistortionPass.focalLength.set(
+      1 - focalStrength.current,
+      1 - focalStrength.current
+    );
 
     let top = 1 - (camera.position.y / state.map.height + 0.5);
     let left = camera.position.x / state.map.width + 0.5;

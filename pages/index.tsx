@@ -6,6 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
 import { Orbit, Images, Map } from "@/components/elements";
 import { Overlay } from "@/components/views";
+import { Effects } from "@/components/effects";
 import { state } from "@/store";
 
 const _ = () => {
@@ -27,6 +28,7 @@ const _ = () => {
               </Scroll>
             </ScrollControls>
             <Orbit />
+            <Effects />
           </Suspense>
         </Canvas>
         <Map />
