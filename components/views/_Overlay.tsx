@@ -4,7 +4,6 @@ import { state } from "@/store";
 
 const _ = () => {
   const snap = useSnapshot(state);
-  console.log(snap.view);
 
   return (
     <div className={styles.main}>

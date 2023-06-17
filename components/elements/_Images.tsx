@@ -161,6 +161,7 @@ const _ = () => {
   }, [state.items]);
 
   useEffect(() => {
+    camera.position.set(0, 0, 1.2);
     const items = state.itemsCopy.map((item: any) => ({ ...item }));
     snap.items.forEach((_, index: number) => {
       // stack all items vertically if in list view
@@ -168,14 +169,23 @@ const _ = () => {
       const item = items[index];
       item.y = last.y - item.height - 0.35;
 
+      console.log(camera.position);
+
       gsap.to(state.items[index], {
-        x:
-          snap.view == "grid"
-            ? state.itemsCopy[index].x
-            : camera.view?.width || 0 - item.width - 2,
-        y: snap.view == "grid" ? state.itemsCopy[index].y : item.y + height,
+        x: snap.view == "grid" ? state.itemsCopy[index].x : 0 - item.width - 2,
+        // y:
+        //   snap.view == "grid"
+        //     ? state.itemsCopy[index].y
+        //     : item.y + height + camera.position.y,
+        y: snap.view == "grid" ? state.itemsCopy[index].y : 0 - index * 2,
         z: snap.view == "grid" ? 0 : -state.zoom.linear,
       });
+    });
+
+    scroll.el.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
     });
   }, [snap.view]);
 
@@ -184,7 +194,6 @@ const _ = () => {
   // scroll to top when view changes
   useEffect(() => {
     // scroll to top
-    console.log(scroll);
     gsap.to(scroll, {
       current: 0,
       duration: 0.5,
@@ -193,7 +202,7 @@ const _ = () => {
   }, [snap.view]);
 
   return (
-    <>
+    <group>
       {snap.items.length &&
         data.map((project, index) => (
           <Plane
@@ -204,7 +213,7 @@ const _ = () => {
             project={data[index]}
           />
         ))}
-    </>
+    </group>
   );
 };
 

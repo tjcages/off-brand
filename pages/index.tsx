@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useRef, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
 import SEO from "@/seo";
@@ -9,6 +9,16 @@ import { state } from "@/store";
 
 const _ = () => {
   const snap = useSnapshot(state);
+  const ref = useRef();
+
+  useEffect(() => {
+    // const controls = ref.current;
+    // console.log(controls)
+    // controls.scrollTo(snap.view == "grid" ? 0 : 1);
+    window.scrollTo(0, 0);
+    console.log(window.scrollY);
+  }, [snap.view]);
+
   return (
     <>
       <SEO />
@@ -22,7 +32,8 @@ const _ = () => {
             <ScrollControls
               damping={0.1}
               pages={5}
-              enabled={snap.view == "linear"}
+              // enabled={snap.view == "linear"}
+              
             >
               <Scroll>
                 <Images />
