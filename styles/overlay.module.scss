@@ -23,6 +23,12 @@
     pointer-events: all;
 
     filter: blur(1px);
+    backdrop-filter: blur(1px);
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.5)
+    );
 
     transition: filter $animation-duration-long $animation-easing;
 
@@ -43,8 +49,6 @@
 
     .square {
       background-color: $color-200;
-
-      mix-blend-mode: difference;
     }
   }
 
