@@ -8,11 +8,10 @@ import { state, derived } from "@/store";
 const _ = () => {
   const snap = useSnapshot(state);
   const camera = useThree((state) => state.camera);
+  const controlsRef = useRef() as any;
   const _v = new THREE.Vector3();
 
-  const controlsRef = useRef() as any;
-
-  // ENFORCE PAN LIMITS
+  // enforce pan limits
   useLayoutEffect(() => {
     const handlePan = () => {
       _v.copy(controlsRef.current.target);
@@ -27,6 +26,31 @@ const _ = () => {
     return () => controlsRef.current.removeEventListener("change", handlePan);
   }, []);
 
+  // add grab cursor
+  useEffect(() => {
+    const ele = document.body;
+
+    const mouseDownHandler = function (e: any) {
+      ele.style.cursor = "grabbing";
+      ele.style.userSelect = "none";
+
+      ele.addEventListener("mouseup", mouseUpHandler);
+      ele.addEventListener("mouseleave", mouseUpHandler);
+    };
+
+    const mouseUpHandler = function () {
+      ele.removeEventListener("mouseup", mouseUpHandler);
+      ele.removeEventListener("mouseleave", mouseUpHandler);
+
+      ele.style.cursor = "grab";
+    };
+
+    ele.addEventListener("mousedown", mouseDownHandler);
+
+    return () => ele.removeEventListener("mousedown", mouseDownHandler);
+  }, []);
+
+  // reset camera on view change
   useEffect(() => {
     const controls = controlsRef.current;
 

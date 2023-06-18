@@ -15,15 +15,11 @@ import { myLensDistortionPass } from "@/components/effects";
 const _ = () => {
   const snap = useSnapshot(state);
   const camera = useThree((state) => state.camera);
-  const covers = useTexture(data.map((item: any) => item.coverImg));
-  // get viewport
+  const covers = useTexture(data.map((item: any) => item.cover));
   const gl = useThree();
   const scroll = useScroll();
 
-  let projectIsOpened = createRef() as any;
-
   const lastPos = useRef(new THREE.Vector3(0, 0, 0));
-  const isHolding = useRef(false);
   const distortionStrength = useRef(0);
   const focalStrength = useRef(2);
 
@@ -37,12 +33,10 @@ const _ = () => {
     );
     lastPos.current.copy(camera.position);
 
-    const focalValue =
-      isHolding.current && !projectIsOpened.current.isOpened ? 0.3 : 0;
+    const focalValue = 0;
     focalStrength.current = lerp(focalStrength.current, focalValue, 0.2, delta);
 
-    let distortionValue =
-      isHolding.current && !projectIsOpened.current.isOpened ? 0.2 : 0;
+    let distortionValue = 0;
     distortionValue += snap.speed * 2;
     distortionStrength.current = lerp(
       distortionStrength.current,
@@ -91,12 +85,19 @@ const _ = () => {
         size = { width: 2 * ratio, height: 2 };
       } else size = { width: 2, height: 2 / ratio };
 
-      let item = { x: 0, y: 0, width: size.width, height: size.height };
+      let item = {
+        ...data[index],
+        x: 0,
+        y: 0,
+        width: size.width,
+        height: size.height,
+      };
 
-      if (index === 0) {
-        items.push(item);
-        return;
-      }
+      // make first item the center
+      // if (index === 0) {
+      //   items.push(item);
+      //   return;
+      // }
 
       let positionIsValid = false;
 
@@ -156,8 +157,9 @@ const _ = () => {
     snap.items.forEach((_, index) => {
       gsap.to(state.items[index], {
         z: 0,
-        duration: 1,
-        ease: "power2.out",
+        duration: 2,
+        delay: 1,
+        ease: "expo",
       });
     });
   }, [state.items]);
@@ -195,9 +197,7 @@ const _ = () => {
     const index = Math.floor(scroll.offset / split);
 
     state.selected =
-      index < data.length
-        ? data[index].coverImg
-        : data[data.length - 1].coverImg;
+      index < data.length ? data[index].cover : data[data.length - 1].cover;
   }, [scroll.offset]);
 
   // scroll to top when view changes
@@ -223,10 +223,8 @@ const _ = () => {
       ele.style.userSelect = "none";
 
       pos = {
-        // The current scroll
         left: ele.scrollLeft,
         top: ele.scrollTop,
-        // Get the current mouse position
         x: e.clientX,
         y: e.clientY,
       };
@@ -265,12 +263,14 @@ const _ = () => {
             itemData={snap.items[index]}
             index={index}
             key={project.name + index}
-            texture={covers[index]}
             project={data[index]}
+            texture={covers[index]}
           />
         ))}
     </group>
   );
 };
+
+data.map((d) => d.cover).forEach(useTexture.preload);
 
 export default _;

@@ -61,6 +61,8 @@
     max-width: 50vw;
     height: auto;
     max-height: 75vh;
+    object-fit: contain;
+    object-position: bottom left;
 
     opacity: 1;
     transition: opacity $animation-duration $animation-easing;

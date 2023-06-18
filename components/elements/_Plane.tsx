@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-function ShaderPlane(props: any) {
+const _ = (props: any) => {
   const snap = useSnapshot(state);
   const { width, height, x, y, z } = props.itemData;
 
@@ -40,6 +40,6 @@ function ShaderPlane(props: any) {
       />
     </mesh>
   );
-}
+};
 
-export default ShaderPlane;
+export default _;
