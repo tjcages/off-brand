@@ -11,7 +11,7 @@ interface Props {
 
 var imagesArray: Props[] = [];
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 30; i++) {
   var object = {
     name: "name",
     type: "image",

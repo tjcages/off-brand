@@ -10,6 +10,7 @@ const DistortionMaterial = shaderMaterial(
     hoverValue: 0,
     textureAspect: null,
     frameAspect: null,
+    opacity: 1,
   },
   // vertex shader
   `
@@ -42,12 +43,9 @@ const DistortionMaterial = shaderMaterial(
   
       uniform float textureAspect;
       uniform float frameAspect;
-  
-  
-  
+      uniform float opacity;
+
       ${noiseFunction}
-  
-  
       
       void main() {
         float scaleX = 1.;
@@ -70,8 +68,15 @@ const DistortionMaterial = shaderMaterial(
   
         vec3 color = mix(vec3(r, g, b), vec3(0.), 0.1 - hoverValue * 0.1);
         gl_FragColor = vec4(color, 1.);
+        gl_FragColor.a = opacity;
       }
-    `
+    `,
+  (self) => {
+    if (!self) return;
+    self.transparent = true;
+    self.depthWrite = false;
+    self.depthTest = false;
+  }
 );
 
 export default DistortionMaterial;

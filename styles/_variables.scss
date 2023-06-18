@@ -47,7 +47,7 @@ $padding-500: 108px;
 /* BORDERS */
 $border-radius-100: 2px;
 $border-radius-200: 5px;
-$border-radius-300: .9375rem;
+$border-radius-300: 0.9375rem;
 $border-radius-400: 20px;
 $border-radius-500: 30px;
 
@@ -61,3 +61,27 @@ $animation-duration-long: 1.5s;
 $animation-delay: 0.25s;
 $animation-delay-long: 1.25s;
 $animation-easing: cubic-bezier(0.33, 1, 0.68, 1);
+
+/* FOR REACT */
+:export {
+  color000: $color-000;
+  color100: $color-100;
+  color200: $color-200;
+  color300: $color-300;
+  color400: $color-400;
+  color500: $color-500;
+  color600: $color-600;
+  color700: $color-700;
+  color800: $color-800;
+  
+  colorAccent: $color-accent;
+
+  // padding
+  padding50: $padding-50;
+  padding100: $padding-100;
+  padding150: $padding-150;
+  padding200: $padding-200;
+  padding300: $padding-300;
+  padding400: $padding-400;
+  padding500: $padding-500;
+}
