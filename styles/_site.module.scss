@@ -33,7 +33,7 @@
   }
 
   h3 {
-    font-size: $font-size-300;
+    font-size: $font-size-400;
     font-weight: $font_weight_200;
 
     color: $color_800;
@@ -97,7 +97,22 @@
   }
 
   button {
+    padding: $padding-150 $padding-200;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+
+    color: $color-200;
+    background-color: $color-800;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    outline: none;
+    border-radius: $border-radius-300;
+    overflow: hidden;
+
     cursor: pointer;
+    transition: background-color $animation-duration $animation-easing,
+      border-color $animation-duration $animation-easing;
   }
 
   a {

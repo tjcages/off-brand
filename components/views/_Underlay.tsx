@@ -5,15 +5,14 @@ import { state } from "@/store";
 
 const _ = () => {
   const snap = useSnapshot(state);
+
   return (
     <div
       className={`${styles.main} ${snap.view == "grid" ? styles.visible : ""}`}
     >
       <Image src="/imgs/logo.png" alt="logo" width={800} height={400} />
-      <h5>Make it your world</h5>
-      {/* <button>
-        Enter
-      </button> */}
+      <h3>Bring order to your creative universe</h3>
+      <button>Enter</button>
     </div>
   );
 };

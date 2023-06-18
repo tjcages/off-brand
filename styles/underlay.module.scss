@@ -21,7 +21,8 @@
 
   &.visible {
     img,
-    h5 {
+    h3,
+    button {
       opacity: 1;
       transform: scale(1);
 
@@ -37,30 +38,46 @@
     object-fit: contain;
   }
 
-  h5 {
+  h3 {
     color: $color-400;
-    font-size: $font-size-300;
+  }
+
+  button {
+    position: relative;
+    overflow: visible;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.6);
+      transform-origin: center;
+      opacity: 0;
+
+      height: 2px;
+      width: 2rem;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 0, 0, 0),
+        rgb(255, 255, 255),
+        rgba(255, 0, 0, 0)
+      );
+      filter: blur(1px);
+
+      animation: fade-in-light $animation-duration-long $animation-easing
+        $animation-duration-long forwards;
+    }
   }
 
   img,
-  h5 {
+  h3,
+  button {
     opacity: 0;
     transform: scale(0.6);
 
     transition: opacity $animation-duration-short $animation-easing,
       transform $animation-duration $animation-easing;
-  }
-
-  button {
-
-    padding: 2.5rem;
-
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1;
-
-    outline: none;
-    border: 1px solid $color-400;
   }
 
   &:after {
@@ -88,6 +105,17 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes fade-in-light {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(-50%);
   }
 }
 

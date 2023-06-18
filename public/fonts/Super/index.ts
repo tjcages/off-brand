@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 const _ = localFont({
   src: [
     {
-      path: "./BasementGrotesque.otf",
-      weight: "500",
+      path: "./GTSuperDisplay-Light.woff2",
+      weight: "300",
       style: "normal",
     },
   ],
