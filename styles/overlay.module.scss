@@ -44,6 +44,12 @@
       filter: blur(0);
       transition-duration: $animation-duration;
     }
+
+    @media only screen and (max-width: 768px) {
+      & {
+        filter: blur(0px);
+      }
+    }
   }
 
   .grid {

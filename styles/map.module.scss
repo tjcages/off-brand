@@ -14,8 +14,12 @@
 
   transition: opacity $animation-duration $animation-easing;
 
-  @media (max-width: 900px) {
-    left: auto;
+  @media only screen and (max-width: 768px) {
+    & {
+      left: auto;
+
+      transform: scale(0.4);
+    }
   }
 
   .container {
