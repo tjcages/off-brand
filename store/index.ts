@@ -38,6 +38,7 @@ interface State {
     height: number;
   };
   speed: number;
+  scrollPos: number;
   view: "intro" | "grid" | "linear";
 
   // Items
@@ -82,6 +83,7 @@ const state = proxy({
   },
   mapPosRef: createRef(),
   speed: 0,
+  scrollPos: 0,
   view: "intro",
 
   items: [],

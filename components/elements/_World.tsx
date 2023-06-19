@@ -84,6 +84,9 @@ const _ = () => {
       state.mapPos.width = camBox.width;
       state.mapPos.height = camBox.height;
     }
+
+    // update scroll position
+    if (scroll.offset !== snap.scrollPos) state.scrollPos = scroll.offset;
   });
 
   // update items positions
@@ -254,10 +257,10 @@ const _ = () => {
   // detect top most image in view on scroll changes
   useEffect(() => {
     const split = 1 / snap.items.length;
-    const index = Math.round(scroll.offset / split);
+    const index = Math.round(snap.scrollPos / split);
 
     if (index < state.items.length) state.selected = state.items[index].cover;
-  }, [scroll]);
+  }, [snap.scrollPos]);
 
   return (
     <group ref={ref} position={[0, 2, 0]}>
