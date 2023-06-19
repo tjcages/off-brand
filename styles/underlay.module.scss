@@ -7,8 +7,6 @@
   right: 0;
   bottom: 0;
 
-  z-index: 1000;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +19,9 @@
 
   animation: fade-in $animation-duration-long $animation-easing 0.1s forwards;
 
-  &.visible {
+  &.intro {
+    z-index: 1000;
+
     img,
     h3,
     button {
@@ -31,6 +31,14 @@
       transition: opacity $animation-duration $animation-easing,
         transform $animation-duration-long $animation-easing;
       transition-delay: $animation-duration;
+    }
+  }
+
+  &.visible {
+    img {
+      opacity: 0.1;
+      transform: scale(1);
+      filter: blur(2px);
     }
   }
 
@@ -76,7 +84,7 @@
       filter: blur(1px);
 
       animation: fade-in-light $animation-duration-long $animation-easing
-        $animation-duration-long forwards;
+        $animation-duration-long * 2 forwards;
     }
   }
 
@@ -89,10 +97,11 @@
     filter: drop-shadow(0 0.5rem 1rem $color-700);
 
     transition: opacity $animation-duration-short $animation-easing,
-      transform $animation-duration $animation-easing;
+      transform $animation-duration $animation-easing,
+      filter $animation-duration-long $animation-easing;
   }
 
-  &:after {
+  &:before {
     content: "";
     position: absolute;
     top: -50%;
@@ -108,6 +117,26 @@
     opacity: 0.5;
     will-change: auto;
     animation: noise 1.2s steps(3) both infinite;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 70%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    border-radius: 50%;
+
+    animation: fade-to-black 1s $animation-easing 2s
+      forwards;
   }
 }
 
@@ -130,6 +159,27 @@
   to {
     opacity: 1;
     transform: scale(1) translateX(-50%);
+  }
+}
+
+@keyframes fade-to-black {
+  from {
+    // background: radial-gradient(
+    //   ellipse at center,
+    //   rgba(255, 255, 255, 0) 0%,
+    //   $color-200 70%,
+    //   $color-200 100%
+    // );
+    filter: invert(0);
+  }
+  to {
+    // background: radial-gradient(
+    //   ellipse at center,
+    //   rgba(255, 255, 255, 0) 0%,
+    //   $color-700 70%,
+    //   $color-700 100%
+    // );
+    filter: invert(1);
   }
 }
 

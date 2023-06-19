@@ -24,14 +24,13 @@ const _ = () => {
       </button>
 
       <Image
-        className={styles.selected}
+        className={`${styles.selected} ${
+          snap.view == "linear" ? styles.visible : ""
+        }`}
         src={snap.selected}
         alt=""
         width={1000}
         height={2000}
-        style={{
-          opacity: snap.view == "grid" ? 0 : 1,
-        }}
       />
     </div>
   );

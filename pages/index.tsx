@@ -4,12 +4,10 @@ import { useSnapshot } from "valtio";
 import SEO from "@/seo";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
-import { Orbit, Images, Map, World } from "@/components/elements";
+import { Orbit, Map, World } from "@/components/elements";
 import { Underlay, Overlay } from "@/components/views";
 import { Effects } from "@/components/effects";
 import { state } from "@/store";
-
-import { OrbitControls } from "@react-three/drei";
 
 const _ = () => {
   const snap = useSnapshot(state);
@@ -26,18 +24,17 @@ const _ = () => {
           camera={{ position: [0, 0, 3], fov: 140, far: 50 }}
         >
           <Suspense>
-            {/* <ScrollControls pages={snap.pages}>
+            <ScrollControls pages={snap.pages}>
               <Scroll>
-                <Images />
+                <World />
               </Scroll>
-            </ScrollControls> */}
-            <World />
-            {/* <Orbit /> */}
+            </ScrollControls>
+            <Orbit />
             <Effects />
-            <OrbitControls />
           </Suspense>
         </Canvas>
-        {/* <Map /> */}
+
+        <Map />
 
         <Overlay />
       </main>

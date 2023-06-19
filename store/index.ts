@@ -41,7 +41,6 @@ interface State {
 
   // Items
   items: any[];
-  itemsCopy: any[];
   mapItems: any[];
 
   // Derived
@@ -62,7 +61,7 @@ const state = proxy({
   panMargin: -2,
   zoom: {
     grid: 1.6,
-    gridMin: 1,
+    gridMin: 0.6,
     linear: 1,
   },
   // Refs
@@ -87,7 +86,6 @@ const state = proxy({
 
   // Items
   items: [],
-  itemsCopy: [],
   mapItems: [],
 
   // Derived
@@ -96,9 +94,6 @@ const state = proxy({
 } as State);
 
 const derived = derive({
-  welcome: (get) => {
-    return "Hello world";
-  },
   panLimits: (get) => {
     return get(state).view == "grid"
       ? state.panLimitsGrid

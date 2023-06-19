@@ -1,15 +1,20 @@
 /* eslint-disable no-dupe-keys */
 import { v4 as uuidv4 } from "uuid";
 
-interface Props {
+interface DataProps {
   id?: string;
   name: string;
   type: string;
   description: string;
   cover: string;
+  x?: number;
+  y?: number;
+  z?: number;
+  width?: number;
+  height?: number;
 }
 
-var imagesArray: Props[] = [];
+var imagesArray: DataProps[] = [];
 
 for (var i = 0; i < 30; i++) {
   var object = {
@@ -28,3 +33,4 @@ imagesArray = imagesArray.map((project) => ({
 }));
 
 export default imagesArray;
+export type { DataProps };

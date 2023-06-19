@@ -1,5 +1,5 @@
-import { useRef, createRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 import { state } from "@/store";
 import data from "@/data";
 import styles from "@/styles/map.module.scss";
@@ -12,11 +12,25 @@ const _ = () => {
 
   const mapPosRect = useRef() as any;
 
+  const controls = useAnimationControls();
+
   useEffect(() => {
     if (!mapRef.current || !mapPosRef.current) return;
 
     mapPosRect.current = mapPosRef.current.getBoundingClientRect();
   }, []);
+
+  useEffect(() => {
+    controls.stop();
+    if (snap.view == "grid") {
+      controls.start((i) => ({
+        opacity: 1,
+        transition: { delay: 0.4 + i / 15, duration: 0.4 },
+      }));
+    } else {
+      controls.set({ opacity: 0, transition: { duration: 0.2 } });
+    }
+  }, [snap.view]);
 
   return (
     <div
@@ -33,10 +47,8 @@ const _ = () => {
           <motion.div
             key={project.id}
             initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { delay: 0.4 + i / 15, duration: 0.4 },
-            }}
+            animate={controls}
+            custom={i}
             className={styles.item}
             style={{
               width: project.width * 10 + "px",
@@ -51,7 +63,7 @@ const _ = () => {
         ref={mapPosRef}
         initial={{ opacity: 0 }}
         animate={{
-          opacity: 1,
+          opacity: snap.view == "grid" ? 1 : 0,
           transition: { delay: 0.6 + data.length / 10 },
         }}
         className={styles.position}

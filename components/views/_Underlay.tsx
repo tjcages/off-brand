@@ -8,11 +8,17 @@ const _ = () => {
 
   return (
     <div
-      className={`${styles.main} ${snap.view !== "linear" ? styles.visible : ""}`}
+      className={`${styles.main} ${
+        snap.view == "intro"
+          ? styles.intro
+          : snap.view == "grid"
+          ? styles.visible
+          : ""
+      }`}
     >
       <Image src="/imgs/logo.png" alt="logo" width={800} height={400} />
       <h3>Bring order to your creative universe</h3>
-      <button>Enter</button>
+      <button onClick={() => (state.view = "grid")}>Enter</button>
     </div>
   );
 };
