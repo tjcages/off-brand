@@ -255,8 +255,9 @@ const _ = () => {
   useEffect(() => {
     const split = 1 / snap.items.length;
     const index = Math.round(scroll.offset / split);
+
     if (index < state.items.length) state.selected = state.items[index].cover;
-  }, [scroll.offset]);
+  }, [scroll]);
 
   return (
     <group ref={ref} position={[0, 2, 0]}>
