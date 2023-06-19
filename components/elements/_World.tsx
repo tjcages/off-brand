@@ -183,29 +183,66 @@ const _ = () => {
         y: e.clientY,
       };
 
+      // add mouse events
       ele.addEventListener("mousemove", mouseMoveHandler);
       ele.addEventListener("mouseup", mouseUpHandler);
       ele.addEventListener("mouseleave", mouseUpHandler);
+      // add touch events
+      ele.addEventListener("touchmove", touchMoveHandler);
+      ele.addEventListener("touchend", mouseUpHandler);
+    };
+
+    // touch down handler
+    const touchDownHandler = function (e: any) {
+      ele.style.cursor = "grabbing";
+      ele.style.userSelect = "none";
+
+      pos = {
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      };
+
+      // add touch events
+      ele.addEventListener("touchmove", touchMoveHandler);
+      ele.addEventListener("touchend", mouseUpHandler);
     };
 
     const mouseMoveHandler = function (e: any) {
+      console.log(e)
       const dy = e.clientY - pos.y;
       ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
     };
 
+    // touch move handler
+    const touchMoveHandler = function (e: any) {
+      console.log(e)
+      const dy = e.touches[0].clientY - pos.y;
+      ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
+    };
+
     const mouseUpHandler = function () {
+      // remove mouse events
       ele.removeEventListener("mousemove", mouseMoveHandler);
       ele.removeEventListener("mouseup", mouseUpHandler);
       ele.removeEventListener("mouseleave", mouseUpHandler);
+      // remove touch events
+      ele.removeEventListener("touchmove", touchMoveHandler);
+      ele.removeEventListener("touchend", mouseUpHandler);
 
       ele.style.cursor = "grab";
       ele.style.removeProperty("user-select");
     };
 
-    if (snap.view == "linear")
+    if (snap.view == "linear") {
+      // add mouse events
       ele.addEventListener("mousedown", mouseDownHandler);
-    else {
+      // add touch events
+      ele.addEventListener("touchstart", touchDownHandler);
+    } else {
       ele.removeEventListener("mousedown", mouseDownHandler);
+      ele.removeEventListener("touchstart", mouseDownHandler);
     }
 
     // calculate the number of pages
