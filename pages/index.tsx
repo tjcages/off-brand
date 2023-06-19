@@ -9,6 +9,8 @@ import { Underlay, Overlay } from "@/components/views";
 import { Effects } from "@/components/effects";
 import { state } from "@/store";
 
+import { OrbitControls } from "@react-three/drei";
+
 const _ = () => {
   const snap = useSnapshot(state);
 
@@ -18,7 +20,7 @@ const _ = () => {
 
       <main>
         <Underlay />
-        
+
         <Canvas
           dpr={[1, 1.5]}
           camera={{ position: [0, 0, 3], fov: 140, far: 50 }}
@@ -32,6 +34,7 @@ const _ = () => {
             <World />
             {/* <Orbit /> */}
             <Effects />
+            <OrbitControls />
           </Suspense>
         </Canvas>
         {/* <Map /> */}

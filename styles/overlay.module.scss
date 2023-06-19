@@ -15,6 +15,14 @@
   user-select: none;
   pointer-events: none;
 
+  opacity: 0;
+
+  transition: opacity $animation-duration $animation-easing;
+
+  &.visible {
+    opacity: 1;
+  }
+
   button {
     padding: $padding-200;
     background: none;

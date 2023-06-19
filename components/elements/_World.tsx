@@ -17,36 +17,37 @@ declare global {
 }
 
 interface Props {
-  position: THREE.Vector3 | undefined;
-  texture: THREE.Texture;
+  item: any;
   index: number;
 }
 
-function Word({ position, texture, index }: Props) {
+function Word({ item, index }: Props) {
   const ref = useRef() as any;
+  const texture = useTexture(item.cover) as THREE.Texture;
   const { width, height } = texture.image;
 
-  useFrame(({ camera }) => {
+  useFrame(({ clock, camera }) => {
     ref.current.lookAt(camera.position);
+
+    // move in a figure 8 shape around the center axis
+    const t = clock.getElapsedTime() + index * 0.5;
+    const r = 12.0;
+    const a = 1.0;
+    const b = 0.25;
+    const x = (r * Math.cos(t)) / (1 + Math.pow(Math.sin(t), 2));
+    const y = (r * Math.sin(t) * Math.cos(t)) / (1 + Math.pow(Math.sin(t), 2));
+    // const z = r * Math.cos(b * t);
+    ref.current.position.set(x, y, 0);
   });
 
   useEffect(() => {
-    gsap.to(ref.current.position, {
-      duration: 2,
-      delay: index * 0.1,
-      x: position?.x,
-      y: position?.y,
-      z: position?.z,
-      ease: "expo",
-    });
-
     gsap.to(ref.current.material.uniforms.opacity, {
-      duration: 2,
-      delay: index * 0.1,
+      duration: 1,
+      delay: 0.5 + index * 0.1,
       value: 1,
       ease: "expo",
     });
-  }, [position]);
+  });
 
   return (
     <mesh ref={ref} position={[0, 0, 10]}>
@@ -64,41 +65,6 @@ function Word({ position, texture, index }: Props) {
 const _ = () => {
   const ref = useRef() as any;
 
-  const count = useMemo(() => Math.ceil(Math.sqrt(data.length)), []);
-  const radius = 20;
-
-  const items = useMemo(() => {
-    const temp = [];
-    const covers = useTexture(data.map((item: any) => item.cover));
-    const spherical = new THREE.Spherical();
-    const phiSpan = Math.PI / (count + 1);
-    const thetaSpan = (Math.PI * 2) / (count + 1);
-    for (let i = 1; i < count + 1; i++)
-      for (let j = 0; j < count; j++)
-        temp.push([
-          new THREE.Vector3().setFromSpherical(
-            spherical.set(radius, phiSpan * i, thetaSpan * j)
-          ),
-          covers[i + j],
-        ]);
-    return temp;
-  }, [count, radius]);
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    // slowly reduce speed of rotation
-    ref.current.rotation.y = THREE.MathUtils.lerp(
-      ref.current.rotation.y,
-      ref.current.rotation.y + Math.sin(1 / time),
-      0.1
-    );
-    ref.current.rotation.x = THREE.MathUtils.lerp(
-      ref.current.rotation.x,
-      ref.current.rotation.x + 1 / time,
-      0.1
-    );
-  });
-
   useEffect(() => {
     setTimeout(() => {
       gsap.to(ref.current.scale, {
@@ -112,14 +78,9 @@ const _ = () => {
   });
 
   return (
-    <group ref={ref} position={[0, 1, -20]} scale={0}>
-      {items.map(([pos, texture], index) => (
-        <Word
-          key={index}
-          position={(pos as THREE.Vector3) || undefined}
-          texture={texture as THREE.Texture}
-          index={index}
-        />
+    <group ref={ref} position={[0, 3, -3]} scale={0}>
+      {data.slice(0, 20).map((item, index) => (
+        <Word key={index} item={item} index={index} />
       ))}
     </group>
   );

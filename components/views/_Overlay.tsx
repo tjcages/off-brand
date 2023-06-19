@@ -7,7 +7,11 @@ const _ = () => {
   const snap = useSnapshot(state);
 
   return (
-    <div className={styles.main}>
+    <div
+      className={`${styles.main} ${
+        snap.view !== "intro" ? styles.visible : ""
+      }`}
+    >
       <button
         onClick={() => (state.view = snap.view == "grid" ? "linear" : "grid")}
       >

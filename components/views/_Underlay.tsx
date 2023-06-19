@@ -8,7 +8,7 @@ const _ = () => {
 
   return (
     <div
-      className={`${styles.main} ${snap.view == "grid" ? styles.visible : ""}`}
+      className={`${styles.main} ${snap.view !== "linear" ? styles.visible : ""}`}
     >
       <Image src="/imgs/logo.png" alt="logo" width={800} height={400} />
       <h3>Bring order to your creative universe</h3>
