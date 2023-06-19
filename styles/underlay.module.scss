@@ -194,7 +194,7 @@
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(-50px);
   }
 }
 
@@ -211,21 +211,9 @@
 
 @keyframes fade-to-black {
   from {
-    // background: radial-gradient(
-    //   ellipse at center,
-    //   rgba(255, 255, 255, 0) 0%,
-    //   $color-200 70%,
-    //   $color-200 100%
-    // );
     filter: invert(0);
   }
   to {
-    // background: radial-gradient(
-    //   ellipse at center,
-    //   rgba(255, 255, 255, 0) 0%,
-    //   $color-700 70%,
-    //   $color-700 100%
-    // );
     filter: invert(1);
   }
 }

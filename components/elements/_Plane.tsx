@@ -54,7 +54,7 @@ const _ = ({ item, texture, index }: Props) => {
       ref.current.lookAt(camera.position);
       // move in a figure 8 shape around the center axis
       const t = clock.getElapsedTime() + index * 0.5;
-      const r = 10.0;
+      const r = 12.0;
       const x = (r * Math.cos(t)) / (1 + Math.pow(Math.sin(t), 2));
       const y =
         (r * Math.sin(t) * Math.cos(t)) / (1 + Math.pow(Math.sin(t), 2));
