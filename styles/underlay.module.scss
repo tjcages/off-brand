@@ -97,7 +97,7 @@
     filter: drop-shadow(0 0.5rem 1rem $color-700);
 
     transition: opacity $animation-duration-short $animation-easing,
-      transform $animation-duration $animation-easing,
+      transform $animation-duration-long $animation-easing,
       filter $animation-duration-long $animation-easing;
   }
 
