@@ -1,6 +1,6 @@
 import getNewPosition from "./_getNewPosition";
 import isColliding from "./_isColliding";
-import isCollidingOne from "./_isCollidingOne";
 import visibleBox from "./_visibleBox";
+import { useMedia, mobileBreakpoint } from "./_useMedia";
 
-export { getNewPosition, isColliding, isCollidingOne, visibleBox };
+export { getNewPosition, isColliding, visibleBox, useMedia, mobileBreakpoint };

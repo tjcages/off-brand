@@ -2,7 +2,7 @@
 
 .main {
   position: fixed;
-  top: 0;
+  top: $padding-400;
   left: 0;
   right: 0;
   bottom: 0;
@@ -47,6 +47,8 @@
     height: auto;
     object-fit: contain;
 
+    filter: drop-shadow(0 1em 1.5em rgba(220, 223, 229, 0.3)) !important;
+
     @media only screen and (max-width: 768px) {
       & {
         width: clamp(200px, 70%, 300px);
@@ -61,6 +63,7 @@
 
   button {
     position: relative;
+    margin-top: $padding-200;
     overflow: visible;
 
     pointer-events: all;
@@ -69,6 +72,12 @@
 
     &:hover {
       border: 1px solid rgba(255, 255, 255, 0.9);
+
+      font-family: $font-secondary;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-shadow: 0 0 0 $color-200;
     }
 
     &:after {

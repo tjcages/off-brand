@@ -8,21 +8,23 @@ import { state, derived } from "@/store";
 const _ = () => {
   const snap = useSnapshot(state);
   const camera = useThree((state) => state.camera);
+
   const controlsRef = useRef() as any;
-  const _v = new THREE.Vector3();
+  const pan = new THREE.Vector3();
 
   // enforce pan limits
   useLayoutEffect(() => {
     const handlePan = () => {
-      _v.copy(controlsRef.current.target);
+      pan.copy(controlsRef.current.target);
       controlsRef.current.target.clamp(
         derived.panLimits.min,
         derived.panLimits.max
       );
-      _v.sub(controlsRef.current.target);
-      camera.position.sub(_v);
+      pan.sub(controlsRef.current.target);
+      camera.position.sub(pan);
     };
     controlsRef.current.addEventListener("change", handlePan);
+
     return () => controlsRef.current.removeEventListener("change", handlePan);
   }, []);
 
@@ -55,7 +57,7 @@ const _ = () => {
     const controls = controlsRef.current;
 
     camera.position.set(0, 0, 1.2);
-    controls.reset();
+    controls.reset(); // this function killed me ...
   }, [snap.view]);
 
   return (
@@ -63,12 +65,12 @@ const _ = () => {
       <OrbitControls
         ref={controlsRef}
         panSpeed={2}
-        mouseButtons={{ LEFT: THREE.MOUSE.PAN }}
         touches={{ ONE: THREE.TOUCH.PAN }}
-        enablePan={snap.view == "grid"}
+        mouseButtons={{ LEFT: THREE.MOUSE.PAN }}
         enableRotate={false}
-        enableZoom={snap.view == "grid"}
         screenSpacePanning={true}
+        enablePan={snap.view == "grid"}
+        enableZoom={snap.view == "grid"}
         minDistance={state.zoom.gridMin}
         maxDistance={state.zoom.grid}
       />

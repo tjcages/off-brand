@@ -3,8 +3,9 @@ body {
   padding: 0;
   margin: 0;
 
-  font-family: GT Super Display, Favorit, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  font-family: GT Super Display, Favorit, system-ui, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif;
   font-size: 16px;
 
   background-color: #080808;
@@ -15,7 +16,7 @@ main {
   animation: fade-in 1s ease 0.1s forwards;
 }
 
-/*   Default   */
+// default
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +51,7 @@ li {
   padding: 0;
 }
 
-// Remove grey border around images on iOS
+// remove grey border around images on iOS
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.1px);

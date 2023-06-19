@@ -8,6 +8,7 @@ const _ = localFont({
       style: "normal",
     },
   ],
+  variable: "--gt-super"
 });
 
 export default _;

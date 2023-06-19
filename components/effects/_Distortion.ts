@@ -6,11 +6,11 @@ const DistortionMaterial = shaderMaterial(
     time: 0,
     tex: null,
     speed: 0,
-    rgbShiftStrength: 1,
+    opacity: 1,
     hoverValue: 0,
+    rgbShiftStrength: 1,
     textureAspect: null,
     frameAspect: null,
-    opacity: 1,
   },
   // vertex shader
   `
@@ -73,6 +73,7 @@ const DistortionMaterial = shaderMaterial(
     `,
   (self) => {
     if (!self) return;
+    // allow opacity changes
     self.transparent = true;
     self.depthWrite = false;
     self.depthTest = false;

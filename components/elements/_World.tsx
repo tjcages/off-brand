@@ -1,18 +1,16 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
-import { useFrame, useThree, extend } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useTexture, useScroll } from "@react-three/drei";
 // @ts-ignore
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
+
 import data from "@/data";
 import { state, derived } from "@/store";
 import { getNewPosition, isColliding, visibleBox } from "@/utils";
-
-import { Distortion, myLensDistortionPass } from "@/components/effects";
+import { myLensDistortionPass } from "@/components/effects";
 import { Plane } from "@/components/elements";
-
-extend({ Distortion });
 
 declare global {
   namespace JSX {
@@ -30,17 +28,21 @@ const _ = () => {
   const gl = useThree();
   const scroll = useScroll();
 
+  // load textures
   const covers = useTexture(data.map((item: any) => item.cover));
   const items = data.map((item) => {
-    return { ...item, x: 0, y: 0, z: -4 };
+    return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
 
+  // track speed & distortion
   const lastPos = useRef(new THREE.Vector3(0, 0, 0));
   const distortionStrength = useRef(0);
   const focalStrength = useRef(2);
 
+  // track map position, speed, & distortion
   useFrame(({ camera }, delta) => {
     let hasChanged = lastPos.current.distanceTo(camera.position) > 0.005;
+    // speed affecting distortion
     state.speed = lerp(
       snap.speed,
       camera.position.distanceTo(lastPos.current),
@@ -49,9 +51,7 @@ const _ = () => {
     );
     lastPos.current.copy(camera.position);
 
-    const focalValue = 0;
-    focalStrength.current = lerp(focalStrength.current, focalValue, 0.2, delta);
-
+    // speed affecting distortion
     let distortionValue = 0;
     distortionValue += snap.speed * 2;
     distortionStrength.current = lerp(
@@ -64,17 +64,20 @@ const _ = () => {
       distortionStrength.current,
       distortionStrength.current
     );
+    // focal length affecting distortion
+    focalStrength.current = lerp(focalStrength.current, 0, 0.2, delta);
     myLensDistortionPass.focalLength.set(
       1 - focalStrength.current,
       1 - focalStrength.current
     );
 
+    // map position
     let top = 1 - (camera.position.y / state.map.height + 0.5);
     let left = camera.position.x / state.map.width + 0.5;
-
     state.mapPos.top = top;
     state.mapPos.left = left;
 
+    // update map size
     if (hasChanged) {
       const camBox = visibleBox(camera, 0);
 
@@ -83,8 +86,9 @@ const _ = () => {
     }
   });
 
+  // update items positions
   useEffect(() => {
-    const tempItems = [] as any; // blank array to hold new positions
+    const tempItems = [] as any;
 
     let minX = 0;
     let minY = 0;
@@ -92,13 +96,14 @@ const _ = () => {
     let maxY = 0;
 
     covers.forEach((cover, index) => {
+      // get size of item based on image ratio
       let size;
       const ratio = cover.image.naturalWidth / cover.image.naturalHeight;
-
       if (ratio < 1) {
         size = { width: 2 * ratio, height: 2 };
       } else size = { width: 2, height: 2 / ratio };
 
+      // create item
       let item = {
         ...items[index],
         width: size.width,
@@ -111,13 +116,13 @@ const _ = () => {
       //   return;
       // }
 
+      // circle packing around center
       let positionIsValid = false;
       let numberOfTests = 0;
       let minRadius = 2;
       let tempPos = { x: 0, y: 0, z: 10 };
-
       while (!positionIsValid) {
-        tempPos = getNewPosition(item, minRadius);
+        tempPos = getNewPosition(minRadius);
         positionIsValid = !isColliding(tempItems, {
           ...tempPos,
           width: item.width,
@@ -125,14 +130,16 @@ const _ = () => {
         });
 
         numberOfTests++;
-        if (numberOfTests > 10) minRadius += 0.1;
+        if (numberOfTests > 10) minRadius += 0.1; // increase radius
       }
 
+      // update bounds
       minX = Math.min(minX, tempPos.x - item.width);
       maxX = Math.max(maxX, tempPos.x + item.width);
       minY = Math.min(minY, tempPos.y - item.height);
       maxY = Math.max(maxY, tempPos.y + item.height);
 
+      // set item position
       item.x = tempPos.x;
       item.y = tempPos.y;
       item.z = tempPos.z;
@@ -152,18 +159,18 @@ const _ = () => {
       10
     );
 
+    // set the bounds of the camera on the map
     const camBox = visibleBox(camera, 0);
     const canvasBox = {
       width: maxX - minX,
       height: maxY - minY,
     };
-
     state.mapPos.width = camBox.width;
     state.mapPos.height = camBox.height;
     state.map.width = canvasBox.width;
     state.map.height = canvasBox.height;
 
-    // store the items
+    // save the items
     state.items = tempItems;
   }, [covers]);
 
@@ -172,10 +179,8 @@ const _ = () => {
     const ele = scroll.el;
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
+    // mouse start handler
     const mouseDownHandler = function (e: any) {
-      ele.style.cursor = "grabbing";
-      ele.style.userSelect = "none";
-
       pos = {
         left: ele.scrollLeft,
         top: ele.scrollTop,
@@ -185,18 +190,15 @@ const _ = () => {
 
       // add mouse events
       ele.addEventListener("mousemove", mouseMoveHandler);
-      ele.addEventListener("mouseup", mouseUpHandler);
-      ele.addEventListener("mouseleave", mouseUpHandler);
+      ele.addEventListener("mouseup", upHandler);
+      ele.addEventListener("mouseleave", upHandler);
       // add touch events
       ele.addEventListener("touchmove", touchMoveHandler);
-      ele.addEventListener("touchend", mouseUpHandler);
+      ele.addEventListener("touchend", upHandler);
     };
 
-    // touch down handler
+    // touch start handler
     const touchDownHandler = function (e: any) {
-      ele.style.cursor = "grabbing";
-      ele.style.userSelect = "none";
-
       pos = {
         left: ele.scrollLeft,
         top: ele.scrollTop,
@@ -206,60 +208,60 @@ const _ = () => {
 
       // add touch events
       ele.addEventListener("touchmove", touchMoveHandler);
-      ele.addEventListener("touchend", mouseUpHandler);
+      ele.addEventListener("touchend", upHandler);
     };
 
+    // mouse move handler
     const mouseMoveHandler = function (e: any) {
-      console.log(e)
       const dy = e.clientY - pos.y;
       ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
     };
 
     // touch move handler
     const touchMoveHandler = function (e: any) {
-      console.log(e)
+      console.log(e);
       const dy = e.touches[0].clientY - pos.y;
       ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
     };
 
-    const mouseUpHandler = function () {
+    // up handler
+    const upHandler = function () {
       // remove mouse events
       ele.removeEventListener("mousemove", mouseMoveHandler);
-      ele.removeEventListener("mouseup", mouseUpHandler);
-      ele.removeEventListener("mouseleave", mouseUpHandler);
+      ele.removeEventListener("mouseup", upHandler);
+      ele.removeEventListener("mouseleave", upHandler);
       // remove touch events
       ele.removeEventListener("touchmove", touchMoveHandler);
-      ele.removeEventListener("touchend", mouseUpHandler);
-
-      ele.style.cursor = "grab";
-      ele.style.removeProperty("user-select");
+      ele.removeEventListener("touchend", upHandler);
+      ele.removeEventListener("touchcancel", upHandler);
     };
 
     if (snap.view == "linear") {
-      // add mouse events
+      // add mouse start events
       ele.addEventListener("mousedown", mouseDownHandler);
-      // add touch events
+      // add touch start events
       ele.addEventListener("touchstart", touchDownHandler);
     } else {
+      // remove events
       ele.removeEventListener("mousedown", mouseDownHandler);
       ele.removeEventListener("touchstart", mouseDownHandler);
     }
 
     // calculate the number of pages
-    state.pages = Math.ceil(derived.scrollHeight / gl.viewport.height) + 1;
+    state.pages = Math.ceil(derived.scrollHeight / gl.viewport.height) + 1; // +1 for extra scroll space
   }, [scroll.el, snap.view]);
 
   // detect top most image in view on scroll changes
   useEffect(() => {
     const split = 1 / snap.items.length;
-    const index = Math.floor(scroll.offset / split);
+    const index = Math.round(scroll.offset / split);
     if (index < state.items.length) state.selected = state.items[index].cover;
   }, [scroll.offset]);
 
   return (
     <group ref={ref} position={[0, 2, 0]}>
       {items
-        .slice(0, snap.view == "intro" ? 20 : items.length)
+        .slice(0, snap.view == "intro" ? 21 : items.length) // use only 21 items for intro
         .map((item, index) => (
           <Plane
             key={index}
@@ -272,6 +274,7 @@ const _ = () => {
   );
 };
 
+// preload all textures
 data.map((d) => d.cover).forEach(useTexture.preload);
 
 export default _;

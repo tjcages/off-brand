@@ -23,7 +23,7 @@ const _ = () => {
       <div className={styles.notice}>
         <h5>(1 - {snap.items.length})</h5>
         <h5>
-          Saved projects, mixed VIDEO & IMAGES, generated for COSMOS creatives &
+          Curated projects, mixed VIDEO & IMAGES, generated for COSMOS creatives &
           collaborators.
         </h5>
       </div>

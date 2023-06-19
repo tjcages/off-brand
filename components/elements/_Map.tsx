@@ -7,19 +7,20 @@ import { useSnapshot } from "valtio";
 
 const _ = () => {
   const snap = useSnapshot(state);
-  const mapRef = useRef() as any;
-  const mapPosRef = useRef() as any;
-
-  const mapPosRect = useRef() as any;
-
   const controls = useAnimationControls();
 
+  const mapRef = useRef() as any;
+  const mapPosRef = useRef() as any;
+  const mapPosRect = useRef() as any;
+
+  // track map bounds
   useEffect(() => {
     if (!mapRef.current || !mapPosRef.current) return;
 
     mapPosRect.current = mapPosRef.current.getBoundingClientRect();
   }, []);
 
+  // map intro animation
   useEffect(() => {
     controls.stop();
     if (snap.view == "grid") {
@@ -27,9 +28,7 @@ const _ = () => {
         opacity: 1,
         transition: { delay: 0.4 + i / 15, duration: 0.4 },
       }));
-    } else {
-      controls.set({ opacity: 0, transition: { duration: 0.2 } });
-    }
+    } else controls.set({ opacity: 0, transition: { duration: 0.2 } });
   }, [snap.view]);
 
   return (
@@ -43,6 +42,7 @@ const _ = () => {
       }}
     >
       <div className={styles.container}>
+        {/* Grid items */}
         {snap.items.map((project, i) => (
           <motion.div
             key={project.id}
@@ -59,6 +59,7 @@ const _ = () => {
           ></motion.div>
         ))}
       </div>
+      {/* Camera position */}
       <motion.div
         ref={mapPosRef}
         initial={{ opacity: 0 }}

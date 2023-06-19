@@ -16,7 +16,7 @@ $color-accent-secondary: #8d95ec;
 $font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
   "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
-$font-secondary: Menlo, Monaco, Lucida Console, Liberation Mono,
+$font-secondary: var(--gt-super), Menlo, Monaco, Lucida Console, Liberation Mono,
   DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
 /* FONT SIZE */

@@ -1,13 +1,13 @@
 import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { ScrollControls, Scroll } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 
 import SEO from "@/seo";
-import { Canvas } from "@react-three/fiber";
-import { ScrollControls, Scroll } from "@react-three/drei";
+import { state } from "@/store";
 import { Orbit, Map, World } from "@/components/elements";
 import { Underlay, Overlay } from "@/components/views";
 import { Effects } from "@/components/effects";
-import { state } from "@/store";
 
 const _ = () => {
   const snap = useSnapshot(state);
@@ -35,7 +35,6 @@ const _ = () => {
         </Canvas>
 
         <Map />
-
         <Overlay />
       </main>
     </>

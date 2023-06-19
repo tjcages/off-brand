@@ -44,11 +44,16 @@
       rgba(0, 0, 0, 0.5)
     );
 
-    transition: filter $animation-duration-long $animation-easing;
+    transition: filter $animation-duration-long $animation-easing,
+      opacity $animation-duration-short $animation-easing;
 
     &:hover {
       filter: blur(0);
       transition-duration: $animation-duration;
+    }
+
+    &:active {
+      opacity: 0.6;
     }
 
     @media only screen and (max-width: 768px) {

@@ -13,6 +13,7 @@ export default function Effects() {
   const { gl, scene, camera, size } = useThree();
 
   const composer = useMemo(() => {
+    // fisheye lens distortion
     const LensDistortionPass = LensDistortionPassGen({
       THREE,
       Pass,
@@ -25,11 +26,14 @@ export default function Effects() {
       skew: 0, // skew coeff
     });
 
+    // attach composer passes
     const composer = new EffectComposer(gl);
     composer.addPass(new RenderPass(scene, camera));
     composer.addPass(myLensDistortionPass);
+
     return composer;
   }, []);
+
   useEffect(() => void composer.setSize(size.width, size.height), [size]);
   return useFrame((_, delta) => composer.render(delta), 1);
 }

@@ -4,6 +4,7 @@ import { proxy } from "valtio";
 import { derive } from "valtio/utils";
 
 interface State {
+  // Camera
   panLimitsGrid: {
     min: THREE.Vector3;
     max: THREE.Vector3;
@@ -49,7 +50,6 @@ interface State {
 }
 
 const state = proxy({
-  // Camera
   panLimitsGrid: {
     min: new THREE.Vector3(-10, -10, -10),
     max: new THREE.Vector3(10, 10, 10),
@@ -64,7 +64,7 @@ const state = proxy({
     gridMin: 0.6,
     linear: 1,
   },
-  // Refs
+
   camBox: {
     width: 0,
     height: 0,
@@ -84,11 +84,9 @@ const state = proxy({
   speed: 0,
   view: "intro",
 
-  // Items
   items: [],
   mapItems: [],
 
-  // Derived
   selected: "/imgs/archives/elijah.jpg",
   pages: 0,
 } as State);
@@ -105,5 +103,11 @@ const derived = derive({
       .reduce((a, b) => a + b, 0);
   },
 });
+
+/**
+ * TODO: add persistent state to local storage
+ * https://github.com/pmndrs/valtio/blob/main/docs/how-tos/how-to-persist-states.mdx
+ * eventually send to server
+ */
 
 export { state, derived };

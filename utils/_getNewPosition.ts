@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 const vec3 = new THREE.Vector3();
 
-const getNewPosition = (item: any, minRadius: number) => {
+const getNewPosition = (minRadius: number) => {
   vec3
     .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
     .normalize()
