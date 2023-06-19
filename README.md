@@ -1,3 +1,7 @@
+https://github.com/tjcages/cosmos/assets/29718389/6c115964-921e-4f83-a1ec-71e261e111c0
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
