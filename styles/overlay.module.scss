@@ -19,6 +19,12 @@
 
   transition: opacity $animation-duration $animation-easing;
 
+  @media only screen and (max-width: 768px) {
+    & {
+      padding: 0;
+    }
+  }
+
   &.visible {
     opacity: 1;
   }
@@ -80,6 +86,13 @@
 
     opacity: 0;
     transition: opacity $animation-duration $animation-easing;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        left: $padding-200;
+        bottom: $padding-200;
+      }
+    }
 
     &.visible {
       opacity: 1;
