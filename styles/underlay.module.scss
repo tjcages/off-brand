@@ -101,6 +101,33 @@
       filter $animation-duration-long $animation-easing;
   }
 
+  .notice {
+    position: absolute;
+    left: $padding-300;
+    bottom: $padding-300;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    gap: $padding-500;
+
+    opacity: 0;
+
+    transition: opacity $animation-duration-long $animation-easing;
+
+    h5 {
+      font-size: $font-size-50;
+      filter: brightness(200%);
+      max-width: 264px;
+    }
+  }
+
+  &:not(.intro) {
+    .notice {
+      opacity: 1;
+    }
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -135,8 +162,7 @@
     );
     border-radius: 50%;
 
-    animation: fade-to-black 1s $animation-easing 2s
-      forwards;
+    animation: fade-to-black 1s $animation-easing 2s forwards;
   }
 }
 

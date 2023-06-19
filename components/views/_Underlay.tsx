@@ -19,6 +19,14 @@ const _ = () => {
       <Image src="/imgs/logo.png" alt="logo" width={800} height={400} />
       <h3>Bring order to your creative universe</h3>
       <button onClick={() => (state.view = "grid")}>Enter</button>
+
+      <div className={styles.notice}>
+        <h5>(1 - {snap.items.length})</h5>
+        <h5>
+          Saved projects, mixed VIDEO & IMAGES, generated for COSMOS creatives &
+          collaborators.
+        </h5>
+      </div>
     </div>
   );
 };

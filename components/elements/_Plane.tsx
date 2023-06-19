@@ -1,10 +1,11 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useThree, useFrame, extend } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
+import { Html, useScroll } from "@react-three/drei";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
 
+import styles from "@/styles/plane.module.scss";
 import { DataProps } from "@/data";
 import { Distortion } from "@/components/effects";
 import { state } from "@/store";
@@ -131,6 +132,15 @@ const _ = ({ item, texture, index }: Props) => {
         tex={texture}
         opacity={0}
       />
+      <Html distanceFactor={7.5}>
+        <div
+          className={`${styles.annotation} ${
+            snap.view == "grid" ? styles.visible : ""
+          }`}
+        >
+          ({index.toString().padStart(2, "0")})
+        </div>
+      </Html>
     </mesh>
   );
 };
