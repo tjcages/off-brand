@@ -38,7 +38,7 @@
     img {
       opacity: 0.1;
       transform: scale(1);
-      filter: blur(2px);
+      filter: blur(4px) drop-shadow(0 0.6em 1em rgba(220, 223, 229, 0.3)) !important;
     }
   }
 
