@@ -23,7 +23,6 @@ declare global {
 const _ = () => {
   const snap = useSnapshot(state);
   const ref = useRef() as any;
-  const camera = useThree((state) => state.camera);
 
   const gl = useThree();
   const scroll = useScroll();
@@ -41,70 +40,59 @@ const _ = () => {
 
   // track map position, speed, & distortion
   useFrame(({ camera }, delta) => {
-    let hasChanged = lastPos.current.distanceTo(camera.position) > 0.005;
     // speed affecting distortion
-    state.speed = lerp(
-      snap.speed,
-      camera.position.distanceTo(lastPos.current),
-      0.2,
-      delta
-    );
+    state.speed = lerp(state.speed, scroll.delta, 0.2, delta);
     lastPos.current.copy(camera.position);
 
     // speed affecting distortion
-    let distortionValue = 0;
-    distortionValue += snap.speed * 2;
-    distortionStrength.current = lerp(
-      distortionStrength.current,
-      distortionValue,
-      0.2,
-      delta
-    );
-    myLensDistortionPass.distortion.set(
-      distortionStrength.current,
-      distortionStrength.current
-    );
-    // focal length affecting distortion
-    focalStrength.current = lerp(focalStrength.current, 0, 0.2, delta);
-    myLensDistortionPass.focalLength.set(
-      1 - focalStrength.current,
-      1 - focalStrength.current
-    );
-
-    // map position
-    let top = 1 - (camera.position.y / state.map.height + 0.5);
-    let left = camera.position.x / state.map.width + 0.5;
-    state.mapPos.top = top;
-    state.mapPos.left = left;
-
-    // update map size
-    if (hasChanged) {
-      const camBox = visibleBox(camera, 0);
-
-      state.mapPos.width = camBox.width;
-      state.mapPos.height = camBox.height;
+    if (myLensDistortionPass) {
+      let distortionValue = 0;
+      distortionValue += snap.speed * 2;
+      distortionStrength.current = lerp(
+        distortionStrength.current,
+        distortionValue,
+        0.2,
+        delta
+      );
+      myLensDistortionPass.distortion.set(
+        distortionStrength.current,
+        distortionStrength.current
+      );
+      // focal length affecting distortion
+      focalStrength.current = lerp(focalStrength.current, 0, 0.2, delta);
+      myLensDistortionPass.focalLength.set(
+        1 - focalStrength.current,
+        1 - focalStrength.current
+      );
     }
 
-    // update scroll position
-    if (scroll.offset !== snap.scrollPos) state.scrollPos = scroll.offset;
+    // detect top most image in view on scroll changes
+    const split = 1 / (snap.items.length + 1);
+    if (scroll.offset <= split) state.selected = null;
+    else {
+      const index = Math.floor(scroll.offset / split) - 1;
+      if (index < state.items.length)
+        state.selected = {
+          src: state.items[index].cover,
+          size: {
+            width: covers[index].image.naturalWidth,
+            height: covers[index].image.naturalHeight,
+          },
+        };
+    }
   });
 
   // update items positions
   useEffect(() => {
     const tempItems = [] as any;
-
-    let minX = 0;
-    let minY = 0;
-    let maxX = 0;
-    let maxY = 0;
-
     covers.forEach((cover, index) => {
       // get size of item based on image ratio
       let size;
       const ratio = cover.image.naturalWidth / cover.image.naturalHeight;
       if (ratio < 1) {
-        size = { width: 2 * ratio, height: 2 };
-      } else size = { width: 2, height: 2 / ratio };
+        size = { width: state.size.width * ratio, height: state.size.height };
+      } else
+        size = { width: state.size.width, height: state.size.height / ratio };
 
       // create item
       let item = {
@@ -112,69 +100,20 @@ const _ = () => {
         width: size.width,
         height: size.height,
       };
-
-      // make first item the center
-      // if (index === 0) {
-      //   items.push(item);
-      //   return;
-      // }
-
-      // circle packing around center
-      let positionIsValid = false;
-      let numberOfTests = 0;
-      let minRadius = 2;
-      let tempPos = { x: 0, y: 0, z: 10 };
-      while (!positionIsValid) {
-        tempPos = getNewPosition(minRadius);
-        positionIsValid = !isColliding(tempItems, {
-          ...tempPos,
-          width: item.width,
-          height: item.height + 0.35, // margin
-        });
-
-        numberOfTests++;
-        if (numberOfTests > 10) minRadius += 0.1; // increase radius
-      }
-
-      // update bounds
-      minX = Math.min(minX, tempPos.x - item.width);
-      maxX = Math.max(maxX, tempPos.x + item.width);
-      minY = Math.min(minY, tempPos.y - item.height);
-      maxY = Math.max(maxY, tempPos.y + item.height);
-
-      // set item position
-      item.x = tempPos.x;
-      item.y = tempPos.y;
-      item.z = tempPos.z;
-
       tempItems.push(item);
     });
 
-    // set the bounds of the map
-    state.panLimitsGrid.min.set(
-      minX - state.panMargin,
-      minY - state.panMargin,
-      -10
-    );
-    state.panLimitsGrid.max.set(
-      maxX + state.panMargin,
-      maxY + state.panMargin,
-      10
-    );
-
-    // set the bounds of the camera on the map
-    const camBox = visibleBox(camera, 0);
-    const canvasBox = {
-      width: maxX - minX,
-      height: maxY - minY,
-    };
-    state.mapPos.width = camBox.width;
-    state.mapPos.height = camBox.height;
-    state.map.width = canvasBox.width;
-    state.map.height = canvasBox.height;
-
     // save the items
     state.items = tempItems;
+
+    // calculate the number of pages
+    const pages =
+      Math.ceil(
+        tempItems
+          .map(() => state.size.height + state.gap)
+          .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
+      ) + 1; // +1 for extra scroll space
+    state.pages = pages;
   }, [covers]);
 
   // add drag listeners to scroll element
@@ -251,29 +190,25 @@ const _ = () => {
     }
 
     // calculate the number of pages
-    state.pages = Math.ceil(derived.scrollHeight / gl.viewport.height) + 1; // +1 for extra scroll space
+    if (snap.items.length > 0)
+      state.pages =
+        snap.view == "linear"
+          ? snap.items
+              .map(() => state.size.height + state.gap)
+              .reduce((a: number, b: number) => a + b, 0) /
+              gl.viewport.height +
+            1 // +1 for extra scroll space;
+          : snap.items
+              .map((i) => i.height + state.gap)
+              .reduce((a: number, b: number) => a + b, state.size.height) /
+            gl.viewport.height;
   }, [scroll.el, snap.view]);
 
-  // detect top most image in view on scroll changes
-  useEffect(() => {
-    const split = 1 / snap.items.length;
-    const index = Math.round(snap.scrollPos / split);
-
-    if (index < state.items.length) state.selected = state.items[index].cover;
-  }, [snap.scrollPos]);
-
   return (
-    <group ref={ref} position={[0, 2, 0]}>
-      {items
-        .slice(0, snap.view == "intro" ? 21 : items.length) // use only 21 items for intro
-        .map((item, index) => (
-          <Plane
-            key={index}
-            item={item}
-            texture={covers[index]}
-            index={index}
-          />
-        ))}
+    <group ref={ref} position={[0, -gl.viewport.height / 4, 0]}>
+      {items.map((item, index) => (
+        <Plane key={index} item={item} texture={covers[index]} index={index} />
+      ))}
     </group>
   );
 };

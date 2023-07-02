@@ -13,15 +13,15 @@ $color-accent: #635bff;
 $color-accent-secondary: #8d95ec;
 
 /* FONTS */
-$font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
+$font-primary: var(--moderat), "Inter", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 $font-secondary: var(--gt-super), Menlo, Monaco, Lucida Console, Liberation Mono,
   DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
 /* FONT SIZE */
-$font-size-50: clamp(12px, 0.7vw, 12px);
-$font-size-100: clamp(12px, 1vw, 14px);
+$font-size-50: clamp(8px, 0.5vw, 10px);
+$font-size-100: clamp(10px, 0.8vw, 14px);
 $font-size-150: clamp(14px, 1vw, 16px);
 $font-size-200: clamp(16px, 2vw, 18px);
 $font-size-300: clamp(20px, 3vh, 22px);
@@ -73,7 +73,7 @@ $animation-easing: cubic-bezier(0.33, 1, 0.68, 1);
   color600: $color-600;
   color700: $color-700;
   color800: $color-800;
-  
+
   colorAccent: $color-accent;
 
   // padding

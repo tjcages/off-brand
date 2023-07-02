@@ -15,7 +15,7 @@ interface DataProps {
 
 var imagesArray: DataProps[] = [];
 
-for (var i = 0; i < 40; i++) {
+for (var i = 0; i < 20; i++) {
   var object = {
     name: "name",
     type: "image",

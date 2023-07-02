@@ -44,8 +44,6 @@ const DistortionMaterial = shaderMaterial(
       uniform float textureAspect;
       uniform float frameAspect;
       uniform float opacity;
-
-      ${noiseFunction}
       
       void main() {
         float scaleX = 1.;
@@ -66,7 +64,7 @@ const DistortionMaterial = shaderMaterial(
         float g = texture2D(tex, vTexCoordinate - vec2(speed * rgbShiftStrength * 0.012)).g;
         float b = texture2D(tex, vTexCoordinate + vec2(speed * rgbShiftStrength * 0.012)).b;
   
-        vec3 color = mix(vec3(r, g, b), vec3(0.), 0.1 - hoverValue * 0.1);
+        vec3 color = mix(vec3(r, g, b), vec3(0.), 0.1 - 1. * 0.1);
         gl_FragColor = vec4(color, 1.);
         gl_FragColor.a = opacity;
       }

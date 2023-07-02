@@ -2,160 +2,31 @@
 
 .main {
   position: fixed;
-  top: $padding-400;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  padding: $padding-200;
+
+  width: 100%;
+  height: 100%;
 
   user-select: none;
   pointer-events: none;
 
   animation: fade-in $animation-duration-long $animation-easing 0.1s forwards;
 
-  &.intro {
-    z-index: 1000;
-
-    img,
-    h3,
-    button {
-      opacity: 1;
-      transform: scale(1);
-
-      transition: opacity $animation-duration $animation-easing,
-        transform $animation-duration-long $animation-easing;
-      transition-delay: $animation-duration;
-    }
-  }
-
   &.visible {
-    img {
-      opacity: 0.1;
-      transform: scale(1);
-      filter: blur(4px) drop-shadow(0 0.6em 1em rgba(220, 223, 229, 0.3)) !important;
-    }
+    opacity: 0.1;
+    transform: scale(1);
   }
 
-  img {
-    width: clamp(35.375rem, 30%, 48rem);
-    height: auto;
-    object-fit: contain;
-
-    filter: drop-shadow(0 1em 1.5em rgba(220, 223, 229, 0.3)) !important;
-
-    @media only screen and (max-width: 768px) {
-      & {
-        width: clamp(200px, 70%, 300px);
-      }
-    }
-  }
-
-  h3 {
-    color: $color-300;
-    text-align: center;
-  }
-
-  button {
-    position: relative;
-    margin-top: $padding-200;
-    overflow: visible;
-
-    pointer-events: all;
-
-    transition: border $animation-duration $animation-easing !important;
-
-    &:hover {
-      border: 1px solid rgba(255, 255, 255, 0.9);
-
-      font-family: $font-secondary;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      text-shadow: 0 0 0 $color-200;
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: -1px;
-      left: 50%;
-      transform: translateX(-50%) scale(0.6);
-      transform-origin: center;
-      opacity: 0;
-
-      height: 2px;
-      width: 2rem;
-      background-image: linear-gradient(
-        to right,
-        rgba(255, 0, 0, 0),
-        rgb(255, 255, 255),
-        rgba(255, 0, 0, 0)
-      );
-      filter: blur(1px);
-
-      animation: fade-in-light $animation-duration-long $animation-easing
-        $animation-duration-long * 2 forwards;
-    }
-  }
-
-  img,
-  h3,
-  button {
-    opacity: 0;
-    transform: scale(0.6);
-
-    filter: drop-shadow(0 0.5rem 1rem $color-700);
-
-    transition: opacity $animation-duration-short $animation-easing,
-      transform $animation-duration-long $animation-easing,
-      filter $animation-duration-long $animation-easing;
-  }
-
-  .notice {
-    position: absolute;
-    left: $padding-300;
-    bottom: $padding-300;
-
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto;
-    gap: $padding-500;
-
-    opacity: 0;
-
-    transition: opacity $animation-duration-long $animation-easing;
-
-    h5 {
-      font-size: $font-size-50;
-      filter: brightness(200%);
-      max-width: 264px;
-    }
-
-    @media only screen and (max-width: 768px) {
-      & {
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        gap: $padding-200;
-        left: $padding-200;
-        bottom: $padding-200;
-
-        h5 {
-          max-width: 40vw;
-        }
-      }
-    }
-  }
-
-  &:not(.intro) {
-    .notice {
-      opacity: 1;
-    }
+  h4:last-of-type {
+    text-transform: uppercase;
+    white-space: nowrap;
+    grid-column: 3 / 5;
   }
 
   &:before {
@@ -169,30 +40,10 @@
 
     background-image: url(/imgs/textures/noise.png);
     background-size: 100px;
-    background-color: $color-700;
 
-    opacity: 0.5;
+    opacity: 0.09;
     will-change: auto;
-    animation: noise 1.2s steps(3) both infinite;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    right: -50%;
-    bottom: -50%;
-
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 1) 70%,
-      rgba(255, 255, 255, 1) 100%
-    );
-    border-radius: 50%;
-
-    animation: fade-to-black 1s $animation-easing 2s forwards;
+    animation: noise 12s steps(3) both infinite;
   }
 }
 
@@ -204,26 +55,6 @@
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes fade-in-light {
-  from {
-    opacity: 0;
-    transform: scale(0.6) translateX(-50%);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateX(-50%);
-  }
-}
-
-@keyframes fade-to-black {
-  from {
-    filter: invert(0);
-  }
-  to {
-    filter: invert(1);
   }
 }
 
