@@ -18,6 +18,13 @@ const _ = () => {
   const ratio = snap.selected.size.width / snap.selected.size.height;
   size.height = size.width / ratio;
 
+  // set a max height of 80% of the viewport
+  if (size.height > gl.viewport.height * 0.8) {
+    size.height = gl.viewport.height * 0.8;
+    size.width = size.height * ratio;
+  }
+  
+
   return (
     <Image
       url={snap.selected.src}

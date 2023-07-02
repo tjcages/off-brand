@@ -199,9 +199,15 @@ const _ = () => {
               gl.viewport.height +
             1 // +1 for extra scroll space;
           : snap.items
-              .map((i) => i.height + state.gap)
-              .reduce((a: number, b: number) => a + b, state.size.height) /
-            gl.viewport.height;
+              .map(
+                (i) =>
+                  ((gl.viewport.width * 0.7) / state.n - state.gap) * 1.8 +
+                  state.gap
+              )
+              .reduce((a: number, b: number) => a + b, state.gap) /
+              state.n /
+              gl.viewport.height +
+            1;
   }, [scroll.el, snap.view]);
 
   return (

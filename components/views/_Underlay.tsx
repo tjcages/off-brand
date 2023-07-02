@@ -1,4 +1,5 @@
 import { useSnapshot } from "valtio";
+import CountUp from "react-countup";
 import styles from "@/styles/underlay.module.scss";
 import { state } from "@/store";
 
@@ -17,7 +18,7 @@ const _ = () => {
       >
         Off_Brand
       </h4>
-      <h4>[0 → 1]</h4>
+      <h4>[ 0 → 1 ]</h4>
       <h4>Creative Studio, New York City</h4>
     </section>
   );

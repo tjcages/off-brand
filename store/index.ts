@@ -29,7 +29,7 @@ const state = proxy({
   items: [],
   mapItems: [],
   size: { width: 1.5, height: 1.5 },
-  margin: 0.2,
+  margin: 0.15,
   gap: 0.1,
   n: 3,
 

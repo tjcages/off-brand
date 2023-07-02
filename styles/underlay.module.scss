@@ -7,16 +7,20 @@
   right: 0;
   bottom: 0;
 
+  display: grid;
+  grid-template-columns: 3fr repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: $padding-200;
+
+  padding: $padding-100 $padding-200;
   justify-content: center;
   align-items: center;
-
-  width: 100%;
-  height: 100%;
 
   user-select: none;
   pointer-events: none;
 
   animation: fade-in $animation-duration-long $animation-easing 0.1s forwards;
+  transform-origin: left center;
 
   &.visible {
     opacity: 0.1;

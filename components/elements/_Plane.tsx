@@ -42,8 +42,6 @@ const _ = ({ item, texture, index }: Props) => {
   useEffect(() => {
     if (snap.view == "grid") {
       // create a nxy grid & include width & height
-      const offset = 0.5;
-
       const totalWidth = gl.viewport.width * 0.7;
       const itemWidth = totalWidth / state.n - state.gap;
       const itemHeight = itemWidth * 1.8;
@@ -58,15 +56,13 @@ const _ = ({ item, texture, index }: Props) => {
       );
 
       const x =
-        (index % state.n) * (itemWidth + state.gap) -
-        totalWidth / 2 +
-        offset -
-        gl.viewport.width * 0.15 +
-        state.margin * 3;
-      // const y = Math.floor(index / n) * (itemHeight + state.gap) - offset;
+        (index % state.n) * (itemWidth + state.gap) +
+        itemWidth / 2 -
+        gl.viewport.width / 2 +
+        state.gap;
       const y =
         -Math.floor(index / state.n) * (itemHeight + state.gap) +
-        offset +
+        state.margin +
         itemHeight / 2.5 -
         (itemWidth + itemWidth / ratio) / 2;
 
@@ -79,11 +75,13 @@ const _ = ({ item, texture, index }: Props) => {
         ease: "expo.out",
       });
     } else if (snap.view == "linear") {
+      const x = (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
+      const y = -index * (state.size.height + state.gap);
       // linear view animation
       gsap.to(ref.current.position, {
-        duration: 1.5,
-        x: gl.viewport.width - state.size.width - state.margin,
-        y: -index * (state.size.height + state.gap),
+        duration: 1,
+        x: x,
+        y: y,
         z: -1,
         ease: "expo.out",
       });

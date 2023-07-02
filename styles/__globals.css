@@ -9,7 +9,7 @@ body {
 
 main {
   opacity: 0;
-  animation: fade-in 1s ease 0.1s forwards;
+  animation: fade-in 1s ease 0.2s forwards;
 }
 
 // default

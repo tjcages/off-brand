@@ -9,7 +9,7 @@ const _ = () => {
     <header className={styles.main}>
       <h5>OB</h5>
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>Collection</h5>
+        <h5>"Collective"</h5>
         <div className={styles.h}>
           <h5
             className={clsx(snap.view == "grid" && styles.selected)}
@@ -28,26 +28,26 @@ const _ = () => {
       </div>
 
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>News</h5>
+        <h5>"Featuring"</h5>
         <div className={styles.v}>
-          <h5>AWS 2022</h5>
-          <h5>Forgotten Spaces</h5>
-          <h5>Lookbook</h5>
+          <h5>Product Marketing</h5>
+          <h5>Design Engineering</h5>
+          <h5>Launch Strategy</h5>
         </div>
       </div>
 
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>Information</h5>
+        <h5>"Information"</h5>
         <div className={styles.v}>
           <h5>Brooklyn, New York</h5>
-          <h5>6:00PM EST</h5>
+          <h5>San Francisco, California</h5>
         </div>
       </div>
 
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>Cart</h5>
+        <h5>"Partners"</h5>
         <div className={styles.v}>
-          <h5>(0)</h5>
+          <h5>(006)</h5>
         </div>
       </div>
     </header>
