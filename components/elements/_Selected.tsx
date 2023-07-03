@@ -1,8 +1,9 @@
-import { Image, useTexture } from "@react-three/drei";
 import { Vector3 } from "three";
+import { Image, useTexture } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
-import { useThree } from "@react-three/fiber";
+import { isMobile } from "@/utils";
 
 const _ = () => {
   const gl = useThree();
@@ -12,8 +13,8 @@ const _ = () => {
 
   // determine sizing based on texture aspect ratio
   let size = {
-    width: (gl.viewport.width / 7 - state.gap) * 3,
-    height: (gl.viewport.width / 7 - state.gap) * 3,
+    width: (gl.viewport.width / 7 - state.gap) * (isMobile ? 5.5 : 3),
+    height: (gl.viewport.width / 7 - state.gap) * (isMobile ? 5.5 : 3),
   };
   const ratio = snap.selected.size.width / snap.selected.size.height;
   size.height = size.width / ratio;
@@ -23,7 +24,6 @@ const _ = () => {
     size.height = gl.viewport.height * 0.8;
     size.width = size.height * ratio;
   }
-  
 
   return (
     <Image
@@ -31,7 +31,9 @@ const _ = () => {
       position={
         new Vector3(
           -gl.viewport.width / 2 + size.width / 2 + state.gap,
-          -gl.viewport.height / 2 + size.height / 2 + state.gap,
+          isMobile
+            ? -gl.viewport.height / 2 + size.height / 2 + state.margin + state.gap * 2
+            : -gl.viewport.height / 2 + size.height / 2 + state.gap,
           0
         )
       }

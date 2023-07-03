@@ -7,8 +7,8 @@ import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 
 import data from "@/data";
-import { state, derived } from "@/store";
-import { getNewPosition, isColliding, visibleBox } from "@/utils";
+import { state } from "@/store";
+import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
 import { Plane } from "@/components/elements";
 
@@ -118,75 +118,77 @@ const _ = () => {
 
   // add drag listeners to scroll element
   useEffect(() => {
-    const ele = scroll.el;
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    if (!isMobile) {
+      const ele = scroll.el;
+      let pos = { top: 0, left: 0, x: 0, y: 0 };
 
-    // mouse start handler
-    const mouseDownHandler = function (e: any) {
-      pos = {
-        left: ele.scrollLeft,
-        top: ele.scrollTop,
-        x: e.clientX,
-        y: e.clientY,
+      // mouse start handler
+      const mouseDownHandler = function (e: any) {
+        pos = {
+          left: ele.scrollLeft,
+          top: ele.scrollTop,
+          x: e.clientX,
+          y: e.clientY,
+        };
+
+        // add mouse events
+        ele.addEventListener("mousemove", mouseMoveHandler);
+        ele.addEventListener("mouseup", upHandler);
+        ele.addEventListener("mouseleave", upHandler);
+        // add touch events
+        ele.addEventListener("touchmove", touchMoveHandler);
+        ele.addEventListener("touchend", upHandler);
       };
 
-      // add mouse events
-      ele.addEventListener("mousemove", mouseMoveHandler);
-      ele.addEventListener("mouseup", upHandler);
-      ele.addEventListener("mouseleave", upHandler);
-      // add touch events
-      ele.addEventListener("touchmove", touchMoveHandler);
-      ele.addEventListener("touchend", upHandler);
-    };
+      // touch start handler
+      const touchDownHandler = function (e: any) {
+        pos = {
+          left: ele.scrollLeft,
+          top: ele.scrollTop,
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+        };
 
-    // touch start handler
-    const touchDownHandler = function (e: any) {
-      pos = {
-        left: ele.scrollLeft,
-        top: ele.scrollTop,
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY,
+        // add touch events
+        ele.addEventListener("touchmove", touchMoveHandler);
+        ele.addEventListener("touchend", upHandler);
       };
 
-      // add touch events
-      ele.addEventListener("touchmove", touchMoveHandler);
-      ele.addEventListener("touchend", upHandler);
-    };
+      // mouse move handler
+      const mouseMoveHandler = function (e: any) {
+        const dy = e.clientY - pos.y;
+        ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
+      };
 
-    // mouse move handler
-    const mouseMoveHandler = function (e: any) {
-      const dy = e.clientY - pos.y;
-      ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
-    };
+      // touch move handler
+      const touchMoveHandler = function (e: any) {
+        console.log(e);
+        const dy = e.touches[0].clientY - pos.y;
+        ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
+      };
 
-    // touch move handler
-    const touchMoveHandler = function (e: any) {
-      console.log(e);
-      const dy = e.touches[0].clientY - pos.y;
-      ele.scrollTop = pos.top - dy * 2; // * 2 for faster scroll
-    };
+      // up handler
+      const upHandler = function () {
+        // remove mouse events
+        ele.removeEventListener("mousemove", mouseMoveHandler);
+        ele.removeEventListener("mouseup", upHandler);
+        ele.removeEventListener("mouseleave", upHandler);
+        // remove touch events
+        ele.removeEventListener("touchmove", touchMoveHandler);
+        ele.removeEventListener("touchend", upHandler);
+        ele.removeEventListener("touchcancel", upHandler);
+      };
 
-    // up handler
-    const upHandler = function () {
-      // remove mouse events
-      ele.removeEventListener("mousemove", mouseMoveHandler);
-      ele.removeEventListener("mouseup", upHandler);
-      ele.removeEventListener("mouseleave", upHandler);
-      // remove touch events
-      ele.removeEventListener("touchmove", touchMoveHandler);
-      ele.removeEventListener("touchend", upHandler);
-      ele.removeEventListener("touchcancel", upHandler);
-    };
-
-    if (snap.view == "linear") {
-      // add mouse start events
-      ele.addEventListener("mousedown", mouseDownHandler);
-      // add touch start events
-      ele.addEventListener("touchstart", touchDownHandler);
-    } else {
-      // remove events
-      ele.removeEventListener("mousedown", mouseDownHandler);
-      ele.removeEventListener("touchstart", mouseDownHandler);
+      if (snap.view == "linear") {
+        // add mouse start events
+        ele.addEventListener("mousedown", mouseDownHandler);
+        // add touch start events
+        ele.addEventListener("touchstart", touchDownHandler);
+      } else {
+        // remove events
+        ele.removeEventListener("mousedown", mouseDownHandler);
+        ele.removeEventListener("touchstart", mouseDownHandler);
+      }
     }
 
     // calculate the number of pages

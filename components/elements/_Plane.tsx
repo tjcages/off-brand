@@ -4,6 +4,7 @@ import { useThree, extend } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
+import { isMobile } from "@/utils";
 
 import { DataProps } from "@/data";
 import { state } from "@/store";
@@ -75,7 +76,9 @@ const _ = ({ item, texture, index }: Props) => {
         ease: "expo.out",
       });
     } else if (snap.view == "linear") {
-      const x = (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
+      const x = isMobile
+        ? (gl.viewport.width * 6) / 7 - state.size.width / 2
+        : (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
       const y = -index * (state.size.height + state.gap);
       // linear view animation
       gsap.to(ref.current.position, {
