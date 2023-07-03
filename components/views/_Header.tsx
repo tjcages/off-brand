@@ -2,12 +2,14 @@ import clsx from "clsx";
 import styles from "@/styles/header.module.scss";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
+import { useMedia, mobileBreakpoint } from "@/utils";
 
 const _ = () => {
   const snap = useSnapshot(state);
+  const mobile = useMedia(mobileBreakpoint)
   return (
     <header className={styles.main}>
-      <h5>OB</h5>
+      {!mobile && <h5>OB</h5>}
       <div className={clsx(styles.v, styles.spaced)}>
         <h5>"Collective"</h5>
         <div className={styles.h}>

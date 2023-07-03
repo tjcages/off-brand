@@ -27,10 +27,24 @@
     transform: scale(1);
   }
 
+  h4:first-of-type {
+    @media only screen and (max-width: 768px) {
+      & {
+        grid-column: 1 / 5;
+      }
+    }
+  }
+
   h4:last-of-type {
     text-transform: uppercase;
     white-space: nowrap;
     grid-column: 3 / 5;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        grid-column: 2 / 5;
+      }
+    }
   }
 
   &:before {

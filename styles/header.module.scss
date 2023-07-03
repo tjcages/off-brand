@@ -32,5 +32,11 @@
     &.selected {
       text-decoration: underline;
     }
+
+    @media only screen and (max-width: 768px) {
+      & {
+        font-size: $font-size-100;
+      }
+    }
   }
 }
