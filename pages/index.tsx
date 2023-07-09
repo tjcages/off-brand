@@ -6,7 +6,7 @@ import { state } from "@/store";
 
 import SEO from "@/seo";
 import { Selected, World } from "@/components/elements";
-import { Header, Underlay } from "@/components/views";
+import { Header, Underlay, Overlay } from "@/components/views";
 import { Effects } from "@/components/effects";
 
 const _ = () => {
@@ -36,6 +36,7 @@ const _ = () => {
         </Canvas>
 
         <Header />
+        <Overlay />
       </main>
     </>
   );

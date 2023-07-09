@@ -2,6 +2,7 @@ import { proxy } from "valtio";
 import { derive } from "valtio/utils";
 
 interface State {
+  loaded: boolean;
   view: "grid" | "linear";
 
   // Items
@@ -24,6 +25,7 @@ interface State {
 }
 
 const state = proxy({
+  loaded: false,
   view: "linear",
 
   items: [],

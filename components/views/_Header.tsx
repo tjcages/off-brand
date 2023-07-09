@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
 import styles from "@/styles/header.module.scss";
 import { useSnapshot } from "valtio";
@@ -6,10 +8,14 @@ import { useMedia, mobileBreakpoint } from "@/utils";
 
 const _ = () => {
   const snap = useSnapshot(state);
-  const mobile = useMedia(mobileBreakpoint)
+  const mobile = useMedia(mobileBreakpoint);
   return (
-    <header className={styles.main}>
-      {!mobile && <h5>OB</h5>}
+    <header className={clsx(styles.main, snap.loaded && styles.visible)}>
+      {!mobile && (
+        <div className={styles.logo}>
+          <Image src="/imgs/icons/logo.png" alt="logo" width={32} height={32} />
+        </div>
+      )}
       <div className={clsx(styles.v, styles.spaced)}>
         <h5>"Collective"</h5>
         <div className={styles.h}>
@@ -39,17 +45,19 @@ const _ = () => {
       </div>
 
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>"Information"</h5>
+        <h5>"Partners"</h5>
         <div className={styles.v}>
-          <h5>Brooklyn, New York</h5>
-          <h5>San Francisco, California</h5>
+          <h5>(006)</h5>
         </div>
       </div>
 
       <div className={clsx(styles.v, styles.spaced)}>
-        <h5>"Partners"</h5>
+        <h5>"Contact"</h5>
         <div className={styles.v}>
-          <h5>(006)</h5>
+          <h5>Inquire</h5>
+          <Link href="https://twitter.com/tjcages" target="_blank">
+            <h5>Twitter</h5>
+          </Link>
         </div>
       </div>
     </header>

@@ -19,48 +19,9 @@
   user-select: none;
   pointer-events: none;
 
-  animation: fade-in $animation-duration-long $animation-easing 0.1s forwards;
-  transform-origin: left center;
-
-  @media only screen and (max-width: 768px) {
-    & {
-      justify-content: flex-end;
-      align-items: center;
-      padding-top: $padding-500 !important;
-    }
-  }
-
   &.visible {
-    opacity: 0.1;
-    transform: scale(1);
-  }
-
-  h4 {
-    @media only screen and (max-width: 768px) {
-      & {
-        font-size: $font-size-100;
-      }
-    }
-  }
-
-  h4:first-of-type {
-    @media only screen and (max-width: 768px) {
-      & {
-        grid-column: 1 / 5;
-        font-size: $font-size-150;
-      }
-    }
-  }
-
-  h4:last-of-type {
-    text-transform: uppercase;
-    white-space: nowrap;
-    grid-column: 3 / 5;
-
-    @media only screen and (max-width: 768px) {
-      & {
-        grid-column: 2 / 5;
-      }
+    h4 {
+      opacity: 1;
     }
   }
 
@@ -80,16 +41,59 @@
     will-change: auto;
     animation: noise 12s steps(3) both infinite;
   }
-}
 
-@keyframes fade-in {
-  from {
+  h4 {
     opacity: 0;
-    transform: scale(0.6);
+
+    transition: opacity $animation-duration-short $animation-easing
+      $animation-duration;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  h4:first-of-type {
+    @media only screen and (max-width: 768px) {
+      & {
+        grid-column: 1 / 5;
+      }
+    }
+  }
+
+  .about {
+    text-transform: uppercase;
+    white-space: nowrap;
+    grid-column: 3 / 5;
+
+    @media only screen and (max-width: 768px) {
+      & {
+        grid-column: 2 / 5;
+      }
+    }
+  }
+
+  .animation {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    h4 {
+      opacity: 1 !important;
+      letter-spacing: 0.3em;
+    }
+
+    .arrow {
+      position: absolute;
+      top: calc(50% + 2px);
+      left: 23px;
+      transform: translate(0%, -50%);
+
+      width: 12px;
+      height: auto;
+      padding: 4px;
+
+      background-color: $color-100;
+    }
   }
 }
 

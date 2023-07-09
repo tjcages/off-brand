@@ -31,13 +31,14 @@ const _ = ({ item, texture, index }: Props) => {
 
   // intro opacity animation
   useEffect(() => {
+    if (!snap.loaded) return;
     gsap.to(ref.current.material.uniforms.opacity, {
       duration: 1,
       delay: 0.5 + index * 0.1,
       value: 1,
       ease: "expo.out",
     });
-  }, []);
+  }, [snap.loaded]);
 
   // views animation
   useEffect(() => {
