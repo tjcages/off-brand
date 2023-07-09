@@ -6,7 +6,7 @@ import { state } from "@/store";
 
 import SEO from "@/seo";
 import { Selected, World } from "@/components/elements";
-import { Header, Underlay, Overlay } from "@/components/views";
+import { Header, Underlay, Overlay, Float } from "@/components/views";
 import { Effects } from "@/components/effects";
 
 const _ = () => {
@@ -37,6 +37,7 @@ const _ = () => {
 
         <Header />
         <Overlay />
+        {snap.loaded && <Float />}
       </main>
     </>
   );

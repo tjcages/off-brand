@@ -6,7 +6,7 @@ import { useTexture, useScroll } from "@react-three/drei";
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 
-import data from "@/data";
+import { projects } from "@/data";
 import { state } from "@/store";
 import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
@@ -28,8 +28,8 @@ const _ = () => {
   const scroll = useScroll();
 
   // load textures
-  const covers = useTexture(data.map((item: any) => item.cover));
-  const items = data.map((item) => {
+  const covers = useTexture(projects.map((item: any) => item.cover));
+  const items = projects.map((item) => {
     return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
 
@@ -222,6 +222,6 @@ const _ = () => {
 };
 
 // preload all textures
-data.map((d) => d.cover).forEach(useTexture.preload);
+projects.map((d) => d.cover).forEach(useTexture.preload);
 
 export default _;

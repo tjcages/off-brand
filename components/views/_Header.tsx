@@ -44,14 +44,22 @@ const _ = () => {
         </div>
       </div>
 
-      <div className={clsx(styles.v, styles.spaced)}>
+      <div
+        className={clsx(styles.v, styles.spaced)}
+        onMouseEnter={() => (state.hover = "partners")}
+        onMouseLeave={() => (state.hover = null)}
+      >
         <h5>"Partners"</h5>
         <div className={styles.v}>
           <h5>(006)</h5>
         </div>
       </div>
 
-      <div className={clsx(styles.v, styles.spaced)}>
+      <div
+        className={clsx(styles.v, styles.spaced)}
+        onMouseEnter={() => (state.hover = "inquire")}
+        onMouseLeave={() => (state.hover = null)}
+      >
         <h5>"Contact"</h5>
         <div className={styles.v}>
           <h5>Inquire</h5>

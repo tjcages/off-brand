@@ -4,6 +4,7 @@ import { derive } from "valtio/utils";
 interface State {
   loaded: boolean;
   view: "grid" | "linear";
+  hover: "inquire" | "partners" | "contact" | null;
 
   // Items
   items: any[];
@@ -27,6 +28,7 @@ interface State {
 const state = proxy({
   loaded: false,
   view: "linear",
+  hover: null,
 
   items: [],
   mapItems: [],

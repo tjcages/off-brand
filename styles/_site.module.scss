@@ -40,8 +40,10 @@
 
   h1 {
     font-size: $font-size-600;
-    font-weight: $font_weight_300;
+    font-weight: $font_weight_400;
+    letter-spacing: -0.04em;
     text-align: center;
+    line-height: 1.2em;
 
     color: $color_800;
   }

@@ -7,14 +7,11 @@
   right: 0;
   bottom: 0;
 
-  display: grid;
-  grid-template-columns: 3fr repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: $padding-200;
-
-  padding: $padding-100 $padding-200;
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: $padding-100 $padding-200;
 
   user-select: none;
   pointer-events: none;
@@ -23,6 +20,20 @@
     h4 {
       opacity: 1;
     }
+  }
+
+  .container {
+    position: relative;
+
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: 3fr repeat(4, 1fr);
+    grid-template-rows: auto;
+    justify-items: flex-start;
+    align-items: flex-end;
+    gap: $padding-200;
+
+    width: 100%;
   }
 
   &:before {
@@ -42,8 +53,15 @@
     animation: noise 12s steps(3) both infinite;
   }
 
+  h1 {
+    overflow: hidden;
+  }
+
   h4 {
+    line-height: 1.2em;
+
     opacity: 0;
+    overflow: hidden;
 
     transition: opacity $animation-duration-short $animation-easing
       $animation-duration;
