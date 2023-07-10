@@ -1,6 +1,5 @@
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import clsx from "clsx";
-import gsap from "gsap";
 import { useSnapshot } from "valtio";
 import styles from "@/styles/float.module.scss";
 import { state } from "@/store";
@@ -8,28 +7,18 @@ import { state } from "@/store";
 import Partners from "./_Partners";
 import Contact from "./_Contact";
 
-const margin = 20;
-
 const _ = () => {
   const snap = useSnapshot(state);
-  const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const [position, set] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    set({ x: window.innerWidth, y: 0 });
+  }, []);
 
   useEffect(() => {
     if (!snap.hover) return;
-    // track mouse position & move container accordingly
-    const mouse = { x: 0, y: 0 };
     const onMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      gsap.to(ref.current, {
-        x:
-          mouse.x +
-          (snap.hover == "inquire" ? -1 : 0) * ref.current.clientWidth -
-          (snap.hover == "inquire" ? 1 : -1) * margin,
-        y: mouse.y + margin,
-        duration: 1,
-        ease: "expo.out",
-      });
+      set({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener("mousemove", onMouseMove);
@@ -41,10 +30,8 @@ const _ = () => {
 
   return (
     <div className={clsx(styles.main)}>
-      <div ref={ref} className={styles.mover}>
-        <Partners />
-        <Contact />
-      </div>
+      <Partners position={position} />
+      <Contact position={position} />
     </div>
   );
 };

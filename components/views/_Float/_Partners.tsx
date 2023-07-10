@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import styles from "@/styles/float.module.scss";
@@ -7,10 +7,16 @@ import { useSnapshot } from "valtio";
 import { state } from "@/store";
 import { partners } from "@/data";
 
-const float = "partners";
+interface Props {
+  position: { x: number; y: number };
+}
 
-const _ = () => {
+const float = "partners";
+const margin = 20;
+
+const _ = ({ position }: Props) => {
   const snap = useSnapshot(state);
+  const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
   useEffect(() => {
     if (snap.hover == float) {
@@ -31,8 +37,18 @@ const _ = () => {
     }
   }, [snap.hover]);
 
+  useEffect(() => {
+    gsap.to(ref.current, {
+      x: position.x - margin,
+      y: position.y + margin,
+      duration: 1,
+      ease: "expo.out",
+    });
+  }, [position.x, position.y, snap.hover]);
+
   return (
     <div
+      ref={ref}
       id={`stack-${float}`}
       className={clsx(styles.stack, snap.hover == float && styles.active)}
     >

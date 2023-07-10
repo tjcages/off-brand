@@ -8,15 +8,13 @@
   bottom: 0;
 
   pointer-events: none;
-
-  .mover {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }
 
 .stack {
+  position: absolute;
+  top: 0;
+  left: 0;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
