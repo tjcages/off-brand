@@ -86,8 +86,8 @@ const _ = () => {
               className={styles.arrow}
               src="/imgs/icons/arrow.png"
               alt="arrow"
-              width={32}
-              height={32}
+              width={64}
+              height={64}
             />
           )}
         </div>

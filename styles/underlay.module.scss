@@ -101,14 +101,13 @@
     .arrow {
       position: absolute;
       top: calc(50% + 2px);
-      left: 23px;
+      left: 27px;
       transform: translate(0%, -50%);
 
       width: 12px;
       min-width: 12px;
       max-width: 12px;
       height: auto;
-      padding: 4px;
 
       background-color: $color-100;
 
@@ -119,7 +118,7 @@
         height: auto;
 
         top: calc(50% + 1px);
-        left: 20px;
+        left: 24px;
       }
     }
   }
