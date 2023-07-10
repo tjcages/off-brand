@@ -9,11 +9,11 @@ interface Props {
 }
 
 const _ = ({
-  title = "COSMOS©",
-  description = "A Pinterest alternative for creatives.",
+  title = "Off_Brand",
+  description = "A Creative Studio, NYC",
   image = "/preview.jpg",
   video = "/preview.mp4",
-  url = "https://cosmos.so",
+  url = "https://off-brand.studio",
 }: Props) => {
   return (
     <Head>
