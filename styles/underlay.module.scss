@@ -34,6 +34,10 @@
     gap: $padding-200;
 
     width: 100%;
+
+    @media only screen and (max-width: 768px) {
+      height: 100%;
+    }
   }
 
   &:before {
@@ -55,6 +59,10 @@
 
   h1 {
     overflow: hidden;
+
+    @media only screen and (max-width: 768px) {
+      grid-column: 1 / 5;
+    }
   }
 
   h4 {
@@ -67,23 +75,13 @@
       $animation-duration;
   }
 
-  h4:first-of-type {
-    @media only screen and (max-width: 768px) {
-      & {
-        grid-column: 1 / 5;
-      }
-    }
-  }
-
   .about {
     text-transform: uppercase;
     white-space: nowrap;
     grid-column: 3 / 5;
 
     @media only screen and (max-width: 768px) {
-      & {
-        grid-column: 2 / 5;
-      }
+      grid-column: 1 / 5;
     }
   }
 
@@ -113,6 +111,16 @@
       padding: 4px;
 
       background-color: $color-100;
+
+      @media only screen and (max-width: 768px) {
+        width: 10px;
+        min-width: 10px;
+        max-width: 10px;
+        height: auto;
+
+        top: calc(50% + 1px);
+        left: 20px;
+      }
     }
   }
 }
