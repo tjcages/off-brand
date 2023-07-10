@@ -6,14 +6,14 @@ import gsap from "gsap";
 import { useSnapshot } from "valtio";
 import { isMobile } from "@/utils";
 
-import { DataProps } from "@/data";
+import { ProjectProps } from "@/data";
 import { state } from "@/store";
 import { Distortion } from "@/components/effects";
 
 extend({ Distortion });
 
 interface Props {
-  item: DataProps;
+  item: ProjectProps;
   texture: THREE.Texture;
   index: number;
 }
