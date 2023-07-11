@@ -39,7 +39,7 @@ const state = proxy({
 
   speed: 0,
   selected: null,
-  pages: 0,
+  pages: 3,
 } as State);
 
 const derived = derive({

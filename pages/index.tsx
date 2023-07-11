@@ -20,8 +20,8 @@ const _ = () => {
         <Underlay />
 
         <Canvas
-          dpr={[1, 1.5]}
-          gl={{ antialias: false }}
+          dpr={[1, 3]}
+          gl={{ antialias: true }}
           camera={{ position: [0, 0, 1.2], fov: 140, far: 50 }}
         >
           <Suspense>
@@ -36,8 +36,8 @@ const _ = () => {
         </Canvas>
 
         <Header />
+        <Float />
         <Overlay />
-        {snap.loaded && <Float />}
       </main>
     </>
   );

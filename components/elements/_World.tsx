@@ -28,7 +28,7 @@ const _ = () => {
   const scroll = useScroll();
 
   // load textures
-  const covers = useTexture(projects.map((item: any) => item.cover));
+  const covers = useTexture(projects.map((item: any) => item.src));
   const items = projects.map((item) => {
     return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
@@ -47,7 +47,7 @@ const _ = () => {
     // speed affecting distortion
     if (myLensDistortionPass) {
       let distortionValue = 0;
-      distortionValue += snap.speed * 2;
+      distortionValue += snap.speed * (isMobile ? 4 : 2);
       distortionStrength.current = lerp(
         distortionStrength.current,
         distortionValue,
@@ -73,7 +73,7 @@ const _ = () => {
       const index = Math.floor(scroll.offset / split) - 1;
       if (index < state.items.length)
         state.selected = {
-          src: state.items[index].cover,
+          src: state.items[index].src,
           size: {
             width: covers[index].image.naturalWidth,
             height: covers[index].image.naturalHeight,
@@ -86,19 +86,11 @@ const _ = () => {
   useEffect(() => {
     const tempItems = [] as any;
     covers.forEach((cover, index) => {
-      // get size of item based on image ratio
-      let size;
-      const ratio = cover.image.naturalWidth / cover.image.naturalHeight;
-      if (ratio < 1) {
-        size = { width: state.size.width * ratio, height: state.size.height };
-      } else
-        size = { width: state.size.width, height: state.size.height / ratio };
-
       // create item
       let item = {
         ...items[index],
-        width: size.width,
-        height: size.height,
+        width: cover.image.naturalWidth,
+        height: cover.image.naturalHeight,
       };
       tempItems.push(item);
     });
@@ -222,6 +214,6 @@ const _ = () => {
 };
 
 // preload all textures
-projects.map((d) => d.cover).forEach(useTexture.preload);
+projects.map((d) => d.src).forEach(useTexture.preload);
 
 export default _;
