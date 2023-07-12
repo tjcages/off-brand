@@ -68,7 +68,7 @@ const _ = () => {
       </div>
 
       <div
-        className={clsx(styles.v, styles.spaced)}
+        className={clsx(styles.v, styles.spaced, styles.end)}
         onMouseEnter={() => {
           document.body.style.cursor = "crosshair";
           state.hover = "inquire";

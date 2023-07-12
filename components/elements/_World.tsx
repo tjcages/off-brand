@@ -47,7 +47,7 @@ const _ = () => {
     // speed affecting distortion
     if (myLensDistortionPass) {
       let distortionValue = 0;
-      distortionValue += snap.speed * (isMobile ? 4 : 2);
+      distortionValue += snap.speed * (isMobile ? 4 : 3);
       distortionStrength.current = lerp(
         distortionStrength.current,
         distortionValue,

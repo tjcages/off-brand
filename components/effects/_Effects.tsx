@@ -25,6 +25,7 @@ export default function Effects() {
       focalLength: new THREE.Vector2(1, 1), // focal length
       skew: 0, // skew coeff
     });
+    myLensDistortionPass.toneMapping = THREE.ReinhardToneMapping;
 
     // attach composer passes
     const composer = new EffectComposer(gl);

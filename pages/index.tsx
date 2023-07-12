@@ -20,8 +20,13 @@ const _ = () => {
         <Underlay />
 
         <Canvas
+          flat={true}
+          linear={true}
           dpr={[1, 3]}
-          gl={{ antialias: true }}
+          gl={{
+            antialias: true,
+            powerPreference: "high-performance",
+          }}
           camera={{ position: [0, 0, 1.2], fov: 140, far: 50 }}
         >
           <Suspense>

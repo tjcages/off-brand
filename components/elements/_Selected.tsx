@@ -64,7 +64,7 @@ const _ = () => {
         state.hoverProject = null;
       }}
     >
-      <meshBasicMaterial attach="material" map={texture} color="white" />
+      {/* <meshNormalMaterial attach="material" map={texture} toneMapped={false} /> */}
       <planeGeometry />
     </Image>
   );
