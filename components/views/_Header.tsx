@@ -22,7 +22,12 @@ const _ = () => {
         <div className={styles.h}>
           <h5
             className={clsx(snap.view == "grid" && styles.selected)}
-            onClick={() => (state.view = "grid")}
+            // onClick={() => (state.view = "grid")}
+            style={{
+              textDecoration: "line-through",
+              opacity: 0.5,
+              cursor: "not-allowed",
+            }}
           >
             Grid
           </h5>
@@ -40,8 +45,8 @@ const _ = () => {
         <h5>"Featuring"</h5>
         <div className={styles.v}>
           <h5>Product Marketing</h5>
-          <h5>Design Engineering</h5>
-          <h5>Launch Strategy</h5>
+          <h5>Brand Positioning</h5>
+          <h5>Creative Engineering</h5>
         </div>
       </div>
 
