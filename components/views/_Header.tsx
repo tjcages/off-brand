@@ -4,6 +4,7 @@ import clsx from "clsx";
 import styles from "@/styles/header.module.scss";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
+import { partners } from "@/data";
 import { useMedia, mobileBreakpoint } from "@/utils";
 
 const _ = () => {
@@ -57,7 +58,7 @@ const _ = () => {
       >
         <h5>"Partners"</h5>
         <div className={styles.v}>
-          <h5>(006)</h5>
+          <h5>(00{partners.length})</h5>
         </div>
       </div>
 
@@ -74,7 +75,7 @@ const _ = () => {
       >
         <h5>"Contact"</h5>
         <div className={styles.v}>
-          <h5>Inquire</h5>
+          {/* <h5>Inquire</h5> */}
           <Link href="https://twitter.com/tjcages" target="_blank">
             <h5>Twitter</h5>
           </Link>

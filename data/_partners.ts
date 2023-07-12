@@ -16,14 +16,14 @@ const _ = [
     name: "Carter Strickling",
     position: "Product Designer",
   },
-  {
-    name: "Aden Cesmat",
-    position: "Sales & Partnerships",
-  },
-  {
-    name: "Andrew Ettinger",
-    position: "Copywriter",
-  },
+  // {
+  //   name: "Aden Cesmat",
+  //   position: "Sales & Partnerships",
+  // },
+  // {
+  //   name: "Andrew Ettinger",
+  //   position: "Copywriter",
+  // },
   // {
   //   name: "",
   //   position: "",

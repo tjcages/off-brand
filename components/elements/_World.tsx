@@ -71,7 +71,9 @@ const _ = () => {
     if (scroll.offset <= split) state.selected = null;
     else {
       const index = Math.floor(scroll.offset / split) - 1;
-      if (index < state.items.length)
+      if (index < state.items.length) {
+        if (state.hoverProject !== state.items[index].id)
+          state.hoverProject = null;
         state.selected = {
           id: state.items[index].id,
           src: state.items[index].src,
@@ -80,6 +82,7 @@ const _ = () => {
             height: covers[index].image.naturalHeight,
           },
         };
+      }
     }
   });
 

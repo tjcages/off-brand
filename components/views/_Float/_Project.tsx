@@ -11,13 +11,6 @@ const _ = () => {
   const snap = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [name, set] = useState("");
-  const project = useMemo(() => {
-    const proj = snap.items.find((item) => item.id == snap.hoverProject);
-    if (proj) {
-      set(proj.name);
-    }
-    return proj;
-  }, [snap.hoverProject]);
 
   useEffect(() => {
     if (snap.hoverProject) {
@@ -45,7 +38,14 @@ const _ = () => {
       duration: 1,
       ease: "expo.out",
     });
-  }, [snap.position.x, snap.position.y, snap.hoverProject]);
+  }, [snap.position.x, snap.position.y]);
+
+  useEffect(() => {
+    const proj = snap.items.find((item) => item.id == snap.hoverProject);
+    if (proj) {
+      set(proj.name);
+    }
+  }, [snap.hoverProject]);
 
   return (
     <div
