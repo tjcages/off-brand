@@ -4,13 +4,14 @@ import styles from "@/styles/float.module.scss";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
+import { ProjectProps } from "@/data";
 
 const margin = 20;
 
 const _ = () => {
   const snap = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const [name, set] = useState("");
+  const [project, set] = useState<ProjectProps | null>(null);
 
   useEffect(() => {
     if (snap.hoverProject) {
@@ -43,7 +44,7 @@ const _ = () => {
   useEffect(() => {
     const proj = snap.items.find((item) => item.id == snap.hoverProject);
     if (proj) {
-      set(proj.name);
+      set(proj);
     }
   }, [snap.hoverProject]);
 
@@ -58,11 +59,11 @@ const _ = () => {
     >
       <div className={styles.container}>
         <div id={`cover-project`} className={styles.cover} />
-        {name && <h5>{name}</h5>}
+        {project && project.name && <h5>{project.name}</h5>}
       </div>
       <div className={styles.container}>
         <div id={`cover-project`} className={styles.cover} />
-        <h5>Click to open</h5>
+        {project && project.href && <h5>Click to open</h5>}
       </div>
     </div>
   );
