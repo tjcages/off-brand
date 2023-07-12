@@ -6,19 +6,18 @@ import { state } from "@/store";
 
 import Partners from "./_Partners";
 import Contact from "./_Contact";
+import Project from "./_Project";
 
 const _ = () => {
   const snap = useSnapshot(state);
-  const [position, set] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    set({ x: window.innerWidth, y: 0 });
-  }, []);
 
   useEffect(() => {
     if (!snap.hover) return;
     const onMouseMove = (e: MouseEvent) => {
-      set({ x: e.clientX, y: e.clientY });
+      state.position = {
+        x: e.clientX,
+        y: e.clientY,
+      };
     };
 
     window.addEventListener("mousemove", onMouseMove);
@@ -30,8 +29,9 @@ const _ = () => {
 
   return (
     <div className={clsx(styles.main)}>
-      <Partners position={position} />
-      <Contact position={position} />
+      <Partners />
+      <Contact />
+      <Project />
     </div>
   );
 };

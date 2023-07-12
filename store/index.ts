@@ -5,6 +5,11 @@ interface State {
   loaded: boolean;
   view: "grid" | "linear";
   hover: "inquire" | "partners" | "contact" | null;
+  hoverProject: string | null;
+  position: {
+    x: number;
+    y: number;
+  };
 
   // Items
   items: any[];
@@ -16,6 +21,7 @@ interface State {
   // Derived
   speed: number;
   selected: {
+    id: string;
     src: string;
     size: {
       width: number;
@@ -29,6 +35,11 @@ const state = proxy({
   loaded: false,
   view: "linear",
   hover: null,
+  hoverProject: null,
+  position: {
+    x: 0,
+    y: 0,
+  },
 
   items: [],
   mapItems: [],

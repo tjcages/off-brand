@@ -5,6 +5,8 @@ body {
 
   color: white;
   background-color: #080808;
+
+  cursor: grab;
 }
 
 main {

@@ -7,14 +7,10 @@ import { useSnapshot } from "valtio";
 import { state } from "@/store";
 import { partners } from "@/data";
 
-interface Props {
-  position: { x: number; y: number };
-}
-
 const float = "partners";
 const margin = 20;
 
-const _ = ({ position }: Props) => {
+const _ = () => {
   const snap = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
 
@@ -39,12 +35,12 @@ const _ = ({ position }: Props) => {
 
   useEffect(() => {
     gsap.to(ref.current, {
-      x: position.x - margin,
-      y: position.y + margin,
+      x: snap.position.x - margin,
+      y: snap.position.y + margin,
       duration: 1,
       ease: "expo.out",
     });
-  }, [position.x, position.y, snap.hover]);
+  }, [snap.position.x, snap.position.y, snap.hover]);
 
   return (
     <div

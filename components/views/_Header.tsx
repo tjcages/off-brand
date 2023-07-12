@@ -46,8 +46,14 @@ const _ = () => {
 
       <div
         className={clsx(styles.v, styles.spaced)}
-        onMouseEnter={() => (state.hover = "partners")}
-        onMouseLeave={() => (state.hover = null)}
+        onMouseEnter={() => {
+          document.body.style.cursor = "crosshair";
+          state.hover = "partners";
+        }}
+        onMouseLeave={() => {
+          document.body.style.cursor = "grab";
+          state.hover = null;
+        }}
       >
         <h5>"Partners"</h5>
         <div className={styles.v}>
@@ -57,8 +63,14 @@ const _ = () => {
 
       <div
         className={clsx(styles.v, styles.spaced)}
-        onMouseEnter={() => (state.hover = "inquire")}
-        onMouseLeave={() => (state.hover = null)}
+        onMouseEnter={() => {
+          document.body.style.cursor = "crosshair";
+          state.hover = "inquire";
+        }}
+        onMouseLeave={() => {
+          document.body.style.cursor = "grab";
+          state.hover = null;
+        }}
       >
         <h5>"Contact"</h5>
         <div className={styles.v}>

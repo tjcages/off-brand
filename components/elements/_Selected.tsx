@@ -1,5 +1,3 @@
-import { useRef, useEffect } from "react";
-import * as THREE from "three";
 import { Vector3 } from "three";
 import { Image, useAspect, useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
@@ -51,7 +49,22 @@ const _ = () => {
           0
         )
       }
+      onPointerMove={(e) => {
+        state.position = {
+          x: e.x,
+          y: e.y,
+        };
+      }}
+      onPointerEnter={() => {
+        document.body.style.cursor = "crosshair";
+        state.hoverProject = snap.selected?.id ?? null;
+      }}
+      onPointerLeave={() => {
+        document.body.style.cursor = "grab";
+        state.hoverProject = null;
+      }}
     >
+      <meshBasicMaterial attach="material" map={texture} color="white" />
       <planeGeometry />
     </Image>
   );

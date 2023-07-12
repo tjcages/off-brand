@@ -73,6 +73,7 @@ const _ = () => {
       const index = Math.floor(scroll.offset / split) - 1;
       if (index < state.items.length)
         state.selected = {
+          id: state.items[index].id,
           src: state.items[index].src,
           size: {
             width: covers[index].image.naturalWidth,
@@ -123,6 +124,7 @@ const _ = () => {
           y: e.clientY,
         };
 
+        document.body.style.cursor = "grabbing";
         // add mouse events
         ele.addEventListener("mousemove", mouseMoveHandler);
         ele.addEventListener("mouseup", upHandler);
@@ -161,6 +163,7 @@ const _ = () => {
 
       // up handler
       const upHandler = function () {
+        document.body.style.cursor = "grab";
         // remove mouse events
         ele.removeEventListener("mousemove", mouseMoveHandler);
         ele.removeEventListener("mouseup", upHandler);
