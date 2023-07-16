@@ -112,6 +112,7 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
       crossOrigin: "Anonymous",
       loop: true,
       muted: true,
+      playsInline: true,
     })
   );
 
