@@ -81,7 +81,8 @@ const _ = ({ item, texture, index }: Props) => {
       const y = -index * (state.size.height + state.gap);
 
       const xMobile = index * (state.size.width + state.gap);
-      const yMobile = (gl.viewport.height * 6) / 7 - state.size.height / 2;
+      const yMobile =
+        -gl.viewport.height / 2 - state.size.height / 2 + state.margin * 7;
 
       // linear view animation
       gsap.to(ref.current.position, {
@@ -108,8 +109,8 @@ const _ = ({ item, texture, index }: Props) => {
     const split = 1 / (snap.items.length + 1);
     const offset = (index + 1) * split;
     scroll.el.scrollTo({
-      top: offset * scroll.el.scrollHeight,
-      left: 0,
+      top: isMobile ? 0 : offset * scroll.el.scrollHeight,
+      left: isMobile ? offset * scroll.el.scrollWidth : 0,
       behavior: "auto",
     });
   };

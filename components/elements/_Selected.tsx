@@ -89,8 +89,8 @@ const Image = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
           isMobile
             ? -gl.viewport.height / 2 +
               size.height / 2 +
-              state.margin +
-              state.gap * 2
+              (state.size.height * 3) / 4 +
+              state.gap * 3
             : -gl.viewport.height / 2 + size.height / 2 + state.gap,
           0
         )
@@ -161,8 +161,8 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
           isMobile
             ? -gl.viewport.height / 2 +
               size.height / 2 +
-              state.margin +
-              state.gap * 2
+              (state.size.height * 3) / 4 +
+              state.gap * 3
             : -gl.viewport.height / 2 + size.height / 2 + state.gap,
           0
         )
