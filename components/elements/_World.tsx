@@ -28,7 +28,7 @@ const _ = () => {
   const scroll = useScroll();
 
   // load textures
-  const covers = useTexture(projects.map((item: any) => item.src));
+  const covers = useTexture(projects.map((item: any) => item.preview));
   const items = projects.map((item) => {
     return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
@@ -76,11 +76,7 @@ const _ = () => {
           state.hoverProject = null;
         state.selected = {
           id: state.items[index].id,
-          src: state.items[index].src,
-          size: {
-            width: covers[index].image.naturalWidth,
-            height: covers[index].image.naturalHeight,
-          },
+          src: state.items[index].preview,
         };
       }
     }
@@ -103,13 +99,23 @@ const _ = () => {
     state.items = tempItems;
 
     // calculate the number of pages
-    const pages =
-      Math.ceil(
-        tempItems
-          .map(() => state.size.height + state.gap)
-          .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
-      ) + 1; // +1 for extra scroll space
-    state.pages = pages;
+    if (isMobile) {
+      const pages =
+        Math.ceil(
+          tempItems
+            .map(() => state.size.width + state.gap)
+            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.width
+        ) + 0.25; // +0.25 for extra scroll space
+      state.pages = pages;
+    } else {
+      const pages =
+        Math.ceil(
+          tempItems
+            .map(() => state.size.height + state.gap)
+            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
+        ) + 1; // +1 for extra scroll space
+      state.pages = pages;
+    }
   }, [covers]);
 
   // add drag listeners to scroll element
@@ -220,6 +226,6 @@ const _ = () => {
 };
 
 // preload all textures
-projects.map((d) => d.src).forEach(useTexture.preload);
+projects.map((d) => d.preview).forEach(useTexture.preload);
 
 export default _;

@@ -23,10 +23,6 @@ interface State {
   selected: {
     id: string;
     src: string;
-    size: {
-      width: number;
-      height: number;
-    };
   } | null;
   pages: number;
 }

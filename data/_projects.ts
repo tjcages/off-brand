@@ -6,7 +6,7 @@ interface ProjectProps {
   type: string;
   description: string;
   cover: string;
-  src: string;
+  preview: string;
   x?: number;
   y?: number;
   z?: number;
@@ -15,6 +15,12 @@ interface ProjectProps {
   height?: number;
   ratio?: number;
   href?: string;
+  content:
+    | {
+        type: string;
+        src: string;
+      }[]
+    | null;
 }
 
 // var _: ProjectProps[] = [];
@@ -41,196 +47,202 @@ const proj = [
     name: "Crypto Yearbook",
     type: "image",
     description: "",
-    src: "/projects/crypto-yearbook.jpg",
+    preview: "/projects/crypto-yearbook/crypto-yearbook.jpg",
+    content: [
+      {
+        type: "video",
+        src: "/projects/crypto-yearbook/crypto-yearbook.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Six Eastern",
     type: "image",
     description: "",
-    src: "/projects/six-eastern.png",
+    preview: "/projects/six-eastern.png",
   },
   {
     id: uuidv4(),
     name: "Cosmos",
     type: "image",
     description: "",
-    src: "/projects/cosmos.jpg",
+    preview: "/projects/cosmos.jpg",
   },
   {
     id: uuidv4(),
     name: "Grids",
     type: "image",
     description: "",
-    src: "/projects/grid.png",
+    preview: "/projects/grid.png",
   },
   {
     id: uuidv4(),
     name: "Boys Club",
     type: "image",
     description: "",
-    src: "/projects/boys-club.png",
+    preview: "/projects/boys-club.png",
   },
   {
     id: uuidv4(),
     name: "Capital",
     type: "image",
     description: "",
-    src: "/projects/capital.png",
+    preview: "/projects/capital.png",
   },
   {
     id: uuidv4(),
     name: "How Much Do You Make?",
     type: "image",
     description: "",
-    src: "/projects/how-much.png",
+    preview: "/projects/how-much.png",
   },
   {
     id: uuidv4(),
     name: "Investdex",
     type: "image",
     description: "",
-    src: "/projects/investdex.png",
+    preview: "/projects/investdex.png",
   },
   {
     id: uuidv4(),
     name: "Jaguar",
     type: "image",
     description: "",
-    src: "/projects/jaguar.png",
+    preview: "/projects/jaguar.png",
   },
   {
     id: uuidv4(),
     name: "Jaguar",
     type: "image",
     description: "",
-    src: "/projects/jaguar2.png",
+    preview: "/projects/jaguar2.png",
   },
   {
     id: uuidv4(),
     name: "Stripe Buy Button",
     type: "image",
     description: "",
-    src: "/projects/stripe-buttons.png",
+    preview: "/projects/stripe-buttons.png",
   },
   {
     id: uuidv4(),
     name: "Stripe Buy Button",
     type: "image",
     description: "",
-    src: "/projects/stripe.png",
+    preview: "/projects/stripe.png",
   },
   {
     id: uuidv4(),
     name: "Loaded.com",
     type: "image",
     description: "",
-    src: "/projects/loaded.png",
+    preview: "/projects/loaded.png",
   },
   {
     id: uuidv4(),
     name: "Meridian",
     type: "image",
     description: "",
-    src: "/projects/meridian.jpg",
+    preview: "/projects/meridian.jpg",
   },
   {
     id: uuidv4(),
     name: "Nate Gagnon Portfolio",
     type: "image",
     description: "",
-    src: "/projects/nate.jpg",
+    preview: "/projects/nate.jpg",
   },
   {
     id: uuidv4(),
     name: "NextJS Starter Kit",
     type: "image",
     description: "",
-    src: "/projects/nextjs.png",
+    preview: "/projects/nextjs.png",
   },
   {
     id: uuidv4(),
     name: "Through the Looking Glass",
     type: "image",
     description: "",
-    src: "/projects/looking-glass.png",
+    preview: "/projects/looking-glass.png",
   },
   {
     id: uuidv4(),
     name: "New York Tech Week",
     type: "image",
     description: "",
-    src: "/projects/nyctw.png",
+    preview: "/projects/nyctw.png",
   },
   {
     id: uuidv4(),
     name: "Startup Supreme",
     type: "image",
     description: "",
-    src: "/projects/startup-supreme.png",
+    preview: "/projects/startup-supreme.png",
   },
   {
     id: uuidv4(),
     name: "Off–Brand",
     type: "image",
     description: "",
-    src: "/projects/off-brand.png",
+    preview: "/projects/off-brand.png",
   },
   {
     id: uuidv4(),
     name: "Palette",
     type: "image",
     description: "",
-    src: "/projects/palette.jpg",
+    preview: "/projects/palette.jpg",
   },
   {
     id: uuidv4(),
     name: "Party Round Mag",
     type: "image",
     description: "",
-    src: "/projects/mag.png",
+    preview: "/projects/mag.png",
   },
   {
     id: uuidv4(),
     name: "Party Round Mag",
     type: "image",
     description: "",
-    src: "/projects/throwback.png",
+    preview: "/projects/throwback.png",
   },
   {
     id: uuidv4(),
     name: "Startup Tamagotchi",
     type: "image",
     description: "",
-    src: "/projects/tamagotchi.png",
+    preview: "/projects/tamagotchi.png",
   },
   {
     id: uuidv4(),
     name: "Bear Goggles",
     type: "image",
     description: "",
-    src: "/projects/bear-goggles.png",
+    preview: "/projects/bear-goggles.png",
   },
   {
     id: uuidv4(),
     name: "Gold Bar NFT",
     type: "image",
     description: "",
-    src: "/projects/gold-bar-nft.png",
+    preview: "/projects/gold-bar-nft.png",
   },
   {
     id: uuidv4(),
     name: "LinkedInfluencer",
     type: "image",
     description: "",
-    src: "/projects/linkedinfluencer.png",
+    preview: "/projects/linkedinfluencer.png",
   },
   {
     id: uuidv4(),
     name: "Party Round",
     type: "image",
     description: "",
-    src: "/projects/party-round.png",
+    preview: "/projects/party-round.png",
   },
 
   {
@@ -238,14 +250,14 @@ const proj = [
     name: "TY_JC",
     type: "image",
     description: "",
-    src: "/projects/tyjc.png",
+    preview: "/projects/tyjc.png",
   },
   // {
   //   id: uuidv4(),
   //   name: "",
   //   type: "image",
   //   description: "",
-  //   src: "/projects/",
+  //   preview: "/projects/",
   // },
 ] as ProjectProps[];
 

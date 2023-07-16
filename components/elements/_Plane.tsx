@@ -77,15 +77,17 @@ const _ = ({ item, texture, index }: Props) => {
         ease: "expo.out",
       });
     } else if (snap.view == "linear") {
-      const x = isMobile
-        ? (gl.viewport.width * 6) / 7 - state.size.width / 2
-        : (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
+      const x = (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
       const y = -index * (state.size.height + state.gap);
+
+      const xMobile = index * (state.size.width + state.gap);
+      const yMobile = (gl.viewport.height * 6) / 7 - state.size.height / 2;
+
       // linear view animation
       gsap.to(ref.current.position, {
         duration: 1,
-        x: x,
-        y: y,
+        x: isMobile ? xMobile : x,
+        y: isMobile ? yMobile : y,
         z: -1,
         ease: "expo.out",
       });
