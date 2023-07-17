@@ -24,6 +24,7 @@ interface State {
     id: string;
     src: string;
   } | null;
+  currentIndex: number;
   pages: number;
 }
 
@@ -46,6 +47,7 @@ const state = proxy({
 
   speed: 0,
   selected: null,
+  currentIndex: -1,
   pages: 3,
 } as State);
 

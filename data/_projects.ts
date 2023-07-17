@@ -74,14 +74,26 @@ const proj = [
     name: "Grids",
     type: "image",
     description: "",
-    preview: "/projects/grid.png",
+    preview: "/projects/grid/grid.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/grid/grid.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Boys Club",
     type: "image",
     description: "",
-    preview: "/projects/boys-club.png",
+    preview: "/projects/boys-club/boys-club.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/boys-club/boys-club.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -103,6 +115,19 @@ const proj = [
     type: "image",
     description: "",
     preview: "/projects/investdex.png",
+  },
+  {
+    id: uuidv4(),
+    name: "Rebooting",
+    type: "image",
+    description: "",
+    preview: "/projects/rebooting/rebooting.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/rebooting/rebooting.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -137,7 +162,13 @@ const proj = [
     name: "Loaded.com",
     type: "image",
     description: "",
-    preview: "/projects/loaded.png",
+    preview: "/projects/loaded/loaded.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/loaded/loaded.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -151,21 +182,39 @@ const proj = [
     name: "Nate Gagnon Portfolio",
     type: "image",
     description: "",
-    preview: "/projects/nate.jpg",
+    preview: "/projects/nate/nate.jpg",
+    content: [
+      {
+        type: "video",
+        src: "/projects/nate/nate.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "NextJS Starter Kit",
     type: "image",
     description: "",
-    preview: "/projects/nextjs.png",
+    preview: "/projects/hello-world/hello-world.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/hello-world/hello-world.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Through the Looking Glass",
     type: "image",
     description: "",
-    preview: "/projects/looking-glass.png",
+    preview: "/projects/looking-glass/looking-glass.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/looking-glass/looking-glass.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -244,7 +293,45 @@ const proj = [
     description: "",
     preview: "/projects/party-round.png",
   },
-
+  {
+    id: uuidv4(),
+    name: "<Macintosh>",
+    type: "image",
+    description: "",
+    preview: "/projects/mac/mac.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/mac/mac.mp4",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: "[Experimental]",
+    type: "image",
+    description: "",
+    preview: "/projects/experimental/experimental.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/experimental/experimental.mp4",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
+    name: "Medium",
+    type: "image",
+    description: "",
+    preview: "/projects/medium/medium.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/medium/medium.mp4",
+      },
+    ],
+  },
   {
     id: uuidv4(),
     name: "TY_JC",

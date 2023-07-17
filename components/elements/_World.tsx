@@ -68,12 +68,15 @@ const _ = () => {
 
     // detect top most image in view on scroll changes
     const split = 1 / (snap.items.length + 1);
-    if (scroll.offset <= split) state.selected = null;
-    else {
+    if (scroll.offset <= split) {
+      state.selected = null;
+      state.currentIndex = -1;
+    } else {
       const index = Math.floor(scroll.offset / split) - 1;
-      if (index < state.items.length) {
+      if (index < state.items.length && snap.currentIndex !== index) {
         if (state.hoverProject !== state.items[index].id)
           state.hoverProject = null;
+        state.currentIndex = index;
         state.selected = {
           id: state.items[index].id,
           src: state.items[index].preview,

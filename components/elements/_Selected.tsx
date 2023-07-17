@@ -1,4 +1,4 @@
-import { useEffect, useState, forwardRef } from "react";
+import { useEffect, useState, forwardRef, useMemo } from "react";
 import { Vector3 } from "three";
 import { Image as R3FImage, useAspect, useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
@@ -106,14 +106,16 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
   const gl = useThree();
   const [videoSize, set] = useState({ width: 0, height: 0 });
 
-  const [video] = useState(() =>
-    Object.assign(document.createElement("video"), {
-      src: src,
-      crossOrigin: "Anonymous",
-      loop: true,
-      muted: true,
-      playsInline: true,
-    })
+  const video = useMemo(
+    () =>
+      Object.assign(document.createElement("video"), {
+        src: src,
+        crossOrigin: "Anonymous",
+        loop: true,
+        muted: true,
+        playsInline: true,
+      }),
+    [src]
   );
 
   const scale = useAspect(
@@ -142,12 +144,18 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
   }
 
   useEffect(() => {
+    if (!video) return;
     video.play();
     video.onloadedmetadata = () => {
       set({
         width: video.videoWidth,
         height: video.videoHeight,
       });
+    };
+
+    return () => {
+      video.pause();
+      video.src = "";
     };
   }, [video]);
 
