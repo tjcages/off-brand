@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
 import { useSnapshot } from "valtio";
-import { state } from "@/store";
+import { state, derived } from "@/store";
 
 import SEO from "@/seo";
 import { Selected, World } from "@/components/elements";

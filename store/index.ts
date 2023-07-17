@@ -1,5 +1,6 @@
 import { proxy } from "valtio";
 import { derive } from "valtio/utils";
+import { isMobile } from "@/utils";
 
 interface State {
   loaded: boolean;
@@ -25,6 +26,7 @@ interface State {
     src: string;
   } | null;
   currentIndex: number;
+
   pages: number;
 }
 
@@ -48,6 +50,7 @@ const state = proxy({
   speed: 0,
   selected: null,
   currentIndex: -1,
+
   pages: 3,
 } as State);
 

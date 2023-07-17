@@ -1,13 +1,13 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useTexture, useScroll } from "@react-three/drei";
+import { useScroll } from "@react-three/drei";
 // @ts-ignore
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 
 import { projects } from "@/data";
-import { state } from "@/store";
+import { state, derived } from "@/store";
 import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
 import { Plane } from "@/components/elements";
@@ -28,7 +28,6 @@ const _ = () => {
   const scroll = useScroll();
 
   // load textures
-  const covers = useTexture(projects.map((item: any) => item.preview));
   const items = projects.map((item) => {
     return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
@@ -85,41 +84,30 @@ const _ = () => {
     }
   });
 
-  // update items positions
+  // update items
   useEffect(() => {
-    const tempItems = [] as any;
-    covers.forEach((cover, index) => {
-      // create item
-      let item = {
-        ...items[index],
-        width: cover.image.naturalWidth,
-        height: cover.image.naturalHeight,
-      };
-      tempItems.push(item);
-    });
+    state.items = items;
 
-    // save the items
-    state.items = tempItems;
-
-    // calculate the number of pages
     if (isMobile) {
       const pages =
         Math.ceil(
-          tempItems
+          items
             .map(() => state.size.width + state.gap)
             .reduce((a: number, b: number) => a + b, 0) / gl.viewport.width
         ) + 0.25; // +0.25 for extra scroll space
+
       state.pages = pages;
     } else {
       const pages =
         Math.ceil(
-          tempItems
+          items
             .map(() => state.size.height + state.gap)
             .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
-        ) + 1; // +1 for extra scroll space
+        ) + 0.5; // +0.5 for extra scroll space
+
       state.pages = pages;
     }
-  }, [covers]);
+  }, []);
 
   // add drag listeners to scroll element
   useEffect(() => {
@@ -222,13 +210,13 @@ const _ = () => {
   return (
     <group ref={ref} position={[0, -gl.viewport.height / 4, 0]}>
       {items.map((item, index) => (
-        <Plane key={index} item={item} texture={covers[index]} index={index} />
+        <Plane key={index} item={item} index={index} />
       ))}
     </group>
   );
 };
 
 // preload all textures
-projects.map((d) => d.preview).forEach(useTexture.preload);
+// projects.map((d) => d.preview).forEach(useTexture.preload);
 
 export default _;
