@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useMemo } from "react";
 import clsx from "clsx";
+import Image from "next/image";
 import styles from "@/styles/float.module.scss";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
@@ -57,14 +58,37 @@ const _ = () => {
         snap.hoverProject !== null && styles.active
       )}
     >
-      <div className={styles.container}>
+      <div className={styles.container} style={{ marginBottom: 10 }}>
         <div id={`cover-project`} className={styles.cover} />
-        {project && project.name && <h5>{project.name}</h5>}
+        {project && project.name && (
+          <h5>{(snap.selectedIndex + 1).toString().padStart(3, "0")}</h5>
+        )}
       </div>
-      <div className={styles.container}>
-        <div id={`cover-project`} className={styles.cover} />
-        {project && project.href && <h5>Click to open</h5>}
-      </div>
+      {project && project.name && (
+        <div className={styles.container}>
+          <div id={`cover-project`} className={styles.cover} />
+          <h5>{project.name}</h5>
+        </div>
+      )}
+      {project && project.description && (
+        <div className={styles.container}>
+          <div id={`cover-project`} className={styles.cover} />
+          <h5>{project.description}</h5>
+        </div>
+      )}
+      {project && project.href && (
+        <div className={styles.container} style={{ marginTop: 10 }}>
+          <div id={`cover-project`} className={styles.cover} />
+          <Image
+            className={styles.arrow}
+            src="/imgs/icons/arrow-light.png"
+            alt="arrow"
+            width={32}
+            height={32}
+          />
+          <h5>{new URL(project.href).hostname}</h5>
+        </div>
+      )}
     </div>
   );
 };

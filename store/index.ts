@@ -28,6 +28,7 @@ interface State {
       height: number;
     };
   } | null;
+  selectedIndex: number;
   pages: number;
 }
 
@@ -50,6 +51,7 @@ const state = proxy({
 
   speed: 0,
   selected: null,
+  selectedIndex: -1,
   pages: 3,
 } as State);
 

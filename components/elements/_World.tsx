@@ -71,7 +71,8 @@ const _ = () => {
     if (scroll.offset <= split) state.selected = null;
     else {
       const index = Math.floor(scroll.offset / split) - 1;
-      if (index < state.items.length) {
+      if (index < state.items.length && index !== snap.selectedIndex) {
+        state.selectedIndex = index;
         if (state.hoverProject !== state.items[index].id)
           state.hoverProject = null;
         state.selected = {

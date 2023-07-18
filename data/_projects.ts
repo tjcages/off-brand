@@ -42,6 +42,7 @@ const proj = [
     type: "image",
     description: "",
     src: "/projects/crypto-yearbook.jpg",
+    href: "https://thecryptoyearbook.com/",
   },
   {
     id: uuidv4(),
