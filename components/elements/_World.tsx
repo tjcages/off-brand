@@ -1,13 +1,13 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useTexture, useScroll } from "@react-three/drei";
+import { useScroll } from "@react-three/drei";
 // @ts-ignore
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 
 import { projects } from "@/data";
-import { state } from "@/store";
+import { state, derived } from "@/store";
 import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
 import { Plane } from "@/components/elements";
@@ -28,7 +28,6 @@ const _ = () => {
   const scroll = useScroll();
 
   // load textures
-  const covers = useTexture(projects.map((item: any) => item.src));
   const items = projects.map((item) => {
     return { ...item, x: 0, y: 0, z: -4 }; // set initial position
   });
@@ -68,50 +67,47 @@ const _ = () => {
 
     // detect top most image in view on scroll changes
     const split = 1 / (snap.items.length + 1);
-    if (scroll.offset <= split) state.selected = null;
-    else {
+    if (scroll.offset <= split) {
+      state.selected = null;
+      state.currentIndex = -1;
+    } else {
       const index = Math.floor(scroll.offset / split) - 1;
-      if (index < state.items.length && index !== snap.selectedIndex) {
-        state.selectedIndex = index;
+      if (index < state.items.length && snap.currentIndex !== index) {
         if (state.hoverProject !== state.items[index].id)
           state.hoverProject = null;
+        state.currentIndex = index;
         state.selected = {
           id: state.items[index].id,
-          src: state.items[index].src,
-          size: {
-            width: covers[index].image.naturalWidth,
-            height: covers[index].image.naturalHeight,
-          },
+          src: state.items[index].preview,
         };
       }
     }
   });
 
-  // update items positions
+  // update items
   useEffect(() => {
-    const tempItems = [] as any;
-    covers.forEach((cover, index) => {
-      // create item
-      let item = {
-        ...items[index],
-        width: cover.image.naturalWidth,
-        height: cover.image.naturalHeight,
-      };
-      tempItems.push(item);
-    });
+    state.items = items;
 
-    // save the items
-    state.items = tempItems;
+    if (isMobile) {
+      const pages =
+        Math.ceil(
+          items
+            .map(() => state.size.width + state.gap)
+            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.width
+        ) + 0.25; // +0.25 for extra scroll space
 
-    // calculate the number of pages
-    const pages =
-      Math.ceil(
-        tempItems
-          .map(() => state.size.height + state.gap)
-          .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
-      ) + 1; // +1 for extra scroll space
-    state.pages = pages;
-  }, [covers]);
+      state.pages = pages;
+    } else {
+      const pages =
+        Math.ceil(
+          items
+            .map(() => state.size.height + state.gap)
+            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
+        ) + 0.5; // +0.5 for extra scroll space
+
+      state.pages = pages;
+    }
+  }, []);
 
   // add drag listeners to scroll element
   useEffect(() => {
@@ -214,13 +210,13 @@ const _ = () => {
   return (
     <group ref={ref} position={[0, -gl.viewport.height / 4, 0]}>
       {items.map((item, index) => (
-        <Plane key={index} item={item} texture={covers[index]} index={index} />
+        <Plane key={index} item={item} index={index} />
       ))}
     </group>
   );
 };
 
 // preload all textures
-projects.map((d) => d.src).forEach(useTexture.preload);
+// projects.map((d) => d.preview).forEach(useTexture.preload);
 
 export default _;

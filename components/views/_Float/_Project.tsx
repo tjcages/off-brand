@@ -15,22 +15,24 @@ const _ = () => {
   const [project, set] = useState<ProjectProps | null>(null);
 
   useEffect(() => {
-    if (snap.hoverProject) {
-      gsap.to(`#cover-project`, {
-        scaleX: "100%",
-        duration: 1,
-        stagger: 0.1,
-        ease: "expo.out",
-      });
-    } else {
-      gsap.to(`#cover-project`, {
-        scaleX: "0%",
-        duration: 0.5,
-        stagger: 0.05,
-        ease: "expo.inOut",
-        overwrite: true,
-      });
-    }
+    setTimeout(() => {
+      if (snap.hoverProject) {
+        gsap.to(`#cover-project`, {
+          scaleX: "100%",
+          duration: 1,
+          stagger: 0.1,
+          ease: "expo.out",
+        });
+      } else {
+        gsap.to(`#cover-project`, {
+          scaleX: "0%",
+          duration: 0.5,
+          stagger: 0.05,
+          ease: "expo.inOut",
+          overwrite: true,
+        });
+      }
+    }, 10);
   }, [snap.hoverProject]);
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const _ = () => {
       <div className={styles.container} style={{ marginBottom: 10 }}>
         <div id={`cover-project`} className={styles.cover} />
         {project && project.name && (
-          <h5>{(snap.selectedIndex + 1).toString().padStart(3, "0")}</h5>
+          <h5>{(snap.currentIndex + 1).toString().padStart(3, "0")}</h5>
         )}
       </div>
       {project && project.name && (
@@ -86,7 +88,9 @@ const _ = () => {
             width={32}
             height={32}
           />
-          <h5>{new URL(project.href).hostname}</h5>
+          <h5 style={{ textTransform: "lowercase" }}>
+            {new URL(project.href).hostname}
+          </h5>
         </div>
       )}
     </div>

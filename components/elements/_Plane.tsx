@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useThree, extend } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
+import { useScroll, useTexture } from "@react-three/drei";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
 import { isMobile } from "@/utils";
@@ -14,11 +14,10 @@ extend({ Distortion });
 
 interface Props {
   item: ProjectProps;
-  texture: THREE.Texture;
   index: number;
 }
 
-const _ = ({ item, texture, index }: Props) => {
+const _ = ({ item, index }: Props) => {
   const snap = useSnapshot(state);
   const { x, y, z } = item;
 
@@ -29,9 +28,12 @@ const _ = ({ item, texture, index }: Props) => {
   const matRef = useRef() as any;
   const localView = useRef(state.view) as any;
 
+  const texture = useTexture(item.preview);
+
   // intro opacity animation
   useEffect(() => {
-    if (!snap.loaded) return;
+    if (!snap.loaded) return 
+
     gsap.to(ref.current.material.uniforms.opacity, {
       duration: 1,
       delay: 0.5 + index * 0.1,
@@ -77,15 +79,18 @@ const _ = ({ item, texture, index }: Props) => {
         ease: "expo.out",
       });
     } else if (snap.view == "linear") {
-      const x = isMobile
-        ? (gl.viewport.width * 6) / 7 - state.size.width / 2
-        : (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
+      const x = (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
       const y = -index * (state.size.height + state.gap);
+
+      const xMobile = index * (state.size.width + state.gap);
+      const yMobile =
+        -gl.viewport.height / 2 - state.size.height / 2 + state.margin * 7;
+
       // linear view animation
       gsap.to(ref.current.position, {
         duration: 1,
-        x: x,
-        y: y,
+        x: isMobile ? xMobile : x,
+        y: isMobile ? yMobile : y,
         z: -1,
         ease: "expo.out",
       });
@@ -106,8 +111,8 @@ const _ = ({ item, texture, index }: Props) => {
     const split = 1 / (snap.items.length + 1);
     const offset = (index + 1) * split;
     scroll.el.scrollTo({
-      top: offset * scroll.el.scrollHeight,
-      left: 0,
+      top: isMobile ? 0 : offset * scroll.el.scrollHeight,
+      left: isMobile ? offset * scroll.el.scrollWidth : 0,
       behavior: "auto",
     });
   };
