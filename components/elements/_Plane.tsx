@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { useThree, extend } from "@react-three/fiber";
-import { useScroll, useTexture } from "@react-three/drei";
+import { useThree, extend, ThreeEvent } from "@react-three/fiber";
+import { useScroll, useTexture, useAspect } from "@react-three/drei";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
 import { isMobile } from "@/utils";
@@ -29,10 +29,24 @@ const _ = ({ item, index }: Props) => {
   const localView = useRef(state.view) as any;
 
   const texture = useTexture(item.preview);
+  const scale = useAspect(
+    texture.image.naturalWidth,
+    texture.image.naturalHeight,
+    1 / 7 // scaling factor
+  );
+
+  // set max width & height
+  const totalWidth = gl.viewport.width * 0.7;
+  const itemWidth = totalWidth / state.n - state.gap;
+  const size = {
+    width: itemWidth,
+    height: (itemWidth * scale[1]) / scale[0],
+  };
+  item.size = size;
 
   // intro opacity animation
   useEffect(() => {
-    if (!snap.loaded) return 
+    if (!snap.loaded) return;
 
     gsap.to(ref.current.material.uniforms.opacity, {
       duration: 1,
@@ -45,39 +59,49 @@ const _ = ({ item, index }: Props) => {
   // views animation
   useEffect(() => {
     if (snap.view == "grid") {
-      // create a nxy grid & include width & height
-      const totalWidth = gl.viewport.width * 0.7;
-      const itemWidth = totalWidth / state.n - state.gap;
-      const itemHeight = itemWidth * 1.8;
+      // // change geometry to correct aspect ratio
+      // gsap.to(ref.current.scale, {
+      //   duration: 1,
+      //   x: size.width,
+      //   y: size.height,
+      //   ease: "expo.out",
+      // });
 
-      // change geometry to correct aspect ratio
-      const ratio = texture.image.naturalWidth / texture.image.naturalHeight;
-      ref.current.geometry = new THREE.PlaneGeometry(
-        itemWidth,
-        itemWidth / ratio,
-        1,
-        1
-      );
+      // // determine row & column
+      // const row = Math.floor(index / state.n);
+      // const col = index % state.n;
 
-      const x =
-        (index % state.n) * (itemWidth + state.gap) +
-        itemWidth / 2 -
-        gl.viewport.width / 2 +
-        state.gap;
-      const y =
-        -Math.floor(index / state.n) * (itemHeight + state.gap) +
-        state.margin +
-        itemHeight / 2.5 -
-        (itemWidth + itemWidth / ratio) / 2;
+      // // get max height from previous rows
+      // let maxHeight = 0;
+      // for (let i = 0; i < row; i++) {
+      //   maxHeight += state.items[i * state.n].height;
+      // }
 
-      // set grid position
-      gsap.to(ref.current.position, {
-        duration: 1,
-        x: x,
-        y: y,
-        z: 0,
-        ease: "expo.out",
-      });
+      // // get y position
+      // const y =
+      //   -maxHeight -
+      //   row * (size.height + state.gap) +
+      //   state.margin +
+      //   size.height / 2.5 -
+      //   (itemWidth + itemWidth / (size.width / size.height)) / 2;
+
+      // // get x position
+      // const x =
+      //   col * (itemWidth + state.gap) +
+      //   itemWidth / 2 -
+      //   gl.viewport.width / 2 +
+      //   state.gap;
+
+      // const x =
+      //   (index % state.n) * (itemWidth + state.gap) +
+      //   itemWidth / 2 -
+      //   gl.viewport.width / 2 +
+      //   state.gap;
+      // const y =
+      //   -Math.floor(index / state.n) * (size.height + state.gap) +
+      //   state.margin +
+      //   size.height / 2.5 -
+      //   (itemWidth + itemWidth / (size.width / size.height)) / 2;
     } else if (snap.view == "linear") {
       const x = (gl.viewport.width * 6) / 7 - state.size.width - state.gap;
       const y = -index * (state.size.height + state.gap);
@@ -107,9 +131,8 @@ const _ = ({ item, index }: Props) => {
   }, [snap.view]);
 
   // scroll to item
-  const handleClick = () => {
-    const split = 1 / (snap.items.length + 1);
-    const offset = (index + 1) * split;
+  const handleClick = (e: ThreeEvent<MouseEvent>) => {
+    const offset = (index + 1) / (state.items.length + 4); // idk why 4
     scroll.el.scrollTo({
       top: isMobile ? 0 : offset * scroll.el.scrollHeight,
       left: isMobile ? offset * scroll.el.scrollWidth : 0,
@@ -118,20 +141,18 @@ const _ = ({ item, index }: Props) => {
   };
 
   return (
-    <group>
+    <group ref={item.ref}>
       <mesh
         ref={ref}
         position={[x || 0, y || 0, z || 0]}
-        onClick={() => {
-          if (snap.view == "linear") handleClick();
-        }}
+        onClick={(e) => snap.view == "linear" && handleClick(e)}
+        onPointerEnter={() => (document.body.style.cursor = "pointer")}
+        onPointerLeave={() => (document.body.style.cursor = "grab")}
       >
-        <planeGeometry args={[state.size.width, state.size.height, 32, 32]} />
+        <planeGeometry />
         <distortion
-          frameAspect={1}
-          textureAspect={
-            texture.image.naturalWidth / texture.image.naturalHeight
-          }
+          frameAspect={size.width / size.height}
+          textureAspect={size.width / size.height}
           ref={matRef}
           tex={texture}
           opacity={0}

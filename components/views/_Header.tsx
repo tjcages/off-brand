@@ -26,7 +26,7 @@ const _ = () => {
           >
             Grid
           </h5>
-          <h5 style={{ lineHeight: 0.9 }}>/</h5>
+          <h5>/</h5>
           <h5
             className={clsx(snap.view == "linear" && styles.selected)}
             onClick={() => (state.view = "linear")}

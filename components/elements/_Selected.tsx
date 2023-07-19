@@ -1,4 +1,4 @@
-import { useEffect, useState, forwardRef, useMemo } from "react";
+import { useEffect, useState, forwardRef, useMemo, Suspense } from "react";
 import { Vector3 } from "three";
 import { Image as R3FImage, useAspect, useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
@@ -146,8 +146,8 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
 
   useEffect(() => {
     if (!video) return;
-    video.play();
     video.onloadedmetadata = () => {
+      video.play();
       set({
         width: video.videoWidth,
         height: video.videoHeight,
@@ -179,9 +179,11 @@ const Video = forwardRef(({ src, ...props }: Props, forwardRef: any) => {
       {...props}
     >
       <planeGeometry />
-      <meshBasicMaterial>
-        <videoTexture attach="map" args={[video]} />
-      </meshBasicMaterial>
+      <Suspense fallback={<meshBasicMaterial color="black" />}>
+        <meshBasicMaterial>
+          <videoTexture attach="map" args={[video]} />
+        </meshBasicMaterial>
+      </Suspense>
     </mesh>
   );
 });

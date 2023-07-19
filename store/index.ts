@@ -32,7 +32,7 @@ interface State {
 
 const state = proxy({
   loaded: false,
-  view: "linear",
+  view: "grid",
   hover: null,
   hoverProject: null,
   position: {

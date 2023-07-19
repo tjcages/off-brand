@@ -15,6 +15,11 @@ interface ProjectProps {
   height?: number;
   ratio?: number;
   href?: string;
+  ref?: any;
+  size?: {
+    width: number;
+    height: number;
+  };
   content:
     | {
         type: string;

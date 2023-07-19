@@ -1,13 +1,14 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, createRef } from "react";
 import * as THREE from "three";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
+import { useScroll, useTexture } from "@react-three/drei";
+import gsap from "gsap";
 // @ts-ignore
 import lerp from "@14islands/lerp";
 import { useSnapshot } from "valtio";
 
 import { projects } from "@/data";
-import { state, derived } from "@/store";
+import { state } from "@/store";
 import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
 import { Plane } from "@/components/elements";
@@ -29,13 +30,18 @@ const _ = () => {
 
   // load textures
   const items = projects.map((item) => {
-    return { ...item, x: 0, y: 0, z: -4 }; // set initial position
+    return { ...item, x: 0, y: 0, z: -4, ref: createRef() }; // set initial position
   });
 
   // track speed & distortion
   const lastPos = useRef(new THREE.Vector3(0, 0, 0));
   const distortionStrength = useRef(0);
   const focalStrength = useRef(2);
+
+  // update items
+  useEffect(() => {
+    state.items = items;
+  }, []);
 
   // track map position, speed, & distortion
   useFrame(({ camera }, delta) => {
@@ -83,31 +89,6 @@ const _ = () => {
       }
     }
   });
-
-  // update items
-  useEffect(() => {
-    state.items = items;
-
-    if (isMobile) {
-      const pages =
-        Math.ceil(
-          items
-            .map(() => state.size.width + state.gap)
-            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.width
-        ) + 0.25; // +0.25 for extra scroll space
-
-      state.pages = pages;
-    } else {
-      const pages =
-        Math.ceil(
-          items
-            .map(() => state.size.height + state.gap)
-            .reduce((a: number, b: number) => a + b, 0) / gl.viewport.height
-        ) + 0.5; // +0.5 for extra scroll space
-
-      state.pages = pages;
-    }
-  }, []);
 
   // add drag listeners to scroll element
   useEffect(() => {
@@ -187,25 +168,64 @@ const _ = () => {
     }
 
     // calculate the number of pages
-    if (snap.items.length > 0)
+    if (items.length > 0)
       state.pages =
         snap.view == "linear"
-          ? snap.items
-              .map(() => state.size.height + state.gap)
-              .reduce((a: number, b: number) => a + b, 0) /
-              gl.viewport.height +
-            1 // +1 for extra scroll space;
-          : snap.items
-              .map(
-                (i) =>
-                  ((gl.viewport.width * 0.7) / state.n - state.gap) * 1.8 +
-                  state.gap
+          ? isMobile
+            ? Math.ceil(
+                items
+                  .map(() => state.size.width + state.gap)
+                  .reduce((a: number, b: number) => a + b, 0) /
+                  gl.viewport.width
+              ) + 0.25 // +0.25 for extra scroll space
+            : Math.ceil(
+                items
+                  .map(() => state.size.height + state.gap)
+                  .reduce((a: number, b: number) => a + b, 0) /
+                  gl.viewport.height
               )
-              .reduce((a: number, b: number) => a + b, state.gap) /
-              state.n /
-              gl.viewport.height +
-            1;
+          : 5; // TO DO: calculate pages for grid view
   }, [scroll.el, snap.view]);
+
+  useEffect(() => {
+    switch (snap.view) {
+      case "grid":
+        // iterate through items, setting position to a grid with n columns
+        snap.items
+          .map((item) => item.ref)
+          .filter((e) => e)
+          .forEach((ref, i) => {
+            const x =
+              (i % state.n) * ((items[i].size?.width ?? 1) + state.gap) +
+              gl.viewport.width +
+              state.gap;
+            const y =
+              -Math.floor(i / state.n) * (state.size.height + state.gap) +
+              state.margin +
+              state.size.height / 2.5 -
+              (state.size.width + state.size.width / (4 / 7)) / 2;
+
+            gsap.to(ref.current.position, {
+              duration: 1,
+              x: x,
+              y: y,
+              z: 0,
+              ease: "expo.out",
+            });
+
+            // change geometry to correct aspect ratio
+            gsap.to(ref.current.scale, {
+              duration: 1,
+              x: items[i].size?.width ?? 1,
+              y: items[i].size?.height ?? 1,
+              ease: "expo.out",
+            });
+          });
+        break;
+      case "linear":
+        break;
+    }
+  }, [snap.view]);
 
   return (
     <group ref={ref} position={[0, -gl.viewport.height / 4, 0]}>
@@ -217,6 +237,6 @@ const _ = () => {
 };
 
 // preload all textures
-// projects.map((d) => d.preview).forEach(useTexture.preload);
+projects.map((d) => d.preview).forEach(useTexture.preload);
 
 export default _;
