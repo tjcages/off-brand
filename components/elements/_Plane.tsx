@@ -66,17 +66,14 @@ const _ = ({ item, index }: Props) => {
       //   y: size.height,
       //   ease: "expo.out",
       // });
-
       // // determine row & column
       // const row = Math.floor(index / state.n);
       // const col = index % state.n;
-
       // // get max height from previous rows
       // let maxHeight = 0;
       // for (let i = 0; i < row; i++) {
       //   maxHeight += state.items[i * state.n].height;
       // }
-
       // // get y position
       // const y =
       //   -maxHeight -
@@ -84,14 +81,12 @@ const _ = ({ item, index }: Props) => {
       //   state.margin +
       //   size.height / 2.5 -
       //   (itemWidth + itemWidth / (size.width / size.height)) / 2;
-
       // // get x position
       // const x =
       //   col * (itemWidth + state.gap) +
       //   itemWidth / 2 -
       //   gl.viewport.width / 2 +
       //   state.gap;
-
       // const x =
       //   (index % state.n) * (itemWidth + state.gap) +
       //   itemWidth / 2 -
@@ -151,7 +146,7 @@ const _ = ({ item, index }: Props) => {
       >
         <planeGeometry />
         <distortion
-          frameAspect={size.width / size.height}
+          frameAspect={snap.view == "linear" ? 1 : size.width / size.height}
           textureAspect={size.width / size.height}
           ref={matRef}
           tex={texture}

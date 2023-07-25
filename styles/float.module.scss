@@ -27,11 +27,15 @@
 
   &.active {
     opacity: 1;
+    pointer-events: all;
 
     transition: opacity $animation-duration-short $animation-easing;
   }
 
   &.right {
+    left: auto;
+    right: 0;
+
     align-items: flex-end;
 
     .container {
@@ -48,11 +52,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  gap: $padding-50;
+  justify-content: flex-end;
 
   height: 20px;
-  padding: 0 4px;
+
+  background-color: $color-700;
+
+  white-space: nowrap;
+  overflow: hidden;
 
   &:first-of-type {
     height: 21px;
@@ -62,21 +69,17 @@
     margin-top: -1px;
   }
 
-  .cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  &.wrapped {
+    flex-direction: column;
+    align-items: flex-end;
 
-    transform-origin: left;
-    transform: scaleX(0%);
-
-    background-color: $color-700;
+    height: auto;
+    margin-bottom: $padding-100;
   }
 
   h5 {
     position: relative;
+    padding: 0 4px;
     color: $color-100;
   }
 

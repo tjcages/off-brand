@@ -79,8 +79,8 @@ const _ = () => {
     } else {
       const index = Math.floor(scroll.offset / split) - 1;
       if (index < state.items.length && snap.currentIndex !== index) {
-        if (state.hoverProject !== state.items[index].id)
-          state.hoverProject = null;
+        // if (state.hoverProject !== state.items[index].id)
+        //   state.hoverProject = null;
         state.currentIndex = index;
         state.selected = {
           id: state.items[index].id,
@@ -196,7 +196,7 @@ const _ = () => {
           .filter((e) => e)
           .forEach((ref, i) => {
             const x =
-              (i % state.n) * ((items[i].size?.width ?? 1) + state.gap) +
+              (i % state.n) * ((items[i].size?.width ?? 1) + state.gap) -
               gl.viewport.width +
               state.gap;
             const y =

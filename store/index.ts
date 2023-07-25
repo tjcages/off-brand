@@ -5,7 +5,7 @@ import { isMobile } from "@/utils";
 interface State {
   loaded: boolean;
   view: "grid" | "linear";
-  hover: "inquire" | "partners" | "contact" | null;
+  hover: "inquire" | "partners" | "contact" | "ethos" | null;
   hoverProject: string | null;
   position: {
     x: number;
@@ -28,11 +28,14 @@ interface State {
   currentIndex: number;
 
   pages: number;
+
+  // user
+  email: string;
 }
 
 const state = proxy({
   loaded: false,
-  view: "grid",
+  view: "linear",
   hover: null,
   hoverProject: null,
   position: {
@@ -52,6 +55,8 @@ const state = proxy({
   currentIndex: -1,
 
   pages: 3,
+
+  email: "",
 } as State);
 
 const derived = derive({

@@ -145,14 +145,13 @@ const proj = [
     name: "Jaguar",
     type: "image",
     description: "",
-    preview: "/projects/jaguar.png",
-  },
-  {
-    id: uuidv4(),
-    name: "Jaguar",
-    type: "image",
-    description: "",
-    preview: "/projects/jaguar2.png",
+    preview: "/projects/jaguar/jaguar-preview.png",
+    content: [
+      {
+        type: "image",
+        src: "/projects/jaguar/jaguar.png",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -253,7 +252,13 @@ const proj = [
     name: "Off–Brand",
     type: "image",
     description: "",
-    preview: "/projects/off-brand.png",
+    preview: "/projects/stretch/stretch.png",
+    content: [
+      {
+        type: "video",
+        src: "/projects/stretch/stretch.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),

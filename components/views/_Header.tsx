@@ -23,6 +23,11 @@ const _ = () => {
           <h5
             className={clsx(snap.view == "grid" && styles.selected)}
             onClick={() => (state.view = "grid")}
+            style={{
+              pointerEvents: "none",
+              cursor: "not-allowed !important",
+              textDecoration: "line-through",
+            }}
           >
             Grid
           </h5>
@@ -36,8 +41,25 @@ const _ = () => {
         </div>
       </div>
 
-      <div className={clsx(styles.v, styles.spaced)}>
-        <h5>"Featuring"</h5>
+      <div
+        className={clsx(styles.v, styles.spaced)}
+        onMouseEnter={() => {
+          document.body.style.cursor = "crosshair";
+          state.hover = "ethos";
+        }}
+        onMouseLeave={() => {
+          document.body.style.cursor = "grab";
+          state.hover = null;
+        }}
+      >
+        <h5
+          className={clsx(
+            styles.title,
+            snap.hover == "ethos" && styles.hovered
+          )}
+        >
+          "Ethos & Work"
+        </h5>
         <div className={styles.v}>
           <h5>Product Marketing</h5>
           <h5>Brand Positioning</h5>
@@ -56,7 +78,14 @@ const _ = () => {
           state.hover = null;
         }}
       >
-        <h5>"Partners"</h5>
+        <h5
+          className={clsx(
+            styles.title,
+            snap.hover == "partners" && styles.hovered
+          )}
+        >
+          "Partners"
+        </h5>
         <div className={styles.v}>
           <h5>(00{partners.length})</h5>
         </div>
@@ -73,12 +102,16 @@ const _ = () => {
           state.hover = null;
         }}
       >
-        <h5>"Contact"</h5>
+        <h5
+          className={clsx(
+            styles.title,
+            snap.hover == "inquire" && styles.hovered
+          )}
+        >
+          "Contact"
+        </h5>
         <div className={styles.v}>
-          {/* <h5>Inquire</h5> */}
-          <Link href="https://twitter.com/tjcages" target="_blank">
-            <h5>Twitter</h5>
-          </Link>
+          <h5>Inquire</h5>
         </div>
       </div>
     </header>

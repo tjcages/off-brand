@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect } from "react";
+import { useEffect } from "react";
 import clsx from "clsx";
 import { useSnapshot } from "valtio";
 import styles from "@/styles/float.module.scss";
 import { state } from "@/store";
 
+import Ethos from "./_Ethos";
 import Partners from "./_Partners";
 import Contact from "./_Contact";
 import Project from "./_Project";
@@ -29,6 +30,7 @@ const _ = () => {
 
   return (
     <div className={clsx(styles.main)}>
+      <Ethos />
       <Partners />
       <Contact />
       <Project />
