@@ -34,10 +34,12 @@ const _ = () => {
       }}
       onClick={() => window.open(project.href, "_blank")}
     >
-      {project.content &&
-      project.content.length > 0 &&
-      project.content[0].type == "video" ? (
-        <Video src={project.content[0].src} />
+      {project.content && project.content.length > 0 ? (
+        project.content[0].type == "video" ? (
+          <Video src={project.content[0].src} />
+        ) : (
+          <Image src={project.content[0].src} />
+        )
       ) : (
         <Image src={snap.selected.src} />
       )}

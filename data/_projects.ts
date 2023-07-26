@@ -53,11 +53,11 @@ const proj = [
     type: "image",
     description: "",
     href: "https://thecryptoyearbook.com/",
-    preview: "/projects/crypto-yearbook/crypto-yearbook.jpg",
+    preview: "/projects/crypto-yearbook/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/crypto-yearbook/crypto-yearbook.mp4",
+        src: "/projects/crypto-yearbook/video.mp4",
       },
     ],
   },
@@ -75,18 +75,24 @@ const proj = [
     type: "image",
     description: "",
     href: "https://cosmos--alpha.vercel.app/",
-    preview: "/projects/cosmos.jpg",
+    preview: "/projects/cosmos/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/cosmos/video.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Grids",
     type: "image",
     description: "",
-    preview: "/projects/grid/grid.png",
+    preview: "/projects/grid/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/grid/grid.mp4",
+        src: "/projects/grid/video.mp4",
       },
     ],
   },
@@ -96,11 +102,11 @@ const proj = [
     type: "image",
     description: "",
     href: "https://www.boysclub.vip/",
-    preview: "/projects/boys-club/boys-club.png",
+    preview: "/projects/boys-club/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/boys-club/boys-club.mp4",
+        src: "/projects/boys-club/video.mp4",
       },
     ],
   },
@@ -110,7 +116,13 @@ const proj = [
     type: "image",
     description: "",
     href: "https://capital.xyz/",
-    preview: "/projects/capital.png",
+    preview: "/projects/capital/preview.avif",
+    content: [
+      {
+        type: "image",
+        src: "/projects/capital/image.avif",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -118,25 +130,37 @@ const proj = [
     type: "image",
     description: "",
     href: "https://howmuchdoyoumake.co/",
-    preview: "/projects/how-much.png",
+    preview: "/projects/how-much/preview.avif",
+    content: [
+      {
+        type: "image",
+        src: "/projects/how-much/image.avif",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Investdex",
     type: "image",
     description: "",
-    preview: "/projects/investdex.png",
+    preview: "/projects/investdex/preview.avif",
+    content: [
+      {
+        type: "image",
+        src: "/projects/investdex/image.avif",
+      },
+    ],
   },
   {
     id: uuidv4(),
     name: "Rebooting",
     type: "image",
     description: "",
-    preview: "/projects/rebooting/rebooting.png",
+    preview: "/projects/rebooting/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/rebooting/rebooting.mp4",
+        src: "/projects/rebooting/video.mp4",
       },
     ],
   },
@@ -145,11 +169,11 @@ const proj = [
     name: "Jaguar",
     type: "image",
     description: "",
-    preview: "/projects/jaguar/jaguar-preview.png",
+    preview: "/projects/jaguar/preview.avif",
     content: [
       {
         type: "image",
-        src: "/projects/jaguar/jaguar.png",
+        src: "/projects/jaguar/image.avif",
       },
     ],
   },
@@ -175,11 +199,11 @@ const proj = [
     type: "image",
     description: "",
     href: "https://loaded-staging.vercel.app/",
-    preview: "/projects/loaded/loaded.png",
+    preview: "/projects/loaded/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/loaded/loaded.mp4",
+        src: "/projects/loaded/video.mp4",
       },
     ],
   },
@@ -196,12 +220,12 @@ const proj = [
     name: "Nate Gagnon Portfolio",
     type: "image",
     description: "",
-    preview: "/projects/nate/nate.jpg",
+    preview: "/projects/nate/preview.avif",
     href: "https://nategagnon.com/",
     content: [
       {
         type: "video",
-        src: "/projects/nate/nate.mp4",
+        src: "/projects/nate/video.mp4",
       },
     ],
   },
@@ -210,11 +234,11 @@ const proj = [
     name: "NextJS Starter Kit",
     type: "image",
     description: "",
-    preview: "/projects/hello-world/hello-world.png",
+    preview: "/projects/hello-world/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/hello-world/hello-world.mp4",
+        src: "/projects/hello-world/video.mp4",
       },
     ],
   },
@@ -223,11 +247,11 @@ const proj = [
     name: "Through the Looking Glass",
     type: "image",
     description: "",
-    preview: "/projects/looking-glass/looking-glass.png",
+    preview: "/projects/looking-glass/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/looking-glass/looking-glass.mp4",
+        src: "/projects/looking-glass/video.mp4",
       },
     ],
   },
@@ -252,11 +276,11 @@ const proj = [
     name: "Off–Brand",
     type: "image",
     description: "",
-    preview: "/projects/stretch/stretch.png",
+    preview: "/projects/stretch/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/stretch/stretch.mp4",
+        src: "/projects/stretch/video.mp4",
       },
     ],
   },
@@ -266,7 +290,13 @@ const proj = [
     type: "image",
     description: "",
     href: "https://palettes.design/",
-    preview: "/projects/palette.jpg",
+    preview: "/projects/palette/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/palette/video.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
@@ -328,11 +358,11 @@ const proj = [
     name: "<Macintosh>",
     type: "image",
     description: "",
-    preview: "/projects/mac/mac.png",
+    preview: "/projects/mac/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/mac/mac.mp4",
+        src: "/projects/mac/video.mp4",
       },
     ],
   },
@@ -341,11 +371,11 @@ const proj = [
     name: "[Experimental]",
     type: "image",
     description: "",
-    preview: "/projects/experimental/experimental.png",
+    preview: "/projects/experimental/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/experimental/experimental.mp4",
+        src: "/projects/experimental/video.mp4",
       },
     ],
   },
@@ -354,11 +384,11 @@ const proj = [
     name: "Medium",
     type: "image",
     description: "",
-    preview: "/projects/medium/medium.png",
+    preview: "/projects/medium/preview.avif",
     content: [
       {
         type: "video",
-        src: "/projects/medium/medium.mp4",
+        src: "/projects/medium/video.mp4",
       },
     ],
   },
