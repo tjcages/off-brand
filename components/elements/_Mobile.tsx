@@ -19,7 +19,7 @@ const _ = () => {
     const max = (slider.current?.scrollWidth || 0) - window.innerWidth;
     const percent = current / max;
     const index = Math.round(percent * projects.length) - 1;
-    if (index == selected.current || index > projects.length) return;
+    if (index == selected.current || index >= projects.length) return;
 
     selected.current = index;
 
@@ -40,9 +40,6 @@ const _ = () => {
     const lenis = new Lenis({
       wrapper: slider.current,
       orientation: "horizontal",
-      smoothTouch: true,
-      smoothWheel: true,
-      syncTouch: true,
     });
 
     lenis.on("scroll", handleScroll);
@@ -84,6 +81,7 @@ const _ = () => {
             }}
           >
             <Image
+              priority
               src={project.preview}
               alt={project.name}
               width={200}
