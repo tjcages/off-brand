@@ -1,6 +1,4 @@
-import Plane from "./_Plane";
-import World from "./_World";
-import Selected from "./_Selected";
+import WebGL from "./_WebGL";
 import Mobile from "./_Mobile";
 
-export { Plane, World, Selected, Mobile };
+export { WebGL, Mobile };

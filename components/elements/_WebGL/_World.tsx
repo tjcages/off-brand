@@ -11,7 +11,7 @@ import { projects } from "@/data";
 import { state } from "@/store";
 import { isMobile } from "@/utils";
 import { myLensDistortionPass } from "@/components/effects";
-import { Plane } from "@/components/elements";
+import Plane from "./_Plane";
 
 declare global {
   namespace JSX {

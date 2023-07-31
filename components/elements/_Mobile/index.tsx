@@ -17,6 +17,7 @@ const _ = () => {
   const selected = useRef<number>(-1);
 
   const handleScroll = (e: any) => {
+    console.log("scrolled")
     const current = e.animatedScroll;
     const max = (slider.current?.scrollWidth || 0) - window.innerWidth;
     const percent = current / max;
@@ -24,6 +25,8 @@ const _ = () => {
     if (index == selected.current || index >= projects.length) return;
 
     selected.current = index;
+
+    console.log(index)
 
     if (index < 0) {
       state.currentIndex = -1;
