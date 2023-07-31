@@ -43,10 +43,11 @@ const _ = () => {
 
     // animate word
     const text = new SplitType("#header", { types: "chars" });
-    gsap.set(text.chars, { y: "110%" });
+    gsap.set(text.chars, { y: "110%", filter: "blur(5px)" });
 
     gsap.to(text.chars, {
       y: "0%",
+      filter: "blur(0px)",
       duration: 2,
       stagger: 0.025,
       delay: 2,
@@ -54,10 +55,11 @@ const _ = () => {
     });
 
     const about = new SplitType("#about", { types: "words" });
-    gsap.set(about.words, { y: "110%" });
+    gsap.set(about.words, { y: "110%", filter: "blur(5px)" });
 
     gsap.to(about.words, {
       y: "0%",
+      filter: "blur(0px)",
       duration: 2,
       stagger: 0.1,
       delay: 2,
