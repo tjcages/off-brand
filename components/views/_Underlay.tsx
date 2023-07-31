@@ -83,6 +83,7 @@ const _ = () => {
           </h4>
           {ready && (
             <Image
+              priority
               className={styles.arrow}
               src="/imgs/icons/arrow.png"
               alt="arrow"
@@ -91,7 +92,6 @@ const _ = () => {
             />
           )}
         </div>
-        {/* <div ref={ref} /> */}
         <h4 id="about" className={styles.about}>
           Creative Studio, New York City
         </h4>

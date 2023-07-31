@@ -49,14 +49,11 @@
     }
 
     .project {
-      margin-left: $padding-100;
+      width: auto;
+      min-width: $padding-450;
+      height: $padding-450;
+      
       pointer-events: all;
-
-      img {
-        width: auto;
-        // max-width: $padding-500;
-        height: $padding-450;
-      }
     }
 
     .project:last-of-type {
