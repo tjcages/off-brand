@@ -37,7 +37,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     pointer-events: all;
-    padding: $padding-100 0 $padding-400;
+    padding: $padding-100 0 $padding-200;
 
     .spacer {
       height: 1px;
@@ -77,10 +77,11 @@
 
     img,
     video {
+      width: auto;
       max-width: calc(100% - $padding-100 * 2);
       height: auto;
-      max-height: 60vh;
-      margin: auto;
+      max-height: 55vh;
+      margin: auto auto auto $padding-100;
     }
 
     &.open {

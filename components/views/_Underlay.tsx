@@ -75,7 +75,7 @@ const _ = () => {
               snap.view == "linear" && snap.selected ? "hidden" : "visible",
           }}
         >
-          Off_Brand
+          Off–Brand
         </h1>
         <div className={styles.animation}>
           <h4 ref={ref} className={styles.one}>

@@ -56,6 +56,7 @@ const _ = () => {
   return (
     <div className={clsx(styles.main, snap.loaded && styles.visible)}>
       <Selected
+        index={selected.current}
         selected={
           selected.current !== null && selected.current >= 0
             ? projects[selected.current]
@@ -97,18 +98,24 @@ const _ = () => {
 };
 
 interface SelectedProps {
+  index?: number;
   selected: ProjectProps | null;
 }
 
-const Selected = ({ selected }: SelectedProps) => {
+const Selected = ({ selected, index }: SelectedProps) => {
   return (
     <div className={clsx(styles.selected, selected !== null && styles.open)}>
       {selected &&
         (selected.content && selected.content.length ? (
           selected.content[0].type == "video" ? (
-            <Video src={selected.content[0].src} fallback={selected.preview} />
+            <Video
+              id={`video-${index}`}
+              src={selected.content[0].src}
+              fallback={selected.preview}
+            />
           ) : (
             <Image
+              id={`video-${index}`}
               src={selected.content[0].src}
               alt={selected.name}
               width={1000}
@@ -117,6 +124,7 @@ const Selected = ({ selected }: SelectedProps) => {
           )
         ) : (
           <Image
+            id={`video-${index}`}
             src={selected.preview}
             alt={selected.name}
             width={1000}
@@ -128,13 +136,14 @@ const Selected = ({ selected }: SelectedProps) => {
 };
 
 interface VideoProps {
+  id: string;
   src: string;
   fallback: string;
 }
 
-const Video = ({ src, fallback }: VideoProps) => {
+const Video = ({ id, src, fallback }: VideoProps) => {
   return (
-    <video loop muted playsInline autoPlay>
+    <video id={id} loop muted playsInline autoPlay>
       <source src={src} type="video/mp4" />
       <Image src={fallback} alt="video" width={1000} height={1000} />
     </video>
