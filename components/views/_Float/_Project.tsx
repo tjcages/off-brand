@@ -1,6 +1,7 @@
 import { useRef, useEffect, useMemo } from "react";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "@/styles/float.module.scss";
 import gsap from "gsap";
 import { useSnapshot } from "valtio";
@@ -74,9 +75,11 @@ const _ = () => {
         </div>
       )}
       {project && project.href && (
-        <div
+        <Link
           id={`cover-project`}
           className={styles.container}
+          href={project.href}
+          target="_blank"
           style={{ marginTop: 10 }}
         >
           <Image
@@ -89,7 +92,7 @@ const _ = () => {
           <h5 style={{ textTransform: "lowercase" }}>
             {new URL(project.href).hostname}
           </h5>
-        </div>
+        </Link>
       )}
     </div>
   );
