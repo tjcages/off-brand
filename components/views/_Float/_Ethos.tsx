@@ -40,6 +40,10 @@ const _ = () => {
     let x = snap.position.x;
     let y = snap.position.y;
 
+    if (snap.mobile && !lastPosition.current.x && !lastPosition.current.y) {
+      lastPosition.current = { x, y };
+    }
+
     // enable hover over float
     if (lastPosition.current.x && lastPosition.current.y) {
       const dx = x - lastPosition.current.x;

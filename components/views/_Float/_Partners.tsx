@@ -42,6 +42,10 @@ const _ = () => {
     let x = snap.position.x;
     let y = snap.position.y;
 
+    if (snap.mobile && !lastPosition.current.x && !lastPosition.current.y) {
+      lastPosition.current = { x, y };
+    }
+
     // enable hover over float
     if (lastPosition.current.x && lastPosition.current.y) {
       const dx = x - lastPosition.current.x;
@@ -53,7 +57,8 @@ const _ = () => {
         if (Math.abs(dx) > rect.width || Math.abs(dy) > rect.height) return;
 
         gsap.to(ref.current, {
-          x: x - dx / 1.2 - window.innerWidth - margin,
+          x:
+            x - dx / 1.2 - window.innerWidth - (snap.mobile ? -margin : margin),
           y: y - dy / 1.2 + margin,
           duration: 2,
           ease: "expo.out",
@@ -61,7 +66,7 @@ const _ = () => {
         return;
       } else {
         gsap.to(ref.current, {
-          x: x - window.innerWidth - margin,
+          x: x - window.innerWidth - (snap.mobile ? -margin : margin),
           y: y + margin,
           duration: 1,
           ease: "expo.out",
