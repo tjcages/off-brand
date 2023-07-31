@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import Image from "next/image";
 import styles from "@/styles/mobile.module.scss";
-
 import { ProjectProps } from "@/data";
-import Video from "./_Video"
+import { state } from "@/store";
+
+import Video from "./_Video";
 
 interface Props {
   index: number;
@@ -13,7 +14,17 @@ interface Props {
 
 const _ = ({ project, index, selected }: Props) => {
   return (
-    <div className={clsx(styles.selected, selected && styles.open)}>
+    <div
+      className={clsx(styles.selected, selected && styles.open)}
+      // onTouchStart={(e) => {
+      //   console.log(e)
+      //   state.hoverProject = project.id ?? null;
+      //   state.position = {
+      //     x: e.touches[0].clientX,
+      //     y: e.touches[0].clientY,
+      //   };
+      // }}
+    >
       {project.content && project.content.length ? (
         project.content[0].type == "video" ? (
           <Video

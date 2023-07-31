@@ -46,6 +46,10 @@
     line-height: 1.2em;
 
     color: $color_800;
+
+    @media only screen and (max-width: 768px) {
+      letter-spacing: -0.06em;
+    }
   }
 
   h2 {

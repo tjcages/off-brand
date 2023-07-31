@@ -67,6 +67,7 @@ const _ = () => {
         ref={slider}
         data={projects}
         loaded={snap.loaded}
+        selected={snap.currentIndex}
         onSelect={(offset) => {
           const currentLeft = slider.current?.scrollLeft || 0;
           const relative = currentLeft + offset;
