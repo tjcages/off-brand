@@ -13,9 +13,7 @@
 
   overflow: hidden;
 
-  opacity: 0;
-  transition: opacity $animation-duration $animation-easing
-    $animation-duration-long;
+  transition: opacity $animation-duration $animation-easing $animation-duration;
 
   &.visible {
     opacity: 1;
@@ -26,18 +24,19 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: $padding-300;
 
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-end;
+    gap: $padding-100;
 
     width: 100%;
+
     overflow-x: scroll;
     overflow-y: hidden;
     pointer-events: all;
-    padding: $padding-100 0 $padding-300;
 
     .spacer {
       height: 1px;
@@ -52,12 +51,10 @@
       width: auto;
       min-width: $padding-450;
       height: $padding-450;
-      
-      pointer-events: all;
-    }
 
-    .project:last-of-type {
-      padding-right: $padding-100;
+      pointer-events: all;
+
+      transform: translateY(120%);
     }
   }
 
