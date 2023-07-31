@@ -48,10 +48,15 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: $padding-100;
+
+    @media only screen and (max-width: 768px) {
+      gap: 0;
+    }
   }
 
   h5 {
     position: relative;
+    white-space: nowrap;
 
     pointer-events: all;
     cursor: pointer;

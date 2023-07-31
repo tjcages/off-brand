@@ -55,7 +55,12 @@ const _ = () => {
         if (Math.abs(dx) > rect.width || Math.abs(dy) > rect.height) return;
 
         gsap.to(ref.current, {
-          x: x - dx / 1.2 - window.innerWidth - margin,
+          x:
+            x -
+            dx / 1.2 -
+            window.innerWidth -
+            margin +
+            (snap.mobile ? window.innerWidth : 0),
           y: y - dy / 1.2 + margin,
           duration: 2,
           ease: "expo.out",
@@ -63,7 +68,11 @@ const _ = () => {
         return;
       } else {
         gsap.to(ref.current, {
-          x: x - window.innerWidth - margin,
+          x:
+            x -
+            window.innerWidth -
+            margin +
+            (snap.mobile ? window.innerWidth : 0),
           y: y + margin,
           duration: 1,
           ease: "expo.out",
@@ -79,7 +88,7 @@ const _ = () => {
       id={`cover-${float}`}
       className={clsx(
         styles.stack,
-        styles.right,
+        !snap.mobile && styles.right,
         snap.hover == float && styles.active
       )}
       onMouseEnter={() => {

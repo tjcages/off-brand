@@ -39,6 +39,12 @@
     align-items: flex-end;
 
     .container {
+      justify-content: flex-end;
+
+      &.wrapped {
+        align-items: flex-end;
+      }
+
       .cover {
         transform-origin: right;
       }
@@ -52,7 +58,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   height: 20px;
 
@@ -71,7 +77,7 @@
 
   &.wrapped {
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 
     height: auto;
     margin-bottom: $padding-100;
