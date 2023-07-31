@@ -1,0 +1,90 @@
+@import "./_variables";
+
+.main {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  opacity: 0;
+  transition: opacity $animation-duration $animation-easing
+    $animation-duration-long;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    pointer-events: all;
+    padding: $padding-100 0 $padding-400;
+
+    .spacer {
+      height: 1px;
+      min-width: $padding-600;
+
+      &.large {
+        min-width: 60vw;
+      }
+    }
+
+    .project {
+      margin-left: $padding-100;
+      pointer-events: all;
+
+      img {
+        width: auto;
+        // max-width: $padding-500;
+        height: $padding-450;
+      }
+    }
+
+    .project:last-of-type {
+      padding-right: $padding-100;
+    }
+  }
+
+  .selected {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    visibility: hidden;
+
+    img,
+    video {
+      max-width: calc(100% - $padding-100 * 2);
+      height: auto;
+      max-height: 60vh;
+      margin: auto;
+    }
+
+    &.open {
+      visibility: visible;
+    }
+  }
+}

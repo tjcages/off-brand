@@ -213,7 +213,13 @@ const proj = [
     type: "image",
     description: "",
     href: "https://meridian-ai.com/",
-    preview: "/projects/meridian.jpg",
+    preview: "/projects/meridian/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/meridian/video.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),

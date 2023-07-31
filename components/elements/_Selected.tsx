@@ -32,7 +32,7 @@ const _ = () => {
         document.body.style.cursor = "grab";
         state.hoverProject = null;
       }}
-      onClick={() => window.open(project.href, "_blank")}
+      onClick={() => project.href && window.open(project.href, "_blank")}
     >
       {project.content && project.content.length > 0 ? (
         project.content[0].type == "video" ? (
