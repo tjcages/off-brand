@@ -52,14 +52,13 @@ const _ = () => {
 
   return (
     <div className={clsx(styles.main, snap.loaded && styles.visible)}>
-      <Selected
-        index={selected.current}
-        selected={
-          selected.current !== null && selected.current >= 0
-            ? projects[selected.current]
-            : null
-        }
-      />
+      {projects.map((project, index) => (
+        <Selected
+          index={index}
+          project={project}
+          selected={selected.current == index}
+        />
+      ))}
       <div ref={slider} className={styles.slider}>
         <div className={styles.spacer} />
         {projects.map((project, index) => (
@@ -96,39 +95,40 @@ const _ = () => {
 };
 
 interface SelectedProps {
-  index?: number;
-  selected: ProjectProps | null;
+  index: number;
+  project: ProjectProps;
+  selected: boolean;
 }
 
-const Selected = ({ selected, index }: SelectedProps) => {
+const Selected = ({ project, index, selected }: SelectedProps) => {
   return (
-    <div className={clsx(styles.selected, selected !== null && styles.open)}>
-      {selected &&
-        (selected.content && selected.content.length ? (
-          selected.content[0].type == "video" ? (
-            <Video
-              id={`video-${index}`}
-              src={selected.content[0].src}
-              fallback={selected.preview}
-            />
-          ) : (
-            <Image
-              id={`video-${index}`}
-              src={selected.content[0].src}
-              alt={selected.name}
-              width={1000}
-              height={1000}
-            />
-          )
+    <div className={clsx(styles.selected, selected && styles.open)}>
+      {project.content && project.content.length ? (
+        project.content[0].type == "video" ? (
+          <Video
+            id={`video-${index}`}
+            src={project.content[0].src}
+            fallback={project.preview}
+            selected={selected}
+          />
         ) : (
           <Image
             id={`video-${index}`}
-            src={selected.preview}
-            alt={selected.name}
+            src={project.content[0].src}
+            alt={project.name}
             width={1000}
             height={1000}
           />
-        ))}
+        )
+      ) : (
+        <Image
+          id={`video-${index}`}
+          src={project.preview}
+          alt={project.name}
+          width={1000}
+          height={1000}
+        />
+      )}
     </div>
   );
 };
@@ -137,13 +137,21 @@ interface VideoProps {
   id: string;
   src: string;
   fallback: string;
+  selected: boolean;
 }
 
-const Video = ({ id, src, fallback }: VideoProps) => {
+const Video = ({ id, src, fallback, selected }: VideoProps) => {
+  const ref = useRef() as React.RefObject<HTMLVideoElement>;
+  useEffect(() => {
+    if (!ref.current) return;
+    if (selected) ref.current.play();
+    else ref.current.pause();
+  }, [selected]);
+
   return (
-    <video id={id} loop muted playsInline autoPlay>
+    <video ref={ref} id={id} loop muted playsInline autoPlay>
       <source src={src} type="video/mp4" />
-      <Image src={fallback} alt="video" width={1000} height={1000} />
+      <img src={fallback} alt="video preview" width={1000} height={1000} />
     </video>
   );
 };
