@@ -27,26 +27,28 @@ const _ = forwardRef<Ref, Props>(({ data, loaded, onSelect }, ref) => {
   }, [loaded]);
 
   return (
-    <div ref={ref} className={styles.slider}>
-      <div className={styles.spacer} />
-      {data.map((project) => (
-        <div key={project.id} className={styles.container}>
-          <Image
-            id="project"
-            className={styles.project}
-            priority
-            src={project.preview}
-            alt={project.name}
-            width={200}
-            height={100}
-            onClick={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              if (rect) onSelect(rect.left);
-            }}
-          />
-        </div>
-      ))}
-      <div className={clsx(styles.spacer, styles.large)} />
+    <div ref={ref} className={styles.content}>
+      <div className={styles.slider}>
+        <div className={styles.spacer} />
+        {data.map((project) => (
+          <div key={project.id} className={styles.container}>
+            <Image
+              id="project"
+              className={styles.project}
+              priority
+              src={project.preview}
+              alt={project.name}
+              width={200}
+              height={100}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                if (rect) onSelect(rect.left);
+              }}
+            />
+          </div>
+        ))}
+        <div className={clsx(styles.spacer, styles.large)} />
+      </div>
     </div>
   );
 });
