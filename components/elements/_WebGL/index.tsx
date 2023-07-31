@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { ScrollControls, Scroll } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "@/store";
-import { isMobile } from "@/utils";
 
 import World from "./_World";
 import Selected from "./_Selected";
@@ -24,7 +23,7 @@ const _ = () => {
       camera={{ position: [0, 0, 1.2], fov: 140, far: 50 }}
     >
       <Suspense>
-        <ScrollControls pages={snap.pages} horizontal={isMobile}>
+        <ScrollControls pages={snap.pages}>
           <Scroll>
             <World />
           </Scroll>

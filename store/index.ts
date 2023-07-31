@@ -1,10 +1,10 @@
 import { proxy } from "valtio";
 import { derive } from "valtio/utils";
-import { isMobile } from "@/utils";
 
 interface State {
   loaded: boolean;
   view: "grid" | "linear";
+  mobile: boolean;
   hover: "inquire" | "partners" | "contact" | "ethos" | null;
   hoverProject: string | null;
   position: {
@@ -36,6 +36,7 @@ interface State {
 const state = proxy({
   loaded: false,
   view: "linear",
+  mobile: false,
   hover: null,
   hoverProject: null,
   position: {
@@ -66,3 +67,4 @@ const derived = derive({
 });
 
 export { state, derived };
+export type { State };

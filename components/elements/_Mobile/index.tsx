@@ -17,7 +17,6 @@ const _ = () => {
   const selected = useRef<number>(-1);
 
   const handleScroll = (e: any) => {
-    console.log("scrolled")
     const current = e.animatedScroll;
     const max = (slider.current?.scrollWidth || 0) - window.innerWidth;
     const percent = current / max;
@@ -25,9 +24,6 @@ const _ = () => {
     if (index == selected.current || index >= projects.length) return;
 
     selected.current = index;
-
-    console.log(index)
-
     if (index < 0) {
       state.currentIndex = -1;
       state.selected = null;
@@ -41,7 +37,9 @@ const _ = () => {
   };
 
   useEffect(() => {
+    if (!snap.loaded) return;
     if (!slider.current) return;
+
     const lenis = new Lenis({
       wrapper: slider.current,
       orientation: "horizontal",
@@ -53,7 +51,7 @@ const _ = () => {
     return () => {
       lenis.destroy();
     };
-  }, [slider.current]);
+  }, [snap.loaded, slider.current]);
 
   return (
     <div className={clsx(styles.main, snap.loaded && styles.visible)}>
@@ -62,7 +60,7 @@ const _ = () => {
           key={`selected-${project.id}`}
           index={index}
           project={project}
-          selected={selected.current == index}
+          selected={snap.loaded && snap.currentIndex == index}
         />
       ))}
       <Slider
