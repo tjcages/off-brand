@@ -275,7 +275,13 @@ const proj = [
     type: "image",
     description: "",
     href: "https://www.startupsupreme.xyz/",
-    preview: "/projects/startup-supreme.png",
+    preview: "/projects/startup-supreme/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/startup-supreme/video.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
