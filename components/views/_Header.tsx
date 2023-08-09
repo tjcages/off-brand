@@ -93,14 +93,14 @@ const _ = () => {
 
       <div
         className={clsx(styles.v, styles.spaced, styles.end)}
-        onMouseEnter={() => {
-          document.body.style.cursor = "crosshair";
-          state.hover = "inquire";
-        }}
-        onMouseLeave={() => {
-          document.body.style.cursor = "grab";
-          state.hover = null;
-        }}
+        // onMouseEnter={() => {
+        //   document.body.style.cursor = "crosshair";
+        //   state.hover = "inquire";
+        // }}
+        // onMouseLeave={() => {
+        //   document.body.style.cursor = "grab";
+        //   state.hover = null;
+        // }}
       >
         <h5
           className={clsx(
@@ -111,7 +111,12 @@ const _ = () => {
           "Contact"
         </h5>
         <div className={styles.v}>
-          <h5>Inquire</h5>
+          <Link href="https://twitter.com/tjcages" target="_blank">
+            <h5>Twitter</h5>
+          </Link>
+          <Link href="mailto:ty@off-brand.studio" target="_blank">
+            <h5>Inquire</h5>
+          </Link>
         </div>
       </div>
     </header>
