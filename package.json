@@ -22,6 +22,8 @@
     "framer-motion": "^10.12.16",
     "gsap": "^3.12.1",
     "next": "13.3.0",
+    "normalize-wheel": "^1.0.1",
+    "prefix": "^1.0.0",
     "react": "18.2.0",
     "react-countup": "^6.4.2",
     "react-device-detect": "^2.2.3",

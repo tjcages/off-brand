@@ -19,11 +19,13 @@ $font-primary: var(--moderat), "Inter", -apple-system, BlinkMacSystemFont,
 $font-secondary: var(--gt-super), Menlo, Monaco, Lucida Console, Liberation Mono,
   DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 
+$font-tertiary: var(--ogg), "Times New Roman", Times, serif;
+
 /* FONT SIZE */
 $font-size-50: clamp(8px, 0.5vw, 10px);
 $font-size-100: clamp(10px, 0.8vw, 12px);
 $font-size-150: clamp(14px, 1vw, 16px);
-$font-size-200: clamp(16px, 2vw, 18px);
+$font-size-200: clamp(16px, 1vw, 18px);
 $font-size-300: clamp(20px, 3vh, 22px);
 $font-size-400: clamp(24px, 5vw, 28px);
 $font-size-500: clamp(28px, 7vw, 36px);

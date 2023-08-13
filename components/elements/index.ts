@@ -1,4 +1,4 @@
 import WebGL from "./_WebGL";
-import Mobile from "./_Mobile";
+import { Content } from "./_Main";
 
-export { WebGL, Mobile };
+export { WebGL, Content };

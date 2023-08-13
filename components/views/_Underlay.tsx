@@ -49,7 +49,7 @@ const _ = () => {
       y: "0%",
       filter: "blur(0px)",
       duration: 2,
-      stagger: 0.025,
+      stagger: 0.04,
       delay: 2,
       ease: "expo.out",
     });
@@ -83,19 +83,18 @@ const _ = () => {
           <h4 ref={ref} className={styles.one}>
             [{count.toString().padStart(3, "0")}]
           </h4>
-          {ready && (
-            <Image
-              priority
-              className={styles.arrow}
-              src="/imgs/icons/arrow.png"
-              alt="arrow"
-              width={64}
-              height={64}
-            />
-          )}
+          <Image
+            priority
+            className={styles.arrow}
+            src="/imgs/icons/arrow.png"
+            alt="arrow"
+            width={64}
+            height={64}
+            style={{ visibility: ready ? "visible" : "hidden" }}
+          />
         </div>
         <h4 id="about" className={styles.about}>
-          Creative Studio, New York City
+          Creative Studio, <span>New York City</span>
         </h4>
       </div>
     </section>

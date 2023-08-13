@@ -31,10 +31,8 @@
     padding: $padding-100 $padding-200;
 
     @media only screen and (max-width: 768px) {
-      & {
-        grid-template-columns: repeat(4, 1fr);
-        padding: $padding-100;
-      }
+      grid-template-columns: repeat(4, 1fr);
+      padding: $padding-100;
     }
   }
 

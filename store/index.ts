@@ -26,6 +26,7 @@ interface State {
     src: string;
   } | null;
   currentIndex: number;
+  scrollPercentage: number;
 
   pages: number;
 
@@ -54,6 +55,7 @@ const state = proxy({
   speed: 0,
   selected: null,
   currentIndex: -1,
+  scrollPercentage: 0,
 
   pages: 3,
 

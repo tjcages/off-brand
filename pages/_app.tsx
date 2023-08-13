@@ -6,6 +6,7 @@ import "@/styles/__globals.css";
 import styles from "@/styles/_site.module.scss";
 import Super from "@/public/fonts/Super";
 import Moderat from "@/public/fonts/Moderat";
+import Ogg from "@/public/fonts/Ogg";
 
 console.log("Made with ❤️  by @tjcages");
 
@@ -17,6 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
           Moderat.className,
           Super.variable,
           Moderat.variable,
+          Ogg.variable,
           styles.site
         )}
       >

@@ -79,10 +79,17 @@
     text-transform: uppercase;
     white-space: nowrap;
     grid-column: 3 / 5;
+    overflow: visible;
 
     @media only screen and (max-width: 768px) {
       grid-column: 1 / 5;
       font-size: $font-size-150;
+    }
+
+    span {
+      font-family: $font-tertiary;
+      letter-spacing: 0.02em;
+      transform: scale(0.94) translateX(2px);
     }
   }
 
@@ -104,7 +111,7 @@
     .arrow {
       position: absolute;
       top: calc(50% + 2px);
-      left: 27px;
+      left: 23px;
       transform: translate(0%, -50%);
 
       width: 12px;

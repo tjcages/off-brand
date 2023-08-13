@@ -7,6 +7,7 @@ body {
   background-color: #080808;
 
   cursor: grab;
+  user-select: none;
 }
 
 main {
@@ -18,7 +19,9 @@ main {
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+
   user-select: none;
+  pointer-events: none;
 }
 
 h1,
@@ -46,6 +49,10 @@ ul,
 li {
   margin: 0;
   padding: 0;
+}
+
+img {
+  user-select: none;
 }
 
 // remove grey border around images on iOS

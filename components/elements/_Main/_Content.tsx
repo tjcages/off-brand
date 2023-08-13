@@ -6,20 +6,24 @@ import Lenis from "@studio-freight/lenis";
 
 import { projects } from "@/data";
 import { state } from "@/store";
+import { Scroll } from "@/modules";
+import { useMedia, mobileBreakpoint } from "@/utils";
 
 import Slider from "./_Slider";
 import Selected from "./_Selected";
 
-const _ = () => {
+interface Props {
+  scroll: Scroll | null;
+}
+
+const _ = ({ scroll }: Props) => {
+  const mobile = useMedia(mobileBreakpoint);
   const snap = useSnapshot(state);
   const slider = useRef() as React.RefObject<HTMLDivElement>;
-  const scroll = useRef<Lenis | null>(null);
+  const lenis = useRef<Lenis | null>(null);
   const selected = useRef<number>(-1);
 
-  const handleScroll = (e: any) => {
-    const current = e.animatedScroll;
-    const max = (slider.current?.scrollWidth || 0) - window.innerWidth;
-    const percent = current / max;
+  const handleScroll = (percent: number) => {
     const index = Math.round(percent * projects.length) - 1;
     if (index == selected.current || index >= projects.length) return;
 
@@ -37,21 +41,32 @@ const _ = () => {
   };
 
   useEffect(() => {
+    // mobile
     if (!snap.loaded) return;
     if (!slider.current) return;
-
-    const lenis = new Lenis({
+    if (!mobile) return;
+    const lenisScroll = new Lenis({
       wrapper: slider.current,
       orientation: "horizontal",
     });
 
-    lenis.on("scroll", handleScroll);
-    scroll.current = lenis;
+    lenisScroll.on("scroll", (e: any) => {
+      const current = e.animatedScroll;
+      const max = (slider.current?.scrollWidth || 0) - window.innerWidth;
+      const percent = current / max;
+      handleScroll(percent);
+    });
+    lenis.current = lenisScroll;
 
     return () => {
-      lenis.destroy();
+      lenisScroll.destroy();
     };
-  }, [snap.loaded, slider.current]);
+  }, [snap.loaded, slider.current, scroll]);
+
+  useEffect(() => {
+    // desktop
+    handleScroll(snap.scrollPercentage);
+  }, [snap.scrollPercentage]);
 
   return (
     <div className={clsx(styles.main, snap.loaded && styles.visible)}>
@@ -68,15 +83,22 @@ const _ = () => {
         data={projects}
         loaded={snap.loaded}
         selected={snap.currentIndex}
-        onSelect={(offset) => {
-          const currentLeft = slider.current?.scrollLeft || 0;
-          const relative = currentLeft + offset;
+        onSelect={(offset, index) => {
+          if (scroll) {
+            const percentage = index / projects.length;
+            const current = percentage * scroll.y.limit;
+            scroll.scrollTo(current);
+            state.currentIndex = index;
+          } else {
+            const currentLeft = slider.current?.scrollLeft || 0;
+            const relative = currentLeft + offset;
 
-          if (scroll.current) {
-            slider.current?.scrollTo({
-              left: relative,
-              behavior: "smooth",
-            });
+            if (lenis.current) {
+              slider.current?.scrollTo({
+                left: relative,
+                behavior: "smooth",
+              });
+            }
           }
         }}
       />

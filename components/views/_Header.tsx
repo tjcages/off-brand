@@ -14,7 +14,7 @@ const _ = () => {
     <header className={clsx(styles.main, snap.loaded && styles.visible)}>
       {!mobile && (
         <div className={styles.logo}>
-          <Image src="/imgs/icons/logo.png" alt="logo" width={32} height={32} />
+          <Image src="/imgs/icons/ob.png" alt="logo" width={32} height={32} />
         </div>
       )}
       <div className={clsx(styles.v, styles.spaced)}>
