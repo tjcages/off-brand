@@ -6,6 +6,7 @@ interface Props {
   image?: string;
   video?: string;
   url?: string;
+  theme?: string;
 }
 
 const _ = ({
@@ -14,6 +15,7 @@ const _ = ({
   image = "/preview.jpg",
   video = "/preview.mp4",
   url = "https://off-brand.studio",
+  theme = "#080808",
 }: Props) => {
   return (
     <Head>
@@ -38,6 +40,8 @@ const _ = ({
       <meta name="twitter:image" content={image} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@tjcages" />
+      {/* theme */}
+      <meta name="theme-color" content={theme} />
     </Head>
   );
 };

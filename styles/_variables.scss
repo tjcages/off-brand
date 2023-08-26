@@ -1,7 +1,7 @@
 /* COLORS */
 $color-000: #ffffff;
-$color-100: #f3f4f6;
-$color-200: #dcdfe5;
+$color-100: #e8e8e8;
+$color-200: rgb(220, 223, 229);
 $color-300: #c4c9d4;
 $color-400: #8a8a8a;
 $color-500: #3d4255;
@@ -30,6 +30,8 @@ $font-size-300: clamp(20px, 3vh, 22px);
 $font-size-400: clamp(24px, 5vw, 28px);
 $font-size-500: clamp(28px, 7vw, 36px);
 $font-size-600: clamp(38px, 10vw, 56px);
+$font-size-650: clamp(56px, 11vw, 72px);
+$font-size-700: clamp(80px, 12vw, 120px);
 
 /* FONT WEIGHT */
 $font-weight-100: 300;
@@ -47,6 +49,7 @@ $padding-400: 56px;
 $padding-450: 64px;
 $padding-500: 108px;
 $padding-600: 138px;
+$padding-700: 156px;
 
 /* BORDERS */
 $border-radius-100: 2px;

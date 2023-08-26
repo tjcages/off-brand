@@ -31,14 +31,14 @@
     padding: $padding-100 $padding-200;
 
     @media only screen and (max-width: 768px) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       padding: $padding-100;
     }
   }
 
   h1 {
     font-size: $font-size-600;
-    font-weight: $font_weight_400;
+    font-weight: $font_weight_300;
     letter-spacing: -0.04em;
     text-align: center;
     line-height: 1.2em;

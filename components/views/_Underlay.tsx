@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import clsx from "clsx";
 import { useSnapshot } from "valtio";
 import SplitType from "split-type";
@@ -7,6 +6,7 @@ import gsap from "gsap";
 
 import styles from "@/styles/underlay.module.scss";
 import { state } from "@/store";
+import Arrow from "@/public/imgs/icons/arrow.svg";
 
 const _ = () => {
   const snap = useSnapshot(state);
@@ -69,33 +69,45 @@ const _ = () => {
 
   return (
     <section className={clsx(styles.main, snap.loaded && styles.visible)}>
-      <div className={styles.container}>
+      <div
+        className={clsx(
+          styles.container,
+          snap.view == "linear" && snap.selected && styles.background
+        )}
+      >
+        <h4 id="about" className={styles.about}>
+          Creative Studio,
+          <br />
+          New York City
+        </h4>
         <h1
           id="header"
           style={{
-            visibility:
-              snap.view == "linear" && snap.selected ? "hidden" : "visible",
+            visibility: snap.loaded ? "visible" : "hidden",
           }}
         >
           Off–Brand
         </h1>
         <div className={styles.animation}>
-          <h4 ref={ref} className={styles.one}>
-            [{count.toString().padStart(3, "0")}]
-          </h4>
-          <Image
-            priority
-            className={styles.arrow}
-            src="/imgs/icons/arrow.png"
-            alt="arrow"
-            width={64}
-            height={64}
-            style={{ visibility: ready ? "visible" : "hidden" }}
-          />
+          {ready ? (
+            <>
+              <h4 ref={ref} className={styles.one}>
+                [0
+              </h4>
+              <Arrow
+                className={styles.arrow}
+                style={{ visibility: ready ? "visible" : "hidden" }}
+              />
+              <h4 ref={ref} className={styles.one}>
+                1]
+              </h4>
+            </>
+          ) : (
+            <h4 ref={ref} className={styles.one}>
+              [{count.toString().padStart(3, "0")}]
+            </h4>
+          )}
         </div>
-        <h4 id="about" className={styles.about}>
-          Creative Studio, <span>New York City</span>
-        </h4>
       </div>
     </section>
   );

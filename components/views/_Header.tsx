@@ -41,31 +41,33 @@ const _ = () => {
         </div>
       </div>
 
-      <div
-        className={clsx(styles.v, styles.spaced)}
-        onMouseEnter={() => {
-          document.body.style.cursor = "crosshair";
-          state.hover = "ethos";
-        }}
-        onMouseLeave={() => {
-          document.body.style.cursor = "grab";
-          state.hover = null;
-        }}
-      >
-        <h5
-          className={clsx(
-            styles.title,
-            snap.hover == "ethos" && styles.hovered
-          )}
+      {!mobile && (
+        <div
+          className={clsx(styles.v, styles.spaced)}
+          onMouseEnter={() => {
+            document.body.style.cursor = "crosshair";
+            state.hover = "ethos";
+          }}
+          onMouseLeave={() => {
+            document.body.style.cursor = "grab";
+            state.hover = null;
+          }}
         >
-          "Ethos & Work"
-        </h5>
-        <div className={styles.v}>
-          <h5>Product Marketing</h5>
-          <h5>Brand Positioning</h5>
-          <h5>Creative Engineering</h5>
+          <h5
+            className={clsx(
+              styles.title,
+              snap.hover == "ethos" && styles.hovered
+            )}
+          >
+            "Ethos & Work"
+          </h5>
+          <div className={styles.v}>
+            <h5>Product Marketing</h5>
+            <h5>Brand Positioning</h5>
+            <h5>Creative Engineering</h5>
+          </div>
         </div>
-      </div>
+      )}
 
       <div
         className={clsx(styles.v, styles.spaced)}

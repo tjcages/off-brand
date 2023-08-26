@@ -36,6 +36,7 @@
     "valtio": "^1.10.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/three": "^0.150.2",
     "@types/uuid": "^9.0.1"
   }
