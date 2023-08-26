@@ -66,8 +66,14 @@ const proj = [
     name: "Six Eastern",
     type: "image",
     description: "",
-    href: "https://six-eastern.vercel.app/",
-    preview: "/projects/six-eastern.png",
+    href: "https://sixeastern.com",
+    preview: "/projects/six-eastern/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/six-eastern/video.mp4",
+      },
+    ],
   },
   {
     id: uuidv4(),
