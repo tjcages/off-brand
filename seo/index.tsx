@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 
 interface Props {
@@ -12,15 +13,30 @@ interface Props {
 const _ = ({
   title = "Off_Brand",
   description = "A Creative Studio, NYC",
-  image = "/preview.jpg",
-  video = "/preview.mp4",
+  image = "https://off-brand.studio/preview.png",
+  video = "https://off-brand.studio/preview.mp4",
   url = "https://off-brand.studio",
   theme = "#080808",
 }: Props) => {
+  const [faviconHref, setFaviconHref] = useState("/favicon-dark.ico");
+
+  useEffect(() => {
+    // Get current color scheme.
+    const matcher = window.matchMedia("(prefers-color-scheme: dark)");
+    // Set favicon initially.
+    setFaviconHref(getFaviconPath(matcher.matches));
+    // Change favicon if the color scheme changes.
+    matcher.onchange = () => setFaviconHref(getFaviconPath(matcher.matches));
+  }, [faviconHref]);
+
+  const getFaviconPath = (isDarkMode = false) => {
+    return isDarkMode ? "/favicon.ico" : "/favicon-dark.ico";
+  };
+
   return (
     <Head>
       {/* favicon */}
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/x-icon" href={faviconHref} />
       {/* disable auto phone number detection */}
       <meta name="format-detection" content="telephone=no" />
       {/* metadata */}
