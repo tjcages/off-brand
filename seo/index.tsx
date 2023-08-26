@@ -11,7 +11,7 @@ interface Props {
 }
 
 const _ = ({
-  title = "Off_Brand",
+  title = "Off–Brand",
   description = "A Creative Studio, NYC",
   image = "https://off-brand.studio/preview.png",
   video = "https://off-brand.studio/preview.mp4",
