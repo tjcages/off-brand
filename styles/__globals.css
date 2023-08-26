@@ -6,7 +6,7 @@ body {
   color: white;
   background-color: #080808;
 
-  cursor: none !important;
+  cursor: grab;
   user-select: none;
 }
 
