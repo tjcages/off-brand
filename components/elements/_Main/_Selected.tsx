@@ -18,6 +18,25 @@ const _ = ({ project, index, selected }: Props) => {
   return (
     <div
       className={clsx(styles.selected, selected && styles.open)}
+      onPointerEnter={(e) => {
+        if (mobile) return;
+        state.hoverProject = project.id ?? null;
+        state.position = {
+          x: e.clientX,
+          y: e.clientY,
+        };
+      }}
+      onPointerMove={(e) => {
+        if (mobile) return;
+        state.position = {
+          x: e.clientX,
+          y: e.clientY,
+        };
+      }}
+      onPointerLeave={() => {
+        if (mobile) return;
+        state.hoverProject = null;
+      }}
       onTouchStart={(e) => {
         if (!mobile) return;
         state.hoverProject = project.id ?? null;
