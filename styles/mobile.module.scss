@@ -90,7 +90,6 @@
 
   .selected {
     position: absolute;
-    top: 0;
     left: 0;
     bottom: 0;
     z-index: 100;
@@ -99,6 +98,9 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
+
+    max-width: 70vw;
+    max-height: 85vh;
 
     padding: $padding-200;
 

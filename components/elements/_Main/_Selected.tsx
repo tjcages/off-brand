@@ -47,47 +47,35 @@ const _ = ({ project, index, selected }: Props) => {
       }}
       onClick={() => {
         if (mobile) return;
-        state.hoverProject = null;
+        if (project.href) window.open(project.href, "_blank");
       }}
     >
-      <div
-        onClick={(e) => {
-          if (mobile) return;
-          e.stopPropagation();
-          state.hoverProject = state.selected?.id ?? null;
-          state.position = {
-            x: e.clientX,
-            y: e.clientY,
-          };
-        }}
-      >
-        {project.content && project.content.length ? (
-          project.content[0].type == "video" ? (
-            <Video
-              id={`video-${index}`}
-              src={project.content[0].src}
-              fallback={project.preview}
-              selected={selected}
-            />
-          ) : (
-            <Image
-              id={`video-${index}`}
-              src={project.content[0].src}
-              alt={project.name}
-              width={1000}
-              height={1000}
-            />
-          )
+      {project.content && project.content.length ? (
+        project.content[0].type == "video" ? (
+          <Video
+            id={`video-${index}`}
+            src={project.content[0].src}
+            fallback={project.preview}
+            selected={selected}
+          />
         ) : (
           <Image
             id={`video-${index}`}
-            src={project.preview}
+            src={project.content[0].src}
             alt={project.name}
             width={1000}
             height={1000}
           />
-        )}
-      </div>
+        )
+      ) : (
+        <Image
+          id={`video-${index}`}
+          src={project.preview}
+          alt={project.name}
+          width={1000}
+          height={1000}
+        />
+      )}
     </div>
   );
 };
