@@ -16,43 +16,27 @@
   user-select: none;
   pointer-events: none;
 
+  @media only screen and (max-width: 768px) {
+    top: auto;
+  }
+
   &.visible {
     h4 {
       opacity: 1;
     }
   }
 
-  .container {
-    position: relative;
-
-    grid-column: 1 / 6;
-    // display: grid;
-    // grid-template-columns: 3fr repeat(4, 1fr);
-    // grid-template-rows: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: $padding-200;
-
-    width: 100%;
-
-    @media only screen and (max-width: 768px) {
-      height: 100%;
+  // if not mobile
+  &.background {
+    h1,
+    .header,
+    .animation {
+      color: $color-200;
     }
 
-    // if not mobile
-    &.background {
-      @media only screen and (min-width: 768px) {
-        h1,
-        h4,
-        .animation {
-          color: $color-200;
-        }
-      }
-      @media only screen and (max-width: 768px) {
-        h1 {
-          visibility: hidden !important;
-        }
+    @media only screen and (min-width: 768px) {
+      h4 {
+        color: $color-200;
       }
     }
   }
@@ -69,29 +53,41 @@
     background-image: url(/imgs/textures/noise.png);
     background-size: 100px;
 
-    opacity: 0.09;
+    opacity: 0.14;
     will-change: auto;
     animation: noise 12s steps(3) both infinite;
   }
 
   h1 {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    $unit-size: calc((100vw - $padding-600 * 2) / 4.4);
+    position: fixed;
+    bottom: calc($padding-200 - $unit-size * 0.05);
+    left: calc($padding-200 - $unit-size * 0.05);
 
     overflow: hidden;
     text-align: left;
 
-    font-size: $font-size-700;
+    font-size: $unit-size;
     line-height: 0.9em;
 
     @media only screen and (max-width: 768px) {
-      top: 50%;
+      left: 0;
+      bottom: $padding-600;
       width: 100%;
 
-      font-size: $font-size-650;
-      text-align: center;
+      font-size: 40vw;
+
+      span:first-child {
+        margin-bottom: -$padding-100;
+      }
+    }
+
+    span:last-child > div:nth-of-type(1) {
+      margin-left: $padding-150;
+
+      @media only screen and (max-width: 768px) {
+        margin-left: 0;
+      }
     }
   }
 
@@ -122,8 +118,9 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    margin-bottom: $padding-150;
 
     animation: animateIn $animation-duration-long $animation-easing forwards;
 
@@ -131,6 +128,7 @@
       opacity: 1 !important;
       letter-spacing: 0.3em;
       line-height: 1.3em;
+      color: inherit;
     }
 
     .arrow {

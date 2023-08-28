@@ -31,10 +31,7 @@ const _ = () => {
 
       <main>
         <Underlay />
-
-        {/* {snap.mobile ? <Main /> : <WebGL />} */}
         <Content scroll={scroll.current || null} />
-
         <Header />
         <Float />
         <Overlay />

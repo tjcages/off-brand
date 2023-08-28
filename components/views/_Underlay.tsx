@@ -7,9 +7,11 @@ import gsap from "gsap";
 import styles from "@/styles/underlay.module.scss";
 import { state } from "@/store";
 import Arrow from "@/public/imgs/icons/arrow.svg";
+import { isMobile } from "@/utils";
 
 const _ = () => {
   const snap = useSnapshot(state);
+  const mobile = snap.mobile;
   const [count, set] = useState(100);
   const [ready, setReady] = useState(false);
 
@@ -27,9 +29,12 @@ const _ = () => {
       if (count <= 1) {
         state.loaded = true;
 
-        setTimeout(() => {
-          setReady(true);
-        }, 490);
+        setTimeout(
+          () => {
+            setReady(true);
+          },
+          isMobile ? 400 : 490
+        );
         return;
       }
 
@@ -68,47 +73,48 @@ const _ = () => {
   }, []);
 
   return (
-    <section className={clsx(styles.main, snap.loaded && styles.visible)}>
-      <div
-        className={clsx(
-          styles.container,
-          snap.view == "linear" && snap.selected && styles.background
-        )}
+    <section
+      className={clsx(
+        styles.main,
+        snap.loaded && styles.visible,
+        snap.view == "linear" && snap.selected && styles.background
+      )}
+    >
+      <h1
+        id="header"
+        style={{
+          visibility: snap.loaded ? "visible" : "hidden",
+        }}
       >
-        <h4 id="about" className={styles.about}>
-          Creative Studio,
-          <br />
-          New York City
-        </h4>
-        <h1
-          id="header"
-          style={{
-            visibility: snap.loaded ? "visible" : "hidden",
-          }}
-        >
-          Off–Brand
-        </h1>
-        <div className={styles.animation}>
-          {ready ? (
-            <>
-              <h4 ref={ref} className={styles.one}>
-                [0
-              </h4>
-              <Arrow
-                className={styles.arrow}
-                style={{ visibility: ready ? "visible" : "hidden" }}
-              />
-              <h4 ref={ref} className={styles.one}>
-                1]
-              </h4>
-            </>
-          ) : (
+        <span style={{ overflow: mobile ? "hidden" : "visible" }}>Off–</span>
+        <span style={{ overflow: mobile ? "hidden" : "visible" }}>Brand</span>
+      </h1>
+      {!mobile && <div />}
+      <div className={styles.animation}>
+        {ready ? (
+          <>
             <h4 ref={ref} className={styles.one}>
-              [{count.toString().padStart(3, "0")}]
+              [0
             </h4>
-          )}
-        </div>
+            <Arrow
+              className={styles.arrow}
+              style={{ visibility: ready ? "visible" : "hidden" }}
+            />
+            <h4 ref={ref} className={styles.one}>
+              1]
+            </h4>
+          </>
+        ) : (
+          <h4 ref={ref} className={styles.one}>
+            [{count.toString().padStart(3, "0")}]
+          </h4>
+        )}
       </div>
+      <h4 id="about" className={styles.about}>
+        Creative Studio,
+        <br />
+        New York City
+      </h4>
     </section>
   );
 };

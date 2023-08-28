@@ -39,11 +39,11 @@
   h1 {
     font-size: $font-size-600;
     font-weight: $font_weight_300;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.07em;
     text-align: center;
     line-height: 1.2em;
 
-    color: $color_800;
+    color: $color_600;
 
     @media only screen and (max-width: 768px) {
       letter-spacing: -0.06em;
@@ -54,21 +54,21 @@
     font-size: $font-size-500;
     font-weight: $font_weight_400;
 
-    color: $color_800;
+    color: $color_600;
   }
 
   h3 {
     font-size: $font-size-400;
     font-weight: $font_weight_200;
 
-    color: $color_800;
+    color: $color_600;
   }
 
   h4 {
     font-size: $font-size-200;
     font-weight: $font_weight_200;
 
-    color: $color_700;
+    color: $color_600;
 
     max-width: 700px;
   }
@@ -78,6 +78,8 @@
     font-weight: $font_weight_200;
     text-transform: uppercase;
     line-height: 1.2em;
+    
+    color: $color_600;
 
     max-width: 500px;
   }

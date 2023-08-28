@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import styles from "@/styles/mobile.module.scss";
@@ -15,6 +16,18 @@ interface Props {
 
 const _ = ({ project, index, selected }: Props) => {
   const mobile = useMedia(mobileBreakpoint);
+
+  useEffect(() => {
+    // detect video element aspect ratio
+    const video = document.getElementById(`video-${index}`) as HTMLVideoElement;
+    if (video) {
+      video.addEventListener("loadedmetadata", () => {
+        const ratio = video.videoWidth / video.videoHeight;
+        video.style.setProperty("--aspect-ratio", ratio.toString());
+      });
+    }
+  }, []);
+
   return (
     <div
       className={clsx(styles.selected, selected && styles.open)}
