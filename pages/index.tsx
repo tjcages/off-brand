@@ -21,8 +21,15 @@ const _ = () => {
   }, [mobile]);
 
   useEffect(() => {
-    if (snap.loaded) setTimeout(() => set(true), 1000);
-    else set(false);
+    if (snap.loaded)
+      setTimeout(() => {
+        set(true);
+        if (scroll.current) scroll.current.start();
+      }, 1000);
+    else {
+      set(false);
+      if (scroll.current) scroll.current.stop();
+    }
   }, [snap.loaded]);
 
   return (
