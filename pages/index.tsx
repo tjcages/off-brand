@@ -34,7 +34,7 @@ const _ = () => {
 
   return (
     <>
-      <SEO theme={ready ? "#181818" : "#181818"} />
+      <SEO theme={ready ? "#060606" : "#060606"} />
 
       <main>
         <Underlay />
