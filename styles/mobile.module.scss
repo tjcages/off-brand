@@ -72,7 +72,7 @@
 
       .project {
         width: clamp(85px, 5vw, 115px);
-        height: auto;
+        height: clamp(85px, 6vw, 115px);
         object-fit: cover;
 
         pointer-events: none;
