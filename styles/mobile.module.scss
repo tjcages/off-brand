@@ -110,7 +110,7 @@
     pointer-events: all;
 
     @media only screen and (max-width: 768px) {
-      max-width: calc(100vw - $padding-100 * 2);
+      max-width: 100%;
       max-height: 55vh;
 
       padding: 0 $padding-100 $padding-550;
