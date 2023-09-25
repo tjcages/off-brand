@@ -49,6 +49,20 @@ interface ProjectProps {
 const proj = [
   {
     id: uuidv4(),
+    name: "Delphi",
+    type: "image",
+    description: "",
+    href: "https://withdelphi.com/",
+    preview: "/projects/delphi/preview.avif",
+    content: [
+      {
+        type: "video",
+        src: "/projects/delphi/video.mp4",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
     name: "Crypto Yearbook",
     type: "image",
     description: "",
