@@ -124,6 +124,14 @@
 
     animation: animateIn $animation-duration-long $animation-easing forwards;
 
+    &.cyan {
+      color: #0097d3;
+    }
+
+    &.orange {
+      color: $color-accent;
+    }
+
     h4 {
       opacity: 1 !important;
       letter-spacing: 0.3em;

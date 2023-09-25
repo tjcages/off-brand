@@ -90,7 +90,13 @@ const _ = () => {
         <span style={{ overflow: mobile ? "hidden" : "visible" }}>Brand</span>
       </h1>
       {!mobile && <div />}
-      <div className={styles.animation}>
+      <div
+        className={clsx(
+          styles.animation,
+          ready && styles.orange,
+          state.loaded && !ready && styles.cyan // only do this since overlay is inverted
+        )}
+      >
         {ready ? (
           <>
             <h4 ref={ref} className={styles.one}>
