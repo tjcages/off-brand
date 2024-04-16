@@ -19,12 +19,7 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          Sohne.className,
-          Sohne.variable,
-        )}
-      >
+      <body className={cn(Sohne.className, Sohne.variable)}>
         {children}
         <Analytics />
       </body>

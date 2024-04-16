@@ -1,3 +1,3 @@
-import _ from "./_Workbench"
+import _ from "./_Workbench";
 
 export default _;

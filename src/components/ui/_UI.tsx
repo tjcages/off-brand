@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { useSnapshot } from "valtio";
 
-import { Loader, LoaderIndicators, PlusCorners } from "./_shared";
+import { Background, Loader, LoaderIndicators, PlusCorners } from "./_shared";
 import Content from "./content";
 
 const _ = () => {
@@ -15,6 +15,7 @@ const _ = () => {
 
   return (
     <section>
+      <Background />
       <Loader />
       <Image
         className={cn(

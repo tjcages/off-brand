@@ -1,10 +1,10 @@
 "use client";
 
-import { Canvas as _Canvas } from "@react-three/fiber";
-import { ScrollControls } from "@react-three/drei";
-import { SheetProvider } from "@theatre/r3f";
-import { flyThroughSheet } from "@/theatre";
 import { Canvas, UI } from "@/components";
+import { flyThroughSheet } from "@/theatre";
+import { ScrollControls } from "@react-three/drei";
+import { Canvas as _Canvas } from "@react-three/fiber";
+import { SheetProvider } from "@theatre/r3f";
 
 const _ = () => {
   return (
@@ -12,7 +12,7 @@ const _ = () => {
       <_Canvas
         gl={{
           antialias: false,
-          powerPreference: "high-performance",
+          powerPreference: "high-performance"
         }}
         performance={{ min: 1 }}
       >
@@ -23,7 +23,7 @@ const _ = () => {
         </ScrollControls>
       </_Canvas>
 
-      <UI/>
+      <UI />
     </main>
   );
 };

@@ -1,3 +1,3 @@
-import _ from "./_Grid"
+import _ from "./_Grid";
 
 export default _;

@@ -1,3 +1,3 @@
-import _ from "./_FloatText"
+import _ from "./_FloatText";
 
 export default _;

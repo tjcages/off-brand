@@ -9,11 +9,11 @@ interface Props {
 const _ = ({ title }: Props) => {
   return (
     <h1
-      ref={(node) => {
+      ref={node => {
         gsap.to(node, {
           opacity: 1,
           duration: 0.5,
-          ease: "expo.out",
+          ease: "expo.out"
         });
       }}
       className="absolute bottom-0 fs-3 leading-snug whitespace-nowrap opacity-0"

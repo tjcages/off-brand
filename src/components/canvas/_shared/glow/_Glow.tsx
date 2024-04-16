@@ -18,7 +18,7 @@ const _ = ({
   glowColor = "#00ff00",
   glowSharpness = 1.0,
   side = "THREE.FrontSide",
-  glowOpacity = 1.0,
+  glowOpacity = 1.0
 }: Props) => {
   const FakeGlowMaterial = useMemo(() => {
     return shaderMaterial(
@@ -27,7 +27,7 @@ const _ = ({
         glowInternalRadius: glowInternalRadius,
         glowColor: new Color(glowColor),
         glowSharpness: glowSharpness,
-        glowOpacity: glowOpacity,
+        glowOpacity: glowOpacity
       },
       /*GLSL */
       `

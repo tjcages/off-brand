@@ -1,18 +1,12 @@
-import { Instance, Instances, MeshReflectorMaterial } from "@react-three/drei";
+import { Instances, MeshReflectorMaterial } from "@react-three/drei";
 
 interface Props {
-  number?: number;
   lineWidth?: number;
   height?: number;
   color?: string;
 }
 
-const _ = ({
-  number = 23,
-  lineWidth = 0.026,
-  height = 0.5,
-  color = "#bbb",
-}) => (
+const _ = ({ lineWidth = 0.026, height = 0.5, color = "#bbb" }: Props) => (
   <group position={[0, -0.25, 0]} rotation={[0.1, 0, 0]}>
     <Instances>
       <planeGeometry args={[lineWidth, height]} />

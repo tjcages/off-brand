@@ -1,3 +1,3 @@
-import _ from "./_Lighting"
+import _ from "./_Lighting";
 
 export default _;

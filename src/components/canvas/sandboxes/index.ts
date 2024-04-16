@@ -1,3 +1,3 @@
-import _ from "./_Sandboxes"
+import _ from "./_Sandboxes";
 
 export default _;

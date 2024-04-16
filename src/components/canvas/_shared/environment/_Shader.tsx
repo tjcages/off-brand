@@ -13,7 +13,7 @@ const PortalMaterial = shaderMaterial(
     uTime: 0,
     uColorStart: new THREE.Color("black"),
     uColorMiddle: new THREE.Color("black"),
-    uColorEnd: new THREE.Color("black"),
+    uColorEnd: new THREE.Color("black")
   },
   environmentVert,
   environmentFrag
@@ -22,6 +22,7 @@ const PortalMaterial = shaderMaterial(
 extend({ PortalMaterial });
 
 const _ = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef() as any;
   const [colorStart, setColorStart] = useState(new THREE.Color("black"));
   const [colorMiddle, setColorMiddle] = useState(new THREE.Color("black"));
@@ -46,11 +47,7 @@ const _ = () => {
     <mesh scale={1000}>
       <sphereGeometry args={[1, 64, 64]} />
       {/* @ts-expect-error jsx export does not exist */}
-      <portalMaterial
-        ref={ref}
-        key={PortalMaterial.key}
-        side={THREE.BackSide}
-      />
+      <portalMaterial ref={ref} key={PortalMaterial.key} side={THREE.BackSide} />
     </mesh>
   );
 };

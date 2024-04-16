@@ -1,3 +1,3 @@
-import _ from "./_Annotation"
+import _ from "./_Annotation";
 
 export default _;

@@ -1,3 +1,3 @@
-import _ from "./_Canvas"
+import _ from "./_Canvas";
 
 export default _;
