@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": { "browser": true, "es6": true, "node": true, "es2021": true },
+  "plugins": [
+    "import",
+    "react",
+    "unused-imports",
+    "@typescript-eslint",
+    "@react-three",
+    "prettier"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:@react-three/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-process-env": "error",
+    // shadcn
+    "react/prop-types": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/no-unused-vars": "off",
+    // ㄴunused-imports basic setting 1
+    "unused-imports/no-unused-imports": "warn",
+    // ㄴunused-imports basic setting 2
+    "import/no-unresolved": "warn",
+    // ㄴeslint-import-resolver-typescript required setting 1
+    "react/react-in-jsx-scope": "off",
+    // ㄴNo need to import React
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": ["../"],
+            "message": "Relative imports are not allowed."
+          }
+        ]
+      }
+    ],
+    "no-unsafe-optional-chaining": 1,
+    "react/no-unknown-property": "off"
+    //ㄴturned off for react three fiber
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".{ts,tsx}"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": { "alwaysTryTypes": true }
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module",
+    // ㄴeslint-plugin-import required setting 1
+    "ecmaVersion": 2018
+    // ㄴeslint-plugin-import required setting 2
+  }
+}
