@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect } from "react";
-import * as THREE from "three";
-import { useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { gsap } from "gsap";
-
-import { useSnapshot } from "valtio";
 import { state } from "@/store";
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { gsap } from "gsap";
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { useSnapshot } from "valtio";
 
 interface Props {
   index: number;
@@ -17,7 +16,7 @@ interface Props {
 const IndividualText = ({ index, z, speed, object }: Props) => {
   const { selectedStep } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
-  const { viewport, camera } = useThree();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF(object) as any;
   const width = 6;
   const height = 6;
@@ -31,7 +30,7 @@ const IndividualText = ({ index, z, speed, object }: Props) => {
     spin: THREE.MathUtils.randFloat(8, 12),
     // Some random rotations, Math.PI represents 360 degrees in radian
     rX: Math.random() * Math.PI,
-    rZ: Math.random() * Math.PI,
+    rZ: Math.random() * Math.PI
   });
 
   // useFrame executes 60 times per second
@@ -40,11 +39,7 @@ const IndividualText = ({ index, z, speed, object }: Props) => {
     // dt is the delta, the time between this frame and the previous, we can use it to be independent of the screens refresh rate
     // We cap dt at 0.1 because now it can't accumulate while the user changes the tab, it will simply stop
     if (dt < 0.1)
-      ref.current.position.set(
-        index === 0 ? 0 : data.x * width,
-        (data.y += dt * speed),
-        -z
-      );
+      ref.current.position.set(index === 0 ? 0 : data.x * width, (data.y += dt * speed), -z);
     // Rotate the object around
     ref.current.rotation.set(
       (data.rX += dt / data.spin),
@@ -52,9 +47,8 @@ const IndividualText = ({ index, z, speed, object }: Props) => {
       (data.rZ += dt / data.spin)
     );
     // If they're too far up, set them back to the bottom
-    if (selectedStep !== null && selectedStep > 0) return;
-    if (data.y > height * (index === 0 ? 8 : 1))
-      data.y = -(height * (index === 0 ? 4 : 1));
+    if (selectedStep !== null && selectedStep > 1) return;
+    if (data.y > height * (index === 0 ? 8 : 1)) data.y = -(height * (index === 0 ? 4 : 1));
   });
 
   return (
@@ -84,9 +78,9 @@ const _ = () => {
   useEffect(() => {
     if (ref.current)
       gsap.to(ref.current.position, {
-        z: selectedStep === 1 ? -5 : 0,
+        z: selectedStep === 2 ? -5 : 0,
         duration: 5,
-        ease: "expo.out",
+        ease: "expo.out"
       });
   }, [selectedStep]);
 

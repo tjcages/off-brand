@@ -1,79 +1,54 @@
-import {
-  Edges,
-  Float,
-  MeshTransmissionMaterial,
-  Text3D,
-  useCursor,
-} from "@react-three/drei";
-import { debounce } from "lodash";
+import { state } from "@/store";
 import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
-import { RGBELoader } from "three-stdlib";
-import { useLoader } from "@react-three/fiber";
-import { gsap } from "gsap";
+import { Edges, Float, MeshTransmissionMaterial, Text3D, useCursor } from "@react-three/drei";
+import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
-import { state } from "@/store";
-import Annotation from "../annotation/_Annotation";
+import { debounce } from "lodash";
+import { RGBELoader } from "three-stdlib";
 import { useSnapshot } from "valtio";
-import { useEffect, useRef, useState, useCallback } from "react";
-import * as THREE from "three";
+
+import Annotation from "@/components/canvas/_shared/annotation/_Annotation";
 
 interface Props {
   step: number;
+  id?: string;
   text: string;
-  position?: [number, number, number];
-  rotation?: [number, number, number];
-  scale?: number;
   annotation?: string;
   annotationPosition?: [number, number, number];
-  selectedPosition?: [number, number, number];
-  unSelectedPosition?: [number, number, number];
 }
 
-const _ = ({
-  step,
-  text,
-  position,
-  rotation,
-  scale,
-  annotation,
-  annotationPosition,
-}: Props) => {
-  const ref = useRef<THREE.Group | null>(null);
-  const { hoveredStep, selectedStep } = useSnapshot(state);
+const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
+  const { hoveredStep } = useSnapshot(state);
   const texture = useLoader(
     RGBELoader,
     "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr"
   );
 
   // Debounce hover a bit to stop the ticker from being erratic
-  const debouncedHover = useCallback(
-    debounce((hover) => (state.hoveredStep = hover), 30),
-    []
-  );
-  const over = (hover: number) => (e: any) => (
+  const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);
+  const over = (hover: number) => (e: ThreeEvent<PointerEvent>) => (
     e.stopPropagation(), debouncedHover(hover)
   );
 
   const hovered = step === hoveredStep;
   useCursor(hovered);
 
-  const [{ wobble, color }] = useSpring(
+  const [{ wobble }] = useSpring(
     {
       wobble: hovered ? 1.05 : 1,
-      color: hovered ? "white" : "transparent",
-      config: (n) =>
-        n === "wobble"
-          ? { mass: 5, tension: 500, friction: 20 }
-          : config.molasses,
+      config: n => (n === "wobble" ? { mass: 5, tension: 500, friction: 20 } : config.molasses)
     },
     [hovered]
   );
 
   return (
     <e.group
-      position={[0, -2, 0]}
-      scale={0}
+      theatreKey={"floats/float-" + id}
+      onPointerOver={over(step)}
+      onPointerOut={() => debouncedHover(null)}
+      onClick={() => (state.selectedStep = step + 1)}
+      scale={text === "" ? 0 : 1}
     >
       <Float floatIntensity={2} renderOrder={10}>
         <a.group scale={wobble}>
@@ -98,23 +73,18 @@ const _ = ({
               background={texture}
             />
             <Edges visible={hovered} renderOrder={1000}>
-              <a.meshBasicMaterial
-                transparent
-                color={color}
-                depthTest={false}
-              />
+              {/* @ts-expect-error – type is infinitely deep */}
+              <a.meshBasicMaterial color={"white"} depthTest={false} />
             </Edges>
           </Text3D>
         </a.group>
 
-        <mesh
-          position={[1, 0.25, 1]}
-          onPointerOver={over(step)}
-          onPointerOut={() => debouncedHover(null)}
-        >
-          <planeGeometry args={[1.5, 1.5]} />
-          <meshBasicMaterial color="transparent" transparent opacity={0} />
-        </mesh>
+        {text !== "" && (
+          <mesh position={[1, 0.25, 1]}>
+            <planeGeometry args={[2, 1.5]} />
+            <meshBasicMaterial transparent opacity={0} />
+          </mesh>
+        )}
 
         {annotation !== undefined && (
           <Annotation

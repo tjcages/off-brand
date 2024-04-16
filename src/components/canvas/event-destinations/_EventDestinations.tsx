@@ -1,9 +1,9 @@
-import { Text as _Text } from "@react-three/drei";
-import { editable as e, useCurrentSheet } from "@theatre/r3f";
-import { useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { useSnapshot } from "valtio";
 import { state } from "@/store";
+import { Text as _Text } from "@react-three/drei";
+import { editable as e } from "@theatre/r3f";
+import { gsap } from "gsap";
+import { useEffect, useState } from "react";
+import { useSnapshot } from "valtio";
 
 const _ = () => {
   const { selectedStep } = useSnapshot(state);
@@ -11,9 +11,9 @@ const _ = () => {
 
   useEffect(() => {
     // if (selectedStep === 3) {
-      gsap.delayedCall(2, () => set(["background"]));
-      gsap.delayedCall(2.5, () => set(["background", "foreground"]));
-      gsap.delayedCall(3, () => set(["background", "foreground", "title"]));
+    gsap.delayedCall(2, () => set(["background"]));
+    gsap.delayedCall(2.5, () => set(["background", "foreground"]));
+    gsap.delayedCall(3, () => set(["background", "foreground", "title"]));
     // } else set([]);
   }, [selectedStep]);
 
@@ -24,11 +24,7 @@ const _ = () => {
 
   return (
     <e.group theatreKey="event-destinations-content" position={[0, 2.5, -13]}>
-      <_Text
-        visible={views.includes("title")}
-        position={[0, 1.2, 0]}
-        fontSize={0.2}
-      >
+      <_Text visible={views.includes("title")} position={[0, 1.2, 0]} fontSize={0.2}>
         Event Destinations
       </_Text>
 

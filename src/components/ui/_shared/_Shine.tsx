@@ -21,7 +21,7 @@ const _ = ({
   const childrenWrapperRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({
     x: 0,
-    y: 0,
+    y: 0
   });
 
   useEffect(() => {
@@ -34,29 +34,17 @@ const _ = ({
       const childrenBox = children.getBoundingClientRect();
       mouse.current = {
         x: event.pageX - window.scrollX,
-        y: event.pageY - window.scrollY,
+        y: event.pageY - window.scrollY
       };
 
-      lightElement.setAttribute(
-        "y",
-        (mouse.current.y - childrenBox.top).toString()
-      );
-      lightElement.setAttribute(
-        "x",
-        (mouse.current.x - childrenBox.left).toString()
-      );
+      lightElement.setAttribute("y", (mouse.current.y - childrenBox.top).toString());
+      lightElement.setAttribute("x", (mouse.current.x - childrenBox.left).toString());
     };
 
     const onScroll = () => {
       const childrenBox = children.getBoundingClientRect();
-      lightElement.setAttribute(
-        "y",
-        (mouse.current.y - childrenBox.top).toString()
-      );
-      lightElement.setAttribute(
-        "x",
-        (mouse.current.x - childrenBox.left).toString()
-      );
+      lightElement.setAttribute("y", (mouse.current.y - childrenBox.top).toString());
+      lightElement.setAttribute("x", (mouse.current.x - childrenBox.left).toString());
     };
 
     document.addEventListener("pointermove", onPointerMove);
@@ -73,8 +61,7 @@ const _ = ({
       id={id}
       style={{
         position: "relative",
-        userSelect: "none",
-        width: "inherit",
+        userSelect: "none"
       }}
       {...otherProps}
     >
@@ -90,7 +77,7 @@ const _ = ({
           left: 0,
           width: "100%",
           height: "100%",
-          pointerEvents: "none",
+          pointerEvents: "none"
         }}
       >
         <filter id={filterId} ref={filterRef} colorInterpolationFilters="sRGB">
@@ -107,12 +94,7 @@ const _ = ({
           >
             <fePointLight x="60" y="69" z="300" />
           </feSpecularLighting>
-          <feComposite
-            result="reflections"
-            in="light-source"
-            in2="SourceAlpha"
-            operator="in"
-          />
+          <feComposite result="reflections" in="light-source" in2="SourceAlpha" operator="in" />
           <feComposite
             in="SourceGraphic"
             in2="reflections"
@@ -128,7 +110,7 @@ const _ = ({
         style={{
           filter: `url(#${filterId})`,
           isolation: "isolate",
-          width: "inherit",
+          width: "inherit"
         }}
         ref={childrenWrapperRef}
       >
