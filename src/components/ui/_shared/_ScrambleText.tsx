@@ -30,9 +30,7 @@ interface Props {
 const ScrambleText = ({ children }: Props) => {
   const [output, setOutput] = useState("");
   const frameRef = useRef(0);
-  const scrambleRef = useRef(
-    new TextScramble("~~")
-  );
+  const scrambleRef = useRef(new TextScramble("~~"));
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const queueRef = useRef([]) as React.MutableRefObject<any[]>;
   const oldTextRef = useRef("");
@@ -64,10 +62,7 @@ const ScrambleText = ({ children }: Props) => {
       }
     };
 
-    queueRef.current = scrambleRef.current.scramble(
-      oldTextRef.current,
-      children
-    );
+    queueRef.current = scrambleRef.current.scramble(oldTextRef.current, children);
     frameRef.current = 0;
     oldTextRef.current = children;
     update();
