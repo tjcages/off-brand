@@ -18,7 +18,7 @@ const _ = ({ step, next }: Props) => {
 
   useEffect(() => {
     if (selectedStep === step) {
-      gsap.to(`#${id}-button`, {
+      gsap.to(`#${id}`, {
         width: 64,
         height: 64,
         duration: 1,
@@ -32,7 +32,7 @@ const _ = ({ step, next }: Props) => {
         ease: "expo.out"
       });
     } else {
-      gsap.to(`#${id}-button`, {
+      gsap.to(`#${id}`, {
         width: 24,
         height: 24,
         duration: 0.5,
@@ -51,7 +51,7 @@ const _ = ({ step, next }: Props) => {
     <div>
       <Shine puffyness="2">
         <button
-          id={id + "-button"}
+          id={id}
           className={cn(
             "group w-16 h-16 p-0 rounded-full bg-white/10 backdrop-blur-md",
             selectedStep && selectedStep > step && "bg-white/50"

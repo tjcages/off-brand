@@ -1,15 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import { randomId } from "./_string";
+import _uniqueId from "lodash/uniqueId";
+import { useMemo } from "react";
 
 export const useId = () => {
-  const [id, set] = useState<string>("id");
-
-  useEffect(() => {
-    set("id-" + randomId());
-  }, []);
-
+  const id = useMemo(() => _uniqueId("id-"), []);
   return id;
 };

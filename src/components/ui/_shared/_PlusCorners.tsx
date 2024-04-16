@@ -12,7 +12,7 @@ const _ = () => {
 
   // Loading animation
   const loadingAnimation = useCallback(
-    (nodes: (HTMLElement | null)[]) => {
+    (nodes: string[]) => {
       gsap.to(nodes, {
         rotate: (180 * progress) / 100,
         duration: 1,
@@ -24,7 +24,7 @@ const _ = () => {
   );
 
   // Show content animation
-  const animateFinal = (node: HTMLElement, position: "tl" | "tr" | "bl" | "br") => {
+  const animateFinal = (node: string, position: "tl" | "tr" | "bl" | "br") => {
     gsap.to(node, {
       x: position === "tr" ? 10 : position === "br" ? -10 : 0,
       y: position === "tl" ? -10 : position === "bl" ? 10 : 0,
@@ -54,19 +54,12 @@ const _ = () => {
   };
 
   useEffect(() => {
-    const nodes = [
-      document.getElementById(id + "-tl"),
-      document.getElementById(id + "-tr"),
-      document.getElementById(id + "-bl"),
-      document.getElementById(id + "-br")
-    ];
+    const nodes = [`#${id}-tl`, `#${id}-tr`, `#${id}-bl`, `#${id}-br`];
+    console.log(nodes);
     if (!loaded) loadingAnimation(nodes);
     else
       nodes.forEach((node, index) => {
-        animateFinal(
-          node as HTMLElement,
-          ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br"
-        );
+        animateFinal(node, ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br");
       });
   }, [id, loaded, loadingAnimation]);
 

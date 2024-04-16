@@ -11,18 +11,15 @@ const _ = () => {
   const { selectedStep } = useSnapshot(state);
 
   useEffect(() => {
-    gsap.to(`#${id}-controls`, {
-      x: -48 * ((selectedStep || 0) - 2),
+    gsap.to(`#${id}`, {
+      x: selectedStep === 5 ? 0 : -52 * ((selectedStep || 0) - 2) + 16,
       duration: 1,
       ease: "expo.inOut"
     });
   }, [selectedStep, id]);
 
   return (
-    <div
-      id={id + "-controls"}
-      className="relative flex items-center justify-center gap-8 w-full h-16 mt-8 opacity-0"
-    >
+    <div id={id} className="relative flex items-center justify-center gap-8 w-full h-16 opacity-0">
       <Button step={1} next={2} />
       <Button step={2} next={3} />
       <Button step={3} next={4} />
