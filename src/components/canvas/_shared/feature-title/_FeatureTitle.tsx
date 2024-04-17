@@ -1,6 +1,5 @@
 import { state } from "@/store";
 import { Html } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { useSnapshot } from "valtio";
 
@@ -10,9 +9,10 @@ interface Props {
   text?: string;
   position?: [number, number, number];
   scale?: [number, number, number] | number;
+  visible?: boolean;
 }
 
-const _ = ({ text, position, scale }: Props) => {
+const _ = ({ text, position, scale, visible }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
 
@@ -29,15 +29,15 @@ const _ = ({ text, position, scale }: Props) => {
     }
   };
 
-  useFrame(({ camera }) => {
-    if (ref.current) ref.current.lookAt(camera.position);
-  });
+  // useFrame(({ camera }) => {
+  //   if (ref.current) ref.current.lookAt(camera.position);
+  // });
 
   return (
-    <group ref={ref} position={position} scale={scale}>
+    <group ref={ref} visible={visible} position={position} scale={scale}>
       <Html transform>
         <h3 className="text-white">
-          <ScrambleText>{text !== undefined ? text : getTitle()}</ScrambleText>
+          <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
         </h3>
       </Html>
     </group>

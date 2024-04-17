@@ -1,6 +1,7 @@
 export const seo = {
-  title: "Stripe | NGDX",
-  description: "Developer experience, re-imagined",
+  title: "Try what's new–shape what's next",
+  description:
+    "Stripe Insiders is Stripe’s early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
   icons: [
     {
       rel: "icon",
@@ -10,8 +11,9 @@ export const seo = {
   openGraph: {
     type: "website",
     url: "https://dev.stripe.com",
-    title: "Stripe | NGDX",
-    description: "Developer experience, re-imagined",
+    title: "Try what's new–shape what's next",
+    description:
+      "Stripe Insiders is Stripe’s early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
     images: [
       {
         url: "/preview.png",

@@ -53,7 +53,7 @@ const _ = () => {
       gsap.to(`#${id}-intro`, {
         height: 0,
         duration: 1,
-        ease: "expo.in"
+        ease: "expo.inOut"
       });
     } else {
       gsap.to(`#${id}-intro`, {

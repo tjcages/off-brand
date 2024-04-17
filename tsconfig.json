@@ -30,7 +30,8 @@
     ".next/types/**/*.ts",
     "src/components/canvas/_shared/water/_Shader.jsx",
     "src/components/canvas/_NewWater/index.tsx",
-    "src/components/canvas/prometheus/_WebGL.js"
+    "src/components/canvas/prometheus/_WebGL.js",
+    "src/utils/_bentPlaneGeometry.js"
   ],
   "exclude": ["node_modules"]
 }
