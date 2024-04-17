@@ -55,7 +55,6 @@ const _ = () => {
 
   useEffect(() => {
     const nodes = [`#${id}-tl`, `#${id}-tr`, `#${id}-bl`, `#${id}-br`];
-    console.log(nodes);
     if (!loaded) loadingAnimation(nodes);
     else
       nodes.forEach((node, index) => {

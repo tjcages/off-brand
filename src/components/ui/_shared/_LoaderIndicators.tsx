@@ -12,7 +12,7 @@ const _ = () => {
 
   useEffect(() => {
     if (loaded)
-      gsap.to(`#${id}`, {
+      gsap.to(`#${id}-indicator`, {
         opacity: 0,
         filter: "blur(4px)",
         duration: 0.5,
@@ -44,7 +44,7 @@ const _ = () => {
   }, [id, progress]);
 
   return (
-    <div id={id} className="absolute flex items-center justify-center">
+    <div id={id + "-indicator"} className="absolute flex items-center justify-center">
       <p id={id + "-0"} className="absolute text-right -translate-x-8">
         0
       </p>
