@@ -36,7 +36,10 @@ const _ = () => {
           y: position === "tl" ? -20 : position === "bl" ? 20 : 0,
           duration: 1,
           delay: 1.5,
-          ease: "expo.in"
+          ease: "expo.in",
+          onComplete: () => {
+            state.ready = true;
+          }
         });
         gsap.to(node, {
           x: 0,

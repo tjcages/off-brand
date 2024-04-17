@@ -105,7 +105,7 @@ const _ = () => {
           annotation="Event Destinations"
           annotationPosition={[1.25, -0.25, 0]}
         />
-        <FeatureTitle position={[0, 0.5, -1]} />
+        <FeatureTitle position={[0, 3.1, -1]} />
       </group>
 
       <Sandboxes />

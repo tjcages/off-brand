@@ -12,7 +12,7 @@ interface Props {
   visible?: boolean;
 }
 
-const _ = ({ text, position, scale, visible }: Props) => {
+const _ = ({ text, position, scale, visible = true }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
 

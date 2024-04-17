@@ -26,10 +26,7 @@ const _ = () => {
           duration: 0.5,
           delay: 1.5,
           ease: "expo.in",
-          overwrite: true,
-          onComplete: () => {
-            state.ready = true;
-          }
+          overwrite: true
         });
       }
     } else state.loaded = false;
