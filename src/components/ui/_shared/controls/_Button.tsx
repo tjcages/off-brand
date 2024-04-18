@@ -1,5 +1,5 @@
 import { state } from "@/store";
-import { cn, useId } from "@/utils";
+import { cn } from "@/utils";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const _ = ({ step, next }: Props) => {
-  const id = useId();
+  const id = "button-" + step;
   const { ready, selectedStep } = useSnapshot(state);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const _ = ({ step, next }: Props) => {
         scale: 1,
         opacity: 1,
         duration: 0.5,
-        delay: 0.5,
+        delay: 0.75,
         ease: "expo.out"
       });
     } else {
@@ -53,7 +53,7 @@ const _ = ({ step, next }: Props) => {
         <button
           id={id}
           className={cn(
-            "group w-16 h-16 p-0 rounded-full bg-white/10 backdrop-blur-md",
+            "group w-16 h-16 p-0 rounded-full bg-white/10 backdrop-blur-lg",
             selectedStep && selectedStep > step && "bg-white/50"
           )}
           onClick={() => {

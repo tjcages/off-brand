@@ -1,12 +1,12 @@
 import { state } from "@/store";
-import { useId } from "@/utils";
+// import { useId } from "@/utils";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 import { useSnapshot } from "valtio";
 
 const _ = () => {
-  const id = useId();
+  const id = "loader-indicators";
   const { progress } = useProgress();
   const { loaded } = useSnapshot(state);
 

@@ -1,12 +1,12 @@
 import { state } from "@/store";
-import { useId } from "@/utils";
+// import { useId } from "@/utils";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useCallback, useEffect } from "react";
 import { useSnapshot } from "valtio";
 
 const _ = () => {
-  const id = useId();
+  const id = "plus-corners";
   const { progress } = useProgress();
   const { loaded } = useSnapshot(state);
 
@@ -44,9 +44,9 @@ const _ = () => {
         gsap.to(node, {
           x: 0,
           y: 0,
-          top: position === "tl" ? -12 : position === "tr" ? -12 : undefined,
+          top: position === "tl" ? -4 : position === "tr" ? -4 : undefined,
           left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
-          bottom: position === "bl" ? -12 : position === "br" ? -12 : undefined,
+          bottom: position === "bl" ? -20 : position === "br" ? -20 : undefined,
           right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
           duration: 1,
           delay: 2.5,

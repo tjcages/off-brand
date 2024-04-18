@@ -1,15 +1,13 @@
 "use client";
 
 import { state } from "@/store";
-import { useId } from "@/utils";
+// import { useId } from "@/utils";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 import { useSnapshot } from "valtio";
 
-import { Controls } from "@/components/ui/_shared";
-
 const _ = () => {
-  const id = useId();
+  const id = "content";
   const { ready, selectedStep } = useSnapshot(state);
 
   useEffect(() => {
@@ -47,20 +45,15 @@ const _ = () => {
     if (selectedStep && selectedStep > 1 && selectedStep !== 5) {
       gsap.to(`#${id}-intro`, {
         opacity: 0,
-        duration: 0.5,
-        ease: "expo.in"
-      });
-      gsap.to(`#${id}-intro`, {
-        height: 0,
-        duration: 1,
-        ease: "expo.inOut"
+        duration: 0.25,
+        ease: "expo.out"
       });
     } else {
       gsap.to(`#${id}-intro`, {
         opacity: 1,
-        height: "auto",
         duration: 1,
-        ease: "expo.in"
+        delay: 0.25,
+        ease: "expo.out"
       });
     }
   }, [selectedStep, id]);
@@ -80,11 +73,10 @@ const _ = () => {
           re-imagined
         </h1>
         <p id={id + "-intro-description"} className="fs-5 text-gray-400 text-center opacity-0">
-          Introducing Workbench, Sandboxes, & Event Destinations – a powerful new set of tools that
-          make integrating & growing with Stripe easier than ever.
+          Introducing a new set of developer tools to make iterating on, testing, and pushing Stripe
+          code easier than ever.
         </p>
       </div>
-      <Controls />
     </div>
   );
 };

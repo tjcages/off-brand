@@ -16,7 +16,7 @@ const _ = () => {
         }}
         performance={{ min: 1 }}
       >
-        <ScrollControls pages={5}>
+        <ScrollControls pages={0}>
           <SheetProvider sheet={flyThroughSheet}>
             <Canvas />
           </SheetProvider>

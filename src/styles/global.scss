@@ -59,13 +59,12 @@
   button {
     @apply flex items-center justify-center;
     @apply px-4 py-2 text-[18px];
-    @apply bg-white/80 backdrop-blur-lg text-black rounded-lg;
+    @apply rounded-lg bg-white/80 text-black backdrop-blur-lg;
     @apply outline outline-offset-2 outline-white/20;
     @apply pointer-events-auto transition-all duration-300 ease-in-out;
-    @apply hover:bg-white/100 hover:outline-white hover:outline-offset-[8px];
-    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply hover:bg-white/100 hover:outline-offset-[8px] hover:outline-white;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
   }
-
 
   input:focus,
   textarea:focus {
@@ -116,7 +115,9 @@
     line-height: 1em;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-weight: 600 !important;
     line-height: 0.8em;
     letter-spacing: 0.01em;
@@ -419,4 +420,8 @@ body {
 .noise {
   background-image: url("/textures/noise.png");
   opacity: 0.2;
+}
+
+.stripe-outline {
+  filter: drop-shadow(0 0 1rem #635bff);
 }

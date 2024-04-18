@@ -1,9 +1,10 @@
-"use client";
+// "use client";
 
-import _uniqueId from "lodash/uniqueId";
-import { useMemo } from "react";
+// import { useMemo } from "react";
 
-export const useId = () => {
-  const id = useMemo(() => _uniqueId("id-"), []);
-  return id;
-};
+// import { randomId } from "./_string";
+
+// export const useId = () => {
+//   const id = useMemo(() => "id-" + randomId(), []);
+//   return id;
+// };

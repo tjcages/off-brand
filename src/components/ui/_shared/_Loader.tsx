@@ -1,7 +1,7 @@
 "use client";
 
 import { state } from "@/store";
-import { useId } from "@/utils";
+// import { useId } from "@/utils";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const minTime = 2;
 
 const _ = () => {
-  const id = useId();
+  const id = "loader";
   const { progress } = useProgress();
   const [passedMinTime, setPassedMinTime] = useState(false);
 
