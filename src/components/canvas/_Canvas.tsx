@@ -5,8 +5,8 @@ import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { val } from "@theatre/core";
 import { PerspectiveCamera, useCurrentSheet } from "@theatre/r3f";
-import extension from "@theatre/r3f/dist/extension";
-import studio from "@theatre/studio";
+// import extension from "@theatre/r3f/dist/extension";
+// import studio from "@theatre/studio";
 import { gsap } from "gsap";
 import { Suspense, useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -24,8 +24,8 @@ import EventDestinations from "./event-destinations";
 import Sandboxes from "./sandboxes";
 import Workbench from "./workbench";
 
-studio.initialize();
-studio.extend(extension);
+// studio.initialize();
+// studio.extend(extension);
 
 const snapPoints = [0, 0.15, 0.35, 0.55, 0.75, 1];
 
