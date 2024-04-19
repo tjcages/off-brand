@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { useSnapshot } from "valtio";
 
 import "@/utils/_bentPlaneGeometry";
 
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
+  const { wbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
   const [hovered, hover] = useState(false);
@@ -70,9 +72,14 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         step={modalStep}
         total={3}
-        setStep={(step: number) => (state.sbSelectedModal = step)}
+        setStep={(step: number) => (state.wbSelectedModal = step)}
       />
-      <ModalNav visible={showUI} position={[0, 0, -0.25]} />
+      <ModalNav
+        visible={showUI}
+        position={[0, 0, -0.25]}
+        modalStep={wbSelectedModal}
+        setModalStep={step => (state.wbSelectedModal = step)}
+      />
 
       <e.group theatreKey="workbench-content/view">
         <Image

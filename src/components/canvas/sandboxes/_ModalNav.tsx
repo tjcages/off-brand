@@ -1,16 +1,15 @@
-import { state } from "@/store";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { useSnapshot } from "valtio";
 
 interface Props {
   visible?: boolean;
   position?: [number, number, number];
+  modalStep?: number;
+  setModalStep?: (step: number) => void;
 }
 
-const _ = ({ visible, position }: Props) => {
-  const { selectedStep, sbSelectedModal, wbSelectedModal, edSelectedModal } = useSnapshot(state);
+const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
   const [hoveredNext, setHoverNext] = useState(false);
   const [hoveredLast, setHoverLast] = useState(false);
   const nextRef = useRef() as React.MutableRefObject<THREE.Mesh>;
@@ -18,56 +17,28 @@ const _ = ({ visible, position }: Props) => {
   useCursor(hoveredNext || hoveredLast);
 
   const onClickNext = () => {
-    switch (selectedStep) {
-      case 2:
-        if (sbSelectedModal === undefined) return;
-        if (sbSelectedModal > 2) return;
-        else state.sbSelectedModal = sbSelectedModal + 1;
-        break;
-      case 3:
-        if (wbSelectedModal === undefined) return;
-        if (wbSelectedModal > 2) return;
-        else state.wbSelectedModal = wbSelectedModal + 1;
-        break;
-      case 4:
-        if (edSelectedModal === undefined) return;
-        if (edSelectedModal > 2) return;
-        else state.edSelectedModal = edSelectedModal + 1;
-        break;
-    }
+    if (modalStep === undefined) return;
+    if (modalStep > 2) return;
+    else setModalStep && setModalStep(modalStep + 1);
   };
 
   const onClickLast = () => {
-    switch (selectedStep) {
-      case 2:
-        if (sbSelectedModal === undefined) return;
-        if (sbSelectedModal < 2) return;
-        else state.sbSelectedModal = sbSelectedModal - 1;
-        break;
-      case 3:
-        if (wbSelectedModal === undefined) return;
-        if (wbSelectedModal < 2) return;
-        else state.wbSelectedModal = wbSelectedModal - 1;
-        break;
-      case 4:
-        if (edSelectedModal === undefined) return;
-        if (edSelectedModal < 2) return;
-        else state.edSelectedModal = edSelectedModal - 1;
-        break;
-    }
+    if (modalStep === undefined) return;
+    if (modalStep < 2) return;
+    else setModalStep && setModalStep(modalStep - 1);
   };
 
   useEffect(() => {
     if (!nextRef || !lastRef) return;
     if (visible) {
       gsap.to(nextRef.current.material, {
-        opacity: 0.3,
+        opacity: (modalStep || 0) > 2 ? 0 : 0.3,
         duration: 1,
         delay: 2,
         ease: "expo.in"
       });
       gsap.to(lastRef.current.material, {
-        opacity: 0.3,
+        opacity: (modalStep || 0) < 2 ? 0 : 0.3,
         duration: 1,
         delay: 2,
         ease: "expo.in"
@@ -86,43 +57,43 @@ const _ = ({ visible, position }: Props) => {
         overwrite: true
       });
     }
-  });
+  }, [visible, modalStep]);
 
   useEffect(() => {
     if (!nextRef) return;
     if (!visible) return;
     if (hoveredNext) {
       gsap.to(nextRef.current.material, {
-        opacity: 0.5,
+        opacity: (modalStep || 0) > 2 ? 0 : 0.5,
         duration: 0.5,
         ease: "expo.in"
       });
     } else {
       gsap.to(nextRef.current.material, {
-        opacity: 0.3,
+        opacity: (modalStep || 0) > 2 ? 0 : 0.3,
         duration: 0.5,
         ease: "expo.out"
       });
     }
-  }, [hoveredNext, visible]);
+  }, [hoveredNext, modalStep, visible]);
 
   useEffect(() => {
     if (!lastRef) return;
     if (!visible) return;
     if (hoveredLast) {
       gsap.to(lastRef.current.material, {
-        opacity: 0.5,
+        opacity: (modalStep || 0) < 2 ? 0 : 0.5,
         duration: 0.5,
         ease: "expo.in"
       });
     } else {
       gsap.to(lastRef.current.material, {
-        opacity: 0.3,
+        opacity: (modalStep || 0) < 2 ? 0 : 0.3,
         duration: 0.5,
         ease: "expo.out"
       });
     }
-  }, [hoveredLast, visible]);
+  }, [hoveredLast, modalStep, visible]);
 
   return (
     <group position={position}>

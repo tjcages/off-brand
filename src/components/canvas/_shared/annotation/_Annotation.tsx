@@ -4,9 +4,11 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
+import { ScrambleText } from "@/components/ui/_shared";
+
 interface Props {
   visible?: boolean;
-  text?: string;
+  text: string;
   position?: [number, number, number];
 }
 
@@ -22,17 +24,13 @@ const _ = ({ visible = false, text, position }: Props) => {
       <Html transform position={position} scale={0.25} pointerEvents="none">
         <div
           className={cn(
-            "relative p-4 text-white bg-black/80 backdrop-blur-md whitespace-nowrap overflow-hidden pointer-events-none opacity-0 blur-sm max-w-0 max-h-0 transition-all duration-300 ease-out",
-            visible && "opacity-100 blur-none max-w-full max-h-full"
+            "relative flex flex-col items-start justify-start gap-2 w-full max-w-sm p-4 text-[20px] text-white bg-black/80 border border-white/10 outline outline-2 rounded-lg backdrop-blur-md overflow-hidden pointer-events-none transition-all duration-300 ease-out",
+            visible
+              ? "opacity-100 scale-100 outline-offset-2 outline-blue"
+              : "opacity-0 scale-75 outline-offset-0 outline-blue/0 pointer-events-none"
           )}
         >
-          <div className="absolute left-0 top-0 right-0 bottom-0 bg-white/10 diagonal" />
-          <p>{text}</p>
-
-          <div className="absolute left-0 top-0 w-1 h-1 bg-white" />
-          <div className="absolute right-0 top-0 w-1 h-1 bg-white" />
-          <div className="absolute left-0 bottom-0 w-1 h-1 bg-white" />
-          <div className="absolute right-0 bottom-0 w-1 h-1 bg-white" />
+          <ScrambleText>{visible ? text : ""}</ScrambleText>
         </div>
       </Html>
     </group>

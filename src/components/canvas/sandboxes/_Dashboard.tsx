@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { useSnapshot } from "valtio";
 
 import "@/utils/_bentPlaneGeometry";
 
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
+  const { sbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
   const [hovered, hover] = useState(false);
@@ -73,7 +75,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         total={3}
         setStep={(step: number) => (state.sbSelectedModal = step)}
       />
-      <ModalNav visible={showUI} />
+      <ModalNav
+        visible={showUI}
+        modalStep={sbSelectedModal}
+        setModalStep={step => (state.sbSelectedModal = step)}
+      />
 
       <e.group theatreKey="sandboxes-content/view">
         <Image

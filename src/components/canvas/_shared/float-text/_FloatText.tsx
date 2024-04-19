@@ -54,8 +54,8 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
             <MeshTransmissionMaterial
               backside
               backsideThickness={2}
-              roughness={0.2}
-              metalness={2}
+              roughness={0.1}
+              metalness={1}
               thickness={2}
               clearcoat={1}
               clearcoatRoughness={0.5}
@@ -84,12 +84,7 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
         )}
 
         {annotation !== undefined && (
-          <Annotation
-            visible={hovered}
-            // text={annotation}
-            text="Explore"
-            position={annotationPosition}
-          />
+          <Annotation visible={hovered} text={annotation} position={annotationPosition} />
         )}
       </Float>
     </e.group>

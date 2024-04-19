@@ -32,10 +32,10 @@ const _ = () => {
         }
       );
     }
-    gsap.delayedCall(3, () => (state.hoveredStep = 1));
-    gsap.delayedCall(5, () => (state.hoveredStep = 2));
-    gsap.delayedCall(7, () => (state.hoveredStep = 3));
-    gsap.delayedCall(9, () => (state.hoveredStep = null));
+    gsap.delayedCall(2, () => (state.hoveredStep = 1));
+    gsap.delayedCall(3.5, () => (state.hoveredStep = 2));
+    gsap.delayedCall(5, () => (state.hoveredStep = 3));
+    gsap.delayedCall(8, () => (state.hoveredStep = null));
   }, [ready, id]);
 
   useEffect(() => {

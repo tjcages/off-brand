@@ -28,11 +28,12 @@ const _ = () => {
         <Content
           visible={wbSelectedModal === 1}
           url={"/textures/stripe/workbench/ui1.png"}
-          position={[0, -0.5, 1]}
+          position={[0, -0.4, 0.8]}
           size={{
             width: 3,
             height: 1.47
           }}
+          bottom
         />
         <Modal
           theatreKey="wb-modal-1"
@@ -43,7 +44,7 @@ const _ = () => {
             label: "Visit workbench",
             href: "https://stripe.com"
           }}
-          position={[1.5, 1, 0]}
+          position={[1.5, 0.9, 0]}
         />
       </group>
 
@@ -52,18 +53,19 @@ const _ = () => {
         <Content
           visible={wbSelectedModal === 2}
           url={"/textures/stripe/workbench/ui2.png"}
-          position={[0, -0.5, 1]}
+          position={[0, -0.55, 0.8]}
           size={{
             width: 3,
             height: 1.47
           }}
+          bottom
         />
         <Modal
           theatreKey="wb-modal-2"
           visible={wbSelectedModal === 2}
           title="Shell and API Explorer"
           description="Understand API resources available using the API explorer and build runnable commands in the shell. Once it's ready, print the copy-and-paste ready code snippet in your language of choice."
-          position={[-1.5, 1, 0]}
+          position={[-1.5, 0.8, 0]}
         />
       </group>
 
@@ -72,12 +74,12 @@ const _ = () => {
         <Content
           visible={wbSelectedModal === 3}
           url={"/textures/stripe/workbench/ui3.png"}
-          position={[0, -0.5, 1]}
+          position={[0, -0.4, 0.8]}
           size={{
             width: 3,
             height: 1.47
           }}
-          scaleGlow={0.5}
+          bottom
         />
         <Modal
           theatreKey="wb-modal-3"

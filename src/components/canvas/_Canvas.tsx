@@ -11,15 +11,7 @@ import { gsap } from "gsap";
 import { Suspense, useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
 
-import {
-  Characters,
-  Environment,
-  FeatureTitle,
-  FloatText,
-  Grid,
-  Lighting,
-  Postprocessing
-} from "./_shared";
+import { Characters, Environment, FloatText, Grid, Lighting, Postprocessing } from "./_shared";
 import EventDestinations from "./event-destinations";
 import Sandboxes from "./sandboxes";
 import Workbench from "./workbench";
@@ -105,7 +97,6 @@ const _ = () => {
           annotation="Event Destinations"
           annotationPosition={[1.25, -0.25, 0]}
         />
-        <FeatureTitle position={[0, 3.1, -1]} />
       </group>
 
       <Sandboxes />

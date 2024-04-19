@@ -14,6 +14,7 @@ interface Props {
     height: number;
   };
   scaleGlow?: number;
+  bottom?: boolean;
 }
 
 const _ = ({
@@ -24,7 +25,8 @@ const _ = ({
     width: 2,
     height: 1.5
   },
-  scaleGlow = 1
+  scaleGlow = 1,
+  bottom
 }: Props) => {
   const containerRef = useRef() as React.MutableRefObject<THREE.Group>;
   const imageRef = useRef() as React.MutableRefObject<THREE.Mesh>;
@@ -40,14 +42,6 @@ const _ = ({
         delay: 0.5,
         ease: "expo.in"
       });
-      gsap.to(containerRef.current.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
-        duration: 0.5,
-        delay: 0.5,
-        ease: "expo.inOut"
-      });
       gsap.to(glowRef.current.scale, {
         x: size.width * 3 * scaleGlow,
         y: size.height * scaleGlow,
@@ -56,18 +50,28 @@ const _ = ({
         delay: 0.25,
         ease: "expo.inOut"
       });
+      if (bottom)
+        gsap.to(imageRef.current.position, {
+          y: 0,
+          duration: 0.5,
+          delay: 0.5,
+          ease: "expo.inOut"
+        });
+      else
+        gsap.to(containerRef.current.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.5,
+          delay: 0.5,
+          ease: "expo.inOut"
+        });
     } else {
       gsap.to(imageRef.current.material, {
         opacity: 0,
         duration: 0.25,
-        ease: "expo.in"
-      });
-      gsap.to(containerRef.current.scale, {
-        x: 0.5,
-        y: 0.5,
-        z: 0.5,
-        duration: 0.5,
-        ease: "expo.out"
+        ease: "expo.in",
+        overwrite: true
       });
       gsap.to(glowRef.current.scale, {
         x: 0,
@@ -77,8 +81,25 @@ const _ = ({
         ease: "expo.out",
         overwrite: true
       });
+      if (bottom)
+        gsap.to(imageRef.current.position, {
+          y: -4,
+          duration: 1,
+          delay: 0.5,
+          ease: "expo.inOut",
+          overwrite: true
+        });
+      else
+        gsap.to(containerRef.current.scale, {
+          x: 0.5,
+          y: 0.5,
+          z: 0.5,
+          duration: 0.5,
+          ease: "expo.out",
+          overwrite: true
+        });
     }
-  }, [scaleGlow, size.height, size.width, visible]);
+  }, [bottom, position, scaleGlow, size.height, size.width, visible]);
 
   useEffect(() => {
     if (hovered) {
@@ -99,7 +120,7 @@ const _ = ({
   }, [hovered, size.height, size.width]);
 
   return (
-    <group ref={containerRef} position={position} scale={0} renderOrder={1}>
+    <group ref={containerRef} position={position} renderOrder={1}>
       <Image
         ref={imageRef}
         url={url}
