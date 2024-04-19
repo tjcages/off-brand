@@ -5,10 +5,12 @@ type State = {
   loaded: boolean;
   ready: boolean;
 
-  step: number | null;
+  // Steps
   hoveredStep: number | null;
   selectedStep: number | null;
-  isIntro: boolean;
+  sbSelectedModal?: number;
+  wbSelectedModal?: number;
+  edSelectedModal?: number;
 
   // User Controls
   hasSoundPermission?: boolean;
@@ -19,10 +21,11 @@ export const state = proxy({
   loaded: false,
   ready: false,
 
-  step: null,
   hoveredStep: null,
   selectedStep: null,
-  isIntro: true,
+  sbSelectedModal: undefined,
+  wbSelectedModal: undefined,
+  edSelectedModal: undefined,
 
   // User Controls
   hasSoundPermission: undefined

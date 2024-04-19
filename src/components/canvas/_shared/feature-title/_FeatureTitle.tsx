@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
 import { useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -7,12 +8,13 @@ import { ScrambleText } from "@/components/ui/_shared";
 
 interface Props {
   text?: string;
+  description?: string;
   position?: [number, number, number];
   scale?: [number, number, number] | number;
   visible?: boolean;
 }
 
-const _ = ({ text, position, scale, visible = true }: Props) => {
+const _ = ({ text, description, position, scale, visible = true }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
 
@@ -36,9 +38,21 @@ const _ = ({ text, position, scale, visible = true }: Props) => {
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
       <Html transform>
-        <h3 className="text-white">
-          <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
-        </h3>
+        <div className="flex flex-col items-center justify-center text-white">
+          <h3>
+            <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
+          </h3>
+          {description !== undefined && (
+            <p
+              className={cn(
+                "text-[7px] transition-opacity duration-500 ease-in-out",
+                visible ? "opacity-70 delay-1000" : "opacity-0 delay-0"
+              )}
+            >
+              {description}
+            </p>
+          )}
+        </div>
       </Html>
     </group>
   );

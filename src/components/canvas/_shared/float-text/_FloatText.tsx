@@ -20,10 +20,7 @@ interface Props {
 
 const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
   const { hoveredStep } = useSnapshot(state);
-  const texture = useLoader(
-    RGBELoader,
-    "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr"
-  );
+  const texture = useLoader(RGBELoader, "/textures/texture.hdr");
 
   // Debounce hover a bit to stop the ticker from being erratic
   const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);

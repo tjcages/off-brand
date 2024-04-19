@@ -1,18 +1,16 @@
 "use client";
 
 import { state } from "@/store";
-import { cn } from "@/utils";
 import { gsap } from "gsap";
-import Image from "next/image";
 import { Suspense, useEffect } from "react";
 import { useSnapshot } from "valtio";
 
-import { Background, Controls, Loader, LoaderIndicators, PlusCorners } from "./_shared";
+import { Background, Controls, Header, Loader, LoaderIndicators, PlusCorners } from "./_shared";
 import Content from "./content";
 
 const _ = () => {
   const id = "ui";
-  const { ready, selectedStep } = useSnapshot(state);
+  const { selectedStep } = useSnapshot(state);
 
   useEffect(() => {
     if (selectedStep && selectedStep > 1 && selectedStep !== 5) {
@@ -34,17 +32,8 @@ const _ = () => {
     <section>
       <Background />
       <Loader />
-      <Image
-        className={cn(
-          "absolute z-10 left-8 top-8 w-auto h-6 opacity-0 cursor-pointer pointer-events-auto stripe-outline transition-opacity duration-1000 ease-out",
-          ready && "opacity-30 hover:opacity-50"
-        )}
-        src="/icons/stripe-logo.png"
-        alt="stripe"
-        width={100}
-        height={50}
-        onClick={() => (state.selectedStep = 1)}
-      />
+      <Header />
+      {/* {(selectedStep || 0) > 1 && <ModalNav />} */}
 
       <Suspense>
         <div
