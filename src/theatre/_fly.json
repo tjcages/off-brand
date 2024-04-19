@@ -653,13 +653,13 @@
           },
           "event-destinations-content": {
             "position": {
-              "x": 1.5,
-              "z": -18,
-              "y": 3
+              "x": 3.610000000000001,
+              "z": -16.24999999999991,
+              "y": 3.529999999999997
             },
             "rotation": {
-              "y": -0.325,
-              "z": -0.05
+              "y": -0.9949999999999999,
+              "z": -0.1100000000000001
             }
           },
           "floats / float-text-sandboxes": {
@@ -827,7 +827,7 @@
                     "position": 7.4,
                     "connectedRight": true,
                     "handles": [0.5, 1, 0.5, 0],
-                    "value": 2.4
+                    "value": 3
                   },
                   {
                     "id": "cFq4h6eefl",
@@ -868,7 +868,7 @@
                     "position": 7.4,
                     "connectedRight": true,
                     "handles": [0.5, 1, 0.5, 0],
-                    "value": -0.325
+                    "value": -0.625
                   },
                   {
                     "id": "vNNqv9KK1P",
@@ -2079,6 +2079,7 @@
   },
   "definitionVersion": "0.4.0",
   "revisionHistory": [
+    "KH8hmBVBJ9HYxlTB",
     "nKFs87m3YsWZCM2O",
     "hBoZa-d3K7Yjfrk7",
     "vGVdvaH80OgDeG2R",
