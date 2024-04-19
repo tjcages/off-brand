@@ -730,7 +730,7 @@
               "x": 0.060000000000000005
             },
             "position": {
-              "z": -0.08
+              "z": -0.2900000000000001
             }
           },
           "wb-page": {
@@ -2033,11 +2033,17 @@
                     "value": 1
                   }
                 ]
+              },
+              "YNaDtFEuZN": {
+                "type": "BasicKeyframedTrack",
+                "__debugName": "workbench-content / view:[\"position\",\"z\"]",
+                "keyframes": []
               }
             },
             "trackIdByPropPath": {
               "[\"scale\",\"x\"]": "_eRiyyE7Xa",
-              "[\"scale\",\"y\"]": "7618tH19dw"
+              "[\"scale\",\"y\"]": "7618tH19dw",
+              "[\"position\",\"z\"]": "YNaDtFEuZN"
             }
           },
           "opacity-sandboxes": {
@@ -2073,6 +2079,7 @@
   },
   "definitionVersion": "0.4.0",
   "revisionHistory": [
+    "nKFs87m3YsWZCM2O",
     "hBoZa-d3K7Yjfrk7",
     "vGVdvaH80OgDeG2R",
     "Hm0iQcvn_R-1epas",
