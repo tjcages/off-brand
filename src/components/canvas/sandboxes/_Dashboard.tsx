@@ -65,6 +65,10 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         text="Sandboxes"
         description="Collaborate better with isolated testing environments"
+        tag={{
+          text: "Public beta",
+          color: "blue"
+        }}
         position={[0, 1.7, 0]}
         scale={0.5}
       />
@@ -77,6 +81,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
       />
       <ModalNav
         visible={showUI}
+        position={[0, 0, -0.1]}
         modalStep={sbSelectedModal}
         setModalStep={step => (state.sbSelectedModal = step)}
       />

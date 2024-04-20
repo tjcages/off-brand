@@ -118,11 +118,11 @@ module.exports = {
             }
           },
           ".fs-5": {
-            fontSize: "clamp(1rem, 1.5vw, 1.55rem)",
+            fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
             fontWeight: 400,
 
             "@media (max-width: 768px)": {
-              fontSize: "1.4rem"
+              fontSize: "1.2rem"
             }
           },
           ".disclaimer": {

@@ -1,6 +1,8 @@
+import { state } from "@/store";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { useSnapshot } from "valtio";
 
 interface Props {
   visible?: boolean;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
+  const { selectedStep } = useSnapshot(state);
   const [hoveredNext, setHoverNext] = useState(false);
   const [hoveredLast, setHoverLast] = useState(false);
   const nextRef = useRef() as React.MutableRefObject<THREE.Mesh>;
@@ -18,27 +21,33 @@ const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
 
   const onClickNext = () => {
     if (modalStep === undefined) return;
-    if (modalStep > 2) return;
-    else setModalStep && setModalStep(modalStep + 1);
+    if (modalStep > 2) {
+      if (selectedStep === 2) state.selectedStep = 3;
+      else if (selectedStep === 3) state.selectedStep = 4;
+      else if (selectedStep === 4) state.selectedStep = 5;
+    } else setModalStep && setModalStep(modalStep + 1);
   };
 
   const onClickLast = () => {
     if (modalStep === undefined) return;
-    if (modalStep < 2) return;
-    else setModalStep && setModalStep(modalStep - 1);
+    if (modalStep < 2) {
+      if (selectedStep === 2) state.selectedStep = 1;
+      else if (selectedStep === 3) state.selectedStep = 2;
+      else if (selectedStep === 4) state.selectedStep = 3;
+    } else setModalStep && setModalStep(modalStep - 1);
   };
 
   useEffect(() => {
     if (!nextRef || !lastRef) return;
     if (visible) {
       gsap.to(nextRef.current.material, {
-        opacity: (modalStep || 0) > 2 ? 0 : 0.3,
+        opacity: 0.3,
         duration: 1,
         delay: 2,
         ease: "expo.in"
       });
       gsap.to(lastRef.current.material, {
-        opacity: (modalStep || 0) < 2 ? 0 : 0.3,
+        opacity: 0.3,
         duration: 1,
         delay: 2,
         ease: "expo.in"
@@ -64,13 +73,13 @@ const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
     if (!visible) return;
     if (hoveredNext) {
       gsap.to(nextRef.current.material, {
-        opacity: (modalStep || 0) > 2 ? 0 : 0.5,
+        opacity: 0.5,
         duration: 0.5,
         ease: "expo.in"
       });
     } else {
       gsap.to(nextRef.current.material, {
-        opacity: (modalStep || 0) > 2 ? 0 : 0.3,
+        opacity: 0.3,
         duration: 0.5,
         ease: "expo.out"
       });
@@ -82,13 +91,13 @@ const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
     if (!visible) return;
     if (hoveredLast) {
       gsap.to(lastRef.current.material, {
-        opacity: (modalStep || 0) < 2 ? 0 : 0.5,
+        opacity: 0.5,
         duration: 0.5,
         ease: "expo.in"
       });
     } else {
       gsap.to(lastRef.current.material, {
-        opacity: (modalStep || 0) < 2 ? 0 : 0.3,
+        opacity: 0.3,
         duration: 0.5,
         ease: "expo.out"
       });

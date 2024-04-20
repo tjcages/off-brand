@@ -11,6 +11,10 @@ import { gsap } from "gsap";
 import { Suspense, useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
 
+import EventsIcon from "@/components/canvas/_shared/float-text/_EventsIcon";
+import SandboxIcon from "@/components/canvas/_shared/float-text/_SandboxIcon";
+import WorkbenchIcon from "@/components/canvas/_shared/float-text/_WorkbenchIcon";
+
 import { Characters, Environment, FloatText, Grid, Lighting, Postprocessing } from "./_shared";
 import EventDestinations from "./event-destinations";
 import Sandboxes from "./sandboxes";
@@ -76,21 +80,21 @@ const _ = () => {
       {/* Placeholder for Effect glitch */}
       <FloatText text="" step={-1} />
       <group scale={0.6} position={[0, 0.25, -0.5]}>
-        <FloatText
+        <SandboxIcon
           step={1}
           id="sandboxes"
           text="</>"
           annotation="Sandboxes"
           annotationPosition={[0.25, 0, 1]}
         />
-        <FloatText
+        <WorkbenchIcon
           step={2}
           id="workbench"
           text="[...]"
           annotation="Workbench"
           annotationPosition={[0, 0, 2]}
         />
-        <FloatText
+        <EventsIcon
           step={3}
           id="events"
           text="{ }"

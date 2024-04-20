@@ -6,15 +6,22 @@ import { useSnapshot } from "valtio";
 
 import { ScrambleText } from "@/components/ui/_shared";
 
+import Tag from "./_Tag";
+
 interface Props {
   text?: string;
   description?: string;
+  tag?: {
+    text: string;
+    color: string;
+    x?: number;
+  };
   position?: [number, number, number];
   scale?: [number, number, number] | number;
   visible?: boolean;
 }
 
-const _ = ({ text, description, position, scale, visible = true }: Props) => {
+const _ = ({ text, description, tag, position, scale, visible = true }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
 
@@ -31,14 +38,10 @@ const _ = ({ text, description, position, scale, visible = true }: Props) => {
     }
   };
 
-  // useFrame(({ camera }) => {
-  //   if (ref.current) ref.current.lookAt(camera.position);
-  // });
-
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
       <Html transform>
-        <div className="flex flex-col items-center justify-center text-white">
+        <div className="relative flex flex-col items-center justify-center text-white">
           <h3>
             <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
           </h3>
@@ -52,6 +55,7 @@ const _ = ({ text, description, position, scale, visible = true }: Props) => {
               {description}
             </p>
           )}
+          {tag && <Tag tag={tag} visible={visible} />}
         </div>
       </Html>
     </group>

@@ -41,7 +41,7 @@ const _ = () => {
           title="Inspector"
           description="Go from a Stripe Dashboard customer or subscription to digging into its JSON in a click. Access the object's logs and state changes over time to better understand or debug your integration."
           cta={{
-            label: "Visit workbench",
+            label: "Visit Workbench",
             href: "https://stripe.com"
           }}
           position={[1.5, 0.9, 0]}

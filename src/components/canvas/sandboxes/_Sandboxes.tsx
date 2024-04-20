@@ -27,7 +27,11 @@ const _ = () => {
         <Content
           visible={sbSelectedModal === 1}
           url={"/textures/stripe/sandboxes/ui1.png"}
-          position={[0, -0.25, 1]}
+          position={[0, 0, 1]}
+          size={{
+            width: 2,
+            height: 1.48
+          }}
         />
         <Modal
           theatreKey="sb-modal-1"
@@ -49,6 +53,10 @@ const _ = () => {
           visible={sbSelectedModal === 2}
           url={"/textures/stripe/sandboxes/ui2.png"}
           position={[0, -0.25, 1]}
+          size={{
+            width: 2,
+            height: 1.5
+          }}
         />
         <Modal
           theatreKey="sb-modal-2"

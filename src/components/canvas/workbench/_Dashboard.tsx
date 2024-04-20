@@ -64,6 +64,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         text="Workbench"
         description="Monitor, iterate on, and debug Stripe integrations"
+        tag={{
+          text: "Beta coming soon",
+          color: "orange",
+          x: 25
+        }}
         position={[0, 1.7, 0]}
         scale={0.5}
       />
@@ -76,7 +81,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
       />
       <ModalNav
         visible={showUI}
-        position={[0, 0, -0.25]}
+        position={[0, 0, -0.4]}
         modalStep={wbSelectedModal}
         setModalStep={step => (state.wbSelectedModal = step)}
       />

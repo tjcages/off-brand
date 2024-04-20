@@ -2,13 +2,14 @@ import { state } from "@/store";
 // import { useId } from "@/utils";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSnapshot } from "valtio";
 
 const _ = () => {
   const id = "plus-corners";
   const { progress } = useProgress();
-  const { loaded } = useSnapshot(state);
+  const { loaded, selectedStep } = useSnapshot(state);
+  const [intro, setIntro] = useState(true);
 
   // Loading animation
   const loadingAnimation = useCallback(
@@ -39,6 +40,7 @@ const _ = () => {
           ease: "expo.in",
           onComplete: () => {
             state.ready = true;
+            setIntro(false);
           }
         });
         gsap.to(node, {
@@ -55,6 +57,46 @@ const _ = () => {
       }
     });
   };
+
+  const animateClose = (node: string, position: "tl" | "tr" | "bl" | "br") => {
+    gsap.to(node, {
+      x: 0,
+      y: "-100%",
+      top: "75%",
+      left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
+      bottom: undefined,
+      right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
+      duration: 1,
+      ease: "expo.inOut",
+      overwrite: true
+    });
+  };
+
+  const animateOpen = (node: string, position: "tl" | "tr" | "bl" | "br") => {
+    gsap.to(node, {
+      x: 0,
+      y: 0,
+      top: position === "tl" ? -4 : position === "tr" ? -4 : undefined,
+      left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
+      bottom: position === "bl" ? -20 : position === "br" ? -20 : undefined,
+      right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
+      duration: 1,
+      ease: "expo.out"
+    });
+  };
+
+  useEffect(() => {
+    if (!loaded || intro) return;
+    const nodes = [`#${id}-tl`, `#${id}-tr`, `#${id}-bl`, `#${id}-br`];
+    if (selectedStep && selectedStep > 1 && selectedStep < 5) {
+      nodes.forEach((node, index) => {
+        animateClose(node, ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br");
+      });
+    } else
+      nodes.forEach((node, index) => {
+        animateOpen(node, ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br");
+      });
+  }, [id, loaded, selectedStep, loadingAnimation, intro]);
 
   useEffect(() => {
     const nodes = [`#${id}-tl`, `#${id}-tr`, `#${id}-bl`, `#${id}-br`];
