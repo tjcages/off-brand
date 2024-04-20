@@ -70,7 +70,6 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
               background={texture}
             />
             <Edges visible={hovered} renderOrder={1000}>
-              {/* @ts-expect-error – type is infinitely deep */}
               <a.meshBasicMaterial color={"white"} depthTest={false} />
             </Edges>
           </Text3D>
