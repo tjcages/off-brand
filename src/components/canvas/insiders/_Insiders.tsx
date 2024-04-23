@@ -20,15 +20,15 @@ const _ = () => {
 
   return (
     <e.group theatreKey="insiders-content">
-      <FeatureTitle text="Get Early Access" visible={showModal} />
+      <FeatureTitle text="Try what's new—shape what's next" visible={showModal} />
       <Modal
         theatreKey="insiders-modal"
         visible={showModal}
-        title="Try what's new–shape what's next"
-        description="Join Stripe Insiders to access the latest developer tools before anyone else, and provide direct feedback to the teams building them."
+        title=""
+        description="Become a Stripe Insider to get early access to new developer tools, and provide feedback to the teams building them."
         cta={{
-          label: "insiders.stripe.dev",
-          href: "https://insiders.stripe.dev"
+          label: "Join Stripe Insiders",
+          href: "https://insiders.stripe.dev/t/welcome-to-stripe-insiders/5"
         }}
         position={[1.5, 0.9, 1]}
       />
