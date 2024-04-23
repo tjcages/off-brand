@@ -5,11 +5,19 @@ import * as THREE from "three";
 
 const _ = () => {
   const light = useRef() as React.MutableRefObject<THREE.SpotLight>;
+  const lightLlama = useRef() as React.MutableRefObject<THREE.SpotLight>;
 
   useFrame((state, delta) => {
     easing.damp3(
       light.current.position,
       [state.pointer.x * 12, 0, 8 + state.pointer.y * 4],
+      0.2,
+      delta
+    );
+
+    easing.damp3(
+      lightLlama.current.position,
+      [state.pointer.x * 12, 0, 18 + state.pointer.y * 4],
       0.2,
       delta
     );
@@ -27,6 +35,18 @@ const _ = () => {
         angle={0.5}
         penumbra={0.5}
         ref={light}
+        castShadow
+        intensity={10}
+        shadow-mapSize={1024}
+        shadow-bias={-0.001}
+      >
+        <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 100]} />
+      </spotLight>
+
+      <spotLight
+        angle={0.5}
+        penumbra={0.5}
+        ref={lightLlama}
         castShadow
         intensity={10}
         shadow-mapSize={1024}

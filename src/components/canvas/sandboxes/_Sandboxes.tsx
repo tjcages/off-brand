@@ -27,7 +27,7 @@ const _ = () => {
         <Content
           visible={sbSelectedModal === 1}
           url={"/textures/stripe/sandboxes/ui1.png"}
-          position={[0, 0, 1]}
+          position={[0, -0.1, 1.25]}
           size={{
             width: 2,
             height: 1.48
@@ -52,7 +52,7 @@ const _ = () => {
         <Content
           visible={sbSelectedModal === 2}
           url={"/textures/stripe/sandboxes/ui2.png"}
-          position={[0, -0.25, 1]}
+          position={[0, -0.25, 1.25]}
           size={{
             width: 2,
             height: 1.5
@@ -73,7 +73,7 @@ const _ = () => {
         <Content
           visible={sbSelectedModal === 3}
           url={"/textures/stripe/sandboxes/ui3.png"}
-          position={[-1.1, 0.6, 1]}
+          position={[-1.1, 0.6, 1.1]}
           size={{
             width: 1,
             height: 0.79

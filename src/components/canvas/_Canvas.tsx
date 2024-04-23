@@ -4,7 +4,7 @@ import { state } from "@/store";
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { val } from "@theatre/core";
-import { PerspectiveCamera, useCurrentSheet } from "@theatre/r3f";
+import { useCurrentSheet } from "@theatre/r3f";
 // import extension from "@theatre/r3f/dist/extension";
 // import studio from "@theatre/studio";
 import { gsap } from "gsap";
@@ -15,8 +15,17 @@ import EventsIcon from "@/components/canvas/_shared/float-text/_EventsIcon";
 import SandboxIcon from "@/components/canvas/_shared/float-text/_SandboxIcon";
 import WorkbenchIcon from "@/components/canvas/_shared/float-text/_WorkbenchIcon";
 
-import { Characters, Environment, FloatText, Grid, Lighting, Postprocessing } from "./_shared";
+import {
+  Camera,
+  Characters,
+  Environment,
+  FloatText,
+  Grid,
+  Lighting,
+  Postprocessing
+} from "./_shared";
 import EventDestinations from "./event-destinations";
+import Insiders from "./insiders";
 import Sandboxes from "./sandboxes";
 import Workbench from "./workbench";
 
@@ -78,7 +87,7 @@ const _ = () => {
       <Lighting />
 
       {/* Placeholder for Effect glitch */}
-      <FloatText text="" step={-1} />
+      <FloatText scale={0} text="" />
       <group scale={0.6} position={[0, 0.25, -0.5]}>
         <SandboxIcon
           step={1}
@@ -106,24 +115,18 @@ const _ = () => {
       <Sandboxes />
       <Workbench />
       <EventDestinations />
+      <Insiders />
 
       <Grid color="#222222" />
 
-      <group position={[0, 1, -2]} visible={selectedStep === null || selectedStep < 2}>
+      <group position={[0, 1, -2]}>
         <Characters />
       </group>
 
       <Postprocessing />
       <Environment background={false} />
 
-      <PerspectiveCamera
-        makeDefault
-        theatreKey="Camera"
-        position={[0, 0, 25]}
-        fov={50}
-        near={0.1}
-        far={70}
-      />
+      <Camera />
     </Suspense>
   );
 };

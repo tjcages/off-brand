@@ -62,6 +62,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
     <>
       <FeatureTitle
         visible={showUI}
+        icon
         text="Event Destinations"
         description="Send Stripe events to cloud destinations"
         tag={{

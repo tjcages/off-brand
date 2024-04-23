@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const minTime = 2;
+const minTime = 1.5;
 
 const _ = () => {
   const id = "loader";

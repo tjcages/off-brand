@@ -11,14 +11,28 @@ import { useSnapshot } from "valtio";
 import Annotation from "@/components/canvas/_shared/annotation/_Annotation";
 
 interface Props {
-  step: number;
+  step?: number;
   id?: string;
-  text: string;
+  text?: string;
+  position?: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number;
   annotation?: string;
   annotationPosition?: [number, number, number];
+  float?: boolean;
 }
 
-const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
+const _ = ({
+  step,
+  id,
+  text,
+  position,
+  rotation,
+  scale = 1,
+  annotation,
+  annotationPosition,
+  float = true
+}: Props) => {
   const { hoveredStep } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,7 +40,7 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
 
   // Debounce hover a bit to stop the ticker from being erratic
   const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);
-  const over = (hover: number) => (e: ThreeEvent<PointerEvent>) => (
+  const over = (hover?: number) => (e: ThreeEvent<PointerEvent>) => (
     e.stopPropagation(), debouncedHover(hover)
   );
 
@@ -46,10 +60,12 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
       theatreKey={"floats/float-" + id}
       onPointerOver={over(step)}
       onPointerOut={() => debouncedHover(null)}
-      onClick={() => (state.selectedStep = step + 1)}
-      scale={text === "" ? 0 : 1}
+      onClick={() => (state.selectedStep = (step || 0) + 1)}
+      position={position}
+      rotation={rotation}
+      scale={scale}
     >
-      <Float floatIntensity={2} renderOrder={10}>
+      <Float floatIntensity={float ? 2 : 0} renderOrder={10}>
         <a.group scale={wobble}>
           <mesh geometry={nodes.Shape_0.geometry} scale={[0.11, 0.11, 0.11]} position={[0, 1, 0]}>
             <MeshTransmissionMaterial

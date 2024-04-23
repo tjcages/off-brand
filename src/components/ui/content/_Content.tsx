@@ -39,7 +39,7 @@ const _ = () => {
   }, [ready, id]);
 
   useEffect(() => {
-    if (selectedStep && selectedStep > 1 && selectedStep !== 5) {
+    if (selectedStep && selectedStep > 1) {
       gsap.to(`#${id}-intro`, {
         opacity: 0,
         duration: 0.25,

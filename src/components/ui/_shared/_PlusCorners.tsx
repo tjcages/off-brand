@@ -36,10 +36,9 @@ const _ = () => {
         gsap.to(node, {
           y: position === "tl" ? -20 : position === "bl" ? 20 : 0,
           duration: 1,
-          delay: 1.5,
+          delay: 0.5,
           ease: "expo.in",
           onComplete: () => {
-            state.ready = true;
             setIntro(false);
           }
         });
@@ -54,6 +53,7 @@ const _ = () => {
           delay: 2.5,
           ease: "expo.out"
         });
+        gsap.delayedCall(1, () => (state.ready = true));
       }
     });
   };

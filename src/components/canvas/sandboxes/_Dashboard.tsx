@@ -63,11 +63,13 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
     <>
       <FeatureTitle
         visible={showUI}
+        icon
         text="Sandboxes"
         description="Collaborate better with isolated testing environments"
         tag={{
-          text: "Public beta",
-          color: "blue"
+          text: "Beta",
+          color: "blue",
+          x: -5
         }}
         position={[0, 1.7, 0]}
         scale={0.5}

@@ -9,7 +9,7 @@ interface Props {
 const _ = ({ background = true }: Props) => {
   return (
     <Environment
-      preset="sunset"
+      // preset="sunset"
       resolution={1024}
       frames={Infinity}
       background={background}

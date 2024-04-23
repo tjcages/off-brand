@@ -62,12 +62,13 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
     <>
       <FeatureTitle
         visible={showUI}
+        icon
         text="Workbench"
         description="Monitor, iterate on, and debug Stripe integrations"
         tag={{
           text: "Beta coming soon",
           color: "orange",
-          x: 25
+          x: -5
         }}
         position={[0, 1.7, 0]}
         scale={0.5}

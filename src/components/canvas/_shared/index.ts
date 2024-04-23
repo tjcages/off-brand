@@ -1,4 +1,5 @@
 import Annotation from "./annotation";
+import Camera from "./camera";
 import Environment from "./environment";
 import FeatureTitle from "./feature-title";
 import FloatText from "./float-text";
@@ -17,5 +18,6 @@ export {
   Postprocessing,
   FloatText,
   Glow,
-  FeatureTitle
+  FeatureTitle,
+  Camera
 };

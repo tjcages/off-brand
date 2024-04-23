@@ -13,7 +13,7 @@ const _ = () => {
   const { selectedStep } = useSnapshot(state);
 
   useEffect(() => {
-    if (selectedStep && selectedStep > 1 && selectedStep !== 5) {
+    if (selectedStep && selectedStep > 1) {
       gsap.to(`#${id}`, {
         height: 64,
         duration: 0.75,
