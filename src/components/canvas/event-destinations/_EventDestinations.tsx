@@ -28,10 +28,10 @@ const _ = () => {
         <Content
           visible={edSelectedModal === 1}
           url={"/textures/stripe/event-destinations/ui2.png"}
-          position={[0, 0, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.975
+            height: 1.62
           }}
           bottom
         />
@@ -40,7 +40,7 @@ const _ = () => {
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[1.2, -0.4, 0]}
+          position={[1.2, 0.2, 0]}
         />
       </group>
 
@@ -61,7 +61,7 @@ const _ = () => {
           visible={edSelectedModal === 2}
           title="Event management"
           description="Improved event selection makes it easier to select only the events that matter to your integration."
-          position={[-1.25, -0.2, 0]}
+          position={[-1.25, 0.1, 0]}
         />
       </group>
 
@@ -70,10 +70,10 @@ const _ = () => {
         <Content
           visible={edSelectedModal === 3}
           url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, 0, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.975
+            height: 1.62
           }}
           bottom
         />

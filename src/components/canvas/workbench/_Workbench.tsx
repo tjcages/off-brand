@@ -101,7 +101,7 @@ const _ = () => {
         <Modal
           theatreKey="wb-modal-4"
           visible={wbSelectedModal === 4}
-          title="Shell and API explorer"
+          title="Shell and API Explorer"
           description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
           position={[1.5, 1, 0]}
         />
