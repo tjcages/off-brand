@@ -63,9 +63,12 @@ const _ = () => {
     >
       <div
         id={id + "-intro"}
-        className="flex flex-col items-center justify-center gap-4 w-full pb-12 text-center"
+        className="flex flex-col items-center justify-center gap-4 w-full pb-12 text-center -translate-y-4"
       >
-        <h1 id={id + "-intro-title"} className="font-bold text-4xl gradient opacity-0">
+        <h1
+          id={id + "-intro-title"}
+          className="font-bold text-4xl leading-[2.7rem] gradient opacity-0"
+        >
           Developer experience, reimagined
         </h1>
         <p id={id + "-intro-description"} className="fs-5 text-gray-400 text-center opacity-0">
