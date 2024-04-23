@@ -70,10 +70,10 @@ const _ = () => {
         <Content
           visible={edSelectedModal === 3}
           url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, 0, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.975
+            height: 1.62
           }}
           bottom
         />
