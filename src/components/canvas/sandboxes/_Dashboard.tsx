@@ -72,8 +72,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         }}
         tag={{
           text: "Private Beta",
-          color: "blue",
-          x: 10
+          color: "blue"
         }}
         position={[0, 1.7, 0]}
         scale={0.5}
