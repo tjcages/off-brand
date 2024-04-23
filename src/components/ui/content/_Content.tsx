@@ -66,7 +66,7 @@ const _ = () => {
         className="flex flex-col items-center justify-center gap-4 w-full pb-12 text-center"
       >
         <h1 id={id + "-intro-title"} className="font-bold text-4xl gradient opacity-0">
-          Stripe's developer experience—reimagined
+        {`Stripe's developer experience—reimagined`}
         </h1>
         <p id={id + "-intro-description"} className="fs-5 text-gray-400 text-center opacity-0">
           Meet a new set of developer tools to make writing, testing, and pushing Stripe code easier
