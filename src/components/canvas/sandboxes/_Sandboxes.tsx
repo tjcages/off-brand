@@ -78,7 +78,7 @@ const _ = () => {
           theatreKey="sb-modal-3"
           visible={sbSelectedModal === 3}
           title="Sandbox-only access"
-          description="Limit access to sensitive business data with sandbox-only access, perfect for onboarding external partners."
+          description="Limit access to sensitive business data with sandbox-only access, perfect for working with external partners."
           position={[-1.25, -0.125, 0.5]}
         />
       </group>
