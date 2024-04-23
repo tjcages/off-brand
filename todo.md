@@ -1,7 +1,7 @@
 -[x] move cta for each feature below header instead of modal (copy in doc) – inline
 -[] modal cta can be next instead
 -[] move icons into the arrows at the bottom
--[] tooltip over the bottom arrows
+-[x] tooltip over the bottom arrows
 -[x] slow down background floaties
 -[] change floaties in background
 -[] fix workbench & event destinations bottom slider
@@ -30,3 +30,4 @@
 -[x] copy tweaks
 -[x] new images
 -[x] tweak insiders content
+-[x] add analytics

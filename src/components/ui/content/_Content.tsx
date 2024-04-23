@@ -3,12 +3,13 @@
 import { state } from "@/store";
 // import { useId } from "@/utils";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
 
 const _ = () => {
   const id = "content";
-  const { ready, selectedStep } = useSnapshot(state);
+  const { ready, selectedStep, userHovered } = useSnapshot(state);
+  const hasUserHovered = useRef(false);
 
   useEffect(() => {
     if (!ready) return;
@@ -32,10 +33,10 @@ const _ = () => {
         }
       );
     }
-    gsap.delayedCall(2, () => (state.hoveredStep = 1));
-    gsap.delayedCall(3.5, () => (state.hoveredStep = 2));
-    gsap.delayedCall(5, () => (state.hoveredStep = 3));
-    gsap.delayedCall(8, () => (state.hoveredStep = null));
+    gsap.delayedCall(2, () => !hasUserHovered.current && (state.hoveredStep = 1));
+    gsap.delayedCall(3.5, () => !hasUserHovered.current && (state.hoveredStep = 2));
+    gsap.delayedCall(5, () => !hasUserHovered.current && (state.hoveredStep = 3));
+    gsap.delayedCall(8, () => !hasUserHovered.current && (state.hoveredStep = null));
   }, [ready, id]);
 
   useEffect(() => {
@@ -55,6 +56,10 @@ const _ = () => {
       });
     }
   }, [selectedStep, id]);
+
+  useEffect(() => {
+    if (userHovered && !hasUserHovered.current) hasUserHovered.current = true;
+  }, [userHovered]);
 
   return (
     <div
