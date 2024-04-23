@@ -64,7 +64,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         icon
         text="Event Destinations"
-        description="Stripe webhooks, rebuilt for the cloud."
+        description="Stripe events, delivered to cloud destinations."
         cta={{
           label: "Request access",
           href: "https://insiders.stripe.dev/t/join-the-event-destinations-beta/54"
