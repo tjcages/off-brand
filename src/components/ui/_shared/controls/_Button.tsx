@@ -80,6 +80,7 @@ const _ = ({ step, next }: Props) => {
             selectedStep && selectedStep > step && "bg-white/50"
           )}
           onClick={() => {
+            state.hoveredStep = null;
             if (step === selectedStep) state.selectedStep = next;
             else state.selectedStep = step;
           }}
