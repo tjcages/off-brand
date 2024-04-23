@@ -37,12 +37,7 @@ const _ = () => {
           theatreKey="sb-modal-1"
           visible={sbSelectedModal === 1}
           title="Isolated sandboxes"
-          description="Work on feature branches in parallel or have a dedicated and isolated environment for
-              staging and development."
-          cta={{
-            label: "Visit Sandboxes",
-            href: "https://stripe.com"
-          }}
+          description="Create isolated testing environments for staging and development, or a feature branch."
           position={[-1.5, 0.5, 1]}
         />
       </group>
@@ -62,8 +57,7 @@ const _ = () => {
           theatreKey="sb-modal-2"
           visible={sbSelectedModal === 2}
           title="Templates"
-          description="Populate sandboxes with realistic test data templates available for SaaS or retail to
-        start testing quickly."
+          description="Start testing quickly with templates, which populate test data for common business models."
           position={[1.5, 0.65, 0.5]}
         />
       </group>
@@ -83,8 +77,8 @@ const _ = () => {
         <Modal
           theatreKey="sb-modal-3"
           visible={sbSelectedModal === 3}
-          title="Sandbox only access"
-          description="Reduce risk to exposing sensitive business data with sandbox only access, perfect when working with external vendors."
+          title="Sandbox-only access"
+          description="Limit access to sensitive business data with sandbox-only access, perfect for onboarding external partners."
           position={[-1.25, -0.125, 0.5]}
         />
       </group>

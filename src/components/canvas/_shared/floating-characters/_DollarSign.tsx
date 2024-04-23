@@ -65,7 +65,7 @@ const _Model = ({ index, z, speed, object }: Props) => {
 
 const count = 10;
 const depth = 1;
-const speed = 1;
+const speed = 0.5;
 
 const _ = () => {
   const easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2));

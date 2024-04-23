@@ -23,7 +23,7 @@ const _ = () => {
     <e.group theatreKey="workbench-content" position={[0, 2, -8]}>
       <Dashboard visible={selectedStep === 3} modalStep={wbSelectedModal} />
 
-      {/* Isolated workbench */}
+      {/* Introducing Workbench */}
       <group position={[0, 0, 0]}>
         <Content
           visible={wbSelectedModal === 1}
@@ -38,17 +38,13 @@ const _ = () => {
         <Modal
           theatreKey="wb-modal-1"
           visible={wbSelectedModal === 1}
-          title="Inspector"
-          description="Go from a Stripe Dashboard customer or subscription to digging into its JSON in a click. Access the object's logs and state changes over time to better understand or debug your integration."
-          cta={{
-            label: "Visit Workbench",
-            href: "https://stripe.com"
-          }}
+          title="Introducing Workbench"
+          description="See your Stripe integration’s health and activity with one tap. Summon Workbench from anywhere in the Stripe Dashboard."
           position={[1.5, 0.9, 0]}
         />
       </group>
 
-      {/* Templates */}
+      {/* Logging and events */}
       <group position={[0, 0.15, 0.025]}>
         <Content
           visible={wbSelectedModal === 2}
@@ -63,13 +59,13 @@ const _ = () => {
         <Modal
           theatreKey="wb-modal-2"
           visible={wbSelectedModal === 2}
-          title="Shell and API Explorer"
-          description="Understand API resources available using the API explorer and build runnable commands in the shell. Once it's ready, print the copy-and-paste ready code snippet in your language of choice."
+          title="Logging and events"
+          description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
           position={[-1.5, 0.8, 0]}
         />
       </group>
 
-      {/* Sandbox only access */}
+      {/* Inspector */}
       <group position={[0, 0, 0.05]}>
         <Content
           visible={wbSelectedModal === 3}
@@ -84,8 +80,29 @@ const _ = () => {
         <Modal
           theatreKey="wb-modal-3"
           visible={wbSelectedModal === 3}
-          title="Logging and events"
-          description="See a complete view of your integration logs and events. Excavate and troubleshoot with filter views to find exactly what you need by date, endpoint, response status, and more."
+          title="Inspector"
+          description="Peek under the hood at the JSON of any Stripe Dashboard object in a click. View the object’s logs and its state changes over time to understand or debug your integration."
+          position={[1.5, 1, 0]}
+        />
+      </group>
+
+      {/* Shell and API explorer */}
+      <group position={[0, 0, 0.075]}>
+        <Content
+          visible={wbSelectedModal === 4}
+          url={"/textures/stripe/workbench/ui4.png"}
+          position={[0, -0.4, 0.8]}
+          size={{
+            width: 3,
+            height: 1.47
+          }}
+          bottom
+        />
+        <Modal
+          theatreKey="wb-modal-4"
+          visible={wbSelectedModal === 4}
+          title="Shell and API explorer"
+          description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
           position={[1.5, 1, 0]}
         />
       </group>

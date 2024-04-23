@@ -8,10 +8,11 @@ interface Props {
   visible?: boolean;
   position?: [number, number, number];
   modalStep?: number;
+  lastStep?: number;
   setModalStep?: (step: number) => void;
 }
 
-const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
+const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) => {
   const { selectedStep } = useSnapshot(state);
   const [hoveredNext, setHoverNext] = useState(false);
   const [hoveredLast, setHoverLast] = useState(false);
@@ -21,7 +22,7 @@ const _ = ({ visible, position, modalStep, setModalStep }: Props) => {
 
   const onClickNext = () => {
     if (modalStep === undefined) return;
-    if (modalStep > 2) {
+    if (modalStep > lastStep - 1) {
       if (selectedStep === 2) state.selectedStep = 3;
       else if (selectedStep === 3) state.selectedStep = 4;
       else if (selectedStep === 4) state.selectedStep = 5;
