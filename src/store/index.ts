@@ -7,6 +7,7 @@ type State = {
 
   // Steps
   hoveredStep: number | null;
+  userHovered: boolean;
   selectedStep: number | null;
   sbSelectedModal?: number;
   wbSelectedModal?: number;
@@ -22,6 +23,7 @@ export const state = proxy({
   ready: false,
 
   hoveredStep: null,
+  userHovered: false,
   selectedStep: null,
   sbSelectedModal: undefined,
   wbSelectedModal: undefined,

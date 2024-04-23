@@ -19,16 +19,18 @@ interface Props {
 }
 
 const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
-  const { hoveredStep } = useSnapshot(state);
+  const { hoveredStep, userHovered } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF("/objects/icons/webhook.glb") as any;
 
   // Debounce hover a bit to stop the ticker from being erratic
   const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);
-  const over = (hover: number) => (e: ThreeEvent<PointerEvent>) => (
-    e.stopPropagation(), debouncedHover(hover)
-  );
+  const over = (hover: number) => (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    debouncedHover(hover);
+    if (!userHovered) state.userHovered = true;
+  };
 
   const hovered = step === hoveredStep;
   useCursor(hovered);

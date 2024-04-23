@@ -11,7 +11,7 @@ import { useSnapshot } from "valtio";
 import Annotation from "@/components/canvas/_shared/annotation/_Annotation";
 
 interface Props {
-  step?: number;
+  step: number;
   id?: string;
   text?: string;
   position?: [number, number, number];
@@ -33,16 +33,18 @@ const _ = ({
   annotationPosition,
   float = true
 }: Props) => {
-  const { hoveredStep } = useSnapshot(state);
+  const { hoveredStep, userHovered } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF("/objects/icons/sandbox.glb") as any;
 
   // Debounce hover a bit to stop the ticker from being erratic
   const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);
-  const over = (hover?: number) => (e: ThreeEvent<PointerEvent>) => (
-    e.stopPropagation(), debouncedHover(hover)
-  );
+  const over = (hover: number) => (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    debouncedHover(hover);
+    if (!userHovered) state.userHovered = true;
+  };
 
   const hovered = step === hoveredStep;
   useCursor(hovered);
@@ -94,7 +96,7 @@ const _ = ({
         </a.group>
 
         {text !== "" && (
-          <mesh position={[1, 0.25, 0.1]} visible={false}>
+          <mesh position={[1, 0.25, 0.2]} visible={false}>
             <planeGeometry args={[2, 1.5]} />
           </mesh>
         )}

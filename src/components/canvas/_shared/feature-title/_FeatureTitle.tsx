@@ -96,12 +96,13 @@ const _ = ({
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
       <Html transform>
-        <div className="relative flex flex-col items-center justify-center text-white">
-          <div className="flex items-center justify-center gap-1">
+        <div className="flex flex-col items-center justify-center text-white">
+          <div className="relative flex items-center justify-center gap-1">
             {getIcon()}
             <h3>
               <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
             </h3>
+            {tag && <Tag tag={tag} visible={visible} />}
           </div>
           <div
             className={cn(
@@ -114,12 +115,12 @@ const _ = ({
               <Link
                 href={cta.href}
                 target="_blank"
-                className="flex items-center justify-center gap-0.5 cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                className="flex items-center justify-center gap-0.5 text-[#2B9DF6] cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out"
               >
                 <p>{cta.label}</p>
                 <Image
                   className="w-1.5 h-auto mt-[1px]"
-                  src="/icons/arrow-right.png"
+                  src="/icons/arrow-blue.png"
                   alt="arrow"
                   width={24}
                   height={24}
@@ -127,7 +128,6 @@ const _ = ({
               </Link>
             )}
           </div>
-          {tag && <Tag tag={tag} visible={visible} />}
         </div>
       </Html>
     </group>

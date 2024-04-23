@@ -33,7 +33,6 @@ const _ = () => {
       <Background />
       <Loader />
       <Header />
-      {/* {(selectedStep || 0) > 1 && <ModalNav />} */}
 
       <Suspense>
         <div
