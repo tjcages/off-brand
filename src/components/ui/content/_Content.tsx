@@ -66,13 +66,11 @@ const _ = () => {
         className="flex flex-col items-center justify-center gap-4 w-full pb-12 text-center"
       >
         <h1 id={id + "-intro-title"} className="font-bold text-4xl gradient opacity-0">
-          Developer experience,
-          <br />
-          re-imagined
+          A reimagined, redesigned, and rebuilt developer experience
         </h1>
         <p id={id + "-intro-description"} className="fs-5 text-gray-400 text-center opacity-0">
-          Introducing a new set of developer tools to make iterating on, testing, and pushing Stripe
-          code easier than ever.
+          Meet a new set of developer tools to make writing, testing, and pushing Stripe code easier
+          than ever.
         </p>
       </div>
     </div>

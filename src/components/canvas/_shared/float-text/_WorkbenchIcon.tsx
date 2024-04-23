@@ -84,9 +84,8 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
         </a.group>
 
         {text !== "" && (
-          <mesh position={[1, 0.25, 1]}>
-            <planeGeometry args={[2, 1.5]} />
-            <meshBasicMaterial transparent opacity={0} />
+          <mesh position={[0, 1, 0.1]} visible={false}>
+            <planeGeometry args={[2, 2]} />
           </mesh>
         )}
 

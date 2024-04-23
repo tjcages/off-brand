@@ -65,11 +65,15 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         icon
         text="Sandboxes"
-        description="Collaborate better with isolated testing environments"
+        description="Test mode, reimagined for teams."
+        cta={{
+          label: "Request access",
+          href: "https://insiders.stripe.dev/t/join-the-sandboxes-beta/32"
+        }}
         tag={{
-          text: "Beta",
+          text: "Private Beta",
           color: "blue",
-          x: -5
+          x: 10
         }}
         position={[0, 1.7, 0]}
         scale={0.5}
@@ -91,7 +95,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
       <e.group theatreKey="sandboxes-content/view">
         <Image
           ref={ref}
-          url={"/textures/stripe/dashboard.png"}
+          url={"/textures/stripe/sandboxes/dashboard.png"}
           // @ts-expect-error –no alt prop
           alt="Sandboxes"
           onPointerOver={pointerOver}

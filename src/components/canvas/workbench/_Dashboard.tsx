@@ -64,11 +64,15 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         icon
         text="Workbench"
-        description="Monitor, iterate on, and debug Stripe integrations"
+        description="Developer tools, redesigned for where you work."
+        cta={{
+          label: "Join the beta",
+          href: "https://insiders.stripe.dev/t/join-the-workbench-beta/30"
+        }}
         tag={{
-          text: "Beta coming soon",
-          color: "orange",
-          x: -5
+          text: "Public Beta",
+          color: "blue",
+          x: 15
         }}
         position={[0, 1.7, 0]}
         scale={0.5}
@@ -77,13 +81,14 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         theatreKey="wb-page"
         visible={showUI}
         step={modalStep}
-        total={3}
+        total={4}
         setStep={(step: number) => (state.wbSelectedModal = step)}
       />
       <ModalNav
         visible={showUI}
         position={[0, 0, -0.4]}
         modalStep={wbSelectedModal}
+        lastStep={4}
         setModalStep={step => (state.wbSelectedModal = step)}
       />
 
@@ -99,7 +104,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           opacity={0}
         >
           {/* @ts-expect-error –yes it does exist... */}
-          <bentPlaneGeometry args={[0.025, 4, 2.8, 19, 19]} />
+          <bentPlaneGeometry args={[0.025, 4, 2.59, 19, 19]} />
         </Image>
       </e.group>
     </>

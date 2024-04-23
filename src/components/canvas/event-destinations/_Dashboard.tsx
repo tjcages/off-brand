@@ -64,10 +64,14 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         icon
         text="Event Destinations"
-        description="Send Stripe events to cloud destinations"
+        description="Stripe webhooks, rebuilt for the cloud."
+        cta={{
+          label: "Request access",
+          href: "https://insiders.stripe.dev/t/join-the-event-destinations-beta/54"
+        }}
         tag={{
-          text: "Private beta",
-          color: "green",
+          text: "Private Beta",
+          color: "blue",
           x: 45
         }}
         position={[0, 1.7, 0]}
@@ -99,7 +103,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           opacity={0}
         >
           {/* @ts-expect-error –yes it does exist... */}
-          <bentPlaneGeometry args={[0.025, 4, 2.8, 19, 19]} />
+          <bentPlaneGeometry args={[0.025, 4, 2.59, 19, 19]} />
         </Image>
       </e.group>
     </>

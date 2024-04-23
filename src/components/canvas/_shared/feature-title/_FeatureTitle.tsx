@@ -2,6 +2,8 @@ import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
 import { state } from "@/store";
 import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
+import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { useSnapshot } from "valtio";
 
@@ -12,6 +14,10 @@ import Tag from "./_Tag";
 interface Props {
   text?: string;
   description?: string;
+  cta?: {
+    label: string;
+    href: string;
+  };
   tag?: {
     text: string;
     color: string;
@@ -23,11 +29,18 @@ interface Props {
   icon?: boolean;
 }
 
-const _ = ({ text, description, tag, position, scale, visible = true, icon = false }: Props) => {
+const _ = ({
+  text,
+  description,
+  cta,
+  tag,
+  position,
+  scale,
+  visible = true,
+  icon = false
+}: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
-
-  console.log(text);
 
   const getTitle = () => {
     switch (hoveredStep) {
@@ -90,16 +103,30 @@ const _ = ({ text, description, tag, position, scale, visible = true, icon = fal
               <ScrambleText>{visible ? (text !== undefined ? text : getTitle()) : ""}</ScrambleText>
             </h3>
           </div>
-          {description !== undefined && (
-            <p
-              className={cn(
-                "text-[7px] transition-opacity duration-500 ease-in-out",
-                visible ? "opacity-70 delay-1000" : "opacity-0 delay-0"
-              )}
-            >
-              {description}
-            </p>
-          )}
+          <div
+            className={cn(
+              "flex items-center justify-center gap-0.5 text-[7px] transition-opacity duration-500 ease-in-out",
+              visible ? "opacity-100 delay-1000" : "opacity-0 delay-0"
+            )}
+          >
+            {description !== undefined && <p className="opacity-70">{description}</p>}
+            {cta && (
+              <Link
+                href={cta.href}
+                target="_blank"
+                className="flex items-center justify-center gap-0.5 cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+              >
+                <p>{cta.label}</p>
+                <Image
+                  className="w-1.5 h-auto mt-[1px]"
+                  src="/icons/arrow-right.png"
+                  alt="arrow"
+                  width={24}
+                  height={24}
+                />
+              </Link>
+            )}
+          </div>
           {tag && <Tag tag={tag} visible={visible} />}
         </div>
       </Html>
