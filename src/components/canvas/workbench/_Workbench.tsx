@@ -18,7 +18,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0, 0, 0] }: Props) => {
-  const { isMobile, isTablet } = useDevice();
+  const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, wbSelectedModal } = useSnapshot(state);
 
@@ -57,7 +57,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 1}
           title="Introducing Workbench"
           description="See your Stripe integration’s health and activity with one tap. Summon Workbench from anywhere in the Stripe Dashboard."
-          position={[1.5, 0.9, 0]}
+          position={[isMobile ? 0.3 : 1.5, isMobile ? 0.85 : 0.9, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -74,11 +74,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           bottom
         />
         <Modal
-          theatreKey="wb-modal-2"
           visible={wbSelectedModal === 2}
           title="Logging and events"
           description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
-          position={[-1.5, 0.8, 0]}
+          position={[isMobile ? -0.2 : -1.5, isMobile ? 0.7 : 0.8, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -95,11 +94,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           bottom
         />
         <Modal
-          theatreKey="wb-modal-3"
           visible={wbSelectedModal === 3}
           title="Inspector"
           description="Peek under the hood at the JSON of any Stripe Dashboard object in a click. View the object’s logs and its state changes over time to understand or debug your integration."
-          position={[1.5, 1, 0]}
+          position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -116,11 +114,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           bottom
         />
         <Modal
-          theatreKey="wb-modal-4"
           visible={wbSelectedModal === 4}
           title="Shell and API explorer"
           description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
-          position={[1.5, 1, 0]}
+          position={[isMobile ? -0.25 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
         />
       </group>
     </e.group>

@@ -62,7 +62,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[1.2, -0.4, 0]}
+          position={[isMobile ? 0.3 : 1.2, isMobile ? -0.05 : -0.4, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -83,7 +83,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 2}
           title="Event management"
           description="Improved event selection makes it easier to select only the events that matter to your integration."
-          position={[-1.25, -0.2, 0]}
+          position={[isMobile ? -0.4 : -1.25, isMobile ? -0.1 : -0.2, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -104,7 +104,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 3}
           title="Event monitoring"
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
-          position={[1.75, 1, 0]}
+          position={[isMobile ? 0.25 : 1.75, 1, isMobile ? 1.5 : 0]}
         />
       </group>
     </e.group>
