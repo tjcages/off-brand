@@ -12,8 +12,8 @@ import { useSnapshot } from "valtio";
 import "@/utils/_bentPlaneGeometry";
 
 import { FeatureTitle } from "@/components/canvas/_shared";
-import Pagination from "@/components/canvas/sandboxes//_Pagination";
 import ModalNav from "@/components/canvas/sandboxes/_ModalNav";
+import Pagination from "@/components/canvas/sandboxes/pagination";
 
 interface Props {
   visible: boolean;
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile } = useDevice();
   const { edSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
@@ -84,10 +84,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         step={modalStep}
         total={3}
         setStep={(step: number) => (state.edSelectedModal = step)}
+        position={[0, isMobile ? 0.25 : 0, isMobile ? 0.4 : 0]}
       />
       <ModalNav
         visible={showUI}
-        position={[0, 0, -0.3]}
+        position={[0, 0, isMobile ? 0 : -0.3]}
         modalStep={edSelectedModal}
         setModalStep={step => (state.edSelectedModal = step)}
       />

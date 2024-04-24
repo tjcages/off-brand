@@ -1,23 +1,17 @@
+import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
 import { useRef } from "react";
 import * as THREE from "three";
 
 const _ = () => {
+  const { isMobile } = useDevice();
   const light = useRef() as React.MutableRefObject<THREE.SpotLight>;
-  const lightLlama = useRef() as React.MutableRefObject<THREE.SpotLight>;
 
   useFrame((state, delta) => {
     easing.damp3(
       light.current.position,
       [state.pointer.x * 12, 0, 8 + state.pointer.y * 4],
-      0.2,
-      delta
-    );
-
-    easing.damp3(
-      lightLlama.current.position,
-      [state.pointer.x * 12, 0, 18 + state.pointer.y * 4],
       0.2,
       delta
     );
@@ -29,24 +23,14 @@ const _ = () => {
       <pointLight position={[10, -10, 0]} intensity={0.05} />
       <pointLight position={[0, 10, 0]} intensity={0.05} />
       <pointLight position={[-10, 0, 0]} intensity={0.05} />
-      <spotLight intensity={1} distance={7} angle={1} penumbra={1} position={[0, 0, 1]} />
+      {!isMobile && (
+        <spotLight intensity={1} distance={7} angle={1} penumbra={1} position={[0, 0, 1]} />
+      )}
 
       <spotLight
         angle={0.5}
         penumbra={0.5}
         ref={light}
-        castShadow
-        intensity={10}
-        shadow-mapSize={1024}
-        shadow-bias={-0.001}
-      >
-        <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 100]} />
-      </spotLight>
-
-      <spotLight
-        angle={0.5}
-        penumbra={0.5}
-        ref={lightLlama}
         castShadow
         intensity={10}
         shadow-mapSize={1024}

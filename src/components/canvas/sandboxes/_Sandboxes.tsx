@@ -17,7 +17,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, sbSelectedModal } = useSnapshot(state);
 
@@ -51,11 +51,10 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           }}
         />
         <Modal
-          theatreKey="sb-modal-1"
           visible={sbSelectedModal === 1}
           title="Isolated sandboxes"
           description="Create isolated testing environments for staging and development, or a feature branch."
-          position={[-1.5, 0.5, 1]}
+          position={[isMobile ? -0.25 : -1.2, isMobile ? 0.25 : -0.4, isMobile ? 1.5 : 0.5]}
         />
       </group>
 
@@ -71,11 +70,10 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           }}
         />
         <Modal
-          theatreKey="sb-modal-2"
           visible={sbSelectedModal === 2}
           title="Templates"
           description="Start testing quickly with templates, which populate test data for common business models."
-          position={[1.5, 0.65, 0.5]}
+          position={[isMobile ? 0.25 : 1.5, isMobile ? 0 : 0.65, isMobile ? 1.5 : 0.5]}
         />
       </group>
 
@@ -84,7 +82,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Content
           visible={sbSelectedModal === 3}
           url={"/textures/stripe/sandboxes/ui3.png"}
-          position={[-1.1, 0.6, 1.1]}
+          position={[isMobile ? -0.7 : -1.1, isMobile ? 0.4 : 0.6, isMobile ? 1.5 : 1.1]}
           size={{
             width: 1,
             height: 0.79
@@ -92,11 +90,10 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           scaleGlow={0.5}
         />
         <Modal
-          theatreKey="sb-modal-3"
           visible={sbSelectedModal === 3}
           title="Sandbox-only access"
           description="Limit access to sensitive business data with sandbox-only access, perfect for working with external partners."
-          position={[-1.25, -0.125, 0.5]}
+          position={[isMobile ? -0.25 : -1.25, isMobile ? 0.15 : -0.125, isMobile ? 1.5 : 0.5]}
         />
       </group>
     </e.group>

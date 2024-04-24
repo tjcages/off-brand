@@ -14,7 +14,7 @@ import "@/utils/_bentPlaneGeometry";
 import { FeatureTitle } from "@/components/canvas/_shared";
 
 import ModalNav from "./_ModalNav";
-import Pagination from "./_Pagination";
+import Pagination from "./pagination";
 
 interface Props {
   visible: boolean;
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   const { sbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
