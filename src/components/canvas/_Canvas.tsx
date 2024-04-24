@@ -131,7 +131,7 @@ const _ = () => {
         </group>
       )}
 
-      <Postprocessing />
+      {!isMobile && <Postprocessing />}
       <Environment background={false} />
 
       <Camera />
