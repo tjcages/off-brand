@@ -1,7 +1,7 @@
 export const seo = {
-  title: "Try what's new–shape what's next",
+  title: "Developer experience, reimagined | Stripe",
   description:
-    "Stripe Insiders is Stripe's early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
+    "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
   icons: [
     {
       rel: "icon",
@@ -10,21 +10,21 @@ export const seo = {
   ],
   openGraph: {
     type: "website",
-    url: "https://dev.stripe.com",
-    title: "Try what's new–shape what's next",
+    url: "https://stripe.dev",
+    title: "Developer experience, reimagined | Stripe",
     description:
-      "Stripe Insiders is Stripe's early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
+      "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "Stripe | NGDX"
+        alt: "Stripe Developers"
       }
     ]
   },
   twitter: {
-    site: "@stripe",
+    site: "@stripedev",
     card: "summary_large_image"
   },
   other: {

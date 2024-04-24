@@ -46,8 +46,8 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           url={"/textures/stripe/sandboxes/ui1.png"}
           position={[0, -0.1, 1.25]}
           size={{
-            width: 2,
-            height: 1.48
+            width: 1.8,
+            height: 1.33
           }}
         />
         <Modal
@@ -65,8 +65,8 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           url={"/textures/stripe/sandboxes/ui2.png"}
           position={[0, -0.25, 1.25]}
           size={{
-            width: 2,
-            height: 1.5
+            width: 1.8,
+            height: 1.35
           }}
         />
         <Modal

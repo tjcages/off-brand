@@ -50,10 +50,10 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 1}
           url={"/textures/stripe/event-destinations/ui2.png"}
-          position={[0, 0, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.975
+            height: 1.62
           }}
           bottom
         />
@@ -92,10 +92,10 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 3}
           url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, 0, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.975
+            height: 1.62
           }}
           bottom
         />

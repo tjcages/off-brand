@@ -115,7 +115,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         />
         <Modal
           visible={wbSelectedModal === 4}
-          title="Shell and API explorer"
+          title="Shell and API Explorer"
           description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
           position={[isMobile ? -0.25 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
         />
