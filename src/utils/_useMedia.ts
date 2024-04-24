@@ -35,26 +35,40 @@ const useMedia = (width: number) => {
 };
 
 const useDevice = () => {
-  const [mobile, setMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
-  const determine = () => {
-    if (typeof window === "undefined") {
-      return false;
+  const determineDevice = () => {
+    if (typeof window === "undefined" || window.innerWidth === undefined) {
+      return { mobile: false, tablet: false };
     }
-    if (window.innerWidth === undefined) {
-      return false;
-    }
-    if (window && window.innerWidth >= 768) {
-      return false;
-    }
-    return true;
+
+    const width = window.innerWidth;
+    return {
+      mobile: width < 768,
+      tablet: width >= 768 && width < 1024
+    };
   };
 
   useEffect(() => {
-    setMobile(determine());
+    const handleResize = () => {
+      const { mobile, tablet } = determineDevice();
+      setIsMobile(mobile);
+      setIsTablet(tablet);
+    };
+
+    handleResize(); // Initial check
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  return mobile;
+  return { isMobile, isTablet };
 };
+
+export default useDevice;
 
 export { useMedia, mobileBreakpoint, useDevice, isMobileSafari };

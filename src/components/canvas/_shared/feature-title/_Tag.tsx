@@ -10,7 +10,7 @@ interface Props {
 }
 
 const _ = ({ tag, visible = false }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   return (
     <span
       className={cn(

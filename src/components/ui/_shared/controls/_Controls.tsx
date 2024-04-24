@@ -9,7 +9,7 @@ import Button from "./_Button";
 
 const _ = () => {
   const id = "controls";
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   const { ready, selectedStep } = useSnapshot(state);
 
   useEffect(() => {

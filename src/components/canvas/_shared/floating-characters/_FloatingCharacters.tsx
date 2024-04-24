@@ -8,7 +8,6 @@ import Explorer from "./_Explorer";
 import FourTwo from "./_FourTwo";
 import Llama from "./_Llama";
 import Rocket from "./_Rocket";
-import Terminal from "./_Terminal";
 import Tilda from "./_Tilda";
 
 const _ = () => {
@@ -26,7 +25,7 @@ const _ = () => {
       <Tilda />
       <Developer />
       <Explorer />
-      <Terminal />
+      {/* <Terminal /> */}
       <Rocket />
     </group>
   );
