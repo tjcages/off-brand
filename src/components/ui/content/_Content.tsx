@@ -72,7 +72,7 @@ const _ = () => {
       >
         <h1
           id={id + "-intro-title"}
-          className="font-bold text-4xl leading-[2.7rem] gradient opacity-0"
+          className="font-bold text-3xl md:text-4xl leading-[2.7rem] gradient opacity-0"
         >
           Developer experience, reimagined
         </h1>

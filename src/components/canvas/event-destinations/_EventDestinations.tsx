@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
@@ -17,11 +18,12 @@ interface Props {
 }
 
 const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
+  const isMobile = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, edSelectedModal } = useSnapshot(state);
 
   useFrame(({ pointer }) => {
-    if (ref.current) {
+    if (ref.current && !isMobile) {
       ref.current.rotation.x = rotation[0] - pointer.y / 400;
       ref.current.rotation.y = rotation[1] + pointer.x / 50;
       ref.current.rotation.z = rotation[2] - pointer.y / 400;

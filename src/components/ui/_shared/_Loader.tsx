@@ -50,7 +50,7 @@ const _ = () => {
     <section className="pointer-events-none">
       <Image
         id={id}
-        className="opacity-0"
+        className="w-auto h-12 md:h-16 opacity-0"
         src="/icons/stripe-logo.png"
         alt="stripe"
         width={150}

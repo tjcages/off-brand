@@ -6,7 +6,7 @@ import { useSnapshot } from "valtio";
 const _ = () => {
   const { ready, selectedStep } = useSnapshot(state);
   return (
-    <div className="fixed left-0 right-0 top-0 flex items-center justify-between w-full gap-8 px-8 py-6">
+    <div className="fixed left-0 right-0 top-0 flex items-center justify-between w-full gap-8 px-4 md:px-8 py-3 md:py-6">
       <Image
         className={cn(
           "w-auto h-6 opacity-0 stripe-outline transition-opacity duration-1000 ease-out",

@@ -1,7 +1,6 @@
 import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
 import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
-import { editable as e } from "@theatre/r3f";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +9,6 @@ import "@/utils/_bentPlaneGeometry";
 import { ScrambleText } from "@/components/ui/_shared";
 
 interface Props {
-  theatreKey: string;
   visible: boolean;
   title?: string;
   description?: string;
@@ -25,9 +23,9 @@ interface Props {
   position?: [number, number, number];
 }
 
-const _ = ({ theatreKey, visible, title, description, cta, socials, position }: Props) => {
+const _ = ({ visible, title, description, cta, socials, position }: Props) => {
   return (
-    <e.group theatreKey={theatreKey} position={position} renderOrder={10}>
+    <group position={position} renderOrder={10}>
       <Html transform scale={0.175} pointerEvents="none">
         <div
           className={cn(
@@ -74,7 +72,7 @@ const _ = ({ theatreKey, visible, title, description, cta, socials, position }: 
                   className="cursor-pointer pointer-events-auto opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out"
                 >
                   <Image
-                    className="w-auto max-w-4 h-auto max-h-4"
+                    className="w-auto min-w-3 max-w-4 h-auto min-h-3 max-h-4"
                     src={icon}
                     alt="social icon"
                     width={24}
@@ -86,7 +84,7 @@ const _ = ({ theatreKey, visible, title, description, cta, socials, position }: 
           )}
         </div>
       </Html>
-    </e.group>
+    </group>
   );
 };
 
