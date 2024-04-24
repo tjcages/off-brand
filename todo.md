@@ -1,22 +1,22 @@
 -[x] move cta for each feature below header instead of modal (copy in doc) – inline
--[] modal cta can be next instead
--[] move icons into the arrows at the bottom
+-[x] modal cta can be next instead
+-[x] move icons into the arrows at the bottom
 -[x] tooltip over the bottom arrows
 -[x] slow down background floaties
--[] change floaties in background
+-[x] change floaties in background
 -[] fix workbench & event destinations bottom slider
 -[x] add a fourth modal (in copy doc)
 -[x] fix beta coming soon
--[] send image of glassy llama (glossy color + white)
+-[x] send image of glassy llama (glossy color + white)
 -[x] "Stripe Insiders" -> "Get early access"
 -[x] link color change to blue when hover
 -[x] floating characters moving at different speeds
 -[] glitching when page animates in
 -[] spinning llama at end
--[] x, youtube, & linkedin
+-[x] x, youtube, & linkedin
 -[x] workbench change to correct icon
 -[x] Get Early Access header cta
--[] social icons only on last page
+-[x] social icons only on last page
 -[] spam 4242 when clicking "4" or "2"
 -[] spam llamas when tapping "L"
 -[] add glass to edges of content
@@ -32,5 +32,5 @@
 -[x] tweak insiders content
 -[x] add analytics
 
--[] move icons + toolbar one to right + one more dot - switch to icons
+-[x] move icons + toolbar one to right + one more dot - switch to icons
 -[] detect reduced motion – stop camera movement & floating characters

@@ -1,11 +1,11 @@
 export const seo = {
   title: "Try what's new–shape what's next",
   description:
-    "Stripe Insiders is Stripe’s early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
+    "Stripe Insiders is Stripe's early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
   icons: [
     {
       rel: "icon",
-      url: "/favicon.ico"
+      url: "https://stripe.com/favicon.ico"
     }
   ],
   openGraph: {
@@ -13,7 +13,7 @@ export const seo = {
     url: "https://dev.stripe.com",
     title: "Try what's new–shape what's next",
     description:
-      "Stripe Insiders is Stripe’s early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
+      "Stripe Insiders is Stripe's early access program. Join to the latest developer tools and provide direct feedback to the teams that build them.",
     images: [
       {
         url: "/preview.png",

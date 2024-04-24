@@ -26,7 +26,7 @@ const _ = ({ theatreKey, visible, step = 0, total, setStep }: Props) => {
             <div
               key={i}
               className={cn(
-                "flex items-center justify-center w-8 h-8 rounded-full outline outline-2 cursor-pointer pointer-events-auto transition-all duration-1000 ease-in-out",
+                "flex items-center justify-center w-8 h-8 rounded-full outline outline-2 cursor-pointer pointer-events-auto transition-all duration-300 ease-out",
                 step === i + 1
                   ? "outline-offset-2 outline-white"
                   : "outline-offset-0 outline-white/0",

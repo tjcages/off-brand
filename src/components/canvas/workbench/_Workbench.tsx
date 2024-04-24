@@ -1,7 +1,8 @@
 import { state } from "@/store";
+import { useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
 
 import "@/utils/_bentPlaneGeometry";
@@ -11,16 +12,30 @@ import Modal from "@/components/canvas/sandboxes/_Modal";
 
 import Dashboard from "./_Dashboard";
 
-const _ = () => {
+interface Props {
+  rotation?: [number, number, number];
+}
+
+const _ = ({ rotation = [0, 0, 0] }: Props) => {
+  const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, wbSelectedModal } = useSnapshot(state);
 
+  useFrame(({ pointer }) => {
+    if (ref.current) {
+      ref.current.rotation.x = rotation[0] - pointer.y / 400;
+      ref.current.rotation.y = rotation[1] + pointer.x / 50;
+      ref.current.rotation.z = rotation[2] - pointer.y / 400;
+    }
+  });
+
   useEffect(() => {
-    if (selectedStep === 3) gsap.delayedCall(1.5, () => (state.wbSelectedModal = 1));
-    else state.wbSelectedModal = undefined;
+    if (selectedStep === 3 && state.wbSelectedModal === undefined)
+      gsap.delayedCall(1.5, () => (state.wbSelectedModal = 1));
+    else if ((selectedStep || 0) < 3) state.wbSelectedModal = undefined;
   }, [selectedStep]);
 
   return (
-    <e.group theatreKey="workbench-content" position={[0, 2, -8]}>
+    <e.group ref={ref} theatreKey="workbench-content" rotation={rotation} position={[0, 2, -8]}>
       <Dashboard visible={selectedStep === 3} modalStep={wbSelectedModal} />
 
       {/* Introducing Workbench */}

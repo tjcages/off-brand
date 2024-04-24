@@ -1,7 +1,8 @@
 import { state } from "@/store";
+import { useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
 
 import "@/utils/_bentPlaneGeometry";
@@ -10,16 +11,30 @@ import Content from "./_Content";
 import Dashboard from "./_Dashboard";
 import Modal from "./_Modal";
 
-const _ = () => {
+interface Props {
+  rotation?: [number, number, number];
+}
+
+const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
+  const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, sbSelectedModal } = useSnapshot(state);
 
+  useFrame(({ pointer }) => {
+    if (ref.current) {
+      ref.current.rotation.x = rotation[0] - pointer.y / 400;
+      ref.current.rotation.y = rotation[1] + pointer.x / 50;
+      ref.current.rotation.z = rotation[2] - pointer.y / 400;
+    }
+  });
+
   useEffect(() => {
-    if (selectedStep === 2) gsap.delayedCall(1.5, () => (state.sbSelectedModal = 1));
-    else state.sbSelectedModal = undefined;
+    if (selectedStep === 2 && state.sbSelectedModal === undefined)
+      gsap.delayedCall(1.5, () => (state.sbSelectedModal = 1));
+    else if ((selectedStep || 0) < 2) state.sbSelectedModal = undefined;
   }, [selectedStep]);
 
   return (
-    <e.group theatreKey="sandboxes-content" position={[0, 2, -8]}>
+    <e.group theatreKey="sandboxes-content" ref={ref} rotation={rotation} position={[0, 2, -8]}>
       <Dashboard visible={selectedStep === 2} modalStep={sbSelectedModal} />
 
       {/* Isolated sandboxes */}

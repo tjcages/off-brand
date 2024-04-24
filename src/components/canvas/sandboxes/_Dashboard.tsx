@@ -28,6 +28,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
   const [hovered, hover] = useState(false);
   const pointerOver = (e: ThreeEvent<PointerEvent>) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
+
   useFrame((_, delta) => {
     easing.damp(ref.current.material, "radius", hovered ? 0.03 : 0.025, 0.2, delta);
   });

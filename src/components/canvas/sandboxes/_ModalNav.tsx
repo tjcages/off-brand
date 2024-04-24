@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useKeyPress } from "@/utils";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -37,6 +38,9 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
       else if (selectedStep === 4) state.selectedStep = 3;
     } else setModalStep && setModalStep(modalStep - 1);
   };
+
+  useKeyPress("ArrowRight", onClickNext);
+  useKeyPress("ArrowLeft", onClickLast);
 
   useEffect(() => {
     if (!nextRef || !lastRef) return;
