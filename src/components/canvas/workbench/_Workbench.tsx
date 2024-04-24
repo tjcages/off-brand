@@ -45,10 +45,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 1}
           url={"/textures/stripe/workbench/ui1.png"}
-          position={[0, -0.4, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -57,7 +57,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 1}
           title="Introducing Workbench"
           description="See your Stripe integration’s health and activity with one tap. Summon Workbench from anywhere in the Stripe Dashboard."
-          position={[isMobile ? 0.3 : 1.5, isMobile ? 0.85 : 0.9, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.3 : 1.4, isMobile ? 0.85 : 0.7, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -66,10 +66,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 2}
           url={"/textures/stripe/workbench/ui2.png"}
-          position={[0, -0.55, 0.8]}
+          position={[0, -0.35, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -77,7 +77,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 2}
           title="Logging and events"
           description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
-          position={[isMobile ? -0.2 : -1.5, isMobile ? 0.7 : 0.8, isMobile ? 1.5 : 0]}
+          position={[isMobile ? -0.2 : -1.5, isMobile ? 0.7 : -1.03, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -97,7 +97,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 3}
           title="Inspector"
           description="Peek under the hood at the JSON of any API object. View the object’s request logs and state changes over time to understand and debug your integration."
-          position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : -0.7, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -106,10 +106,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 4}
           url={"/textures/stripe/workbench/ui4.png"}
-          position={[0, -0.4, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -117,7 +117,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 4}
           title="Shell and API Explorer"
           description="Build API requests with the API Explorer, and run them from the Shell. When you’re ready to code, use the generated snippets in the language you need."
-          position={[isMobile ? -0.25 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
+          position={[isMobile ? -0.25 : -1.5, isMobile ? 0.75 : 0.5, isMobile ? 1.5 : 0]}
         />
       </group>
     </e.group>

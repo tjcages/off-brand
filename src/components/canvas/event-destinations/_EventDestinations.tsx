@@ -50,19 +50,20 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 1}
           url={"/textures/stripe/event-destinations/ui2.png"}
-          position={[0, -0.2, 0.8]}
+          position={[0, -0.12, 0.8]}
           size={{
             width: 3,
-            height: 1.62
+            height: 1.8
           }}
           bottom
         />
+
         <Modal
           theatreKey="wb-modal-1"
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[isMobile ? 0.3 : 1.2, isMobile ? -0.05 : -0.4, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.3 : 1.3, isMobile ? 0.9 : 0.57, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -78,12 +79,13 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           }}
           bottom
         />
+
         <Modal
           theatreKey="wb-modal-2"
           visible={edSelectedModal === 2}
           title="Event management"
           description="Improved event selection makes it easier to select only the events that matter to your integration."
-          position={[isMobile ? -0.4 : -1.25, isMobile ? -0.1 : -0.2, isMobile ? 1.5 : 0]}
+          position={[isMobile ? -0.2 : -1.25, isMobile ? 0.75 : -0.2, isMobile ? 1.5 : 0]}
         />
       </group>
 
@@ -92,10 +94,10 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 3}
           url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, -0.2, 0.8]}
+          position={[0, -0.12, 0.8]}
           size={{
             width: 3,
-            height: 1.62
+            height: 1.8
           }}
           bottom
         />
@@ -104,7 +106,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 3}
           title="Event monitoring"
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
-          position={[isMobile ? 0.25 : 1.75, 1, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : -0.8, isMobile ? 1.5 : 0]}
         />
       </group>
     </e.group>
