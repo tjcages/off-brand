@@ -53,7 +53,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Modal
           visible={sbSelectedModal === 1}
           title="Isolated sandboxes"
-          description="Create isolated testing environments for staging and development, or a feature branch."
+          description="Create multiple, isolated testing environments for staging and development—or for each member of your team."
           position={[isMobile ? -0.25 : -1.2, isMobile ? 0.25 : -0.4, isMobile ? 1.5 : 0.5]}
         />
       </group>
@@ -72,7 +72,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Modal
           visible={sbSelectedModal === 2}
           title="Templates"
-          description="Start testing quickly with templates, which populate test data for common business models."
+          description="Seed data quickly with templates for common business models."
           position={[isMobile ? 0.25 : 1.5, isMobile ? 0 : 0.65, isMobile ? 1.5 : 0.5]}
         />
       </group>
@@ -91,8 +91,8 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         />
         <Modal
           visible={sbSelectedModal === 3}
-          title="Sandbox-only access"
-          description="Limit access to sensitive business data with sandbox-only access, perfect for working with external partners."
+          title="Locked-down Sandbox access"
+          description="Restrict users to Sandboxes, with no access to live business details—perfect for working with external partners."
           position={[isMobile ? -0.25 : -1.25, isMobile ? 0.15 : -0.125, isMobile ? 1.5 : 0.5]}
         />
       </group>

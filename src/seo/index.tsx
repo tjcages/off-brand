@@ -10,7 +10,7 @@ export const seo = {
   ],
   openGraph: {
     type: "website",
-    url: "https://stripe.dev",
+    url: "https://beta.stripe.dev",
     title: "Developer experience, reimagined | Stripe",
     description:
       "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
