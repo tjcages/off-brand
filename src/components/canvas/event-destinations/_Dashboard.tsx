@@ -22,7 +22,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const { isMobile, isTablet } = useDevice();
+  const { isMobile } = useDevice();
   const { edSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
