@@ -38,7 +38,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
       <Modal
         visible={showModal}
         title="Try what's new—shape what's next"
-        description="Become a Stripe Insider to get early access to new developer tools like Workbench, Sandboxes, and Event Destinations—and give feedback to the teams building them."
+        description="Become a Stripe Insider to get early access to new developer tools like Workbench and Sandboxes, and give feedback to the teams building them."
         cta={{
           label: "Join Stripe Insiders",
           href: "https://insiders.stripe.dev/t/welcome-to-stripe-insiders/5"
