@@ -68,13 +68,13 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         icon
         text="Sandboxes"
-        description="Test mode, reimagined for teams."
+        description="Test mode, evolved. Work safely in your own Sandbox."
         cta={{
           label: "Request access",
           href: "https://insiders.stripe.dev/t/join-the-sandboxes-beta/32"
         }}
         tag={{
-          text: "Private beta",
+          text: "Beta",
           color: "blue"
         }}
         position={[isMobile ? 0.1 : 0, isMobile ? 1.35 : 1.7, isMobile ? 2 : 0]}

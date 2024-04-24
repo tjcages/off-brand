@@ -96,7 +96,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Modal
           visible={wbSelectedModal === 3}
           title="Inspector"
-          description="Peek under the hood at the JSON of any Stripe Dashboard object in a click. View the object’s logs and its state changes over time to understand or debug your integration."
+          description="Peek under the hood at the JSON of any API object. View the object’s request logs and state changes over time to understand and debug your integration."
           position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
         />
       </group>
@@ -116,7 +116,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Modal
           visible={wbSelectedModal === 4}
           title="Shell and API Explorer"
-          description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
+          description="Build API requests with the API Explorer, and run them from the Shell. When you’re ready to code, use the generated snippets in the language you need."
           position={[isMobile ? -0.25 : 1.5, isMobile ? 0.75 : 1, isMobile ? 1.5 : 0]}
         />
       </group>
