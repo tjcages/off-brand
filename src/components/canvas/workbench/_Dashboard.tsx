@@ -72,7 +72,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           href: "https://insiders.stripe.dev/t/join-the-workbench-beta/30"
         }}
         tag={{
-          text: "Public Beta",
+          text: "Beta",
           color: "blue"
         }}
         position={[isMobile ? 0.2 : 0, isMobile ? 1.35 : 1.7, isMobile ? 1.5 : 0]}
