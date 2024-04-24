@@ -20,7 +20,7 @@ interface Props {
 }
 
 const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   const { hoveredStep, userHovered } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

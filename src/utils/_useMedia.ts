@@ -36,8 +36,9 @@ const useMedia = (width: number) => {
 
 const useDevice = () => {
   const [mobile, setMobile] = useState(false);
+  const [tablet, setTablet] = useState(false);
 
-  const determine = () => {
+  const determineMobile = () => {
     if (typeof window === "undefined") {
       return false;
     }
@@ -50,11 +51,25 @@ const useDevice = () => {
     return true;
   };
 
+  const determineTablet = () => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+    if (window.innerWidth === undefined) {
+      return false;
+    }
+    if (window && window.innerWidth >= 1024) {
+      return false;
+    }
+    return true;
+  };
+
   useEffect(() => {
-    setMobile(determine());
+    setMobile(determineMobile());
+    setTablet(determineTablet());
   }, []);
 
-  return mobile;
+  return { isMobile: mobile, isTablet: tablet };
 };
 
 export { useMedia, mobileBreakpoint, useDevice, isMobileSafari };

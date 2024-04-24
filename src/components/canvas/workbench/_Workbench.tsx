@@ -18,7 +18,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0, 0, 0] }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, wbSelectedModal } = useSnapshot(state);
 

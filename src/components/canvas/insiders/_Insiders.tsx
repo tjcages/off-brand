@@ -15,7 +15,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0, 0, 0] }: Props) => {
-  const isMobile = useDevice();
+  const { isMobile, isTablet } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep } = useSnapshot(state);
   const [showModal, setShowModal] = useState(false);
@@ -54,8 +54,8 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/youtube.png"
           },
           {
-            href: "https://www.linkedin.com/company/stripe/",
-            icon: "/icons/linkedin.png"
+            href: "https://stripe.com/go/developer-chat",
+            icon: "/icons/discord.png"
           }
         ]}
         position={[isMobile ? -0.15 : 0.73, -2.14, isMobile ? 4.25 : 2.89]}
