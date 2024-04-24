@@ -123,7 +123,7 @@ const _ = () => {
       <EventDestinations />
       <Insiders />
 
-      <Grid color="#222222" />
+      {!isMobile && <Grid color="#222222" />}
 
       {!isMobile && (
         <group position={[0, 1, -2]}>
