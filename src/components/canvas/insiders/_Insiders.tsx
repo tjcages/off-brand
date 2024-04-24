@@ -58,7 +58,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/discord.png"
           }
         ]}
-        position={[isMobile ? -0.15 : 0.73, -2.14, isMobile ? 4.25 : 2.89]}
+        position={[isMobile ? 0 : 0.73, -2.14, isMobile ? 3.75 : 2.89]}
       />
 
       <Llama />

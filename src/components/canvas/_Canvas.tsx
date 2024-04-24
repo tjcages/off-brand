@@ -125,9 +125,11 @@ const _ = () => {
 
       <Grid color="#222222" isMobile={isMobile} />
 
-      <group position={[0, 1, -2]}>
-        <Characters />
-      </group>
+      {!isMobile && (
+        <group position={[0, 1, -2]}>
+          <Characters />
+        </group>
+      )}
 
       {!isMobile && <Postprocessing />}
       <Environment background={false} />
