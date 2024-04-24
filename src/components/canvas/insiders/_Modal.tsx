@@ -1,6 +1,6 @@
+import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
 import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
-import { editable as e } from "@theatre/r3f";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,6 @@ import "@/utils/_bentPlaneGeometry";
 import { ScrambleText } from "@/components/ui/_shared";
 
 interface Props {
-  theatreKey: string;
   visible: boolean;
   title?: string;
   description?: string;
@@ -17,12 +16,16 @@ interface Props {
     label: string;
     href: string;
   };
+  socials?: {
+    href: string;
+    icon: string;
+  }[];
   position?: [number, number, number];
 }
 
-const _ = ({ theatreKey, visible, title, description, cta, position }: Props) => {
+const _ = ({ visible, title, description, cta, socials, position }: Props) => {
   return (
-    <e.group theatreKey={theatreKey} position={position} renderOrder={10}>
+    <group position={position} renderOrder={10}>
       <Html transform scale={0.175} pointerEvents="none">
         <div
           className={cn(
@@ -32,6 +35,11 @@ const _ = ({ theatreKey, visible, title, description, cta, position }: Props) =>
               : "opacity-0 scale-90 outline-offset-0 outline-blue/0 pointer-events-none delay-0"
           )}
         >
+          <div className="flex items-center justify-start gap-4">
+            <Sandbox width={24} height={24} className="text-white" />
+            <Terminal width={24} height={24} className="text-white" />
+            <Webhooks width={24} height={24} className="text-white" />
+          </div>
           {title !== undefined && (
             <h1 className="text-[24px]">
               <ScrambleText>{visible ? title : " "}</ScrambleText>
@@ -54,9 +62,29 @@ const _ = ({ theatreKey, visible, title, description, cta, position }: Props) =>
               />
             </Link>
           )}
+          {socials && (
+            <div className="flex items-center justify-start gap-2 mt-8 px-3 py-2 border border-white/10 backdrop-blur-md bg-white/5 rounded-md">
+              <p className="text-sm opacity-50">Follow along on</p>
+              {socials.map(({ href, icon }, index) => (
+                <Link
+                  key={index}
+                  href={href}
+                  className="cursor-pointer pointer-events-auto opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out"
+                >
+                  <Image
+                    className="w-auto min-w-3 max-w-4 h-auto min-h-3 max-h-4"
+                    src={icon}
+                    alt="social icon"
+                    width={24}
+                    height={24}
+                  />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </Html>
-    </e.group>
+    </group>
   );
 };
 

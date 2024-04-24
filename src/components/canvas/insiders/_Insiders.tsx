@@ -1,15 +1,32 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
+import { useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSnapshot } from "valtio";
 
 import Llama from "./_Llama";
 import Modal from "./_Modal";
+import Keycaps from "./keycaps";
 
-const _ = () => {
+interface Props {
+  rotation?: [number, number, number];
+}
+
+const _ = ({ rotation = [0, 0, 0] }: Props) => {
+  const isMobile = useDevice();
+  const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep } = useSnapshot(state);
   const [showModal, setShowModal] = useState(false);
+
+  useFrame(({ pointer }) => {
+    if (ref.current && !isMobile) {
+      ref.current.rotation.x = rotation[0] - pointer.y / 400;
+      ref.current.rotation.y = rotation[1] + pointer.x / 50;
+      ref.current.rotation.z = rotation[2] - pointer.y / 400;
+    }
+  });
 
   useEffect(() => {
     if (selectedStep === 5) gsap.delayedCall(1.5, () => setShowModal(true));
@@ -17,10 +34,9 @@ const _ = () => {
   }, [selectedStep]);
 
   return (
-    <e.group theatreKey="insiders-content">
+    <e.group ref={ref} theatreKey="insiders-content" rotation={rotation}>
       {/* <FeatureTitle text="Try what's new–shape what's next" visible={showModal} /> */}
       <Modal
-        theatreKey="insiders-modal"
         visible={showModal}
         title="Try what's new—shape what's next"
         description="Become a Stripe Insider to get early access to new developer tools, and provide feedback to the teams building them."
@@ -28,10 +44,25 @@ const _ = () => {
           label: "Join Stripe Insiders",
           href: "https://insiders.stripe.dev/t/welcome-to-stripe-insiders/5"
         }}
-        position={[1.5, 0.9, 1.25]}
+        socials={[
+          {
+            href: "https://x.com/stripe",
+            icon: "/icons/x.png"
+          },
+          {
+            href: "https://www.youtube.com/@stripe",
+            icon: "/icons/youtube.png"
+          },
+          {
+            href: "https://www.linkedin.com/company/stripe/",
+            icon: "/icons/linkedin.png"
+          }
+        ]}
+        position={[isMobile ? -0.15 : 0.73, -2.14, isMobile ? 4.25 : 2.89]}
       />
 
       <Llama />
+      <Keycaps />
     </e.group>
   );
 };

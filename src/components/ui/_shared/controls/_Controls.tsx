@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 // import { useId } from "@/utils";
 import { gsap } from "gsap";
 import { useEffect } from "react";
@@ -8,6 +9,7 @@ import Button from "./_Button";
 
 const _ = () => {
   const id = "controls";
+  const isMobile = useDevice();
   const { ready, selectedStep } = useSnapshot(state);
 
   useEffect(() => {
@@ -22,16 +24,16 @@ const _ = () => {
 
   useEffect(() => {
     gsap.to(`#${id}`, {
-      x: selectedStep === 5 ? 0 : -52 * ((selectedStep || 0) - 2) + 16,
+      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
     gsap.to(`#${id}`, {
-      x: selectedStep === 5 ? 0 : -52 * ((selectedStep || 0) - 2) + 16,
+      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
-  }, [selectedStep, id]);
+  }, [selectedStep, id, isMobile]);
 
   return (
     <div
@@ -42,6 +44,7 @@ const _ = () => {
       <Button step={2} next={3} />
       <Button step={3} next={4} />
       <Button step={4} next={5} />
+      <Button step={5} next={1} />
     </div>
   );
 };

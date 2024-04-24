@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
@@ -22,12 +23,14 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
+  const isMobile = useDevice();
   const { sbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
   const [hovered, hover] = useState(false);
   const pointerOver = (e: ThreeEvent<PointerEvent>) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
+
   useFrame((_, delta) => {
     easing.damp(ref.current.material, "radius", hovered ? 0.03 : 0.025, 0.2, delta);
   });
@@ -71,10 +74,10 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           href: "https://insiders.stripe.dev/t/join-the-sandboxes-beta/32"
         }}
         tag={{
-          text: "Private Beta",
+          text: "Private beta",
           color: "blue"
         }}
-        position={[0, 1.7, 0]}
+        position={[isMobile ? 0.1 : 0, isMobile ? 1.35 : 1.7, isMobile ? 2 : 0]}
         scale={0.5}
       />
       <Pagination

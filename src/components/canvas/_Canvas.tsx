@@ -73,6 +73,10 @@ const _ = () => {
   // });
 
   useEffect(() => {
+    if ((selectedStep || 0) > 1) state.hoveredStep = null;
+  }, [selectedStep]);
+
+  useEffect(() => {
     if (!sheet) return;
     sheet.project.ready.then(() =>
       sheet.sequence.play({ iterationCount: Infinity, range: [0, 9] })

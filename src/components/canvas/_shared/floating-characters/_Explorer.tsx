@@ -49,7 +49,7 @@ const _Model = ({ index, z, speed, object }: Props) => {
 
   return (
     <group ref={ref}>
-      <mesh geometry={nodes.Text_4.geometry} scale={[0.02, 0.02, 0.01]}>
+      <mesh geometry={nodes.Shape_0.geometry} scale={[0.02, 0.02, 0.01]}>
         <meshStandardMaterial
           attach="material"
           color="#002D8F"
@@ -65,14 +65,14 @@ const _Model = ({ index, z, speed, object }: Props) => {
 
 const count = 7;
 const depth = 1;
-const speed = 0.4;
+const speed = 0.5;
 
 const _ = () => {
   const easing = (x: number) => Math.sqrt(1 - Math.pow(x - 1, 2));
   return Array.from({ length: count }, (_, i) => (
     <_Model
       key={i}
-      object={"/objects/$.glb"}
+      object={"/objects/explorer.glb"}
       index={i}
       z={Math.round(easing(i / count) * depth)}
       speed={speed}

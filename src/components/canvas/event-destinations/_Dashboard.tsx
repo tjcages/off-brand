@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { editable as e } from "@theatre/r3f";
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
+  const isMobile = useDevice();
   const { edSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
@@ -70,10 +72,10 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           href: "https://insiders.stripe.dev/t/join-the-event-destinations-beta/54"
         }}
         tag={{
-          text: "Private Beta",
+          text: "Private beta",
           color: "blue"
         }}
-        position={[0, 1.7, 0]}
+        position={[isMobile ? -0.15 : 0, isMobile ? 1.45 : 1.7, isMobile ? 1.5 : 0]}
         scale={0.5}
       />
       <Pagination
@@ -81,7 +83,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         step={modalStep}
         total={3}
-        setStep={(step: number) => (state.sbSelectedModal = step)}
+        setStep={(step: number) => (state.edSelectedModal = step)}
       />
       <ModalNav
         visible={showUI}

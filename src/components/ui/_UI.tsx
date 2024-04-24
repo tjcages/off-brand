@@ -43,11 +43,11 @@ const _ = () => {
               ease: "expo.out"
             });
           }}
-          className="absolute left-12 right-12 bottom-12 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-out"
+          className="absolute left-6 md:left-12 right-6 md:right-12 bottom-6 md:bottom-12 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-out"
         >
           <div
             id={id}
-            className="relative flex flex-col items-center justify-center gap-8 max-w-lg p-8 pb-[64px] text-center"
+            className="relative flex flex-col items-center justify-center gap-8 max-w-lg p-2 md:p-8 pb-[32px] md:pb-[64px] text-center"
           >
             <Content />
             <PlusCorners />

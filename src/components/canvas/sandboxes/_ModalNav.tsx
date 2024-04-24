@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useKeyPress } from "@/utils";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -37,6 +38,9 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
       else if (selectedStep === 4) state.selectedStep = 3;
     } else setModalStep && setModalStep(modalStep - 1);
   };
+
+  useKeyPress("ArrowRight", onClickNext);
+  useKeyPress("ArrowLeft", onClickLast);
 
   useEffect(() => {
     if (!nextRef || !lastRef) return;
@@ -107,15 +111,14 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
 
   return (
     <group position={position}>
-      <group position={[2.75, 0, 0]}>
-        <mesh
-          onPointerDown={onClickNext}
-          onPointerEnter={() => setHoverNext(true)}
-          onPointerLeave={() => setHoverNext(false)}
-          position={[0, 0, -0.1]}
-        >
-          <planeGeometry args={[0.7, 0.7]} />
-          <meshBasicMaterial transparent opacity={0} />
+      <group
+        position={[2.75, 0, 0]}
+        onPointerDown={onClickNext}
+        onPointerEnter={() => setHoverNext(true)}
+        onPointerLeave={() => setHoverNext(false)}
+      >
+        <mesh position={[0.25, 0, -0.5]} visible={false}>
+          <planeGeometry args={[0.35, 0.7]} />
         </mesh>
         <Image
           ref={nextRef}
@@ -127,15 +130,14 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
           opacity={0.5}
         />
       </group>
-      <group position={[-2.75, 0, 0]}>
-        <mesh
-          onPointerDown={onClickLast}
-          onPointerEnter={() => setHoverLast(true)}
-          onPointerLeave={() => setHoverLast(false)}
-          position={[0, 0, -0.1]}
-        >
-          <planeGeometry args={[0.7, 0.7]} />
-          <meshBasicMaterial transparent opacity={0} />
+      <group
+        position={[-2.75, 0, 0]}
+        onPointerDown={onClickLast}
+        onPointerEnter={() => setHoverLast(true)}
+        onPointerLeave={() => setHoverLast(false)}
+      >
+        <mesh position={[-0.25, 0, -0.5]} visible={false}>
+          <planeGeometry args={[0.35, 0.7]} />
         </mesh>
         <Image
           ref={lastRef}

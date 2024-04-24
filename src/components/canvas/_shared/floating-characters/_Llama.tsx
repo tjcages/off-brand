@@ -49,7 +49,7 @@ const _Model = ({ index, z, speed, object }: Props) => {
 
   return (
     <group ref={ref}>
-      <mesh geometry={nodes.mesh_0.geometry} scale={[0.0075, 0.0075, 0.0075]}>
+      <mesh geometry={nodes.mesh_0.geometry} scale={[0.004, 0.004, 0.004]}>
         <meshStandardMaterial
           attach="material"
           color="#002D8F"

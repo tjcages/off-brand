@@ -95,8 +95,11 @@ const _ = ({
 
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
-      <Html transform>
-        <div className="flex flex-col items-center justify-center text-white">
+      <Html transform scale={0.5}>
+        <div
+          className="flex flex-col items-center justify-center text-white"
+          style={{ transform: "scale(2)" }}
+        >
           <div className="relative flex items-center justify-center gap-1">
             {getIcon()}
             <h3>

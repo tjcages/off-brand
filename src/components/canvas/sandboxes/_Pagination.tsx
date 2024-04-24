@@ -26,13 +26,16 @@ const _ = ({ theatreKey, visible, step = 0, total, setStep }: Props) => {
             <div
               key={i}
               className={cn(
-                "flex items-center justify-center w-8 h-8 rounded-full outline outline-2 cursor-pointer pointer-events-auto transition-all duration-1000 ease-in-out",
+                "flex items-center justify-center w-8 h-8 rounded-full outline outline-2 cursor-pointer pointer-events-auto transition-all duration-300 ease-out",
                 step === i + 1
                   ? "outline-offset-2 outline-white"
                   : "outline-offset-0 outline-white/0",
                 step > i ? "opacity-100" : "opacity-20"
               )}
-              onClick={() => setStep && setStep(i + 1)}
+              onClick={e => {
+                e.stopPropagation();
+                if (setStep) setStep(i + 1);
+              }}
             >
               <div className="w-4 h-4 bg-white rounded-full" />
             </div>

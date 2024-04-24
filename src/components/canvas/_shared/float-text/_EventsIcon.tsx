@@ -1,4 +1,5 @@
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import { Edges, Float, MeshTransmissionMaterial, useCursor, useGLTF } from "@react-three/drei";
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
+  const isMobile = useDevice();
   const { hoveredStep, userHovered } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -67,8 +69,8 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
               distortionScale={1}
               temporalDistortion={0.3}
               envMapIntensity={0.1}
-              color={hovered ? "black" : "#635bff"}
-              emissive={hovered ? "black" : "#635bff"}
+              color={hovered ? "black" : "#002D8F"}
+              emissive={hovered ? "black" : "#0048e5"}
               emissiveIntensity={0.5}
               background={texture}
             />
@@ -85,7 +87,7 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
           </mesh>
         )}
 
-        {annotation !== undefined && (
+        {!isMobile && annotation !== undefined && (
           <Annotation visible={hovered} text={annotation} position={annotationPosition} />
         )}
       </Float>

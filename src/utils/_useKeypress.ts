@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 
 const useKeyPress = (
-  keys: string[],
+  keys: string | string[],
   callback: (e: { metaKey: boolean; key: string }) => void,
   meta: boolean = false,
   node = null
