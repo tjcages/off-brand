@@ -96,7 +96,7 @@ const _ = ({ step, next }: Props) => {
         >
           <Image
             id={id + "-arrow"}
-            className="group-hover:invert"
+            className={cn("group-hover:invert", next && next < step && "-scale-x-100")}
             src="/icons/arrow-right.png"
             alt="arrow"
             width={24}

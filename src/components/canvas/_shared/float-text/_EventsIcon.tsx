@@ -67,8 +67,8 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
               distortionScale={1}
               temporalDistortion={0.3}
               envMapIntensity={0.1}
-              color={hovered ? "black" : "#635bff"}
-              emissive={hovered ? "black" : "#635bff"}
+              color={hovered ? "black" : "#002D8F"}
+              emissive={hovered ? "black" : "#0048e5"}
               emissiveIntensity={0.5}
               background={texture}
             />

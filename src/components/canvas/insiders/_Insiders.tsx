@@ -6,6 +6,7 @@ import { useSnapshot } from "valtio";
 
 import Llama from "./_Llama";
 import Modal from "./_Modal";
+import Keycaps from "./keycaps";
 
 const _ = () => {
   const { selectedStep } = useSnapshot(state);
@@ -46,6 +47,7 @@ const _ = () => {
       />
 
       <Llama />
+      <Keycaps />
     </e.group>
   );
 };

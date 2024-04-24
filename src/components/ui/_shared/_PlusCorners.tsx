@@ -109,16 +109,16 @@ const _ = () => {
 
   return (
     <>
-      <div id={id + "-tl"} className="absolute fs-5 leading-none">
+      <div id={id + "-tl"} className="absolute fs-5 leading-none opacity-70">
         +
       </div>
-      <div id={id + "-tr"} className="absolute fs-5 leading-none">
+      <div id={id + "-tr"} className="absolute fs-5 leading-none opacity-70">
         +
       </div>
-      <div id={id + "-bl"} className="absolute fs-5 leading-none">
+      <div id={id + "-bl"} className="absolute fs-5 leading-none opacity-70">
         +
       </div>
-      <div id={id + "-br"} className="absolute fs-5 leading-none">
+      <div id={id + "-br"} className="absolute fs-5 leading-none opacity-70">
         +
       </div>
     </>
