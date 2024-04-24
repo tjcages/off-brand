@@ -24,7 +24,7 @@ export const seo = {
     ]
   },
   twitter: {
-    site: "@stripe",
+    site: "@stripedev",
     card: "summary_large_image"
   },
   other: {
