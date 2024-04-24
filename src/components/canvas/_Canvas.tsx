@@ -1,6 +1,7 @@
 "use client";
 
 import { state } from "@/store";
+import { useDevice } from "@/utils";
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { val } from "@theatre/core";
@@ -35,6 +36,7 @@ import Workbench from "./workbench";
 const snapPoints = [0, 0.15, 0.35, 0.55, 0.75, 1];
 
 const _ = () => {
+  const { isMobile } = useDevice();
   const sheet = useCurrentSheet();
   const scroll = useScroll();
   const { selectedStep } = useSnapshot(state);
@@ -123,9 +125,11 @@ const _ = () => {
 
       <Grid color="#222222" />
 
-      <group position={[0, 1, -2]}>
-        <Characters />
-      </group>
+      {!isMobile && (
+        <group position={[0, 1, -2]}>
+          <Characters />
+        </group>
+      )}
 
       <Postprocessing />
       <Environment background={false} />
