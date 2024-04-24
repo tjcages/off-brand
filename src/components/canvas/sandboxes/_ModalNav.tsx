@@ -1,5 +1,5 @@
 import { state } from "@/store";
-import { useKeyPress } from "@/utils";
+import { useDevice, useKeyPress } from "@/utils";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -14,6 +14,7 @@ interface Props {
 }
 
 const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) => {
+  const { isMobile } = useDevice();
   const { selectedStep } = useSnapshot(state);
   const [hoveredNext, setHoverNext] = useState(false);
   const [hoveredLast, setHoverLast] = useState(false);
@@ -112,7 +113,8 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
   return (
     <group position={position}>
       <group
-        position={[2.75, 0, 0]}
+        position={[isMobile ? 1 : 2.75, isMobile ? -1.75 : 0, 0]}
+        scale={isMobile ? 2 : 1}
         onPointerDown={onClickNext}
         onPointerEnter={() => setHoverNext(true)}
         onPointerLeave={() => setHoverNext(false)}
@@ -131,7 +133,8 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
         />
       </group>
       <group
-        position={[-2.75, 0, 0]}
+        position={[isMobile ? -1 : -2.75, isMobile ? -1.75 : 0, 0]}
+        scale={isMobile ? 2 : 1}
         onPointerDown={onClickLast}
         onPointerEnter={() => setHoverLast(true)}
         onPointerLeave={() => setHoverLast(false)}

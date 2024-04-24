@@ -14,7 +14,7 @@ import "@/utils/_bentPlaneGeometry";
 import { FeatureTitle } from "@/components/canvas/_shared";
 
 import ModalNav from "./_ModalNav";
-import Pagination from "./_Pagination";
+import Pagination from "./pagination";
 
 interface Props {
   visible: boolean;
