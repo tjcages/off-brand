@@ -92,7 +92,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Modal
           visible={sbSelectedModal === 3}
           title="Locked-down Sandbox access"
-          description="Lock down user access to Sandboxes only with no access to live business details—perfect for working with external partners."
+          description="Restrict users to Sandboxes, with no access to live business details—perfect for working with external partners."
           position={[isMobile ? -0.25 : -1.25, isMobile ? 0.15 : -0.125, isMobile ? 1.5 : 0.5]}
         />
       </group>
