@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={cn(Sohne.className, Sohne.variable)}>
-        <PlausibleProvider domain="stripe.dev">{children}</PlausibleProvider>
+        <PlausibleProvider domain="beta.stripe.dev">{children}</PlausibleProvider>
         <Analytics />
       </body>
     </html>
