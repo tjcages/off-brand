@@ -45,10 +45,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 1}
           url={"/textures/stripe/workbench/ui1.png"}
-          position={[0, -0.4, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -57,7 +57,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 1}
           title="Introducing Workbench"
           description="See your Stripe integration’s health and activity with one tap. Summon Workbench from anywhere in the Stripe Dashboard."
-          position={[1.5, 0.9, 0]}
+          position={[1.4, 0.7, 0]}
         />
       </group>
 
@@ -66,10 +66,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 2}
           url={"/textures/stripe/workbench/ui2.png"}
-          position={[0, -0.55, 0.8]}
+          position={[0, -0.35, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -78,7 +78,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 2}
           title="Logging and events"
           description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
-          position={[-1.5, 0.8, 0]}
+          position={[-1.5, -1.03, 0]}
         />
       </group>
 
@@ -99,7 +99,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 3}
           title="Inspector"
           description="Peek under the hood at the JSON of any Stripe Dashboard object in a click. View the object’s logs and its state changes over time to understand or debug your integration."
-          position={[1.5, 1, 0]}
+          position={[1.5, -0.7, 0]}
         />
       </group>
 
@@ -108,10 +108,10 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         <Content
           visible={wbSelectedModal === 4}
           url={"/textures/stripe/workbench/ui4.png"}
-          position={[0, -0.4, 0.8]}
+          position={[0, -0.2, 0.8]}
           size={{
             width: 3,
-            height: 1.47
+            height: 1.8
           }}
           bottom
         />
@@ -120,7 +120,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           visible={wbSelectedModal === 4}
           title="Shell and API Explorer"
           description="Understand available API resources and build runnable commands in the shell. When you’re ready to build, print code snippets in the language you need."
-          position={[1.5, 1, 0]}
+          position={[-1.5, 0.5, 0]}
         />
       </group>
     </e.group>

@@ -50,10 +50,10 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 1}
           url={"/textures/stripe/event-destinations/ui2.png"}
-          position={[0, -0.2, 0.8]}
+          position={[0, -0.12, 0.8]}
           size={{
             width: 3,
-            height: 1.62
+            height: 1.8
           }}
           bottom
         />
@@ -62,7 +62,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[1.2, 0.2, 0]}
+          position={[1.3, 0.57, 0]}
         />
       </group>
 
@@ -92,10 +92,10 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
         <Content
           visible={edSelectedModal === 3}
           url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, -0.2, 0.8]}
+          position={[0, -0.12, 0.8]}
           size={{
             width: 3,
-            height: 1.62
+            height: 1.8
           }}
           bottom
         />
@@ -104,7 +104,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           visible={edSelectedModal === 3}
           title="Event monitoring"
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
-          position={[1.75, 1, 0]}
+          position={[1.5, -0.8, 0]}
         />
       </group>
     </e.group>
