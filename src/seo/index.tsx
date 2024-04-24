@@ -1,5 +1,5 @@
 export const seo = {
-  title: "Developer Experience, reimagined | Stripe",
+  title: "Developer experience, reimagined | Stripe",
   description:
     "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
   icons: [
@@ -11,7 +11,7 @@ export const seo = {
   openGraph: {
     type: "website",
     url: "https://stripe.dev",
-    title: "Try what's new–shape what's next",
+    title: "Developer experience, reimagined | Stripe",
     description:
       "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
     images: [
