@@ -123,13 +123,11 @@ const _ = () => {
       <EventDestinations />
       <Insiders />
 
-      {!isMobile && <Grid color="#222222" />}
+      <Grid color="#222222" isMobile={isMobile} />
 
-      {!isMobile && (
-        <group position={[0, 1, -2]}>
-          <Characters />
-        </group>
-      )}
+      <group position={[0, 1, -2]}>
+        <Characters />
+      </group>
 
       {!isMobile && <Postprocessing />}
       <Environment background={false} />
