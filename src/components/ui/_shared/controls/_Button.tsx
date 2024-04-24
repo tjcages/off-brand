@@ -11,10 +11,10 @@ import { ScrambleText, Shine } from "@/components/ui/_shared";
 
 interface Props {
   step: number;
-  next: number;
+  next?: number;
 }
 
-const steps = ["Sandboxes", "Workbench", "Event Destinations", "Insiders"];
+const steps = ["", "Sandboxes", "Workbench", "Event Destinations", "Insiders"];
 
 const _ = ({ step, next }: Props) => {
   const id = "button-" + step;
@@ -34,7 +34,7 @@ const _ = ({ step, next }: Props) => {
         scale: 1,
         opacity: 1,
         duration: 0.5,
-        delay: 0.75,
+        delay: 1,
         ease: "expo.out"
       });
     } else {
@@ -42,13 +42,15 @@ const _ = ({ step, next }: Props) => {
         width: 24,
         height: 24,
         duration: 0.5,
-        ease: "expo.out"
+        ease: "expo.out",
+        overwrite: true
       });
       gsap.to(`#${id}-arrow`, {
         scale: 0.5,
         opacity: 0,
         duration: 0.5,
-        ease: "expo.out"
+        ease: "expo.out",
+        overwrite: true
       });
     }
   });
@@ -61,10 +63,12 @@ const _ = ({ step, next }: Props) => {
         gsap.delayedCall(0.3, () => setTooltipVisible(false));
         clearInterval(interval);
       }
-    }, 500);
+    }, 250);
 
     return () => clearInterval(interval);
   }, [hovered]);
+
+  const tooltip = steps[step - 1] || "";
 
   return (
     <div
@@ -77,11 +81,15 @@ const _ = ({ step, next }: Props) => {
           id={id}
           className={cn(
             "group w-16 h-16 p-0 rounded-full bg-white/10 backdrop-blur-lg",
-            selectedStep && selectedStep > step && "bg-white/50"
+            Math.abs((selectedStep || 0) - step) > 1 && "opacity-50",
+            Math.abs((selectedStep || 0) - step) > 2 && "opacity-25",
+            Math.abs((selectedStep || 0) - step) > 3 && "opacity-0",
+            selectedStep && selectedStep > step && "bg-white/50",
+            selectedStep === step && "outline-white"
           )}
           onClick={() => {
             state.hoveredStep = null;
-            if (step === selectedStep) state.selectedStep = next;
+            if (step === selectedStep && next !== undefined) state.selectedStep = next;
             else state.selectedStep = step;
           }}
           disabled={!ready}
@@ -97,7 +105,7 @@ const _ = ({ step, next }: Props) => {
         </button>
       </Shine>
 
-      {hovered && (
+      {hovered && tooltip !== "" && (
         <div className="absolute -top-12">
           <p
             className={cn(

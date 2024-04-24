@@ -22,12 +22,12 @@ const _ = () => {
 
   useEffect(() => {
     gsap.to(`#${id}`, {
-      x: selectedStep === 5 ? 0 : -52 * ((selectedStep || 0) - 2) + 16,
+      x: -52 * ((selectedStep || 0) - 3) + 16,
       duration: 1,
       ease: "expo.inOut"
     });
     gsap.to(`#${id}`, {
-      x: selectedStep === 5 ? 0 : -52 * ((selectedStep || 0) - 2) + 16,
+      x: -52 * ((selectedStep || 0) - 3) + 16,
       duration: 1,
       ease: "expo.inOut"
     });
@@ -42,6 +42,7 @@ const _ = () => {
       <Button step={2} next={3} />
       <Button step={3} next={4} />
       <Button step={4} next={5} />
+      <Button step={5} next={1} />
     </div>
   );
 };

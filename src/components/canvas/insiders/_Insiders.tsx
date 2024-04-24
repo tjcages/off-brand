@@ -28,6 +28,20 @@ const _ = () => {
           label: "Join Stripe Insiders",
           href: "https://insiders.stripe.dev/t/welcome-to-stripe-insiders/5"
         }}
+        socials={[
+          {
+            href: "https://x.com/stripe",
+            icon: "/icons/x.png"
+          },
+          {
+            href: "https://www.youtube.com/@stripe",
+            icon: "/icons/youtube.png"
+          },
+          {
+            href: "https://www.linkedin.com/company/stripe/",
+            icon: "/icons/linkedin.png"
+          }
+        ]}
         position={[1.5, 0.9, 1.25]}
       />
 

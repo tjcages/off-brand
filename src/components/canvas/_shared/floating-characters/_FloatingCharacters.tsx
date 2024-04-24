@@ -2,9 +2,14 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 
+import Developer from "./_Developer";
 import DollarSign from "./_DollarSign";
+import Explorer from "./_Explorer";
 import FourTwo from "./_FourTwo";
 import Llama from "./_Llama";
+import Rocket from "./_Rocket";
+import Terminal from "./_Terminal";
+import Tilda from "./_Tilda";
 
 const _ = () => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
@@ -18,6 +23,11 @@ const _ = () => {
       <FourTwo />
       <DollarSign />
       <Llama />
+      <Tilda />
+      <Developer />
+      <Explorer />
+      <Terminal />
+      <Rocket />
     </group>
   );
 };
