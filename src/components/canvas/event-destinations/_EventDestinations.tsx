@@ -1,7 +1,6 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -17,7 +16,7 @@ interface Props {
   rotation?: [number, number, number];
 }
 
-const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
+const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
   const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, edSelectedModal } = useSnapshot(state);
@@ -37,12 +36,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <e.group
-      ref={ref}
-      theatreKey="event-destinations-content"
-      rotation={rotation}
-      position={[0, 2, -8]}
-    >
+    <group ref={ref} rotation={rotation} position={[2.59, 3.41, -17.48]}>
       <Dashboard visible={selectedStep === 4} modalStep={edSelectedModal} />
 
       {/* Destination types */}
@@ -109,7 +103,7 @@ const _ = ({ rotation = [0.04, -0.625, -0.06] }: Props) => {
           position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : -0.8, isMobile ? 1.5 : 0]}
         />
       </group>
-    </e.group>
+    </group>
   );
 };
 

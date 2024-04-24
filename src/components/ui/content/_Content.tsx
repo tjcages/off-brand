@@ -51,7 +51,7 @@ const _ = () => {
       gsap.to(`#${id}-intro`, {
         opacity: 1,
         duration: 1,
-        delay: 0.25,
+        delay: 0.75,
         ease: "expo.out"
       });
     }
