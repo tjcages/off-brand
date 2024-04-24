@@ -32,7 +32,10 @@ const _ = ({ theatreKey, visible, step = 0, total, setStep }: Props) => {
                   : "outline-offset-0 outline-white/0",
                 step > i ? "opacity-100" : "opacity-20"
               )}
-              onClick={() => setStep && setStep(i + 1)}
+              onClick={e => {
+                e.stopPropagation();
+                if (setStep) setStep(i + 1);
+              }}
             >
               <div className="w-4 h-4 bg-white rounded-full" />
             </div>

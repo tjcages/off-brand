@@ -61,7 +61,7 @@ const _ = ({ step, next }: Props) => {
         gsap.delayedCall(0.3, () => setTooltipVisible(false));
         clearInterval(interval);
       }
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(interval);
   }, [hovered]);

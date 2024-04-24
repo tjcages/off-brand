@@ -70,7 +70,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           href: "https://insiders.stripe.dev/t/join-the-event-destinations-beta/54"
         }}
         tag={{
-          text: "Private Beta",
+          text: "Private beta",
           color: "blue"
         }}
         position={[0, 1.7, 0]}
@@ -81,7 +81,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         step={modalStep}
         total={3}
-        setStep={(step: number) => (state.sbSelectedModal = step)}
+        setStep={(step: number) => (state.edSelectedModal = step)}
       />
       <ModalNav
         visible={showUI}

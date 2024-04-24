@@ -31,3 +31,6 @@
 -[x] new images
 -[x] tweak insiders content
 -[x] add analytics
+
+-[] move icons + toolbar one to right + one more dot - switch to icons
+-[] detect reduced motion – stop camera movement & floating characters

@@ -71,7 +71,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           href: "https://insiders.stripe.dev/t/join-the-sandboxes-beta/32"
         }}
         tag={{
-          text: "Private Beta",
+          text: "Private beta",
           color: "blue"
         }}
         position={[0, 1.7, 0]}
