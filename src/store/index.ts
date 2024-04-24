@@ -15,6 +15,7 @@ type State = {
 
   // User Controls
   hasSoundPermission?: boolean;
+  graphics: "low" | "medium" | "high";
 };
 
 export const state = proxy({
@@ -30,6 +31,7 @@ export const state = proxy({
   edSelectedModal: undefined,
 
   // User Controls
-  hasSoundPermission: undefined
+  hasSoundPermission: undefined,
+  graphics: "high"
 } as State);
 export type { State };
