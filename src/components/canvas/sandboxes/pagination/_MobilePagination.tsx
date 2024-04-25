@@ -12,7 +12,7 @@ interface Props {
 
 const _ = ({ visible, step = 0, total, setStep }: Props) => {
   return (
-    <group position={[0, -1.5, -0.25]} rotation={[0, 0, Math.PI / 2]} scale={1.25}>
+    <group position={[0, -1.5, 0]} rotation={[0, 0, Math.PI / 2]} scale={1.25}>
       <Html transform scale={0.175} pointerEvents="none">
         <div
           className={cn(

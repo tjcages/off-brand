@@ -33,11 +33,11 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation} visible={selectedStep === 5}>
+    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation}>
       {/* <FeatureTitle text="Try what's new–shape what's next" visible={showModal} /> */}
       <Modal
         visible={showModal}
-        title="Try what's new—shape what's next"
+        title="Try what's new—shape what's&nbsp;next"
         description="Become a Stripe Insider to get early access to new developer tools like Workbench and Sandboxes, and give feedback to the teams building them."
         cta={{
           label: "Join Stripe Insiders",
@@ -58,9 +58,9 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
           }
         ]}
         position={[
-          isMobile ? 0 : 0.5,
-          isMobile ? -1.5 : isSafari ? -2.25 : -2.14,
-          isMobile ? 4.15 : 2.89
+          isMobile ? -0.1 : 0.73,
+          isMobile ? -2 : isSafari ? -2.5 : -2.14,
+          isMobile ? 4.1 : 2.89
         ]}
       />
 

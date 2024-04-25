@@ -84,11 +84,9 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         step={modalStep}
         total={3}
         setStep={(step: number) => (state.sbSelectedModal = step)}
-        position={[isMobile ? 0 : 3, isMobile ? -0.5 : 0, isMobile ? -1.5 : -1.75]}
       />
       <ModalNav
         visible={showUI}
-        position={[0, 0, -0.1]}
         modalStep={sbSelectedModal}
         setModalStep={step => (state.sbSelectedModal = step)}
       />

@@ -1,5 +1,7 @@
 import { state } from "@/store";
 import { useDevice, useKeyPress } from "@/utils";
+import { config, useSpring } from "@react-spring/core";
+import { a } from "@react-spring/three";
 import { Image, useCursor } from "@react-three/drei";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
@@ -7,22 +9,25 @@ import { useSnapshot } from "valtio";
 
 interface Props {
   visible?: boolean;
-  position?: [number, number, number];
   modalStep?: number;
   lastStep?: number;
   setModalStep?: (step: number) => void;
 }
 
-const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) => {
+const _ = ({ visible, modalStep, lastStep = 3, setModalStep }: Props) => {
   const { isMobile } = useDevice();
   const { selectedStep } = useSnapshot(state);
   const [hoveredNext, setHoverNext] = useState(false);
   const [hoveredLast, setHoverLast] = useState(false);
+  const [tappedNext, setTapNext] = useState(false);
+  const [tappedLast, setTapLast] = useState(false);
   const nextRef = useRef() as React.MutableRefObject<THREE.Mesh>;
   const lastRef = useRef() as React.MutableRefObject<THREE.Mesh>;
   useCursor(hoveredNext || hoveredLast);
 
   const onClickNext = () => {
+    setTapNext(true);
+    setTimeout(() => setTapNext(false), 100);
     if (modalStep === undefined) return;
     if (modalStep > lastStep - 1) {
       if (selectedStep === 2) state.selectedStep = 3;
@@ -32,6 +37,8 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
   };
 
   const onClickLast = () => {
+    setTapLast(true);
+    setTimeout(() => setTapLast(false), 100);
     if (modalStep === undefined) return;
     if (modalStep < 2) {
       if (selectedStep === 2) state.selectedStep = 1;
@@ -110,11 +117,20 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
     }
   }, [hoveredLast, modalStep, visible]);
 
+  const [{ wobbleNext, wobbleLast }] = useSpring(
+    {
+      wobbleNext: tappedNext ? (isMobile ? 0.5 : 0.25) : isMobile ? 2 : 1,
+      wobbleLast: tappedLast ? (isMobile ? 0.5 : 0.25) : isMobile ? 2 : 1,
+      config: n => (n === "wobble" ? { mass: 2.5, tension: 1000, friction: 25 } : config.molasses)
+    },
+    [tappedNext, tappedLast, isMobile]
+  );
+
   return (
-    <group position={position}>
-      <group
-        position={[isMobile ? 1 : 2.75, isMobile ? -1.75 : 0, 0]}
-        scale={isMobile ? 2 : 1}
+    <group>
+      <a.group
+        position={[isMobile ? 1 : 2.25, isMobile ? -1.75 : 0, 0]}
+        scale={wobbleNext}
         onPointerDown={onClickNext}
         onPointerEnter={() => setHoverNext(true)}
         onPointerLeave={() => setHoverNext(false)}
@@ -131,10 +147,10 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
           transparent
           opacity={0.5}
         />
-      </group>
-      <group
-        position={[isMobile ? -1 : -2.75, isMobile ? -1.75 : 0, 0]}
-        scale={isMobile ? 2 : 1}
+      </a.group>
+      <a.group
+        position={[isMobile ? -1 : -2.25, isMobile ? -1.75 : 0, 0]}
+        scale={wobbleLast}
         onPointerDown={onClickLast}
         onPointerEnter={() => setHoverLast(true)}
         onPointerLeave={() => setHoverLast(false)}
@@ -152,7 +168,7 @@ const _ = ({ visible, position, modalStep, lastStep = 3, setModalStep }: Props) 
           transparent
           opacity={0.5}
         />
-      </group>
+      </a.group>
     </group>
   );
 };

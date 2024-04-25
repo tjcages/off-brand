@@ -16,7 +16,9 @@ interface Props {
 const _ = ({ visible, step = 0, position, total, setStep }: Props) => {
   const { isMobile } = useDevice();
   return (
-    <group position={position}>
+    <group
+      position={position ? position : [isMobile ? 0 : 2, isMobile ? -0.5 : 0, isMobile ? -1.5 : 0]}
+    >
       {isMobile && (
         <MobilePagination visible={visible} step={step} total={total} setStep={setStep} />
       )}

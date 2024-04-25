@@ -21,7 +21,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const { isMobile, isSafari } = useDevice();
+  const { isMobile } = useDevice();
   const { wbSelectedModal } = useSnapshot(state);
   const ref1 = useRef() as React.MutableRefObject<THREE.Mesh>;
   const ref2 = useRef() as React.MutableRefObject<THREE.Mesh>;
@@ -82,15 +82,10 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         step={modalStep}
         total={4}
         setStep={(step: number) => (state.wbSelectedModal = step)}
-        position={[
-          isMobile ? 0 : isSafari ? 2.8 : 3.26,
-          isMobile ? -0.76 : 0.2,
-          isMobile ? -1.5 : -1.97
-        ]}
+        position={isMobile ? [0, -0.7, -1.5] : undefined}
       />
       <ModalNav
         visible={showUI}
-        position={[0, 0, isMobile ? 0 : -0.4]}
         modalStep={wbSelectedModal}
         lastStep={4}
         setModalStep={step => (state.wbSelectedModal = step)}
