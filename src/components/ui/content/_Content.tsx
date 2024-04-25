@@ -14,7 +14,7 @@ const _ = () => {
   useEffect(() => {
     if (!ready) return;
     const node = document.getElementById(id);
-    if (node) {
+    if (node && selectedStep === 1) {
       gsap.to(node, {
         scale: 1,
         filter: "blur(0px)",
@@ -37,7 +37,7 @@ const _ = () => {
     gsap.delayedCall(3.5, () => !hasUserHovered.current && (state.hoveredStep = 2));
     gsap.delayedCall(5, () => !hasUserHovered.current && (state.hoveredStep = 3));
     gsap.delayedCall(8, () => !hasUserHovered.current && (state.hoveredStep = null));
-  }, [ready, id]);
+  }, [ready, id, selectedStep]);
 
   useEffect(() => {
     if (selectedStep && selectedStep > 1) {
