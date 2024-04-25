@@ -28,7 +28,7 @@ const _ = ({ step, next }: Props) => {
         width: 64,
         height: 64,
         duration: 1,
-        ease: "expo.inOut"
+        ease: "expo.out"
       });
       gsap.to(`#${id}-arrow`, {
         scale: 1,

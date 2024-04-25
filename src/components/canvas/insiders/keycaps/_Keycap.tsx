@@ -1,3 +1,4 @@
+import { useKeyPress } from "@/utils";
 import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import { MeshTransmissionMaterial, Text, useCursor, useGLTF } from "@react-three/drei";
@@ -21,11 +22,16 @@ const _ = ({ text, position }: Props) => {
 
   useCursor(hovered);
 
+  useKeyPress(text, () => {
+    setDown(true);
+    setTimeout(() => setDown(false), 100);
+  });
+
   const [{ wobble, push }] = useSpring(
     {
       wobble: down ? 0.95 : 1,
       push: down ? -0.05 : 0,
-      config: n => (n === "wobble" ? { mass: 5, tension: 500, friction: 20 } : config.molasses)
+      config: n => (n === "wobble" ? { mass: 2.5, tension: 1000, friction: 25 } : config.molasses)
     },
     [down]
   );

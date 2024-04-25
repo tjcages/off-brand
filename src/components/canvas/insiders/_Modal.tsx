@@ -1,6 +1,7 @@
 import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
-import { cn } from "@/utils";
+import { cn, useDevice } from "@/utils";
 import { Html } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,9 +25,16 @@ interface Props {
 }
 
 const _ = ({ visible, title, description, cta, socials, position }: Props) => {
+  const { isSafari } = useDevice();
+  const { gl } = useThree();
   return (
     <group position={position} renderOrder={10}>
-      <Html transform scale={0.175} pointerEvents="none">
+      <Html
+        transform
+        scale={0.175}
+        pointerEvents="none"
+        portal={{ current: gl.domElement.parentNode as HTMLElement & null }}
+      >
         <div
           className={cn(
             "relative flex flex-col items-start justify-start gap-2 w-full max-w-md p-4 text-white pointer-events-none transition-all duration-300 ease-out",
@@ -67,7 +75,7 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
               />
             </Link>
           )}
-          {socials && (
+          {socials && !isSafari && (
             <div className="hidden md:flex items-center justify-start gap-2 mt-8 px-3 py-2 border border-white/10 backdrop-blur-md bg-white/5 rounded-md">
               <p className="text-sm opacity-50">Follow along on</p>
               {socials.map(({ href, icon }, index) => (

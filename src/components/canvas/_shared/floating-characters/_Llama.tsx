@@ -52,8 +52,8 @@ const _Model = ({ index, z, speed, object }: Props) => {
       <mesh geometry={nodes.mesh_0.geometry} scale={[0.004, 0.004, 0.004]}>
         <meshStandardMaterial
           attach="material"
-          color="#002D8F"
-          emissive="#0048e5"
+          color="#221b35"
+          emissive="#635bff"
           emissiveIntensity={1}
           roughness={0.5}
           metalness={0.9}

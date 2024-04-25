@@ -52,9 +52,9 @@ const _Model = ({ index, z, speed, object }: Props) => {
       <mesh geometry={nodes.Text_4.geometry} scale={[0.02, 0.02, 0.01]}>
         <meshStandardMaterial
           attach="material"
-          color="#002D8F"
-          emissive="#0048e5"
-          emissiveIntensity={1}
+          color="#221b35"
+          emissive="#635bff"
+          emissiveIntensity={0.6}
           roughness={0.5}
           metalness={0.9}
         />

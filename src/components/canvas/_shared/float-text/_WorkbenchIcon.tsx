@@ -29,7 +29,7 @@ const _ = ({
   annotation,
   annotationPosition
 }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   const { ready, hoveredStep, userHovered, selectedStep } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -132,7 +132,7 @@ const _ = ({
               envMapIntensity={0.1}
               color={hovered ? "black" : "#002D8F"}
               emissive={hovered ? "black" : "#0048e5"}
-              emissiveIntensity={0.5}
+              emissiveIntensity={1}
               background={texture}
             />
             <Edges visible={hovered} renderOrder={1000}>
@@ -146,7 +146,7 @@ const _ = ({
           <planeGeometry args={[2, 2]} />
         </mesh>
 
-        {!isMobile && annotation !== undefined && selectedStep === 1 && (
+        {!isMobile && !isSafari && annotation !== undefined && selectedStep === 1 && (
           <Annotation visible={hovered} text={annotation} position={annotationPosition} />
         )}
       </Float>

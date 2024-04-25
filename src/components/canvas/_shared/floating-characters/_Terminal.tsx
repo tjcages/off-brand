@@ -52,7 +52,7 @@ const _Model = ({ index, z, speed, object }: Props) => {
       <mesh geometry={nodes.Merged_Geometry.geometry} scale={[0.02, 0.02, 0.02]}>
         <meshStandardMaterial
           attach="material"
-          color="#002D8F"
+          color="#221b35"
           emissive="#0048e5"
           emissiveIntensity={1}
           roughness={0.5}

@@ -14,7 +14,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0, 0, 0] }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep } = useSnapshot(state);
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +57,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/discord.png"
           }
         ]}
-        position={[isMobile ? 0 : 0.73, -2.14, isMobile ? 4.25 : 2.89]}
+        position={[isMobile ? 0 : 0.73, isSafari ? -2.5 : -2.14, isMobile ? 4.25 : 2.89]}
       />
 
       <Llama />

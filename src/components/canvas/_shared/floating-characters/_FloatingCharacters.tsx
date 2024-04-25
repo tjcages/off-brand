@@ -14,7 +14,7 @@ const _ = () => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
 
   useFrame(({ camera }) => {
-    if (ref.current) ref.current.position.z = Math.min(0, camera.position.z - 4);
+    if (ref.current) ref.current.position.z = Math.min(0, camera.position.z - 4.25);
   });
 
   return (

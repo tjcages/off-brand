@@ -21,7 +21,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   const { wbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
@@ -82,7 +82,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         step={modalStep}
         total={4}
         setStep={(step: number) => (state.wbSelectedModal = step)}
-        position={[isMobile ? 0 : 3.26, isMobile ? -0.76 : 0.2, isMobile ? -1.5 : -1.97]}
+        position={[
+          isMobile ? 0 : isSafari ? 2.8 : 3.26,
+          isMobile ? -0.76 : 0.2,
+          isMobile ? -1.5 : -1.97
+        ]}
       />
       <ModalNav
         visible={showUI}
@@ -94,7 +98,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
 
       <Image
         ref={ref}
-        url={"/textures/stripe/dashboard.png"}
+        url={
+          wbSelectedModal === 2
+            ? "/textures/stripe/workbench/dashboard2.png"
+            : "/textures/stripe/workbench/dashboard.png"
+        }
         // @ts-expect-error –no alt prop
         alt="Workbench"
         scale={[4, 2.59]}

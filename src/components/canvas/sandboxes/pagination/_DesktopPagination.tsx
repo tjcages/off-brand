@@ -16,7 +16,7 @@ const _ = ({ visible, step = 0, total, setStep }: Props) => {
       <Html transform scale={0.175} pointerEvents="none">
         <div
           className={cn(
-            "flex flex-col items-center justify-center gap-4 px-3 py-4 bg-white/10 backdrop-blur-md rounded-full transition-opacity duration-300 delay-1000 ease-in-out",
+            "relative flex flex-col items-center justify-center gap-4 px-3 py-4 bg-white/10 backdrop-blur-md rounded-full transition-opacity duration-300 delay-1000 ease-in-out",
             visible ? "opacity-100" : "opacity-0"
           )}
         >

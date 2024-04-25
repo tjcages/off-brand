@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { isMobileSafari } from "react-device-detect";
+import { isMobileSafari, isSafari } from "react-device-detect";
 
 const mobileBreakpoint = 768;
 
@@ -66,7 +66,7 @@ const useDevice = () => {
     };
   }, []);
 
-  return { isMobile, isTablet };
+  return { isMobile, isTablet, isSafari };
 };
 
 export default useDevice;
