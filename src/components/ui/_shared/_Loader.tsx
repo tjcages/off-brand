@@ -5,21 +5,30 @@ import { state } from "@/store";
 import { useProgress } from "@react-three/drei";
 import { gsap } from "gsap";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const minTime = 1.5;
+const steps = [null, null, "sandboxes", "workbench", "event-destinations", "insiders"] as const;
 
 const _ = () => {
   const id = "loader";
   const { progress } = useProgress();
   const [passedMinTime, setPassedMinTime] = useState(false);
 
+  // get search params
+  const searchParams = useSearchParams();
+  const urlStep = searchParams.get("step");
+
   // Handle loading states
   useEffect(() => {
     if (progress === 100) {
       state.loaded = true;
       if (passedMinTime) {
-        state.selectedStep = 1;
+        // if step is passed via url, set the selected step
+        const index = steps.indexOf(urlStep as (typeof steps)[number]);
+        if (index > 0) state.selectedStep = index;
+        else state.selectedStep = 1;
         gsap.to(`#${id}`, {
           opacity: 0,
           filter: "blur(4px)",
@@ -30,7 +39,7 @@ const _ = () => {
         });
       }
     } else state.loaded = false;
-  }, [progress, passedMinTime, id]);
+  }, [progress, passedMinTime, id, urlStep]);
 
   // Initial animation in
   useEffect(() => {

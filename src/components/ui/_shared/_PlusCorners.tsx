@@ -92,7 +92,7 @@ const _ = () => {
       nodes.forEach((node, index) => {
         animateClose(node, ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br");
       });
-    } else
+    } else if (selectedStep === 1)
       nodes.forEach((node, index) => {
         animateOpen(node, ["tl", "tr", "bl", "br"][index] as "tl" | "tr" | "bl" | "br");
       });
