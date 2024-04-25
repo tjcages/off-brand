@@ -39,7 +39,7 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
     <group ref={ref} rotation={rotation} position={[2.59, 3.41, -17.48]}>
       <Dashboard visible={selectedStep === 4} modalStep={edSelectedModal} />
 
-      <group rotation={[0, 0, 0]} position={[0, 0.15, 0]}>
+      <group rotation={[0, 0, 0]} position={[0, 0.15, 0.05]}>
         <Slider
           show={(selectedStep || 0) >= 4}
           visible={edSelectedModal}
