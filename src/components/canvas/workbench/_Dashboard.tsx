@@ -99,14 +99,14 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
       <Image
         ref={ref}
         url={
-          wbSelectedModal === 2
+          wbSelectedModal === 3 || wbSelectedModal === 4
             ? "/textures/stripe/workbench/dashboard2.png"
             : "/textures/stripe/workbench/dashboard.png"
         }
         // @ts-expect-error –no alt prop
         alt="Workbench"
         scale={[4, 2.59]}
-        position={[0, 0, -0.5]}
+        position={[0, -0.1, -0.5]}
         onPointerOver={pointerOver}
         onPointerOut={pointerOut}
         transparent

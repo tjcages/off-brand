@@ -101,7 +101,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         // @ts-expect-error –no alt prop
         alt="Event Destinations"
         scale={[4, 2.59]}
-        position={[0, 0.2, -0.5]}
+        position={[0, 0.1, -0.5]}
         onPointerOver={pointerOver}
         onPointerOut={pointerOut}
         transparent
