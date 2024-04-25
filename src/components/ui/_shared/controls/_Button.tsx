@@ -83,7 +83,7 @@ const _ = ({ step, next }: Props) => {
             "group w-12 md:w-16 h-12 md:h-16 p-0 rounded-full bg-white/10 backdrop-blur-lg",
             Math.abs((selectedStep || 0) - step) > 1 && "opacity-50",
             Math.abs((selectedStep || 0) - step) > 2 && "opacity-25",
-            Math.abs((selectedStep || 0) - step) > 3 && "opacity-0",
+            Math.abs((selectedStep || 0) - step) > 3 && "opacity-10",
             selectedStep && selectedStep > step && "bg-white/50",
             selectedStep === step && "outline-white"
           )}

@@ -2,7 +2,6 @@ import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
@@ -79,12 +78,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         scale={0.5}
       />
       <Pagination
-        theatreKey="ed-page"
         visible={showUI}
         step={modalStep}
         total={3}
         setStep={(step: number) => (state.edSelectedModal = step)}
-        position={[0, isMobile ? 0.25 : 0, isMobile ? 0.4 : 0]}
+        position={[isMobile ? 0 : 3.33, isMobile ? 0.2 : 0, isMobile ? 0.4 : -2.12]}
       />
       <ModalNav
         visible={showUI}
@@ -93,21 +91,18 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         setModalStep={step => (state.edSelectedModal = step)}
       />
 
-      <e.group theatreKey="ed-content/view">
-        <Image
-          ref={ref}
-          url={"/textures/stripe/dashboard.png"}
-          // @ts-expect-error –no alt prop
-          alt="Event Destinations"
-          onPointerOver={pointerOver}
-          onPointerOut={pointerOut}
-          transparent
-          opacity={0}
-        >
-          {/* @ts-expect-error –yes it does exist... */}
-          <bentPlaneGeometry args={[0.025, 4, 2.59, 19, 19]} />
-        </Image>
-      </e.group>
+      <Image
+        ref={ref}
+        url={"/textures/stripe/dashboard.png"}
+        // @ts-expect-error –no alt prop
+        alt="Event Destinations"
+        scale={[4, 2.59]}
+        position={[0, 0.2, -0.5]}
+        onPointerOver={pointerOver}
+        onPointerOut={pointerOut}
+        transparent
+        opacity={0}
+      />
     </>
   );
 };

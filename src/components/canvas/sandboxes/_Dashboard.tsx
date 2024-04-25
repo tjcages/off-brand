@@ -2,7 +2,6 @@ import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
@@ -81,11 +80,11 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         scale={0.5}
       />
       <Pagination
-        theatreKey="sb-page"
         visible={showUI}
         step={modalStep}
         total={3}
         setStep={(step: number) => (state.sbSelectedModal = step)}
+        position={[3, 0, -1.75]}
       />
       <ModalNav
         visible={showUI}
@@ -94,21 +93,19 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         setModalStep={step => (state.sbSelectedModal = step)}
       />
 
-      <e.group theatreKey="sandboxes-content/view">
-        <Image
-          ref={ref}
-          url={"/textures/stripe/sandboxes/dashboard.png"}
-          // @ts-expect-error –no alt prop
-          alt="Sandboxes"
-          onPointerOver={pointerOver}
-          onPointerOut={pointerOut}
-          transparent
-          opacity={0}
-        >
-          {/* @ts-expect-error –yes it does exist... */}
-          <bentPlaneGeometry args={[0.025, 4, 2.8, 19, 19]} />
-        </Image>
-      </e.group>
+      <Image
+        ref={ref}
+        url={"/textures/stripe/sandboxes/dashboard.png"}
+        // @ts-expect-error –no alt prop
+        alt="Sandboxes"
+        scale={[4, 2.8]}
+        position={[0, 0, -0.5]}
+        rotation={[0, 0, 0]}
+        onPointerOver={pointerOver}
+        onPointerOut={pointerOut}
+        transparent
+        opacity={0}
+      />
     </>
   );
 };

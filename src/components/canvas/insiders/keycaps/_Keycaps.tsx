@@ -1,11 +1,10 @@
 import { Float } from "@react-three/drei";
-import { editable as e } from "@theatre/r3f";
 
 import Keycap from "./_Keycap";
 
 const _ = () => {
   return (
-    <e.group theatreKey="insiders-keycaps">
+    <group position={[2.83, -2.4, -0.16]} rotation={[1.34, 0, -0.08]} scale={0.9}>
       <Float>
         <Float floatIntensity={0.5}>
           <Keycap text="4" position={[-0.35, 0, 0]} />
@@ -14,7 +13,7 @@ const _ = () => {
           <Keycap text="2" position={[0.35, -0.3, 0.25]} />
         </Float>
       </Float>
-    </e.group>
+    </group>
   );
 };
 

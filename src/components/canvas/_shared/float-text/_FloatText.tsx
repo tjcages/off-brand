@@ -3,7 +3,7 @@ import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import { Edges, Float, MeshTransmissionMaterial, Text3D, useCursor } from "@react-three/drei";
 import { ThreeEvent, useLoader } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
+// import { editable as e } from "@theatre/r3f";
 import { debounce } from "lodash";
 import { RGBELoader } from "three-stdlib";
 import { useSnapshot } from "valtio";
@@ -12,14 +12,13 @@ import Annotation from "@/components/canvas/_shared/annotation/_Annotation";
 
 interface Props {
   step?: number;
-  id?: string;
   text: string;
   scale?: number;
   annotation?: string;
   annotationPosition?: [number, number, number];
 }
 
-const _ = ({ step, id, text, scale = 1, annotation, annotationPosition }: Props) => {
+const _ = ({ step, text, scale = 1, annotation, annotationPosition }: Props) => {
   const { hoveredStep } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
 
@@ -41,8 +40,7 @@ const _ = ({ step, id, text, scale = 1, annotation, annotationPosition }: Props)
   );
 
   return (
-    <e.group
-      theatreKey={"floats/float-" + id}
+    <group
       onPointerOver={over(step)}
       onPointerOut={() => debouncedHover(null)}
       onClick={() => (state.selectedStep = (step || 0) + 1)}
@@ -88,7 +86,7 @@ const _ = ({ step, id, text, scale = 1, annotation, annotationPosition }: Props)
           <Annotation visible={hovered} text={annotation} position={annotationPosition} />
         )}
       </Float>
-    </e.group>
+    </group>
   );
 };
 

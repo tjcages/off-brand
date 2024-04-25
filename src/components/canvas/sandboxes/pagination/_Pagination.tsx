@@ -6,7 +6,6 @@ import DesktopPagination from "./_DesktopPagination";
 import MobilePagination from "./_MobilePagination";
 
 interface Props {
-  theatreKey: string;
   visible: boolean;
   step?: number;
   position?: [number, number, number];
@@ -14,7 +13,7 @@ interface Props {
   setStep?: (n: number) => void;
 }
 
-const _ = ({ theatreKey, visible, step = 0, position, total, setStep }: Props) => {
+const _ = ({ visible, step = 0, position, total, setStep }: Props) => {
   const { isMobile } = useDevice();
   return (
     <group position={position}>
@@ -22,7 +21,6 @@ const _ = ({ theatreKey, visible, step = 0, position, total, setStep }: Props) =
         <MobilePagination visible={visible} step={step} total={total} setStep={setStep} />
       )}
       <DesktopPagination
-        theatreKey={theatreKey}
         visible={isMobile ? false : visible}
         step={step}
         total={total}

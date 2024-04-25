@@ -1,20 +1,18 @@
 import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
-import { editable as e } from "@theatre/r3f";
 
 import "@/utils/_bentPlaneGeometry";
 
 interface Props {
-  theatreKey: string;
   visible: boolean;
   step?: number;
   total: number;
   setStep?: (n: number) => void;
 }
 
-const _ = ({ theatreKey, visible, step = 0, total, setStep }: Props) => {
+const _ = ({ visible, step = 0, total, setStep }: Props) => {
   return (
-    <e.group theatreKey={theatreKey}>
+    <group>
       <Html transform scale={0.175} pointerEvents="none">
         <div
           className={cn(
@@ -42,7 +40,7 @@ const _ = ({ theatreKey, visible, step = 0, total, setStep }: Props) => {
           ))}
         </div>
       </Html>
-    </e.group>
+    </group>
   );
 };
 

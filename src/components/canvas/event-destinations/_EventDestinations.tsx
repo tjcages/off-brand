@@ -41,7 +41,7 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
 
       <group rotation={[0, 0, 0]} position={[0, 0.15, 0]}>
         <Slider
-          visible={edSelectedModal}
+          visible={selectedStep === 4 ? edSelectedModal : undefined}
           ui={[
             "/textures/stripe/event-destinations/ui1.png",
             "/textures/stripe/event-destinations/ui2.png",
@@ -55,19 +55,19 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[isMobile ? 0.3 : 0.65, isMobile ? 0.9 : 0.25, 2]}
+          position={[isMobile ? 0 : 0.65, isMobile ? 0.4 : 0.25, isMobile ? 3 : 2]}
         />
         <Modal
           visible={edSelectedModal === 2}
           title="Event management"
           description="Improved event selection makes it easier to select only the events that matter to your integration."
-          position={[isMobile ? -0.2 : -0.65, isMobile ? 0.75 : -0.1, 2]}
+          position={[isMobile ? -0.2 : -0.65, isMobile ? 0.1 : -0.1, isMobile ? 3 : 2]}
         />
         <Modal
           visible={edSelectedModal === 3}
           title="Event monitoring"
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
-          position={[isMobile ? 0.35 : 0.75, isMobile ? 0.75 : -0.4, 2]}
+          position={[isMobile ? 0.05 : 0.55, isMobile ? 0.55 : -0.4, isMobile ? 3 : 2]}
         />
       </group>
     </group>

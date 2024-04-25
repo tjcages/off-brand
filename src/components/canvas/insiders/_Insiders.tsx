@@ -1,7 +1,6 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useSnapshot } from "valtio";
@@ -34,7 +33,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <e.group ref={ref} theatreKey="insiders-content" rotation={rotation}>
+    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation}>
       {/* <FeatureTitle text="Try what's new–shape what's next" visible={showModal} /> */}
       <Modal
         visible={showModal}
@@ -63,7 +62,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
 
       <Llama />
       <Keycaps />
-    </e.group>
+    </group>
   );
 };
 

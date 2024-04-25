@@ -1,7 +1,6 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -13,10 +12,11 @@ import Dashboard from "./_Dashboard";
 import Modal from "./_Modal";
 
 interface Props {
+  position?: [number, number, number];
   rotation?: [number, number, number];
 }
 
-const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
+const _ = ({ position = [-2.54, 2.26, -6.18], rotation = [0.02, 0.63, 0.055] }: Props) => {
   const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, sbSelectedModal } = useSnapshot(state);
@@ -36,7 +36,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <e.group theatreKey="sandboxes-content" ref={ref} rotation={rotation} position={[0, 2, -8]}>
+    <group ref={ref} rotation={rotation} position={position}>
       <Dashboard visible={selectedStep === 2} modalStep={sbSelectedModal} />
 
       {/* Isolated sandboxes */}
@@ -96,7 +96,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           position={[isMobile ? -0.15 : -0.65, isMobile ? 0.15 : -0.065, isMobile ? 3 : 2]}
         />
       </group>
-    </e.group>
+    </group>
   );
 };
 

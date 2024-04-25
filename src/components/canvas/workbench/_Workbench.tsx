@@ -1,6 +1,5 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -16,7 +15,7 @@ interface Props {
   rotation?: [number, number, number];
 }
 
-const _ = ({ rotation = [0, 0, 0] }: Props) => {
+const _ = ({ rotation = [0.1, 0, 0] }: Props) => {
   const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, wbSelectedModal } = useSnapshot(state);
@@ -28,12 +27,12 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <e.group ref={ref} theatreKey="workbench-content" rotation={rotation} position={[0, 2, -8]}>
+    <group ref={ref} rotation={rotation} position={[0, 3, -12.25]}>
       <Dashboard visible={selectedStep === 3} modalStep={wbSelectedModal} />
 
-      <group rotation={[0.1, 0, 0]}>
+      <group>
         <Slider
-          visible={wbSelectedModal}
+          visible={selectedStep === 3 ? wbSelectedModal : undefined}
           ui={[
             "/textures/stripe/workbench/ui1.png",
             "/textures/stripe/workbench/ui2.png",
@@ -45,32 +44,31 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
 
         {/* Modal overlays */}
         <Modal
-          theatreKey="wb-modal-1"
           visible={wbSelectedModal === 1}
           title="Introducing Workbench"
           description="See your Stripe integration's health and activity with one tap. Summon Workbench from anywhere in the Stripe Dashboard."
-          position={[isMobile ? 0.3 : 0.7, isMobile ? 0.85 : 0.35, 2]}
+          position={[isMobile ? 0 : 0.7, isMobile ? 0.4 : 0.35, isMobile ? 3 : 2]}
         />
         <Modal
           visible={wbSelectedModal === 2}
           title="Logging and events"
           description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
-          position={[isMobile ? -0.2 : -0.75, isMobile ? 0.7 : -0.5, 2]}
+          position={[isMobile ? 0 : -0.75, isMobile ? 0.7 : -0.5, isMobile ? 3 : 2]}
         />
         <Modal
           visible={wbSelectedModal === 3}
           title="Inspector"
           description="Peek under the hood at the JSON of any API object. View the object's request logs and state changes over time to understand and debug your integration."
-          position={[isMobile ? 0.35 : 0.75, isMobile ? 0.75 : -0.35, 2]}
+          position={[isMobile ? 0.15 : 0.75, isMobile ? 0.65 : -0.35, isMobile ? 3 : 2]}
         />
         <Modal
           visible={wbSelectedModal === 4}
           title="Shell and API Explorer"
           description="Build API requests with the API Explorer, and run them from the Shell. When you're ready to code, use the generated snippets in the language you need."
-          position={[isMobile ? -0.25 : -0.75, isMobile ? 0.75 : 0.15, 2]}
+          position={[isMobile ? -0.05 : -0.75, isMobile ? 0.65 : 0.15, isMobile ? 3 : 2]}
         />
       </group>
-    </e.group>
+    </group>
   );
 };
 

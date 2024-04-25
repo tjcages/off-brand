@@ -29,7 +29,7 @@ const _ = ({ lineWidth = 0.026, height = 0.5, color = "#bbb", isMobile }: Props)
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
           color="#202020"
-          metalness={0.8}
+          metalness={0.9}
           mirror={0}
         />
       )}

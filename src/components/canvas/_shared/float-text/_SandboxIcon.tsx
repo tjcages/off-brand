@@ -4,8 +4,9 @@ import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import { Edges, Float, MeshTransmissionMaterial, useCursor, useGLTF } from "@react-three/drei";
 import { ThreeEvent, useLoader } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
+import { gsap } from "gsap";
 import { debounce } from "lodash";
+import { useEffect, useRef } from "react";
 import { RGBELoader } from "three-stdlib";
 import { useSnapshot } from "valtio";
 
@@ -13,8 +14,6 @@ import Annotation from "@/components/canvas/_shared/annotation/_Annotation";
 
 interface Props {
   step: number;
-  id?: string;
-  text?: string;
   position?: [number, number, number];
   rotation?: [number, number, number];
   scale?: number;
@@ -25,20 +24,19 @@ interface Props {
 
 const _ = ({
   step,
-  id,
-  text,
-  position,
-  rotation,
-  scale = 1,
+  position = [-2.75, 0.75, 0],
+  rotation = [0, 0, 0.25],
+  scale = 0.8,
   annotation,
   annotationPosition,
   float = true
 }: Props) => {
-  const { isMobile, isTablet } = useDevice();
-  const { hoveredStep, userHovered } = useSnapshot(state);
+  const { isMobile } = useDevice();
+  const { ready, hoveredStep, userHovered, selectedStep } = useSnapshot(state);
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF("/objects/icons/sandbox.glb") as any;
+  const ref = useRef() as React.MutableRefObject<THREE.Group>;
 
   // Debounce hover a bit to stop the ticker from being erratic
   const debouncedHover = debounce(hover => (state.hoveredStep = hover), 30);
@@ -51,6 +49,48 @@ const _ = ({
   const hovered = step === hoveredStep;
   useCursor(hovered);
 
+  useEffect(() => {
+    if (!ref.current) return;
+    if (selectedStep === 0) {
+      gsap.set(ref.current.position, { x: 0, y: -2, z: 0 });
+      gsap.set(ref.current.rotation, { x: 0, y: 0, z: 0 });
+      gsap.set(ref.current.scale, { x: 0, y: 0, z: 0 });
+    }
+    if (!ready) return;
+    if (selectedStep === 1) {
+      gsap.to(ref.current.position, {
+        x: position[0],
+        y: position[1],
+        z: position[2],
+        duration: 2,
+        ease: "back.out(2)"
+      });
+      gsap.to(ref.current.rotation, {
+        x: rotation[0],
+        y: rotation[1],
+        z: rotation[2],
+        duration: 2,
+        ease: "back.out(2)"
+      });
+      gsap.to(ref.current.scale, {
+        x: scale,
+        y: scale,
+        z: scale,
+        duration: 2,
+        ease: "back.out(2)"
+      });
+    } else {
+      gsap.to(ref.current.position, {
+        x: position[0] * 3,
+        y: position[1] * 3,
+        z: 0,
+        duration: 1,
+        ease: "expo.inOut",
+        overwrite: true
+      });
+    }
+  }, [ready, position, rotation, scale, selectedStep]);
+
   const [{ wobble }] = useSpring(
     {
       wobble: hovered ? 1.05 : 1,
@@ -60,14 +100,14 @@ const _ = ({
   );
 
   return (
-    <e.group
-      theatreKey={"floats/float-" + id}
+    <group
+      ref={ref}
       onPointerOver={over(step)}
       onPointerOut={() => debouncedHover(null)}
       onClick={() => (state.selectedStep = (step || 0) + 1)}
-      position={position}
-      rotation={rotation}
-      scale={scale}
+      position={[0, -2, 0]}
+      rotation={[0, 0, 0]}
+      scale={0}
     >
       <Float floatIntensity={float ? 2 : 0} renderOrder={10}>
         <a.group scale={wobble}>
@@ -97,17 +137,15 @@ const _ = ({
           </mesh>
         </a.group>
 
-        {text !== "" && (
-          <mesh position={[1, 0.25, 0.2]} visible={false}>
-            <planeGeometry args={[2, 1.5]} />
-          </mesh>
-        )}
+        <mesh position={[1, 0.25, 0.2]} visible={false}>
+          <planeGeometry args={[2, 1.5]} />
+        </mesh>
 
-        {!isMobile && annotation !== undefined && (
+        {!isMobile && annotation !== undefined && selectedStep === 1 && (
           <Annotation visible={hovered} text={annotation} position={annotationPosition} />
         )}
       </Float>
-    </e.group>
+    </group>
   );
 };
 
