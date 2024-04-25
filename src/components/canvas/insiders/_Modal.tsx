@@ -69,6 +69,7 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
                 <Link
                   key={index}
                   href={href}
+                  target="_blank"
                   className="cursor-pointer pointer-events-auto opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out"
                 >
                   <Image

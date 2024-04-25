@@ -1,6 +1,8 @@
 import { Image } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { easing } from "maath";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 import { Glow } from "@/components/canvas/_shared";
@@ -31,7 +33,10 @@ const _ = ({
   const containerRef = useRef() as React.MutableRefObject<THREE.Group>;
   const imageRef = useRef() as React.MutableRefObject<THREE.Mesh>;
   const glowRef = useRef() as React.MutableRefObject<THREE.Mesh>;
-  const [hovered, setHover] = useState(false);
+
+  useFrame((_, delta) => {
+    easing.damp(imageRef.current.material, "radius", 0.025, 0.2, delta);
+  });
 
   useEffect(() => {
     if (!imageRef || !containerRef) return;
@@ -39,7 +44,7 @@ const _ = ({
       gsap.to(imageRef.current.material, {
         opacity: 1,
         duration: 0.5,
-        delay: 0.5,
+        delay: bottom ? 0 : 0.5,
         ease: "expo.in"
       });
       gsap.to(glowRef.current.scale, {
@@ -50,14 +55,7 @@ const _ = ({
         delay: 0.25,
         ease: "expo.inOut"
       });
-      if (bottom)
-        gsap.to(imageRef.current.position, {
-          y: 0,
-          duration: 0.5,
-          delay: 0.5,
-          ease: "expo.inOut"
-        });
-      else
+      if (!bottom)
         gsap.to(containerRef.current.scale, {
           x: 1,
           y: 1,
@@ -77,19 +75,11 @@ const _ = ({
         x: 0,
         y: 0,
         z: 0,
-        duration: 0.5,
+        duration: 0.2,
         ease: "expo.out",
         overwrite: true
       });
-      if (bottom)
-        gsap.to(imageRef.current.position, {
-          y: -4,
-          duration: 1,
-          delay: 0.5,
-          ease: "expo.inOut",
-          overwrite: true
-        });
-      else
+      if (!bottom)
         gsap.to(containerRef.current.scale, {
           x: 0.5,
           y: 0.5,
@@ -101,24 +91,6 @@ const _ = ({
     }
   }, [bottom, position, scaleGlow, size.height, size.width, visible]);
 
-  useEffect(() => {
-    if (hovered) {
-      gsap.to(imageRef.current.scale, {
-        x: size.width * 1.1,
-        y: size.height * 1.1,
-        duration: 0.5,
-        ease: "expo.inOut"
-      });
-    } else {
-      gsap.to(imageRef.current.scale, {
-        x: size.width * 1.1,
-        y: size.height * 1.1,
-        duration: 0.5,
-        ease: "expo.out"
-      });
-    }
-  }, [hovered, size.height, size.width]);
-
   return (
     <group ref={containerRef} position={position} renderOrder={1}>
       <Image
@@ -129,11 +101,8 @@ const _ = ({
         scale={[size.width, size.height]}
         transparent
         opacity={0}
-        onPointerEnter={() => setHover(true)}
-        onPointerLeave={() => setHover(false)}
       />
-      {/* <bentPlaneGeometry args={[0.1, size.width, size.height, 18, 18]} /> */}
-      <mesh ref={glowRef} position={[0, 0, -0.1]} scale={0}>
+      <mesh ref={glowRef} position={[0, 0, -0.2]} scale={0}>
         <sphereGeometry args={[2, 18, 18]} />
         <Glow glowColor="#635bff" falloff={1} />
       </mesh>
