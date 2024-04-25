@@ -45,11 +45,11 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         }}
         socials={[
           {
-            href: "https://x.com/stripe",
+            href: "https://twitter.com/stripeDev",
             icon: "/icons/x.png"
           },
           {
-            href: "https://www.youtube.com/@stripe",
+            href: "https://www.youtube.com/@stripedev",
             icon: "/icons/youtube.png"
           },
           {
@@ -57,7 +57,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/discord.png"
           }
         ]}
-        position={[isMobile ? 0 : 0.73, -2.14, isMobile ? 4 : 2.89]}
+        position={[isMobile ? 0 : 0.73, -2.14, isMobile ? 4.25 : 2.89]}
       />
 
       <Llama />

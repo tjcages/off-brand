@@ -63,7 +63,7 @@ const _Model = ({ index, z, speed, object }: Props) => {
   );
 };
 
-const count = 10;
+const count = 6;
 const depth = 1;
 const speed = 0.5;
 

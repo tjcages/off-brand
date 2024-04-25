@@ -76,7 +76,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           text: "Beta",
           color: "blue"
         }}
-        position={[isMobile ? -0.1 : 0, isMobile ? 1.55 : 1.7, isMobile ? 1.3 : 0]}
+        position={[0, isMobile ? 1.8 : 1.7, isMobile ? 1.3 : 0]}
         scale={0.5}
       />
       <Pagination
@@ -84,7 +84,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         step={modalStep}
         total={3}
         setStep={(step: number) => (state.sbSelectedModal = step)}
-        position={[3, 0, -1.75]}
+        position={[isMobile ? 0 : 3, isMobile ? -0.5 : 0, isMobile ? -1.5 : -1.75]}
       />
       <ModalNav
         visible={showUI}

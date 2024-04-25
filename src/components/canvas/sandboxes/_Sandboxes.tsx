@@ -16,7 +16,7 @@ interface Props {
   rotation?: [number, number, number];
 }
 
-const _ = ({ position = [-2.54, 2.26, -6.18], rotation = [0.02, 0.63, 0.055] }: Props) => {
+const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
   const { isMobile } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, sbSelectedModal } = useSnapshot(state);
@@ -36,7 +36,7 @@ const _ = ({ position = [-2.54, 2.26, -6.18], rotation = [0.02, 0.63, 0.055] }: 
   }, [selectedStep]);
 
   return (
-    <group ref={ref} rotation={rotation} position={position}>
+    <group ref={ref} rotation={rotation} position={[-2.54, 2.26, -6.18]}>
       <Dashboard visible={selectedStep === 2} modalStep={sbSelectedModal} />
 
       {/* Isolated sandboxes */}
