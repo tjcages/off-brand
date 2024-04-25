@@ -54,15 +54,15 @@ const _ = ({ rotation = [0.1, 0, 0] }: Props) => {
           visible={wbSelectedModal === 2}
           title="Logging and events"
           description="Dig in and troubleshoot with powerful filtering on a complete view of your logs and events."
-          position={[isMobile ? 0 : -0.75, isMobile ? 0.7 : -0.5, isMobile ? 3 : 2]}
+          position={[isMobile ? 0 : -0.75, isMobile ? 0.6 : -0.5, isMobile ? 3 : 2]}
         />
         <Modal
           visible={wbSelectedModal === 3}
           title="Inspector"
           description="Peek under the hood at the JSON of any API object. View the object's request logs and state changes over time to understand and debug your integration."
           position={[
-            isMobile ? 0.15 : isSafari ? 0.6 : 0.75,
-            isMobile ? 0.65 : isSafari ? -0.5 : -0.35,
+            isMobile ? 0.1 : isSafari ? 0.6 : 0.75,
+            isMobile ? 0.55 : isSafari ? -0.5 : -0.35,
             isMobile ? 3 : 2
           ]}
         />
@@ -71,8 +71,8 @@ const _ = ({ rotation = [0.1, 0, 0] }: Props) => {
           title="Shell and API Explorer"
           description="Build API requests with the API Explorer, and run them from the Shell. When you're ready to code, use the generated snippets in the language you need."
           position={[
-            isMobile ? -0.05 : -0.75,
-            isMobile ? 0.65 : isSafari ? -0.2 : 0.15,
+            isMobile ? -0.1 : -0.75,
+            isMobile ? 0.55 : isSafari ? -0.2 : 0.15,
             isMobile ? 3 : 2
           ]}
         />

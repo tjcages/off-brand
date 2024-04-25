@@ -44,7 +44,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Content
           visible={sbSelectedModal === 1}
           url={"/textures/stripe/sandboxes/ui1.png"}
-          position={[0, -0.1, 1.25]}
+          position={[0, -0.1, isMobile ? 1.5 : 1.25]}
           size={{
             width: 1.8,
             height: 1.33
@@ -67,7 +67,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Content
           visible={sbSelectedModal === 2}
           url={"/textures/stripe/sandboxes/ui2.png"}
-          position={[0, -0.25, 1.25]}
+          position={[0, -0.25, isMobile ? 1.5 : 1.25]}
           size={{
             width: 1.8,
             height: 1.35
@@ -86,7 +86,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
         <Content
           visible={sbSelectedModal === 3}
           url={"/textures/stripe/sandboxes/ui3.png"}
-          position={[isMobile ? -0.8 : -1, isMobile ? 0.4 : 0.5, isMobile ? 1.5 : 1.1]}
+          position={[isMobile ? -0.65 : -1, isMobile ? 0.3 : 0.5, isMobile ? 1.75 : 1.1]}
           size={{
             width: 0.9,
             height: 0.79 * 0.9
@@ -99,7 +99,7 @@ const _ = ({ rotation = [0.02, 0.63, 0.055] }: Props) => {
           description="Restrict users to Sandboxes, with no access to live business details—perfect for working with external partners."
           position={[
             isMobile ? -0.15 : -0.65,
-            isMobile ? 0.15 : isSafari ? -0.4 : -0.165,
+            isMobile ? 0.19 : isSafari ? -0.4 : -0.165,
             isMobile ? 3 : 2
           ]}
         />
