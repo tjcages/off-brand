@@ -8,7 +8,7 @@ interface Props {
 }
 
 const _ = ({ lineWidth = 0.026, height = 0.5, color = "#bbb", isMobile }: Props) => (
-  <group position={[0, -0.25, 0]} rotation={[0.1, 0, 0]}>
+  <group position={[0, isMobile ? -0.5 : -0.25, 0]} rotation={[0.1, 0, 0]}>
     <Instances>
       <planeGeometry args={[lineWidth, height]} />
       <meshBasicMaterial color={color} />
