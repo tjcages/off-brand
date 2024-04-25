@@ -50,7 +50,7 @@ const _ = ({
   useEffect(() => {
     if (!ref.current) return;
     if (selectedStep === 0) {
-      gsap.set(ref.current.position, { x: 0, y: -2, z: 0 });
+      gsap.set(ref.current.position, { x: 0, y: isMobile ? -1 : -2, z: 0 });
       gsap.set(ref.current.rotation, { x: 0, y: 0, z: 0 });
       gsap.set(ref.current.scale, { x: 0, y: 0, z: 0 });
     }
@@ -90,7 +90,7 @@ const _ = ({
         overwrite: true
       });
     }
-  }, [ready, position, rotation, scale, selectedStep]);
+  }, [ready, position, rotation, scale, selectedStep, isMobile]);
 
   const [{ wobble }] = useSpring(
     {
@@ -106,7 +106,7 @@ const _ = ({
       onPointerOver={over(step)}
       onPointerOut={() => debouncedHover(null)}
       onClick={() => (state.selectedStep = step + 1)}
-      position={[0, -2, 0]}
+      position={[0, isMobile ? -1 : -2, 0]}
       rotation={[0, 0, 0]}
       scale={0}
     >
