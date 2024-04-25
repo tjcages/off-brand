@@ -1,7 +1,7 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
-import { ThreeEvent, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
@@ -23,20 +23,20 @@ interface Props {
 const _ = ({ visible, modalStep, onVisible }: Props) => {
   const { isMobile, isSafari } = useDevice();
   const { wbSelectedModal } = useSnapshot(state);
-  const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
+  const ref1 = useRef() as React.MutableRefObject<THREE.Mesh>;
+  const ref2 = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
-  const [hovered, hover] = useState(false);
-  const pointerOver = (e: ThreeEvent<PointerEvent>) => (e.stopPropagation(), hover(true));
-  const pointerOut = () => hover(false);
+
   useFrame((_, delta) => {
-    easing.damp(ref.current.material, "radius", hovered ? 0.03 : 0.025, 0.2, delta);
+    easing.damp(ref1.current.material, "radius", 0.025, 0.2, delta);
+    easing.damp(ref2.current.material, "radius", 0.025, 0.2, delta);
   });
 
   // Background animation
   useEffect(() => {
-    if (!ref) return;
+    if (!ref1 || !ref2) return;
     if (visible) {
-      gsap.to(ref.current.material, {
+      gsap.to([ref1.current.material, ref2.current.material], {
         opacity: 0.5,
         duration: 0.5,
         delay: 1.5,
@@ -49,7 +49,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
     } else {
       setShowUI(false);
       onVisible && onVisible(false);
-      gsap.to(ref.current.material, {
+      gsap.to([ref1.current.material, ref2.current.material], {
         opacity: 0,
         duration: 1,
         delay: 0.25,
@@ -96,22 +96,30 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         setModalStep={step => (state.wbSelectedModal = step)}
       />
 
-      <Image
-        ref={ref}
-        url={
-          wbSelectedModal === 3 || wbSelectedModal === 4
-            ? "/textures/stripe/workbench/dashboard2.png"
-            : "/textures/stripe/workbench/dashboard.png"
-        }
-        // @ts-expect-error –no alt prop
-        alt="Workbench"
-        scale={[4, 2.59]}
-        position={[0, -0.1, -0.5]}
-        onPointerOver={pointerOver}
-        onPointerOut={pointerOut}
-        transparent
-        opacity={0}
-      />
+      <group>
+        <Image
+          ref={ref1}
+          visible={wbSelectedModal === 3 || wbSelectedModal === 4}
+          url="/textures/stripe/workbench/dashboard2.png"
+          // @ts-expect-error –no alt prop
+          alt="Workbench"
+          scale={[4, 2.59]}
+          position={[0, -0.1, -0.5]}
+          transparent
+          opacity={0}
+        />
+        <Image
+          ref={ref2}
+          visible={wbSelectedModal !== 3 && wbSelectedModal !== 4}
+          url="/textures/stripe/workbench/dashboard1.png"
+          // @ts-expect-error –no alt prop
+          alt="Workbench"
+          scale={[4, 2.59]}
+          position={[0, -0.1, -0.5]}
+          transparent
+          opacity={0}
+        />
+      </group>
     </>
   );
 };
