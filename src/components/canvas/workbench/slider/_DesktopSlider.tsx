@@ -10,7 +10,7 @@ interface Props {
 
 const _ = ({ visible, ui, heights }: Props) => {
   return (
-    <Html transform scale={0.024} position={[0, -0.25, 1]} pointerEvents="none" center>
+    <Html transform scale={0.022} position={[0, -0.25, 1]} pointerEvents="none" center>
       <div
         className="relative flex items-end justify-center w-[2560px] h-[1538px] origin-center"
         style={{
