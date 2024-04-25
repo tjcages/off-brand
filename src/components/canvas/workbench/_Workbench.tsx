@@ -9,7 +9,7 @@ import "@/utils/_bentPlaneGeometry";
 import Modal from "@/components/canvas/sandboxes/_Modal";
 
 import Dashboard from "./_Dashboard";
-import Slider from "./_Slider";
+import Slider from "./slider";
 
 interface Props {
   rotation?: [number, number, number];

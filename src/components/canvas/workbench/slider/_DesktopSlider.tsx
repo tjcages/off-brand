@@ -1,4 +1,4 @@
-import { cn, useDevice } from "@/utils";
+import { cn } from "@/utils";
 import { Html } from "@react-three/drei";
 import Image from "next/image";
 
@@ -9,19 +9,12 @@ interface Props {
 }
 
 const _ = ({ visible, ui, heights }: Props) => {
-  const { isMobile, isSafari } = useDevice();
   return (
-    <Html
-      transform={!isMobile && !isSafari}
-      scale={0.024}
-      position={[0, -0.25, 1]}
-      pointerEvents="none"
-      center
-    >
+    <Html transform scale={0.024} position={[0, -0.25, 1]} pointerEvents="none" center>
       <div
         className="relative flex items-end justify-center w-[2560px] h-[1538px] origin-center"
         style={{
-          transform: isMobile ? "scale(0.155)" : isSafari ? "scale(0.32)" : "scale(2)"
+          transform: "scale(2)"
         }}
       >
         <div
