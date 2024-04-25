@@ -8,7 +8,7 @@ import { useSnapshot } from "valtio";
 import "@/utils/_bentPlaneGeometry";
 
 import Modal from "@/components/canvas/sandboxes/_Modal";
-import Slider from "@/components/canvas/workbench/_Slider";
+import Slider from "@/components/canvas/workbench/slider";
 
 import Dashboard from "./_Dashboard";
 
