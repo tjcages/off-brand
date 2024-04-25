@@ -32,7 +32,8 @@ const _ = ({ rotation = [0.1, 0, 0] }: Props) => {
 
       <group>
         <Slider
-          visible={selectedStep === 3 ? wbSelectedModal : undefined}
+          show={(selectedStep || 0) >= 3}
+          visible={wbSelectedModal}
           ui={[
             "/textures/stripe/workbench/ui1.png",
             "/textures/stripe/workbench/ui2.png",

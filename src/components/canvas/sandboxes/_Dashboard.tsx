@@ -76,7 +76,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           text: "Beta",
           color: "blue"
         }}
-        position={[0, isMobile ? 1.8 : 1.7, isMobile ? 1.3 : 0]}
+        position={[0, isMobile ? 1.2 : 1.5, isMobile ? 1.3 : 0]}
         scale={0.5}
       />
       <Pagination
