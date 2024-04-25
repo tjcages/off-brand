@@ -97,7 +97,7 @@ const _ = ({
     <group ref={ref} visible={visible} position={position} scale={scale}>
       <Html transform scale={0.5} center>
         <div
-          className="flex flex-col items-center justify-center text-white"
+          className="flex flex-col items-center justify-center gap-1 md:gap-0 text-white"
           style={{ transform: "scale(2)" }}
         >
           <div className="relative flex items-center justify-center gap-1">
@@ -109,7 +109,7 @@ const _ = ({
           </div>
           <div
             className={cn(
-              "flex items-center justify-center gap-0.5 text-[7px] transition-opacity duration-500 ease-in-out",
+              "flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0.5 text-[9px] md:text-[7px] transition-opacity duration-500 ease-in-out",
               visible ? "opacity-100 delay-1000" : "opacity-0 delay-0"
             )}
           >

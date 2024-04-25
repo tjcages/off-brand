@@ -26,7 +26,7 @@ const _ = () => {
           ready && "opacity-50 hover:opacity-100",
           selectedStep === 5 && "opacity-0 pointer-events-none hover:opacity-0"
         )}
-        onClick={() => window.open("https://insiders.stripe.dev")}
+        onClick={() => window.open("https://insiders.stripe.dev/t/welcome-to-stripe-insiders/5")}
       >
         Join Stripe Insiders
       </button>

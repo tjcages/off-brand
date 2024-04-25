@@ -1,10 +1,8 @@
 "use client";
 
 import { Canvas, UI } from "@/components";
-import { flyThroughSheet } from "@/theatre";
 import { ScrollControls } from "@react-three/drei";
 import { Canvas as _Canvas } from "@react-three/fiber";
-import { SheetProvider } from "@theatre/r3f";
 
 const _ = () => {
   return (
@@ -17,9 +15,7 @@ const _ = () => {
         performance={{ min: 1 }}
       >
         <ScrollControls pages={0}>
-          <SheetProvider sheet={flyThroughSheet}>
-            <Canvas />
-          </SheetProvider>
+          <Canvas />
         </ScrollControls>
       </_Canvas>
 

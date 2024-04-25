@@ -1,6 +1,7 @@
 import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
-import { cn } from "@/utils";
+import { cn, useDevice } from "@/utils";
 import { Html } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,9 +25,16 @@ interface Props {
 }
 
 const _ = ({ visible, title, description, cta, socials, position }: Props) => {
+  const { isSafari } = useDevice();
+  const { gl } = useThree();
   return (
     <group position={position} renderOrder={10}>
-      <Html transform scale={0.175} pointerEvents="none">
+      <Html
+        transform
+        scale={0.175}
+        pointerEvents="none"
+        portal={{ current: gl.domElement.parentNode as HTMLElement & null }}
+      >
         <div
           className={cn(
             "relative flex flex-col items-start justify-start gap-2 w-full max-w-md p-4 text-white pointer-events-none transition-all duration-300 ease-out",
@@ -41,7 +49,12 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
             <Webhooks width={24} height={24} className="text-white" />
           </div>
           {title !== undefined && (
-            <h1 className="text-[24px]">
+            <h1
+              className="text-[24px]"
+              style={{
+                textWrap: "pretty"
+              }}
+            >
               <ScrambleText>{visible ? title : " "}</ScrambleText>
             </h1>
           )}
@@ -62,8 +75,8 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
               />
             </Link>
           )}
-          {socials && (
-            <div className="flex items-center justify-start gap-2 mt-8 px-3 py-2 border border-white/10 backdrop-blur-md bg-white/5 rounded-md">
+          {socials && !isSafari && (
+            <div className="hidden md:flex items-center justify-start gap-2 mt-8 px-3 py-2 border border-white/10 backdrop-blur-md bg-white/5 rounded-md">
               <p className="text-sm opacity-50">Follow along on</p>
               {socials.map(({ href, icon }, index) => (
                 <Link
@@ -73,7 +86,7 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
                   className="cursor-pointer pointer-events-auto opacity-50 hover:opacity-100 transition-opacity duration-300 ease-out"
                 >
                   <Image
-                    className="w-auto min-w-3 max-w-4 h-auto min-h-3 max-h-4"
+                    className="w-auto min-w-[12px] max-w-4 h-auto min-h-[12px] max-h-4"
                     src={icon}
                     alt="social icon"
                     width={24}

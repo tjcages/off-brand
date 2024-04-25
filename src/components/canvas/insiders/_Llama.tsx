@@ -1,6 +1,5 @@
-import { Float, MeshTransmissionMaterial, useGLTF } from "@react-three/drei";
+import { Float, MeshTransmissionMaterial, useGLTF, useTexture } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { useRef } from "react";
 import { RGBELoader } from "three-stdlib";
 
@@ -9,9 +8,16 @@ const _ = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF("/objects/llama.glb") as any;
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
+  const map = useTexture("/textures/llama/aoMap.png");
 
   return (
-    <e.group theatreKey="insiders-llama" castShadow receiveShadow>
+    <group
+      castShadow
+      receiveShadow
+      position={[-1.28, -1.75, -0.14]}
+      rotation={[-1.57, 0.22, 0.97]}
+      scale={0.03}
+    >
       <Float floatIntensity={0.5}>
         <mesh
           ref={ref}
@@ -27,11 +33,12 @@ const _ = () => {
             color="#002D8F"
             emissive="#0048e5"
             background={texture}
+            aoMap={map}
           />
         </mesh>
         <directionalLight position={[10, 10, -10]} intensity={1.5} color="#002D8F" castShadow />
       </Float>
-    </e.group>
+    </group>
   );
 };
 

@@ -2,7 +2,6 @@ import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { Image } from "@react-three/drei";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { easing } from "maath";
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +21,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   const { wbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
@@ -41,7 +40,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         opacity: 0.5,
         duration: 0.5,
         delay: 1.5,
-        ease: "expo.in",
+        ease: "expo.out",
         onComplete: () => {
           setShowUI(true);
           onVisible && onVisible(true);
@@ -75,16 +74,19 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           text: "Beta",
           color: "blue"
         }}
-        position={[isMobile ? 0.2 : 0, isMobile ? 1.35 : 1.7, isMobile ? 1.5 : 0]}
+        position={[0, isMobile ? 1.7 : 1.5, isMobile ? 1.5 : 0]}
         scale={0.5}
       />
       <Pagination
-        theatreKey="wb-page"
         visible={showUI}
         step={modalStep}
         total={4}
         setStep={(step: number) => (state.wbSelectedModal = step)}
-        position={[0, isMobile ? -0.1 : 0, isMobile ? 0.3 : 0]}
+        position={[
+          isMobile ? 0 : isSafari ? 2.8 : 3.26,
+          isMobile ? -0.76 : 0.2,
+          isMobile ? -1.5 : -1.97
+        ]}
       />
       <ModalNav
         visible={showUI}
@@ -94,21 +96,22 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         setModalStep={step => (state.wbSelectedModal = step)}
       />
 
-      <e.group theatreKey="workbench-content/view">
-        <Image
-          ref={ref}
-          url={"/textures/stripe/dashboard.png"}
-          // @ts-expect-error –no alt prop
-          alt="Workbench"
-          onPointerOver={pointerOver}
-          onPointerOut={pointerOut}
-          transparent
-          opacity={0}
-        >
-          {/* @ts-expect-error –yes it does exist... */}
-          <bentPlaneGeometry args={[0.025, 4, 2.59, 19, 19]} />
-        </Image>
-      </e.group>
+      <Image
+        ref={ref}
+        url={
+          wbSelectedModal === 2
+            ? "/textures/stripe/workbench/dashboard2.png"
+            : "/textures/stripe/workbench/dashboard.png"
+        }
+        // @ts-expect-error –no alt prop
+        alt="Workbench"
+        scale={[4, 2.59]}
+        position={[0, 0, -0.5]}
+        onPointerOver={pointerOver}
+        onPointerOut={pointerOut}
+        transparent
+        opacity={0}
+      />
     </>
   );
 };

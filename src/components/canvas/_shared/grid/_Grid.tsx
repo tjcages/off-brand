@@ -14,7 +14,7 @@ const _ = ({ lineWidth = 0.026, height = 0.5, color = "#bbb", isMobile }: Props)
       <meshBasicMaterial color={color} />
       <gridHelper args={[100, 100, color, color]} position={[0, -0.01, 0]} />
     </Instances>
-    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.1, -10]}>
+    <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.1, -8]}>
       <planeGeometry args={[20, 60]} />
       {isMobile ? (
         <meshStandardMaterial color="#202020" metalness={2} />
@@ -29,7 +29,7 @@ const _ = ({ lineWidth = 0.026, height = 0.5, color = "#bbb", isMobile }: Props)
           minDepthThreshold={0.4}
           maxDepthThreshold={1.4}
           color="#202020"
-          metalness={0.8}
+          metalness={0.9}
           mirror={0}
         />
       )}

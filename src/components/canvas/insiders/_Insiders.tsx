@@ -1,7 +1,6 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { useFrame } from "@react-three/fiber";
-import { editable as e } from "@theatre/r3f";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useSnapshot } from "valtio";
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const _ = ({ rotation = [0, 0, 0] }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep } = useSnapshot(state);
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +33,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <e.group ref={ref} theatreKey="insiders-content" rotation={rotation}>
+    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation}>
       {/* <FeatureTitle text="Try what's new–shape what's next" visible={showModal} /> */}
       <Modal
         visible={showModal}
@@ -46,11 +45,11 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
         }}
         socials={[
           {
-            href: "https://x.com/stripe",
+            href: "https://twitter.com/stripeDev",
             icon: "/icons/x.png"
           },
           {
-            href: "https://www.youtube.com/@stripe",
+            href: "https://www.youtube.com/@stripedev",
             icon: "/icons/youtube.png"
           },
           {
@@ -58,12 +57,12 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/discord.png"
           }
         ]}
-        position={[isMobile ? 0 : 0.73, -2.14, isMobile ? 4 : 2.89]}
+        position={[isMobile ? 0 : 0.73, isSafari ? -2.5 : -2.14, isMobile ? 4.25 : 2.89]}
       />
 
       <Llama />
       <Keycaps />
-    </e.group>
+    </group>
   );
 };
 

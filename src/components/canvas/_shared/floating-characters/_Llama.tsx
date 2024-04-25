@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
@@ -12,6 +12,7 @@ interface Props {
 
 const _Model = ({ index, z, speed, object }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
+  const map = useTexture("/textures/llama/aoMap.png");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF(object) as any;
   const width = 6;
@@ -52,11 +53,12 @@ const _Model = ({ index, z, speed, object }: Props) => {
       <mesh geometry={nodes.mesh_0.geometry} scale={[0.004, 0.004, 0.004]}>
         <meshStandardMaterial
           attach="material"
-          color="#002D8F"
-          emissive="#0048e5"
+          color="#221b35"
+          emissive="#635bff"
           emissiveIntensity={1}
           roughness={0.5}
           metalness={0.9}
+          aoMap={map}
         />
       </mesh>
     </group>

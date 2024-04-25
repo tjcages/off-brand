@@ -9,13 +9,19 @@ interface Props {
 }
 
 const _ = ({ visible, ui, heights }: Props) => {
-  const { isMobile } = useDevice();
+  const { isMobile, isSafari } = useDevice();
   return (
-    <Html transform scale={0.024} position={[0, -0.25, isMobile ? 1.5 : 1]} pointerEvents="none">
+    <Html
+      transform={!isMobile && !isSafari}
+      scale={0.024}
+      position={[0, -0.25, 1]}
+      pointerEvents="none"
+      center
+    >
       <div
-        className="flex items-end justify-center w-[2560px] h-[1538px]"
+        className="relative flex items-end justify-center w-[2560px] h-[1538px] origin-center"
         style={{
-          transform: "scale(2)"
+          transform: isMobile ? "scale(0.155)" : isSafari ? "scale(0.32)" : "scale(2)"
         }}
       >
         <div
@@ -23,7 +29,7 @@ const _ = ({ visible, ui, heights }: Props) => {
             "absolute left-0 right-0 bottom-0 h-0 bg-[#14181d] rounded-lg transition-all",
             visible !== undefined
               ? "opacity-100 duration-300 ease-out"
-              : "opacity-0 duration-600 ease-in-out"
+              : "opacity-0 duration-300 md:duration-600 ease-in-out"
           )}
           style={{
             height: `${visible !== undefined ? heights[visible - 1] : 0}px`
