@@ -120,7 +120,7 @@ const _ = ({
                 href={cta.href}
                 target="_blank"
                 className={cn(
-                  "flex items-center justify-center gap-0.5 text-[#2B9DF6] cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out",
+                  "flex items-center justify-center gap-0.5 text-[#2B9DF6] cursor-pointer pointer-events-auto brightness-125 opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out",
                   isSafari && !isMobile && "pl-0.5"
                 )}
               >

@@ -31,7 +31,9 @@ const _ = () => {
   return (
     <section>
       <Background />
-      <Loader />
+      <Suspense>
+        <Loader />
+      </Suspense>
       <Header />
 
       <Suspense>

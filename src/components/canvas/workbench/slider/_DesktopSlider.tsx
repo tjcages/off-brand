@@ -58,16 +58,18 @@ const _ = ({ visible, ui, heights }: Props) => {
             width={2560}
             height={1538}
           />
-          <Image
-            className={cn(
-              "absolute left-0 right-0 top-0 h-full transition-opacity duration-300 ease-out",
-              visible === 4 ? "opacity-100" : "opacity-0"
-            )}
-            src={ui[3]}
-            alt="UI"
-            width={2560}
-            height={1538}
-          />
+          {ui.length > 3 && (
+            <Image
+              className={cn(
+                "absolute left-0 right-0 top-0 h-full transition-opacity duration-300 ease-out",
+                visible === 4 ? "opacity-100" : "opacity-0"
+              )}
+              src={ui[3]}
+              alt="UI"
+              width={2560}
+              height={1538}
+            />
+          )}
         </div>
       </div>
     </Html>
