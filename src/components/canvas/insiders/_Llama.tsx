@@ -1,4 +1,4 @@
-import { Float, MeshTransmissionMaterial, useGLTF } from "@react-three/drei";
+import { Float, MeshTransmissionMaterial, useGLTF, useTexture } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useRef } from "react";
 import { RGBELoader } from "three-stdlib";
@@ -8,6 +8,7 @@ const _ = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { nodes } = useGLTF("/objects/llama.glb") as any;
   const texture = useLoader(RGBELoader, "/textures/texture.hdr");
+  const map = useTexture("/textures/llama/aoMap.png");
 
   return (
     <group
@@ -32,6 +33,7 @@ const _ = () => {
             color="#002D8F"
             emissive="#0048e5"
             background={texture}
+            aoMap={map}
           />
         </mesh>
         <directionalLight position={[10, 10, -10]} intensity={1.5} color="#002D8F" castShadow />
