@@ -56,7 +56,7 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[isMobile ? 0 : 0.65, isMobile ? 0.4 : isSafari ? 0 : 0.25, isMobile ? 3 : 2]}
+          position={[isMobile ? 0 : 0.65, isMobile ? 0.4 : isSafari ? 0 : 0.18, isMobile ? 3 : 2]}
         />
         <Modal
           visible={edSelectedModal === 2}
@@ -74,7 +74,7 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
           position={[
             isMobile ? 0.05 : 0.55,
-            isMobile ? 0.55 : isSafari ? 0 : -0.4,
+            isMobile ? 0.55 : isSafari ? 0 : -0.5,
             isMobile ? 3 : 2
           ]}
         />
