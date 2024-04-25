@@ -41,9 +41,9 @@ const _ = ({ visible, title, description, cta, socials, position }: Props) => {
             visible
               ? "opacity-100 scale-100 outline-offset-2 outline-blue"
               : "opacity-0 scale-90 outline-offset-0 outline-blue/0 pointer-events-none delay-0",
-            cta && isMobile && "pointer-events-auto"
+            cta && (isMobile || isSafari) && "pointer-events-auto"
           )}
-          onClick={() => cta && isMobile && window.open(cta.href, "_blank")}
+          onClick={() => cta && (isMobile || isSafari) && window.open(cta.href, "_blank")}
         >
           <div className="flex items-center justify-start gap-4">
             <Sandbox width={24} height={24} className="text-white" />
