@@ -41,7 +41,8 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
 
       <group rotation={[0, 0, 0]} position={[0, 0.15, 0]}>
         <Slider
-          visible={selectedStep === 4 ? edSelectedModal : undefined}
+          show={(selectedStep || 0) >= 4}
+          visible={edSelectedModal}
           ui={[
             "/textures/stripe/event-destinations/ui1.png",
             "/textures/stripe/event-destinations/ui2.png",

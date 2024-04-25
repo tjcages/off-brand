@@ -33,7 +33,7 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
   }, [selectedStep]);
 
   return (
-    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation}>
+    <group ref={ref} position={[0, 5.8, -26]} rotation={rotation} visible={selectedStep === 5}>
       {/* <FeatureTitle text="Try what's new–shape what's next" visible={showModal} /> */}
       <Modal
         visible={showModal}
@@ -57,7 +57,11 @@ const _ = ({ rotation = [0, 0, 0] }: Props) => {
             icon: "/icons/discord.png"
           }
         ]}
-        position={[isMobile ? 0 : 0.73, isSafari ? -2.5 : -2.14, isMobile ? 4.25 : 2.89]}
+        position={[
+          isMobile ? 0 : 0.5,
+          isMobile ? -1.5 : isSafari ? -2.25 : -2.14,
+          isMobile ? 4.15 : 2.89
+        ]}
       />
 
       <Llama />

@@ -1,6 +1,6 @@
 import { Sandbox, Terminal, Webhooks } from "@/assets/icons";
 import { state } from "@/store";
-import { cn } from "@/utils";
+import { cn, useDevice } from "@/utils";
 import { Html } from "@react-three/drei";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,6 +41,7 @@ const _ = ({
 }: Props) => {
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { hoveredStep } = useSnapshot(state);
+  const { isMobile, isSafari } = useDevice();
 
   const getTitle = () => {
     switch (hoveredStep) {
@@ -95,10 +96,10 @@ const _ = ({
 
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
-      <Html transform scale={0.5} center>
+      <Html transform={!isMobile && !isSafari} scale={0.5} center>
         <div
-          className="flex flex-col items-center justify-center gap-1 md:gap-0 text-white"
-          style={{ transform: "scale(2)" }}
+          className="flex flex-col items-center justify-center gap-1 md:gap-0 text-white whitespace-nowrap"
+          style={{ transform: isMobile ? "scale(1.75)" : "scale(2)" }}
         >
           <div className="relative flex items-center justify-center gap-1">
             {getIcon()}
@@ -118,7 +119,10 @@ const _ = ({
               <Link
                 href={cta.href}
                 target="_blank"
-                className="flex items-center justify-center gap-0.5 text-[#2B9DF6] cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                className={cn(
+                  "flex items-center justify-center gap-0.5 text-[#2B9DF6] cursor-pointer pointer-events-auto opacity-70 hover:opacity-100 transition-opacity duration-300 ease-in-out",
+                  isSafari && !isMobile && "pl-0.5"
+                )}
               >
                 <p>{cta.label}</p>
                 <Image
