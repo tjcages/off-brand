@@ -107,14 +107,14 @@ const _ = ({ step, next }: Props) => {
 
       {hovered && tooltip !== "" && (
         <div className="absolute -top-12">
-          <p
+          <div
             className={cn(
               "px-3 py-1.5 bg-white/5 backdrop-blur-md border border-white/20 rounded-md text-sm text-white/50 whitespace-nowrap opacity-0 transition-opacity duration-200 ease-out",
               tooltipVisible && "opacity-100"
             )}
           >
             <ScrambleText>{tooltipVisible ? steps[step - 1] : ""}</ScrambleText>
-          </p>
+          </div>
         </div>
       )}
     </div>
