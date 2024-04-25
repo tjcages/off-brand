@@ -45,8 +45,6 @@ const _ = ({ step, id, text, annotation, annotationPosition }: Props) => {
     [hovered]
   );
 
-  console.log(nodes);
-
   return (
     <e.group
       theatreKey={"floats/float-" + id}

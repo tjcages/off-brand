@@ -7,8 +7,8 @@ import { useSnapshot } from "valtio";
 
 import "@/utils/_bentPlaneGeometry";
 
-import Content from "@/components/canvas/sandboxes/_Content";
 import Modal from "@/components/canvas/sandboxes/_Modal";
+import Slider from "@/components/canvas/workbench/_Slider";
 
 import Dashboard from "./_Dashboard";
 
@@ -39,68 +39,35 @@ const _ = ({ rotation = [0.02, -0.63, -0.055] }: Props) => {
     <group ref={ref} rotation={rotation} position={[2.59, 3.41, -17.48]}>
       <Dashboard visible={selectedStep === 4} modalStep={edSelectedModal} />
 
-      {/* Destination types */}
-      <group position={[0, 0, 0]}>
-        <Content
-          visible={edSelectedModal === 1}
-          url={"/textures/stripe/event-destinations/ui2.png"}
-          position={[0, -0.12, 0.8]}
-          size={{
-            width: 3,
-            height: 1.8
-          }}
-          bottom
+      <group rotation={[0, 0, 0]} position={[0, 0.15, 0]}>
+        <Slider
+          visible={edSelectedModal}
+          ui={[
+            "/textures/stripe/event-destinations/ui1.png",
+            "/textures/stripe/event-destinations/ui2.png",
+            "/textures/stripe/event-destinations/ui3.png"
+          ]}
+          heights={[1538, 1686, 1538]}
         />
 
+        {/* Modal overlays */}
         <Modal
-          theatreKey="wb-modal-1"
           visible={edSelectedModal === 1}
           title="Destination types"
           description="Receive events with webhooks, or skip writing custom integration code and send to popular cloud providers, starting with AWS."
-          position={[isMobile ? 0.3 : 1.3, isMobile ? 0.9 : 0.57, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.3 : 0.65, isMobile ? 0.9 : 0.25, 2]}
         />
-      </group>
-
-      {/* Event management */}
-      <group position={[0, 0, 0]}>
-        <Content
-          visible={edSelectedModal === 2}
-          url={"/textures/stripe/event-destinations/ui3.png"}
-          position={[0, 0, 0.8]}
-          size={{
-            width: 3,
-            height: 1.975
-          }}
-          bottom
-        />
-
         <Modal
-          theatreKey="wb-modal-2"
           visible={edSelectedModal === 2}
           title="Event management"
           description="Improved event selection makes it easier to select only the events that matter to your integration."
-          position={[isMobile ? -0.2 : -1.25, isMobile ? 0.75 : -0.2, isMobile ? 1.5 : 0]}
-        />
-      </group>
-
-      {/* Event monitoring */}
-      <group position={[0, 0, 0]}>
-        <Content
-          visible={edSelectedModal === 3}
-          url={"/textures/stripe/event-destinations/ui4.png"}
-          position={[0, -0.12, 0.8]}
-          size={{
-            width: 3,
-            height: 1.8
-          }}
-          bottom
+          position={[isMobile ? -0.2 : -0.65, isMobile ? 0.75 : -0.1, 2]}
         />
         <Modal
-          theatreKey="wb-modal-3"
           visible={edSelectedModal === 3}
           title="Event monitoring"
           description="Build reliable event integrations capable of scaling to spikes at a moment's notice."
-          position={[isMobile ? 0.35 : 1.5, isMobile ? 0.75 : -0.8, isMobile ? 1.5 : 0]}
+          position={[isMobile ? 0.35 : 0.75, isMobile ? 0.75 : -0.4, 2]}
         />
       </group>
     </group>

@@ -23,7 +23,7 @@ interface Props {
 }
 
 const _ = ({ visible, modalStep, onVisible }: Props) => {
-  const { isMobile, isTablet } = useDevice();
+  const { isMobile } = useDevice();
   const { sbSelectedModal } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.Mesh>;
   const [showUI, setShowUI] = useState(false);
@@ -77,7 +77,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
           text: "Beta",
           color: "blue"
         }}
-        position={[isMobile ? 0.1 : 0, isMobile ? 1.35 : 1.7, isMobile ? 2 : 0]}
+        position={[isMobile ? -0.1 : 0, isMobile ? 1.55 : 1.7, isMobile ? 1.3 : 0]}
         scale={0.5}
       />
       <Pagination

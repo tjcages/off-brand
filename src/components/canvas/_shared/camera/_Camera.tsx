@@ -2,162 +2,72 @@ import { state } from "@/store";
 import { useDevice } from "@/utils";
 // import { PerspectiveCamera } from "@theatre/r3f";
 import { PerspectiveCamera } from "@react-three/drei";
-import { gsap } from "gsap";
-import { useEffect, useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { easing } from "maath";
+import { useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useSnapshot } from "valtio";
 
 const _ = () => {
   const { isMobile, isTablet } = useDevice();
-  const { loaded, selectedStep } = useSnapshot(state);
+  const { selectedStep } = useSnapshot(state);
   const ref = useRef() as React.MutableRefObject<THREE.PerspectiveCamera>;
+  const [{ pointerX }, set] = useState({ pointerX: 0, pointerY: 0 });
 
   const startPosition = useMemo(() => new THREE.Vector3(0, 0, 15), []);
 
   const homePosition = useMemo(() => new THREE.Vector3(0, 0.5, 3.5), []);
-  const homeRotation = useMemo(() => new THREE.Euler(0, 0, 0), []);
+  const homeRotation = useMemo(() => new THREE.Euler(0, 0 + pointerX / 30, 0), [pointerX]);
 
   const sandboxesPosition = useMemo(() => new THREE.Vector3(0, 2, -2.6), []);
-  const sandboxesRotation = useMemo(() => new THREE.Euler(0.07, 0.625, 0.025), []);
+  const sandboxesRotation = useMemo(
+    () => new THREE.Euler(0.07, 0.625 + pointerX / 30, 0.025),
+    [pointerX]
+  );
 
   const workbenchPosition = useMemo(() => new THREE.Vector3(0, 2.5, -8), []);
-  const workbenchRotation = useMemo(() => new THREE.Euler(0.1, 0, 0), []);
+  const workbenchRotation = useMemo(() => new THREE.Euler(0.1, 0 + pointerX / 30, 0), [pointerX]);
 
   const eventDestinationsPosition = useMemo(() => new THREE.Vector3(0, 3.25, -14), []);
-  const eventDestinationsRotation = useMemo(() => new THREE.Euler(0.07, -0.625, -0.025), []);
+  const eventDestinationsRotation = useMemo(
+    () => new THREE.Euler(0.07, -0.625 + pointerX / 30, -0.025),
+    [pointerX]
+  );
 
   const insidersPosition = useMemo(() => new THREE.Vector3(0, 3, -20), []);
   const insidersRotation = useMemo(() => new THREE.Euler(0.1, 0, 0), []);
 
-  useEffect(() => {
+  useFrame(({ camera, pointer }, delta) => {
     switch (selectedStep) {
       case 0:
-        if (loaded) {
-          gsap.to(ref.current.position, {
-            x: startPosition.x,
-            y: startPosition.y,
-            z: startPosition.z,
-            duration: 10,
-            ease: "expo.out",
-            overwrite: true
-          });
-          gsap.to(ref.current.rotation, {
-            x: homeRotation.x,
-            y: homeRotation.y,
-            z: homeRotation.z,
-            duration: 10,
-            ease: "expo.out",
-            overwrite: true
-          });
-        }
+        easing.damp3(camera.position, startPosition, 1, delta);
+        easing.dampE(camera.rotation, homeRotation, 1, delta);
         break;
       case 1:
-        gsap.to(ref.current.position, {
-          x: homePosition.x,
-          y: homePosition.y,
-          z: homePosition.z,
-          duration: 10,
-          ease: "expo.out",
-          overwrite: true
-        });
-        gsap.to(ref.current.rotation, {
-          x: homeRotation.x,
-          y: homeRotation.y,
-          z: homeRotation.z,
-          duration: 10,
-          ease: "expo.out",
-          overwrite: true
-        });
+        easing.damp3(camera.position, homePosition, 1, delta);
+        easing.dampE(camera.rotation, homeRotation, 1, delta);
         break;
       case 2:
-        gsap.to(ref.current.position, {
-          x: sandboxesPosition.x,
-          y: sandboxesPosition.y,
-          z: sandboxesPosition.z,
-          duration: 4,
-          ease: "sine.out",
-          overwrite: true
-        });
-        gsap.to(ref.current.rotation, {
-          x: sandboxesRotation.x,
-          y: sandboxesRotation.y,
-          z: sandboxesRotation.z,
-          duration: 3,
-          delay: 1,
-          ease: "sine.inOut",
-          overwrite: true
-        });
+        easing.damp3(camera.position, sandboxesPosition, 1, delta);
+        easing.dampE(camera.rotation, sandboxesRotation, 1, delta);
         break;
       case 3:
-        gsap.to(ref.current.position, {
-          x: workbenchPosition.x,
-          y: workbenchPosition.y,
-          z: workbenchPosition.z,
-          duration: 5,
-          ease: "sine.out",
-          overwrite: true
-        });
-        gsap.to(ref.current.rotation, {
-          x: workbenchRotation.x,
-          y: workbenchRotation.y,
-          z: workbenchRotation.z,
-          duration: 4,
-          ease: "sine.inOut",
-          overwrite: true
-        });
+        easing.damp3(camera.position, workbenchPosition, 1, delta);
+        easing.dampE(camera.rotation, workbenchRotation, 1, delta);
         break;
       case 4:
-        gsap.to(ref.current.position, {
-          x: eventDestinationsPosition.x,
-          y: eventDestinationsPosition.y,
-          z: eventDestinationsPosition.z,
-          duration: 5,
-          ease: "sine.out",
-          overwrite: true
-        });
-        gsap.to(ref.current.rotation, {
-          x: eventDestinationsRotation.x,
-          y: eventDestinationsRotation.y,
-          z: eventDestinationsRotation.z,
-          duration: 3,
-          ease: "sine.inOut",
-          overwrite: true
-        });
+        easing.damp3(camera.position, eventDestinationsPosition, 1, delta);
+        easing.dampE(camera.rotation, eventDestinationsRotation, 1, delta);
         break;
       case 5:
-        gsap.to(ref.current.position, {
-          x: insidersPosition.x,
-          y: insidersPosition.y,
-          z: insidersPosition.z,
-          duration: 5,
-          ease: "sine.out",
-          overwrite: true
-        });
-        gsap.to(ref.current.rotation, {
-          x: insidersRotation.x,
-          y: insidersRotation.y,
-          z: insidersRotation.z,
-          duration: 4,
-          ease: "sine.inOut",
-          overwrite: true
-        });
+        easing.damp3(camera.position, insidersPosition, 1, delta);
+        easing.dampE(camera.rotation, insidersRotation, 1, delta);
         break;
     }
-  }, [
-    loaded,
-    eventDestinationsPosition,
-    eventDestinationsRotation,
-    homePosition,
-    homeRotation,
-    insidersPosition,
-    insidersRotation,
-    sandboxesPosition,
-    sandboxesRotation,
-    selectedStep,
-    startPosition,
-    workbenchPosition,
-    workbenchRotation
-  ]);
+
+    if (isMobile) set({ pointerX: 0, pointerY: 0 });
+    else set({ pointerX: pointer.x, pointerY: pointer.y });
+  });
 
   return (
     <PerspectiveCamera

@@ -22,13 +22,13 @@ interface Props {
 
 const _ = ({ theatreKey, visible, title, description, cta, position }: Props) => {
   const render = () => (
-    <Html transform scale={0.0875} pointerEvents="none">
+    <Html transform scale={0.0475} pointerEvents="none" renderOrder={10}>
       <div
         className={cn(
-          "relative flex flex-col items-start justify-start gap-2 w-full max-w-sm p-4 text-white bg-black/80 border border-white/10 outline outline-2 rounded-lg backdrop-blur-md overflow-hidden pointer-events-none transition-all duration-300 ease-out",
+          "relative z-10 flex flex-col items-start justify-start gap-2 w-full max-w-sm p-4 text-white bg-black/80 border border-white/10 outline outline-2 rounded-lg backdrop-blur-md overflow-hidden pointer-events-none transition-all duration-300",
           visible
-            ? "opacity-100 scale-100 outline-offset-2 outline-blue delay-500"
-            : "opacity-0 scale-75 outline-offset-0 outline-blue/0 pointer-events-none delay-0"
+            ? "opacity-100 scale-100 outline-offset-2 outline-blue ease-out delay-500"
+            : "opacity-0 scale-75 outline-offset-0 outline-blue/0 pointer-events-none ease-in-out delay-0"
         )}
         style={{ transform: "scale(2)" }}
       >

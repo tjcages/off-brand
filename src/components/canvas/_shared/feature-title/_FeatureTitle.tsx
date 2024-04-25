@@ -95,7 +95,7 @@ const _ = ({
 
   return (
     <group ref={ref} visible={visible} position={position} scale={scale}>
-      <Html transform scale={0.5}>
+      <Html transform scale={0.5} center>
         <div
           className="flex flex-col items-center justify-center text-white"
           style={{ transform: "scale(2)" }}
