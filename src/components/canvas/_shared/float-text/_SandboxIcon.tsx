@@ -2,7 +2,7 @@ import { state } from "@/store";
 import { useDevice } from "@/utils";
 import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
-import { Edges, Float, MeshTransmissionMaterial, useCursor, useGLTF } from "@react-three/drei";
+import { Edges, Float, useCursor, useGLTF } from "@react-three/drei";
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { debounce } from "lodash";
@@ -112,23 +112,14 @@ const _ = ({
       <Float floatIntensity={float ? 2 : 0} renderOrder={10}>
         <a.group scale={wobble}>
           <mesh geometry={nodes.Shape_0.geometry} scale={[0.11, 0.11, 0.11]} position={[0, 1, 0]}>
-            <MeshTransmissionMaterial
-              backside
-              backsideThickness={2}
-              roughness={0.1}
+            <meshStandardMaterial
               metalness={1}
-              thickness={2}
-              clearcoat={1}
-              clearcoatRoughness={0.5}
-              chromaticAberration={5}
-              distortion={0.6}
-              distortionScale={1}
-              temporalDistortion={0.3}
-              envMapIntensity={0.1}
+              roughness={0.5}
               color={hovered ? "black" : "#002D8F"}
               emissive={hovered ? "black" : "#0048e5"}
               emissiveIntensity={1}
-              background={texture}
+              envMapIntensity={0.1}
+              map={texture}
             />
             <Edges visible={hovered} renderOrder={1000}>
               {/* @ts-ignore */}
