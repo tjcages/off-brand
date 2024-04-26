@@ -1,5 +1,6 @@
 import { state } from "@/store";
 import { useDevice } from "@/utils";
+import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 import { useSnapshot } from "valtio";
@@ -19,6 +20,14 @@ const _ = ({ rotation = [0.1, 0, 0] }: Props) => {
   const { isMobile, isSafari } = useDevice();
   const ref = useRef() as React.MutableRefObject<THREE.Group>;
   const { selectedStep, wbSelectedModal } = useSnapshot(state);
+
+  useFrame(({ pointer }) => {
+    if (ref.current && !isMobile) {
+      ref.current.rotation.x = rotation[0] - pointer.y / 400;
+      ref.current.rotation.y = rotation[1] + pointer.x / 50;
+      ref.current.rotation.z = rotation[2] - pointer.y / 400;
+    }
+  });
 
   useEffect(() => {
     if (selectedStep === 3 && state.wbSelectedModal === undefined)
