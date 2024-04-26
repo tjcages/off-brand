@@ -24,12 +24,12 @@ const _ = () => {
 
   useEffect(() => {
     gsap.to(`#${id}`, {
-      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
+      x: -38 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
     gsap.to(`#${id}`, {
-      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
+      x: -38 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
