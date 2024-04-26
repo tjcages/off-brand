@@ -11,8 +11,6 @@ import { useSnapshot } from "valtio";
 import "@/utils/_bentPlaneGeometry";
 
 import { FeatureTitle } from "@/components/canvas/_shared";
-import ModalNav from "@/components/canvas/sandboxes/_ModalNav";
-import Pagination from "@/components/canvas/sandboxes/pagination";
 
 interface Props {
   visible: boolean;
@@ -77,7 +75,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         position={[0, isMobile ? 1 : 1.5, isMobile ? 1.5 : 0]}
         scale={0.5}
       />
-      <Pagination
+      {/* <Pagination
         visible={showUI}
         step={modalStep}
         total={4}
@@ -89,7 +87,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         modalStep={wbSelectedModal}
         lastStep={4}
         setModalStep={step => (state.wbSelectedModal = step)}
-      />
+      /> */}
 
       <group>
         <Image
