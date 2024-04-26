@@ -9,7 +9,7 @@ import Button from "./_Button";
 
 const _ = () => {
   const id = "controls";
-  const { isMobile, isTablet } = useDevice();
+  const { isMobile } = useDevice();
   const { ready, selectedStep } = useSnapshot(state);
 
   useEffect(() => {
@@ -24,12 +24,12 @@ const _ = () => {
 
   useEffect(() => {
     gsap.to(`#${id}`, {
-      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
+      x: -38 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
     gsap.to(`#${id}`, {
-      x: -52 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
+      x: -38 * ((selectedStep || 0) - 3) + (isMobile ? 2 : 16),
       duration: 1,
       ease: "expo.inOut"
     });
@@ -38,7 +38,7 @@ const _ = () => {
   return (
     <div
       id={id}
-      className="absolute z-[100] bottom-0 flex items-center justify-center gap-8 w-full h-16 opacity-0"
+      className="absolute z-[100] bottom-0 flex items-center justify-center gap-6 w-full h-16 opacity-0"
     >
       <Button step={1} next={2} />
       <Button step={2} next={3} />

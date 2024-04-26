@@ -49,7 +49,7 @@ const _ = () => {
         >
           <div
             id={id}
-            className="relative flex flex-col items-center justify-center gap-8 max-w-lg p-2 md:p-8 pb-[32px] md:pb-[64px] text-center"
+            className="relative flex flex-col items-center justify-center gap-8 max-w-xl p-2 md:p-8 pb-[32px] md:pb-[64px] text-center"
           >
             <Content />
             <PlusCorners />

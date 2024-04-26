@@ -12,9 +12,6 @@ import "@/utils/_bentPlaneGeometry";
 
 import { FeatureTitle } from "@/components/canvas/_shared";
 
-import ModalNav from "./_ModalNav";
-import Pagination from "./pagination";
-
 interface Props {
   visible: boolean;
   modalStep?: number;
@@ -79,7 +76,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         position={[0, isMobile ? 1.3 : 1.5, isMobile ? 1.3 : 0]}
         scale={0.5}
       />
-      <Pagination
+      {/* <Pagination
         visible={showUI}
         step={modalStep}
         total={3}
@@ -89,7 +86,7 @@ const _ = ({ visible, modalStep, onVisible }: Props) => {
         visible={showUI}
         modalStep={sbSelectedModal}
         setModalStep={step => (state.sbSelectedModal = step)}
-      />
+      /> */}
 
       <Image
         ref={ref}
