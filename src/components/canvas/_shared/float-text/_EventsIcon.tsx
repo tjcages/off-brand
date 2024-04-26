@@ -114,12 +114,12 @@ const _ = ({
         <a.group scale={wobble}>
           <mesh geometry={nodes.Shape_0.geometry} scale={[0.1, 0.1, 0.1]} position={[0, 1, 0]}>
             <meshStandardMaterial
-              metalness={1}
-              roughness={0.5}
+              metalness={0.5}
+              roughness={0.1}
               color={hovered ? "black" : "#002D8F"}
               emissive={hovered ? "black" : "#0048e5"}
-              emissiveIntensity={1}
-              envMapIntensity={0.1}
+              emissiveIntensity={0.35}
+              envMapIntensity={0.5}
               map={texture}
             />
             <Edges visible={hovered} renderOrder={1000}>

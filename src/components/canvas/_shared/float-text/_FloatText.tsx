@@ -1,7 +1,7 @@
 import { state } from "@/store";
 import { config, useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
-import { Edges, Float, MeshTransmissionMaterial, Text3D, useCursor } from "@react-three/drei";
+import { Edges, Float, Text3D, useCursor } from "@react-three/drei";
 import { ThreeEvent, useLoader } from "@react-three/fiber";
 // import { editable as e } from "@theatre/r3f";
 import { debounce } from "lodash";
@@ -50,24 +50,7 @@ const _ = ({ step, text, scale = 1, annotation, annotationPosition }: Props) => 
         <a.group scale={wobble}>
           <Text3D font="/fonts/Inter-Light-Regular.json" height={0.4}>
             {text}
-            <MeshTransmissionMaterial
-              backside
-              backsideThickness={2}
-              roughness={0.1}
-              metalness={1}
-              thickness={2}
-              clearcoat={1}
-              clearcoatRoughness={0.5}
-              chromaticAberration={5}
-              distortion={0.6}
-              distortionScale={1}
-              temporalDistortion={0.3}
-              envMapIntensity={0.1}
-              color={hovered ? "black" : "#635bff"}
-              emissive={hovered ? "black" : "#635bff"}
-              emissiveIntensity={0.5}
-              background={texture}
-            />
+            <meshStandardMaterial map={texture} />
             <Edges visible={hovered} renderOrder={1000}>
               {/* @ts-ignore */}
               <a.meshBasicMaterial color={"white"} depthTest={false} />

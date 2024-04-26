@@ -11,15 +11,7 @@ import EventsIcon from "@/components/canvas/_shared/float-text/_EventsIcon";
 import SandboxIcon from "@/components/canvas/_shared/float-text/_SandboxIcon";
 import WorkbenchIcon from "@/components/canvas/_shared/float-text/_WorkbenchIcon";
 
-import {
-  Camera,
-  Characters,
-  Environment,
-  FloatText,
-  Grid,
-  Lighting,
-  Postprocessing
-} from "./_shared";
+import { Camera, Characters, Environment, Grid, Lighting, Postprocessing } from "./_shared";
 import EventDestinations from "./event-destinations";
 import Insiders from "./insiders";
 import Sandboxes from "./sandboxes";
@@ -57,8 +49,6 @@ const _ = () => {
         <ambientLight intensity={1} />
         <Lighting />
 
-        {/* Placeholder for Effect glitch */}
-        <FloatText scale={0} text="" />
         <group scale={0.6} position={[0, 0.25, -0.5]}>
           <SandboxIcon
             step={1}
