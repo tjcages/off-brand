@@ -29,12 +29,14 @@ const _ = () => {
     gsap.to(node, {
       x: position === "tr" ? 10 : position === "br" ? -10 : 0,
       y: position === "tl" ? -10 : position === "bl" ? 10 : 0,
+      opacity: 0.5,
       duration: 0.5,
       delay: 1.5,
       ease: "expo.out",
       onComplete: () => {
         gsap.to(node, {
           y: position === "tl" ? -20 : position === "bl" ? 20 : 0,
+          opacity: 0.5,
           duration: 1,
           delay: 0.5,
           ease: "expo.in",
@@ -49,6 +51,7 @@ const _ = () => {
           left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
           bottom: position === "bl" ? -20 : position === "br" ? -20 : undefined,
           right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
+          opacity: 0.5,
           duration: 1,
           delay: 2.5,
           ease: "expo.out"
@@ -66,6 +69,7 @@ const _ = () => {
       left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
       bottom: undefined,
       right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
+      opacity: 0.2,
       duration: 1,
       ease: "expo.inOut",
       overwrite: true
@@ -80,6 +84,7 @@ const _ = () => {
       left: position === "tl" ? -12 : position === "bl" ? -12 : undefined,
       bottom: position === "bl" ? -20 : position === "br" ? -20 : undefined,
       right: position === "tr" ? -12 : position === "br" ? -12 : undefined,
+      opacity: 0.5,
       duration: 1,
       ease: "expo.out"
     });
@@ -109,16 +114,16 @@ const _ = () => {
 
   return (
     <>
-      <div id={id + "-tl"} className="absolute fs-5 leading-none opacity-20">
+      <div id={id + "-tl"} className="absolute fs-5 leading-none opacity-50">
         +
       </div>
-      <div id={id + "-tr"} className="absolute fs-5 leading-none opacity-20">
+      <div id={id + "-tr"} className="absolute fs-5 leading-none opacity-50">
         +
       </div>
-      <div id={id + "-bl"} className="absolute fs-5 leading-none opacity-20">
+      <div id={id + "-bl"} className="absolute fs-5 leading-none opacity-50">
         +
       </div>
-      <div id={id + "-br"} className="absolute fs-5 leading-none opacity-20">
+      <div id={id + "-br"} className="absolute fs-5 leading-none opacity-50">
         +
       </div>
     </>
