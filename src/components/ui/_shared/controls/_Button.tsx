@@ -107,7 +107,7 @@ const _ = ({ step, next }: Props) => {
     <div
       className={cn(
         "relative flex items-center justify-center transition-all duration-1000 ease-in-out",
-        step === selectedStep && "mx-4"
+        step === selectedStep && "mx-2 md:mx-4"
       )}
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
