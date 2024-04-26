@@ -63,7 +63,7 @@ const _ = ({ step, next }: Props) => {
         duration: 1,
         ease: "expo.out"
       });
-      gsap.to([`#${id}-arrow`, `#${id}-dots`], {
+      gsap.to([`#${id}-arrow`, `#${id}-dots`, `#${id}-arrow-repeat`], {
         scale: 1,
         opacity: 1,
         duration: 0.5,
@@ -78,7 +78,7 @@ const _ = ({ step, next }: Props) => {
         ease: "expo.out",
         overwrite: true
       });
-      gsap.to([`#${id}-arrow`, `#${id}-dots`], {
+      gsap.to([`#${id}-arrow`, `#${id}-dots`, `#${id}-arrow-repeat`], {
         scale: 0.5,
         opacity: 0,
         duration: 0.5,
@@ -212,6 +212,20 @@ const _ = ({ step, next }: Props) => {
                   height={16}
                 />
               </div>
+            </div>
+          )}
+          {step === 5 && (
+            <div
+              id={id + "-arrow-repeat"}
+              className="absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center"
+            >
+              <Image
+                className="group-hover:invert"
+                src="/icons/arrow-repeat.png"
+                alt="arrow"
+                width={24}
+                height={24}
+              />
             </div>
           )}
         </button>
