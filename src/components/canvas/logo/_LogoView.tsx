@@ -5,7 +5,7 @@ import {
 } from "@alienkitty/alien.js/src/three";
 import { Group, Mesh, OrthographicCamera, Scene, WebGLRenderTarget } from "three";
 
-import Geomtry from "./_Geometry";
+import Logo from "./_Logo";
 import Material from "./_Material";
 
 interface Props {
@@ -35,7 +35,9 @@ class LogoView extends Group {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mesh: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  triangle: any;
+  logo: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sig: any;
 
   constructor(controller: Props) {
     super();
@@ -102,12 +104,17 @@ class LogoView extends Group {
   }
 
   initViews() {
-    this.triangle = new Geomtry(this.controller);
+    this.sig = new Logo(this.controller, "/totem-sig.svg", {
+      color: "red"
+    });
+    this.sig.scale.multiplyScalar(0.85);
+    this.sig.position.set(0.75, 0.4, -1);
+    if (this.scene) this.scene.add(this.sig);
 
+    this.logo = new Logo(this.controller, "/totem.svg");
     // Reduce size to make room for fluid dissipation
-    this.triangle.scale.multiplyScalar(0.8);
-
-    if (this.scene) this.scene.add(this.triangle);
+    this.logo.scale.multiplyScalar(0.8);
+    if (this.scene) this.scene.add(this.logo);
   }
 
   // Public methods
@@ -126,7 +133,7 @@ class LogoView extends Group {
   };
 
   update = () => {
-    // Render a single frame for the triangle texture
+    // Render a single frame for the logo texture
     const currentRenderTarget = this.renderer.getRenderTarget();
 
     // Scene pass
@@ -138,7 +145,8 @@ class LogoView extends Group {
   };
 
   ready = async () => {
-    await this.triangle.initMesh();
+    await this.logo.initMesh();
+    await this.sig.initMesh();
 
     this.isLoaded = true;
 

@@ -11,19 +11,30 @@ interface Props {
 
 class _ extends Group {
   controller: Props;
+  url: string;
+  options?: {
+    color: string;
+  };
 
-  constructor(controller: Props) {
+  constructor(
+    controller: Props,
+    url: string,
+    options?: {
+      color: string;
+    }
+  ) {
     super();
 
     this.controller = controller;
+    this.url = url;
+    this.options = options;
   }
 
   async initMesh() {
     const { loadSVG } = this.controller;
 
     // Fetch the SVG data from the provided URL
-    const svgDataURL = "/totem.svg";
-    const svgData = await fetch(svgDataURL);
+    const svgData = await fetch(this.url);
     const svgText = await svgData.text();
 
     // Load the SVG data
@@ -39,7 +50,10 @@ class _ extends Group {
     for (let i = 0; i < paths.length; i++) {
       const path = paths[i];
 
-      const material = new MeshBasicMaterial();
+      const material = new MeshBasicMaterial({
+        color: this.options?.color || "white",
+        transparent: true
+      });
       const shapes = SVGLoader.createShapes(path);
 
       for (let j = 0; j < shapes.length; j++) {
