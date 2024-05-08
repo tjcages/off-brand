@@ -74,6 +74,7 @@
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "raw-loader": "^4.0.2",
+    "space.js": "link:@types/alienkitty/space.js",
     "tailwindcss": "^3.3.5",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.1",

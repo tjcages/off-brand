@@ -184,6 +184,9 @@ devDependencies:
   raw-loader:
     specifier: ^4.0.2
     version: 4.0.2(webpack@5.91.0)
+  space.js:
+    specifier: link:@types/alienkitty/space.js
+    version: link:@types/alienkitty/space.js
   tailwindcss:
     specifier: ^3.3.5
     version: 3.3.5(ts-node@10.9.2)
