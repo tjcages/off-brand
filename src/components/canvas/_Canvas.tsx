@@ -2,6 +2,7 @@
 
 // @ts-expect-error - Ignore import error
 import { ticker } from "@alienkitty/space.js/src/tween/Ticker.js";
+import { useEffect } from "react";
 
 import CameraController from "./camera";
 import RenderManager from "./render";
@@ -82,7 +83,9 @@ class Canvas {
 }
 
 const _ = () => {
-  new Canvas();
+  useEffect(() => {
+    new Canvas();
+  }, []);
   return <canvas id="canvas" className="fixed top-0 right-0 left-0 bottom-0 w-full h-full" />;
 };
 
