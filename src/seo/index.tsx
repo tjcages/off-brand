@@ -15,8 +15,8 @@ export const seo = {
     images: [
       {
         url: "/preview.png",
-        width: 1200,
-        height: 630,
+        width: 1600,
+        height: 898,
         alt: "Totem Preview"
       }
     ]
