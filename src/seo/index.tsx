@@ -1,30 +1,28 @@
 export const seo = {
-  title: "Developer experience, reimagined | Stripe",
-  description:
-    "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
+  title: "Totem",
+  description: "A new format of music",
   icons: [
     {
       rel: "icon",
-      url: "https://stripe.com/favicon.ico"
+      url: "/favicon.ico"
     }
   ],
   openGraph: {
     type: "website",
-    url: "https://beta.stripe.dev",
-    title: "Developer experience, reimagined | Stripe",
-    description:
-      "Meet a new set of developer tools that make writing, testing, and pushing Stripe code easier than ever.",
+    url: "https://totem.info",
+    title: "Totem",
+    description: "A new format of music",
     images: [
       {
         url: "/preview.png",
         width: 1200,
         height: 630,
-        alt: "Stripe Developers"
+        alt: "Totem Preview"
       }
     ]
   },
   twitter: {
-    site: "@stripedev",
+    site: "@_totem__",
     card: "summary_large_image"
   },
   other: {

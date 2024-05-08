@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@alienkitty/alien.js':
+    specifier: ^1.2.0
+    version: 1.2.0
   '@pmndrs/assets':
     specifier: ^1.6.0
     version: 1.6.0
@@ -169,6 +172,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.13.0
     version: 6.13.0(eslint@8.23.1)(typescript@5.3.2)
+  alien.js:
+    specifier: link:@types/alienkitty/alien.js
+    version: link:@types/alienkitty/alien.js
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
@@ -242,6 +248,16 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /@alienkitty/alien.js@1.2.0:
+    resolution: {integrity: sha512-YAxf6rkhxVU+8oZc7206LyBJwJT8Fx8EjnygTG5s1M/cJoojiyCdsIm1Tyx/NNoe3HjtoYPj58kRFF5FgvBVEg==}
+    dependencies:
+      '@alienkitty/space.js': 1.2.0
+    dev: false
+
+  /@alienkitty/space.js@1.2.0:
+    resolution: {integrity: sha512-rkIRp0TZv5C5CShU0YbHxCiSsAci//xUvLzg4vaK2bfoQzE13bZKz3900Ir80/jW8U+MXb9ySaJnAEs/Qas5hA==}
+    dev: false
 
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}

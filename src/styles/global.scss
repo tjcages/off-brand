@@ -262,66 +262,6 @@ body {
   @apply text-red-400;
 }
 
-.perspective-left {
-  transform: perspective(10cm) skewY(-2.5deg) rotateY(2.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-left-slight {
-  transform: perspective(10cm) skewY(-0.5deg) rotateY(0.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-left-top-slight {
-  transform: perspective(10cm) skewY(0.5deg) rotateY(0.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-right {
-  transform: perspective(10cm) skewY(2.5deg) rotateY(-2.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-right-slight {
-  transform: perspective(10cm) skewY(0.5deg) rotateY(-0.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-right-top {
-  transform: perspective(10cm) skewY(-2.5deg) rotateY(-2.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-right-top-slight {
-  transform: perspective(10cm) skewY(-0.5deg) rotateY(-0.5deg);
-  @media (max-width: 1024px) {
-    transform: none;
-  }
-}
-
-.perspective-top {
-  transform: perspective(5cm) rotateX(1deg) rotateX(1.5deg);
-}
-.perspective-top-steep {
-  transform: perspective(5cm) rotateX(1deg) rotateX(3deg);
-}
-
-.perspective-bottom {
-  transform: perspective(5cm) rotateX(-1deg) rotateX(-1.5deg);
-}
-
 .alert-move-left {
   animation: move-left 5s linear infinite;
   animation-fill-mode: forwards;
@@ -421,8 +361,4 @@ body {
 .noise {
   background-image: url("/textures/noise.png");
   opacity: 0.2;
-}
-
-.stripe-outline {
-  filter: drop-shadow(0 0 1rem #635bff);
 }

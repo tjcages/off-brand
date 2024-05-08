@@ -13,6 +13,7 @@
     "inngest": "npx inngest-cli dev"
   },
   "dependencies": {
+    "@alienkitty/alien.js": "^1.2.0",
     "@pmndrs/assets": "^1.6.0",
     "@react-spring/core": "^9.7.3",
     "@react-spring/three": "^9.7.3",
@@ -69,6 +70,7 @@
     "@types/ws": "^8.5.10",
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
+    "alien.js": "link:@types/alienkitty/alien.js",
     "autoprefixer": "^10.4.16",
     "eslint": "8.23.1",
     "eslint-config-next": "14.0.3",
