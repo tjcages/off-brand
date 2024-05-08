@@ -10,8 +10,11 @@ import {
   SceneCompositeDistortionMaterial,
   UnrealBloomBlurMaterial // @ts-expect-error - Ignore import error
 } from "@alienkitty/alien.js/src/three";
+// @ts-expect-error - Ignore import error
 import { PanelItem } from "@alienkitty/space.js/src/panels/PanelItem.js";
+// @ts-expect-error - Ignore import error
 import { ticker } from "@alienkitty/space.js/src/tween/Ticker.js";
+// @ts-expect-error - Ignore import error
 import { UI } from "@alienkitty/space.js/src/ui/UI.js";
 import { useEffect } from "react";
 import {
