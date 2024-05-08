@@ -77,7 +77,7 @@ class LogoView extends Group {
       curlStrength: 40,
       pressureDissipation: 0.5,
       velocityDissipation: 0.85,
-      densityDissipation: 0.95,
+      densityDissipation: 0.97,
       radius: 0.1
     });
     this.fluid.splatMaterial.uniforms.uAspect = aspect;
