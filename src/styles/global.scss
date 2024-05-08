@@ -39,6 +39,10 @@
     font-size: 15px;
     // text-wrap: balance;
     white-space: pre-wrap;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
   }
 
   pre {

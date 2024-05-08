@@ -1,5 +1,6 @@
 "use client";
 
+import { isMobile } from "react-device-detect";
 import { PerspectiveCamera, Vector2, Vector3 } from "three";
 
 class _ {
@@ -16,7 +17,7 @@ class _ {
     this.camera = camera;
 
     this.mouse = new Vector2();
-    this.lookAt = new Vector3(0, 0, -2);
+    this.lookAt = new Vector3(isMobile ? 0.3 : 0, 0, -2);
     this.origin = new Vector3();
     this.target = new Vector3();
     this.targetXY = new Vector2(5, 1);
