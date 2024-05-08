@@ -11,11 +11,7 @@ import {
   UnrealBloomBlurMaterial // @ts-expect-error - Ignore import error
 } from "@alienkitty/alien.js/src/three";
 // @ts-expect-error - Ignore import error
-import { PanelItem } from "@alienkitty/space.js/src/panels/PanelItem.js";
-// @ts-expect-error - Ignore import error
 import { ticker } from "@alienkitty/space.js/src/tween/Ticker.js";
-// @ts-expect-error - Ignore import error
-import { UI } from "@alienkitty/space.js/src/ui/UI.js";
 import { useEffect } from "react";
 import {
   AdditiveBlending,
@@ -46,6 +42,7 @@ import {
   WebGLRenderTarget,
   WebGLRenderer
 } from "three";
+// @ts-expect-error - Ignore import error
 import { SVGLoader } from "three/addons/loaders/SVGLoader.js";
 
 function getFullscreenTriangle() {
@@ -562,160 +559,6 @@ class SceneController {
   static ready = () => this.view.ready();
 }
 
-class PanelController {
-  static init(view, ui) {
-    this.view = view;
-    this.ui = ui;
-
-    this.initPanel();
-  }
-
-  static initPanel() {
-    const { triangle } = this.view;
-
-    const { luminosityMaterial, bloomCompositeMaterial, compositeMaterial } = RenderManager;
-
-    const items = [
-      {
-        name: "FPS"
-      },
-      {
-        type: "divider"
-      },
-      {
-        type: "slider",
-        name: "Iterate",
-        min: 0,
-        max: 10,
-        step: 1,
-        value: triangle.fluid.iterations,
-        callback: value => {
-          triangle.fluid.iterations = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Density",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: triangle.fluid.densityDissipation,
-        callback: value => {
-          triangle.fluid.densityDissipation = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Velocity",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: triangle.fluid.velocityDissipation,
-        callback: value => {
-          triangle.fluid.velocityDissipation = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Pressure",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: triangle.fluid.pressureDissipation,
-        callback: value => {
-          triangle.fluid.pressureDissipation = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Curl",
-        min: 0,
-        max: 50,
-        step: 0.1,
-        value: triangle.fluid.curlStrength,
-        callback: value => {
-          triangle.fluid.curlStrength = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Radius",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: triangle.fluid.radius,
-        callback: value => {
-          triangle.fluid.radius = value;
-        }
-      },
-      {
-        type: "divider"
-      },
-      {
-        type: "slider",
-        name: "Thresh",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: luminosityMaterial.uniforms.uThreshold.value,
-        callback: value => {
-          luminosityMaterial.uniforms.uThreshold.value = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Smooth",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: luminosityMaterial.uniforms.uSmoothing.value,
-        callback: value => {
-          luminosityMaterial.uniforms.uSmoothing.value = value;
-        }
-      },
-      {
-        type: "slider",
-        name: "Strength",
-        min: 0,
-        max: 2,
-        step: 0.01,
-        value: RenderManager.bloomStrength,
-        callback: value => {
-          RenderManager.bloomStrength = value;
-          bloomCompositeMaterial.uniforms.uBloomFactors.value = RenderManager.bloomFactors();
-        }
-      },
-      {
-        type: "slider",
-        name: "Radius",
-        min: 0,
-        max: 1,
-        step: 0.01,
-        value: RenderManager.bloomRadius,
-        callback: value => {
-          RenderManager.bloomRadius = value;
-          bloomCompositeMaterial.uniforms.uBloomFactors.value = RenderManager.bloomFactors();
-        }
-      },
-      {
-        type: "slider",
-        name: "Chroma",
-        min: 0,
-        max: 10,
-        step: 0.1,
-        value: compositeMaterial.uniforms.uBloomDistortion.value,
-        callback: value => {
-          compositeMaterial.uniforms.uBloomDistortion.value = value;
-        }
-      }
-    ];
-
-    items.forEach(data => {
-      this.ui.addPanel(new PanelItem(data));
-    });
-  }
-}
-
 const BlurDirectionX = new Vector2(1, 0);
 const BlurDirectionY = new Vector2(0, 1);
 
@@ -1085,8 +928,6 @@ class App {
 
     await SceneController.ready();
 
-    this.initPanel();
-
     CameraController.animateIn();
     SceneController.animateIn();
   }
@@ -1099,10 +940,6 @@ class App {
   static initViews() {
     this.view = new SceneView();
     WorldController.scene.add(this.view);
-
-    this.ui = new UI({ fps: true });
-    this.ui.animateIn();
-    document.body.appendChild(this.ui.element);
   }
 
   static initControllers() {
@@ -1111,10 +948,6 @@ class App {
     CameraController.init(camera);
     SceneController.init(camera, this.view);
     RenderManager.init(renderer, scene, camera);
-  }
-
-  static initPanel() {
-    PanelController.init(this.view, this.ui);
   }
 
   static addListeners() {
@@ -1141,7 +974,6 @@ class App {
     CameraController.update();
     SceneController.update();
     RenderManager.update(time, delta, frame);
-    this.ui.update();
   };
 }
 
