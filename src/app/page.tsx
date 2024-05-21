@@ -1,20 +1,16 @@
-import { seo } from "@/seo";
-import type { Metadata, ResolvingMetadata } from "next";
+"use client";
 
-import Main from "./_Main";
+import WebGl from "@/webgl";
+import { useEffect } from "react";
 
-type Props = {
-  params: unknown;
-  searchParams: { r?: string };
+import Home from "@/components/home";
+
+const _ = () => {
+  useEffect(() => {
+    new WebGl();
+  }, []);
+
+  return <Home />;
 };
 
-export default async function HomePage(_: Props) {
-  return <Main />;
-}
-
-export async function generateMetadata(
-  { searchParams }: Props,
-  _: ResolvingMetadata
-): Promise<Metadata> {
-  return seo;
-}
+export default _;
