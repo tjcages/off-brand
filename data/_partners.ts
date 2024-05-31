@@ -7,7 +7,7 @@ interface PartnerProps {
 const _ = [
   {
     name: "Tyler J. Cagle",
-    position: "Concept & Product Lead",
+    position: "Concept & Product",
     href: "https://twitter.com/tjcages",
   },
   {
