@@ -66,8 +66,8 @@ export default class Quad {
       this.gl,
       1, // width
       1, // height
-      100, // subdx
-      100, // subdy
+      10, // subdx
+      10, // subdy
       m4.rotationX(Math.PI / 2)
     );
 

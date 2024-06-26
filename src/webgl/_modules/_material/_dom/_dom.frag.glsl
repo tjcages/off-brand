@@ -17,7 +17,7 @@ void main() {
     
     float gs = (img.r + img.g + img.b)/3.33333333;
     vec3 color = mix(vec3(gs), img.rgb, smoothstep(.7, 1., v_inView));
-    color = mix(color, vec3(gs), v_hover * .85);
+    color = mix(color, vec3(gs), (0.5 - v_hover) * .85);
 
     gl_FragColor.rgb = color;
     gl_FragColor.a = 1.;

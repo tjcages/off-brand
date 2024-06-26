@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+main,
+[data-scroll] {
+  overscroll-behavior: none;
+}
+
+body {
+  color: black;
+  background: black;
+
+  font-family: "Times New Roman", Times, serif;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &:before {
+    // add noise
+    content: "";
+    @apply fixed bottom-0 left-0 right-0 top-0 z-0 h-screen w-screen;
+    background-image: url("/textures/noise.png");
+    mix-blend-mode: darken;
+  }
+}
+
+main {
+  @apply relative z-10 mix-blend-screen;
+}
+
+canvas {
+  @apply fixed bottom-0 left-0 right-0 top-0 -z-0 flex h-screen w-screen flex-col items-center justify-center;
+}
+
+h1 {
+  @apply text-6xl leading-tight tracking-tighter;
+}
+
+h2 {
+  @apply text-4xl leading-tight;
+}
+
+h3 {
+  @apply text-2xl leading-tight;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+h6 {
+  @apply text-base;
+}
+
+p {
+  @apply text-base;
+}
+
+@layer components {
+  .text-wrap {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

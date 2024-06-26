@@ -65,7 +65,7 @@ void main() {
   vec2 new_uv = texcoord;
   new_uv -= vec2(.5);
   new_uv *= final_ratio;
-  new_uv *= 1. - u_hover * .3;
+  new_uv *= 1. - u_hover * .2;
   new_uv += vec2(.5);
 
   v_uv = new_uv;

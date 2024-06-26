@@ -3,9 +3,9 @@
 :root {
   /* Colors */
   --color-main: #0000ff;
-  --color-sec: #ffffff;
+  --color-sec: black;
   /* Type */
-  --font-size: 12px;
+  --font-size: 14px;
   --line-height: 1em;
 }
 
@@ -20,11 +20,6 @@
   overflow: hidden;
 }
 
-html {
-  background: blue;
-}
-/* Type */
-
 /* Layout */
 
 section {
@@ -33,13 +28,14 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 1vw;
 
   padding: 10vh 5vw;
 }
 
 section > figure {
   aspect-ratio: 50/70;
-  height: 20vw;
+  /* height: 20vw; */
 }
 
 .mid {
@@ -74,36 +70,34 @@ section > figure {
   display: flex;
   justify-content: center;
   object-fit: cover;
+  object-position: left;
 
   overflow: visible;
+  width: 100px;
+  height: 105px;
 
-  font-size: 0.8em;
+  font-size: 0.7em;
 
   position: relative;
+  aspect-ratio: 50/70;
 }
 
 [data-quad]:before {
   position: absolute;
-  content: "IMG";
-  left: 0px;
+  content: attr(data-quad);
+  text-align: center;
   top: -1.5em;
 }
 
-[data-quad]:after {
-  position: absolute;
-  content: "0000";
-  right: 0px;
-  bottom: -1.5em;
-}
-
-/* [data-quad] > img, [data-quad] > video {
+[data-quad] > img,
+[data-quad] > video {
   opacity: 0;
   visibility: hidden;
-} */
+}
 
 /* ------- Grid View */
 
-.grid-w {
+/* .grid-w {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -125,10 +119,10 @@ section > figure {
 .grid-w > div > div {
   width: 8vw;
   aspect-ratio: 0.7/1;
-}
+} */
 
 /* ------ UI */
-.ui {
+/* .ui {
   position: fixed;
   right: 0;
   z-index: 1000;
@@ -153,13 +147,13 @@ section > figure {
   justify-content: center;
   align-items: center;
   gap: 0.2em;
-}
+} */
 
 [data-ui]:hover {
   opacity: 0.5;
 }
 
-[data-ui="grid"] > div {
+/* [data-ui="grid"] > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -171,4 +165,4 @@ section > figure {
   width: 5px;
   aspect-ratio: 1/1;
   background-color: var(--color-sec);
-}
+} */

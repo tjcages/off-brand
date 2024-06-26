@@ -33,10 +33,12 @@ export default class GL {
   constructor() {
     this.canvas = document.getElementById("c") as HTMLCanvasElement;
     this.gl = this.canvas.getContext("webgl") as WebGLRenderingContext;
-    this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    // this.gl.clearColor(233 / 255, 231 / 255, 225 / 255, 1.0);
+    // use hex color #EDEDED
+    this.gl.clearColor(237 / 255, 237 / 255, 237 / 255, 1.0);
     this.gl.enable(this.gl.BLEND);
     this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
-    this.gl.vp = { dpr: Math.min(window.devicePixelRatio, 2) };
+    this.gl.vp = { dpr: window.devicePixelRatio };
 
     this.camera = new Camera(this.gl);
     this.gl.camera = this.camera.get(this.gl);
@@ -76,7 +78,10 @@ export default class GL {
 
   resize(): void {
     if (!this.gl.vp) return;
-    resizeCanvasToDisplaySize(this.gl.canvas as HTMLCanvasElement, this.gl.vp.dpr);
+    resizeCanvasToDisplaySize(
+      this.gl.canvas as HTMLCanvasElement,
+      Math.max(this.gl.vp.dpr || 1, 3)
+    );
 
     let scrollCurrent = window.scrollY;
     if (this.scroll && this.scroll.y) scrollCurrent = this.scroll.y.current;

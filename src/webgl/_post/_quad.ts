@@ -9,8 +9,15 @@ export default class Quad {
   private programInfo: twgl.ProgramInfo;
   private mouse: { x: number; y: number };
   private bufferInfo?: twgl.BufferInfo;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private uniforms?: { u_res: number[]; u_time: number; u_diff?: any; u_mouse?: number[] };
+  private uniforms?: {
+    u_res: number[];
+    u_time: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    u_diff?: any;
+    u_mouse?: number[];
+    noiseSeed?: number;
+    noiseAmount?: number;
+  };
 
   constructor(gl: WebGLRenderingContext) {
     this.gl = gl;
@@ -71,7 +78,9 @@ export default class Quad {
     twgl.setUniforms(this.programInfo, {
       u_time: time,
       u_diff: diff,
-      u_mouse: [this.mouse.x, this.mouse.y]
+      u_mouse: [this.mouse.x, this.mouse.y],
+      noiseSeed: 0,
+      noiseAmount: 0.05
     });
 
     twgl.drawBufferInfo(this.gl, this.bufferInfo);

@@ -5,6 +5,7 @@ import DomQuad from "./_modules";
 export default class Scene {
   private gl: WebGLRenderingContext;
   private ui: { isGrid: boolean; grid: number };
+  private gridQuadRefs?: HTMLElement[];
   private quadRefs?: HTMLElement[];
   private quads?: DomQuad[];
   private gridDom?: HTMLElement | null;
@@ -22,10 +23,11 @@ export default class Scene {
   }
 
   create(): void {
-    const gridQuads = Array.from(document.querySelectorAll("[data-quad-grid]"));
+    this.gridQuadRefs = Array.from(document.querySelectorAll("[data-quad-grid]"));
     this.quadRefs = Array.from(document.querySelectorAll("[data-quad]"));
     this.quads = this.quadRefs.map(
-      (quad, i) => new DomQuad(this.gl, quad as HTMLElement, gridQuads[i] as HTMLElement)
+      (quad, i) =>
+        new DomQuad(this.gl, quad as HTMLElement, this.gridQuadRefs?.[i] as HTMLElement, i)
     );
   }
 
@@ -49,7 +51,7 @@ export default class Scene {
     if (gridButton) {
       gridButton.addEventListener("click", () => {
         const val = this.ui.isGrid ? 0 : 1;
-        this.ui.isGrid ? this.displayScrollUi(true) : this.displayScrollUi(false);
+        // this.ui.isGrid ? this.displayScrollUi(true) : this.displayScrollUi(false);
         this.ui.isGrid = !this.ui.isGrid;
 
         gsap.to(this.ui, {
@@ -63,16 +65,16 @@ export default class Scene {
 
   displayScrollUi(bool: boolean): void {
     if (bool) {
-      if (this.quadRefs) this.quadRefs.forEach(ref => (ref.style.display = "none"));
+      if (this.quadRefs) this.quadRefs.forEach(ref => (ref.style.pointerEvents = "none"));
+      if (this.gridQuadRefs) this.gridQuadRefs.forEach(ref => (ref.style.pointerEvents = "auto"));
       if (this.gridDom) {
-        this.gridDom.style.display = "flex";
         this.gridDom.style.zIndex = "1";
       }
     } else {
-      if (this.quadRefs) this.quadRefs.forEach(ref => (ref.style.display = "block"));
+      if (this.quadRefs) this.quadRefs.forEach(ref => (ref.style.pointerEvents = "auto"));
+      if (this.gridQuadRefs) this.gridQuadRefs.forEach(ref => (ref.style.pointerEvents = "none"));
       if (this.gridDom) {
         this.gridDom.style.zIndex = "-1";
-        this.gridDom.style.display = "none";
       }
     }
   }

@@ -1,8 +1,7 @@
-import { moderat } from "@/assets/fonts";
 import type { Metadata } from "next";
 
 import "@/styles/example.css";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={moderat.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

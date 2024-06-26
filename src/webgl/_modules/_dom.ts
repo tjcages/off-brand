@@ -40,7 +40,7 @@ export default class DomQuad extends Quad {
   private animationIn?: gsap.core.Tween;
   private animationInOut?: gsap.core.Tween;
 
-  constructor(gl: WebGLRenderingContext, ref: HTMLElement, gridRef: HTMLElement) {
+  constructor(gl: WebGLRenderingContext, ref: HTMLElement, gridRef: HTMLElement, index: number) {
     super(gl);
 
     this.gl = gl;
@@ -48,7 +48,7 @@ export default class DomQuad extends Quad {
     this.gridRef = gridRef;
 
     this.anim = {
-      rand: Math.random(),
+      rand: index * 0.1,
       inView: 0,
       hover: 0
     };
@@ -119,6 +119,7 @@ export default class DomQuad extends Quad {
       u_inView: this.anim.inView,
       u_hover: this.anim.hover,
       u_gridId: this.gridMat,
+      u_gridRatio: this.texture.ratio,
       u_TOGRID: grid
     });
 

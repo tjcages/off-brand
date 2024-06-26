@@ -15,4 +15,3 @@ export * from "./_watch";
 
 export * from "./_useMedia";
 export * from "./_useKeypress";
-export * from "./_useLenis";
