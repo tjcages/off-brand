@@ -119,6 +119,9 @@ const _ = () => {
           <Link href="mailto:ty@off-brand.studio" target="_blank">
             <h5>Inquire</h5>
           </Link>
+          <Link href="/privacy">
+            <h5>Privacy</h5>
+          </Link>
         </div>
       </div>
     </header>
